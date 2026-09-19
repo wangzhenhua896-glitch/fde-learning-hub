@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第四章：现代化数据架构实战 · FDE 学习中心</title>
+<meta name="description" content="当底层数据表结构被成功审计并梳理完毕后，FDE 的下一项核心任务便是设计一套可扩展的数据架构来加工并提供这些数据。在企业级环境中，所谓的“扩展性”绝非仅仅购买配置更高的服务器那么简单，而是需要结合具体的业务场景选择合适的数据存储模型（如星型">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup open"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a class="on" href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#0d9488">Handbook</a></div>
+<article class="doc">
+  <h1 class="doc-title">第四章：现代化数据架构实战</h1>
+  <div class="doc-meta"><span style="color:#0d9488">Handbook</span><span class="sep">·</span><span>约 1,558 字</span><span class="sep">·</span><span>阅读约 4 分钟</span></div>
+  <div class="origin">来源：FDE-Handbook 中文版（github.com/goday-org，CC BY-NC-SA 4.0）</div>
+  <div class="prose" id="prose"><p>当底层数据表结构被成功审计并梳理完毕后，FDE 的下一项核心任务便是设计一套可扩展的数据架构来加工并提供这些数据。在企业级环境中，所谓的“扩展性”绝非仅仅购买配置更高的服务器那么简单，而是需要结合具体的业务场景选择合适的数据存储模型（如星型模型与单表 OBT 模型）、搭建合理的 Medallion 渐进式清洗流水线、解决分布式计算中的数据倾斜瓶颈，并构建坚固的数据质量熔断机制。</p>
+<p>本章将深入探讨这几种现代数据架构的设计细节，提供解决 Spark 计算倾斜的完整 PySpark Salting 加盐脚本，并给出基于 dbt 的数据质量校验配置。</p>
+<hr />
+<h2 id="1-存储结构选型-星型模型-Star-Schema-vs-宽表模型-OBT">1. 存储结构选型：星型模型 (Star Schema) vs. 宽表模型 (OBT)</h2>
+<p>在存储层选择何种模型，直接决定了下游数据分析与 AI 智能体应用的查询响应速度与计算成本。</p>
+<h3 id="1-星型模型-维度建模">1. 星型模型（维度建模）</h3>
+<p>由 Ralph Kimball 提出，星型模型将业务数据严密地划分为两种实体：
+* <strong>事实表（Fact Table）</strong>：用于存储业务度量值（如订单金额、传感器日志），数据量级庞大。
+* <strong>维度表（Dimension Table）</strong>：用于存储描述性属性（如客户姓名、商品类目），数据量级较小。
+* <strong>优势</strong>：消除了大量数据冗余，存储效率极高，且易于业务人员理解。
+* <strong>劣势</strong>：在查询时需要执行复杂的 SQL 关联操作（<code>JOIN</code>），在当今主流的列式云数据仓库中，这会带来高昂的计算开销。</p>
+<h3 id="2-单表宽表模型-One-Big-Table-简称-OBT">2. 单表宽表模型（One Big Table，简称 OBT）</h3>
+<p>在 BigQuery 或 Snowflake 等现代云数仓中，存储成本通常极其低廉，而跨表 Join 带来的 CPU 扫描开销却非常昂贵。OBT 模式将事实表与所有维度表打平，反规范化地预先融合成一张大宽表。
+* <strong>优势</strong>：彻底消除了运行时 Join 的开销，对数亿行数据的复杂分析查询可实现毫秒级响应。
+* <strong>劣势</strong>：带来严重的存储数据冗余，且更新某一个维度属性（如客户修改邮箱）需要全表级更新上亿行历史记录。</p>
+<hr />
+<h2 id="2-奖章架构-Medallion-Architecture-的落地设计">2. 奖章架构（Medallion Architecture）的落地设计</h2>
+<p>为了确保企业数据流在转换过程中既能保留审计血缘，又能满足高性能的计算需求，FDE 采用三阶段的奖章架构（Medallion）来组织 pipeline。</p>
+<p><svg viewBox="0 0 750 200" width="100%" height="auto" style="background-color: #fafafa; border: 1px solid #e1e1e8; border-radius: 4px; margin: 20px 0; display: block;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+    </marker>
+  </defs></p>
+<!-- Ingestion -->
+<p><rect x="20" y="70" width="100" height="60" fill="#fff" stroke="#666" rx="4" />
+  <text x="70" y="95" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11">原始数据源</text>
+  <text x="70" y="112" text-anchor="middle" font-family="monospace" font-size="9" fill="#555">CSV / 数据库日志</text></p>
+<p><line x1="120" y1="100" x2="160" y2="100" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)" /></p>
+<!-- Bronze -->
+<p><rect x="170" y="50" width="140" height="100" fill="#f5f5f5" stroke="#795548" stroke-width="2" rx="6" />
+  <text x="240" y="80" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#795548">铜牌层 (Bronze)</text>
+  <text x="240" y="105" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#333">原始数据持久化</text>
+  <text x="240" y="125" text-anchor="middle" font-family="monospace" font-size="9" fill="#666">仅追加 / 完整历史留存</text></p>
+<p><line x1="310" y1="100" x2="350" y2="100" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)" /></p>
+<!-- Silver -->
+<p><rect x="360" y="50" width="140" height="100" fill="#eceff1" stroke="#607d8b" stroke-width="2" rx="6" />
+  <text x="430" y="80" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#607d8b">银牌层 (Silver)</text>
+  <text x="430" y="105" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#333">清洗、富化与转换</text>
+  <text x="430" y="125" text-anchor="middle" font-family="monospace" font-size="9" fill="#666">一致性 Schema / 去重</text></p>
+<p><line x1="500" y1="100" x2="540" y2="100" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)" /></p>
+<!-- Gold -->
+<p><rect x="550" y="50" width="140" height="100" fill="#fff9c4" stroke="#fbc02d" stroke-width="2" rx="6" />
+  <text x="620" y="80" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#fbc02d">金牌层 (Gold)</text>
+  <text x="620" y="105" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#333">面向业务的主题域</text>
+  <text x="620" y="125" text-anchor="middle" font-family="monospace" font-size="9" fill="#666">高度聚合 / BI与Agent就绪</text>
+</svg></p>
+<ol>
+<li><strong>铜牌层 (Bronze Layer)</strong>：近乎无损地保留原始输入文件。不对数据做任何清洗或修改，仅记录时间戳，提供数据重放与血缘审计能力。</li>
+<li><strong>银牌层 (Silver Layer)</strong>：对铜牌层数据进行格式校验、空值清洗、表结构标准化以及精确去重。它是大多数分布式查询引擎的主力查询目标。</li>
+<li><strong>金牌层 (Gold Layer)</strong>：根据特定业务主题（如财务审计、客服分析）进行汇总聚合后的高度汇总表，直接作为 BI 报表和大模型 Agent 检索的基础内存。</li>
+</ol>
+<hr />
+<h2 id="3-分布式计算调优-用-PySpark-Salting-解决数据倾斜">3. 分布式计算调优：用 PySpark Salting 解决数据倾斜</h2>
+<p>在 Spark 或 Ray 等分布式计算框架中处理大规模数据关联时，FDE 会频繁遭遇<strong>数据倾斜（Data Skew）</strong>瓶颈。数据倾斜是指由于某一个关联键（Join Key）包含的行数远远超过其他键（例如：一个通用的 customer_id 字段中，存在上千万条 <code>NULL</code> 或是默认值 <code>0</code> 记录），导致在 Shuffle 阶段，这些数据会被全部分发给同一个 Executor 节点。</p>
+<p>最终，该 Executor 节点会因为内存溢出（OOM）而崩溃，或者计算进度卡在 99% 停滞不前，而其他节点只能无所事事地空闲等待。</p>
+<p>FDE 通过<strong>加盐（Salting）</strong>技术来破解这一难题——在事实表的关联键上拼接一个随机整数，在维度表上进行复制扩张，将原本积压在一个节点的倾斜键拆分分发给多个 Executor 协同处理。</p>
+<pre><code class="language-python"># 基于 PySpark 的加盐关联实现，彻底解决分布式计算 OOM 瓶颈
+import random
+from pyspark.sql import SparkSession
+from pyspark.sql import functions as F
+
+spark = SparkSession.builder \
+    .appName(&quot;FDE-Salting-Demo&quot;) \
+    .config(&quot;spark.sql.shuffle.partitions&quot;, &quot;200&quot;) \
+    .getOrCreate()
+
+# 模拟存在严重倾斜的事实表 (包含上百万条 customer_id 为 UNKNOWN 的访客记录)
+fact_df = spark.createDataFrame([
+    (&quot;UNKNOWN&quot;, 10.5), (&quot;UNKNOWN&quot;, 25.0), (&quot;UNKNOWN&quot;, 100.2), # 严重倾斜的 key
+    (&quot;CUST_01&quot;, 50.0), (&quot;CUST_02&quot;, 75.5)
+], [&quot;customer_id&quot;, &quot;amount&quot;])
+
+# 模拟基础维度表
+dim_df = spark.createDataFrame([
+    (&quot;UNKNOWN&quot;, &quot;匿名客户&quot;),
+    (&quot;CUST_01&quot;, &quot;大客户 A&quot;),
+    (&quot;CUST_02&quot;, &quot;普通客户 B&quot;)
+], [&quot;customer_id&quot;, &quot;customer_name&quot;])
+
+# 定义盐值拆分份数
+SALT_BINS = 4
+
+# 第一步：给事实表倾斜 key 打上随机盐值
+salted_fact_df = fact_df.withColumn(
+    &quot;salt&quot;, 
+    F.floor(F.rand() * SALT_BINS)
+).withColumn(
+    &quot;join_key&quot;,
+    F.concat(F.col(&quot;customer_id&quot;), F.lit(&quot;_&quot;), F.col(&quot;salt&quot;))
+)
+
+# 第二步：将维度表扩容爆炸以匹配对应的盐值键
+salted_dim_df = dim_df.withColumn(
+    &quot;salts&quot;,
+    F.array([F.lit(i) for i in range(SALT_BINS)])
+).withColumn(
+    &quot;salt&quot;,
+    F.explode(&quot;salts&quot;)
+).withColumn(
+    &quot;join_key&quot;,
+    F.concat(F.col(&quot;customer_id&quot;), F.lit(&quot;_&quot;), F.col(&quot;salt&quot;))
+)
+
+# 第三步：基于加盐后的 join_key 进行分布式 Shuffle 关联
+joined_df = salted_fact_df.join(
+    salted_dim_df,
+    on=&quot;join_key&quot;,
+    how=&quot;inner&quot;
+).select(
+    salted_fact_df[&quot;customer_id&quot;],
+    salted_dim_df[&quot;customer_name&quot;],
+    F.col(&quot;amount&quot;)
+)
+
+joined_df.show(truncate=False)
+</code></pre>
+<p>通过加盐，原本堆积在单个 Executor 的 <code>UNKNOWN</code> 计算压力，被均匀打散分发到 <code>SALT_BINS</code> 个不同的节点上，避免了单点崩溃，并使集群资源得到最大化利用。</p>
+<hr />
+<h2 id="4-数据质量熔断-基于-dbt-的断言测试体系">4. 数据质量熔断：基于 dbt 的断言测试体系</h2>
+<p>在生产环境中，FDE 绝不会假设上游数据在明天还会保持干净。因此必须构建主动校验 pipeline，作为“电路熔断器”以保护下游。</p>
+<h3 id="schema-校验与测试规范-dbt-schema-yml">schema 校验与测试规范 (dbt schema.yml)</h3>
+<p>借助 <code>dbt</code> 的测试插件，FDE 将断言规则编写在 schema 配置文件中，在模型装载运行时自动触发断言。</p>
+<pre><code class="language-yaml">version: 2
+
+models:
+  - name: silver_customers
+    description: &quot;银牌层：去重且格式化校验完毕的客户维表&quot;
+    columns:
+      - name: customer_id
+        description: &quot;主键 ID&quot;
+        tests:
+          - unique
+          - not_null
+      - name: email_address
+        description: &quot;客户联系邮箱&quot;
+        tests:
+          - not_null
+          - relationships:
+              to: ref('bronze_raw_customers')
+              field: raw_email
+      - name: lifecycle_status
+        description: &quot;客户生命周期状态&quot;
+        tests:
+          - accepted_values:
+              values: ['lead', 'active', 'inactive', 'churned']
+</code></pre>
+<p>每一次构建流程后触发 <code>dbt test</code>，如果主键列意外出现了空值、或者生命周期列包含接受范围之外的脏字段，系统将立刻报警并强行阻断数据继续写入金牌层，防止劣质数据污染大模型的检索空间与向量库。</p>
+<hr />
+<h2 id="本章小结">本章小结</h2>
+<p>设计生产级别的现代化数据架构是一门平衡计算、存储与质量的艺术。通过对于低延迟分析采用 OBT 单表宽表模型、运用 Medallion 流水线做渐进式清洗、利用 Salting 加盐巧妙地化解 Spark 分布式 Shuffle 倾斜，并基于 dbt 的断言校验做质量熔断，FDE 能够保障数十亿级别的数据稳定运行并精准输出。</p></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="hb4">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#1-存储结构选型-星型模型-Star-Schema-vs-宽表模型-OBT">1. 存储结构选型：星型模型 (Star Schema) vs. 宽表模型 (OBT)</a></li><li class="lv3"><a href="#1-星型模型-维度建模">1. 星型模型（维度建模）</a></li><li class="lv3"><a href="#2-单表宽表模型-One-Big-Table-简称-OBT">2. 单表宽表模型（One Big Table，简称 OBT）</a></li><li class="lv2"><a href="#2-奖章架构-Medallion-Architecture-的落地设计">2. 奖章架构（Medallion Architecture）的落地设计</a></li><li class="lv2"><a href="#3-分布式计算调优-用-PySpark-Salting-解决数据倾斜">3. 分布式计算调优：用 PySpark Salting 解决数据倾斜</a></li><li class="lv2"><a href="#4-数据质量熔断-基于-dbt-的断言测试体系">4. 数据质量熔断：基于 dbt 的断言测试体系</a></li><li class="lv3"><a href="#schema-校验与测试规范-dbt-schema-yml">schema 校验与测试规范 (dbt schema.yml)</a></li><li class="lv2"><a href="#本章小结">本章小结</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

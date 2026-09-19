@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>深度专题九 MLOps 与持续交付（LLM 应用的工程化） · FDE 学习中心</title>
+<meta name="description" content="把一个 GPT-4o 或 Qwen-Max 接进业务，看上去只是&quot;调一次 API&quot;，但只要它进了生产链路，就会立刻撞上和传统 ML 流水线完全不同的几条事实：">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#2563eb">FDE-Wiki</a></div>
+<article class="doc">
+  <h1 class="doc-title">深度专题九 MLOps 与持续交付（LLM 应用的工程化）</h1>
+  <div class="doc-meta"><span style="color:#2563eb">FDE-Wiki</span><span class="sep">·</span><span>约 3,377 字</span><span class="sep">·</span><span>阅读约 8 分钟</span></div>
+  
+  <div class="prose" id="prose"><h2 id="9-1-为什么传统-MLOps-框架在-LLM-时代失灵">9.1 为什么传统 MLOps 框架在 LLM 时代失灵</h2>
+<p>把一个 GPT-4o 或 Qwen-Max 接进业务，看上去只是"调一次 API"，但只要它进了生产链路，就会立刻撞上和传统 ML 流水线完全不同的几条事实：</p>
+<blockquote>
+<p><strong>核心论断：传统 MLOps 管的是"模型权重 + 特征"，LLM MLOps 管的是"prompt + 检索 + 评估 + 模型版本"四元组，且评估本身比训练更贵。</strong></p>
+</blockquote>
+<p>二者差异可以从下表看清：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>传统 MLOps（以 XGBoost/ResNet 为例）</th>
+<th>LLM MLOps（以 RAG/Agent 为例）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>制品主体</td>
+<td>模型权重（<code>.pkl</code>/<code>.onnx</code>/<code>.pt</code>）</td>
+<td>prompt 模板 + 检索索引 + 模型版本 + 评估集</td>
+</tr>
+<tr>
+<td>数据形态</td>
+<td>结构化特征表 / 标注图片</td>
+<td>非结构化语料 + 指令对 + 业务文档</td>
+</tr>
+<tr>
+<td>训练 vs 调用</td>
+<td>训练贵、推理便宜</td>
+<td>训练极贵（常被供应商包掉）、调用按 token 计费</td>
+</tr>
+<tr>
+<td>漂移类型</td>
+<td>特征漂移、标签漂移</td>
+<td>输入分布漂移、语义漂移、prompt 漂移、上游模型静默升级</td>
+</tr>
+<tr>
+<td>评估方式</td>
+<td>离线指标（AUC/F1/RMSE）即可上线</td>
+<td>离线 LLM-as-Judge + 在线人工抽检 + 业务指标三件套</td>
+</tr>
+<tr>
+<td>回滚单位</td>
+<td>切回上一版权重</td>
+<td>切回 (prompt, retriever, model, guardrail) 组合</td>
+</tr>
+<tr>
+<td>坏例来源</td>
+<td>阈值卡边、特征缺失</td>
+<td>幻觉、拒答、越狱、上下文丢失、token 截断</td>
+</tr>
+</tbody>
+</table></div>
+<p>一个被反复验证的经验值：在 LLM 应用里，<strong>评估集和评估代码的维护成本，往往超过应用代码本身</strong>。Honeycomb 工程团队在 2024 年公开复盘其自然语言查询功能时承认，他们写 Promptfoo 评估用例的代码量，是写查询生成逻辑的两倍。这是 FDE 在客户现场必须提前打预防针的事实——"上线一周就会到改不动 prompt 的状态"是常态，不是异常。</p>
+<h2 id="9-2-LLM-应用的完整生命周期">9.2 LLM 应用的完整生命周期</h2>
+<p>把 LLM 应用当成一个有版本、有审计、可回滚的工程制品，需要覆盖六段闭环：</p>
+<ol>
+<li><strong>版本（Version）</strong>——prompt、检索语料、模型 checkpoint、guardrail 规则、评估集，五者各自独立版本化，并打上一个组合 commit hash。</li>
+<li><strong>实验（Experiment）</strong>——任何一次 prompt 改动或换模型，都作为一次实验记录参数、指标、产物。</li>
+<li><strong>注册（Registry）</strong>——通过评估门禁的组合进入模型注册表，标记 <code>Staging</code> / <code>Production</code> / <code>Archived</code>。</li>
+<li><strong>部署（Deploy）</strong>——按流量比例灰度，配合影子流量（shadow）跑离线评估。</li>
+<li><strong>监控（Monitor）</strong>——延迟 P95、token 成本、坏例率、用户负反馈率、prompt 变更频次。</li>
+<li><strong>回滚（Rollback）</strong>——一键切回上一个 <code>Production</code> 组合，TTL 内可追溯每一次切换的责任人。</li>
+</ol>
+<p>这六段不是线性流程，而是一个以"评估门禁"为枢纽的循环：监控发现坏例 → 进入评估集 → 触发新实验 → 通过门禁才允许注册 → 灰度部署 → 继续监控。FDE 在客户现场的第一周，往往不是写功能，而是把这六段的最小骨架先搭出来，否则后期任何一次改动都会变成"上线即背锅"。</p>
+<h2 id="9-3-版本管理-模型-数据与-prompt-三条独立轨道">9.3 版本管理：模型、数据与 prompt 三条独立轨道</h2>
+<h3 id="9-3-1-模型与数据-DVC-MLflow">9.3.1 模型与数据：DVC + MLflow</h3>
+<p>对自托管/微调场景，<strong>DVC</strong> 管数据和 checkpoint 的内容寻址存储，<strong>MLflow</strong> 管实验元数据。下面是一个真实可复刻的 DVC + Git 协同示例：</p>
+<pre><code class="language-bash"># 初始化 DVC，把数据/模型放到对象存储
+dvc init
+dvc remote add -d my_s3 s3://my-bucket/dvc-store
+dvc remote modify my_s3 endpointurl https://cos.ap-shanghai.myqcloud.com
+
+# 把训练语料纳入版本管理
+dvc add data/finetune_corpus.jsonl
+git add data/finetune_corpus.jsonl.dvc .gitignore
+git commit -m &quot;feat: add finetune corpus v1 (12k examples)&quot;
+
+# 切回历史版本的数据
+git checkout v0.3.0
+dvc checkout            # 把 data/ 恢复成 v0.3.0 时刻的内容
+</code></pre>
+<p><code>dvc.yaml</code> 定义可复现的 pipeline，是交付文档里"可复刻"硬红线的落地形式：</p>
+<pre><code class="language-yaml">stages:
+  prepare:
+    cmd: python src/prepare.py --in data/raw.jsonl --out data/train.jsonl
+    deps: [src/prepare.py, data/raw.jsonl]
+    outs: [data/train.jsonl]
+  finetune:
+    cmd: python src/finetune.py --base Qwen/Qwen2.5-7B --out models/v1
+    deps: [data/train.jsonl, src/finetune.py]
+    outs: [models/v1]
+  evaluate:
+    cmd: python src/evaluate.py --model models/v1 --set eval/golden.jsonl
+    metrics: [metrics/eval.json]
+</code></pre>
+<p><code>dvc exp run</code> 会按依赖图重跑，并把指标写进 <code>metrics/eval.json</code>，再被 MLflow 拉走展示。</p>
+<h3 id="9-3-2-prompt-版本-PromptLayer-Promptfoo-LangSmith">9.3.2 prompt 版本：PromptLayer / Promptfoo / LangSmith</h3>
+<p>prompt 是 LLM 应用里变更最频繁、也最容易出事的制品。社区主流三种做法：</p>
+<ul>
+<li><strong>PromptLayer</strong>：把 prompt 当数据库表存，每次调用自动落库，支持按 prompt hash 回放历史请求。</li>
+<li><strong>Promptfoo</strong>：用 YAML 写 prompt 矩阵 + 断言，CI 里跑出红绿报告。</li>
+<li><strong>LangSmith</strong>：LangChain 官方，prompt + dataset + run 一体化，trace 可视化。</li>
+</ul>
+<p>下面是 Promptfoo 的评估配置，可以直接塞进 GitHub Actions 当门禁：</p>
+<pre><code class="language-yaml"># promptfooconfig.yaml
+prompts:
+  - file://promposes/extract_clause.txt
+providers:
+  - id: openai:chat:gpt-4o-mini
+    config: { temperature: 0 }
+  - id: anthropic:claude-3-5-sonnet
+tests:
+  - vars: { clause: &quot;甲方应在收到发票后 30 日内付款&quot; }
+    assert:
+      - type: contains-json
+      - type: equals
+        value: { deadline_days: 30 }
+  - vars: { clause: &quot;本协议自签字之日起生效，有效期一年&quot; }
+    assert:
+      - type: javascript
+        value: output.duration_days === 365
+</code></pre>
+<p><code>promptfoo eval</code> 会在 CI 里输出每个 provider × 每个 test 的通过率，低于阈值的 PR 直接拦截。这是把 prompt 改动"工程化"最廉价的一步。</p>
+<h2 id="9-4-实验追踪-MLflow-与-Weights-Biases">9.4 实验追踪：MLflow 与 Weights &amp; Biases</h2>
+<p>实验追踪解决一个问题：<strong>两个月后回头看，这次微调到底改了什么、效果如何</strong>。下面是一段真实可跑的 MLflow 记录一次 LLM 评估实验的代码：</p>
+<pre><code class="language-python">import mlflow
+from mlflow.metrics.genai import make_genai_metric
+
+# 定义一个 LLM-as-Judge 指标：答案是否引用了原文
+faithfulness = make_genai_metric(
+    name=&quot;faithfulness&quot;,
+    definition=&quot;输出是否每条结论都能在 context 中找到依据，1 或 0&quot;,
+    grading_prompt=&quot;{{context}}\n\n答案：{{prediction}}&quot;,
+    model=&quot;endpoints:/databricks-llama-4-70b&quot;,
+    examples=[],
+)
+
+mlflow.set_experiment(&quot;合同条款抽取-v2&quot;)
+with mlflow.start_run(run_name=&quot;qwen2.5-7b-ft-v3&quot;):
+    mlflow.log_params({
+        &quot;base_model&quot;: &quot;Qwen/Qwen2.5-7B&quot;,
+        &quot;lora_r&quot;: 16, &quot;epochs&quot;: 3, &quot;lr&quot;: 2e-4,
+        &quot;prompt_version&quot;: &quot;git:a1b2c3d&quot;,
+        &quot;eval_set_version&quot;: &quot;dvc:v5&quot;,
+    })
+    results = mlflow.evaluate(
+        model=lambda row: predictor(row[&quot;clause&quot;]),
+        data=eval_df,
+        targets=&quot;gold&quot;,
+        extra_metrics=[faithfulness, mlflow.metrics.latency()],
+    )
+    mlflow.log_metric(&quot;faithfulness&quot;, results.metrics[&quot;faithfulness/score&quot;])
+    mlflow.register_model(
+        &quot;runs:/&lt;run_id&gt;/model&quot;, &quot;ContractClauseExtract&quot;,
+        tags={&quot;stage&quot;: &quot;staging&quot;, &quot;owner&quot;: &quot;fde-team&quot;},
+    )
+</code></pre>
+<blockquote>
+<p>一个实战提醒：把 <code>prompt_version</code> 和 <code>eval_set_version</code> 都用 git commit / dvc tag 写进 <code>log_params</code>，否则排查"为什么这次评估分数掉了"时会回到裸奔状态。</p>
+</blockquote>
+<p><strong>MLflow vs W\&amp;B 选型</strong>：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>MLflow</th>
+<th>Weights &amp; Biases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>部署</td>
+<td>开源自托管，零 License</td>
+<td>SaaS 为主，企业版较贵</td>
+</tr>
+<tr>
+<td>LLM 评估</td>
+<td>原生 <code>mlflow.evaluate</code> + GenAI metrics</td>
+<td>W\&amp;B Evaluations，强可视化</td>
+</tr>
+<tr>
+<td>模型注册</td>
+<td>内置 Model Registry</td>
+<td>需配合 W\&amp;B Artifacts</td>
+</tr>
+<tr>
+<td>生态绑定</td>
+<td>厂商中立</td>
+<td>偏训练场景</td>
+</tr>
+<tr>
+<td>适合</td>
+<td>客户内网、合规优先</td>
+<td>研究/算法团队、看图说话</td>
+</tr>
+</tbody>
+</table></div>
+<p>FDE 在金融、政务客户的默认选择是 MLflow 自托管，原因只有一个：<strong>模型元数据不出网</strong>。</p>
+<h2 id="9-5-模型注册与发布-Staging-Production-的真实含义">9.5 模型注册与发布：Staging / Production 的真实含义</h2>
+<p>模型注册表不是"存模型的目录"，而是<strong>一条带门禁的流水线</strong>。MLflow Model Registry 把每个注册模型分成 <code>None → Staging → Production → Archived</code> 四态，每次状态迁移都带审批人、时间戳和 <code>version</code>。</p>
+<p>但 LLM 场景下，"模型版本"经常是个伪命题——因为调用的是供应商 API，权重随时可能被静默替换。所以注册表里真正要管的是 <strong>配置组合</strong>：</p>
+<pre><code class="language-yaml"># registered_combinations/contract-extract-v3.yaml
+model:
+  provider: openai
+  name: gpt-4o-mini
+  api_version: &quot;2024-08-01&quot;   # 锁版本，避免供应商静默升级
+prompt:
+  repo: contract-bot
+  commit: a1b2c3d
+retriever:
+  index_version: &quot;2026-06-15T08:00&quot;
+  top_k: 5
+guardrail:
+  rules_version: &quot;2026-06-10&quot;
+eval:
+  faithfulness: 0.94   # 通过门禁的基线
+  p95_latency_ms: 1800
+</code></pre>
+<p>这套配置才是"可回滚"的最小单位。回滚时不是换权重，而是把 <code>Production</code> 指针指回上一份 <code>registered_combinations/contract-extract-v2.yaml</code>。OpenAI 在 2024 年引入 <code>api_version</code> 锁定后，这种做法成为可能；在阿里云百炼、火山方舟等国内平台，则要用"模型别名 + 灰度比例"的官方机制来近似实现。</p>
+<h2 id="9-6-持续部署-CI-CD-for-LLM-评估即门禁">9.6 持续部署：CI/CD for LLM，评估即门禁</h2>
+<p>LLM 应用的 CI/CD 多出来的关键一环是<strong>评估门禁</strong>。一个可复刻的 GitHub Actions 片段：</p>
+<pre><code class="language-yaml"># .github/workflows/llm-cd.yml
+name: LLM CD
+on: { pull_request: { paths: [&quot;prompts/**&quot;, &quot;eval/**&quot;] } }
+jobs:
+  eval-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install promptfoo mlflow
+      - name: Run eval
+        env: { OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} }
+        run: |
+          promptfoo eval -c promptfooconfig.yaml \
+            --output eval_report.json \
+            --share
+          python scripts/check_gate.py eval_report.json \
+            --min-pass 0.90 --max-regression 0.02
+      - if: success()
+        run: mlflow deployments create --target staging ...
+</code></pre>
+<p><code>check_gate.py</code> 的逻辑只有三条：整体通过率不低于基线、单项回归不超过阈值、新增坏例为 0。三条全过才允许进入 <code>Staging</code>，再由人工/定时任务把 <code>Staging</code> 提升到 <code>Production</code>。</p>
+<blockquote>
+<p>这一步是 LLM 工程化和"脚本侠"的分水岭。没有评估门禁，prompt 改一行就上线，三天后客户投诉才发现幻觉率翻倍——这是 FDE 现场最常见的返工来源。</p>
+</blockquote>
+<h2 id="9-7-监控-漂移-延迟-成本-坏例">9.7 监控：漂移、延迟、成本、坏例</h2>
+<p>线上 LLM 应用的监控四件套：</p>
+<ol>
+<li><strong>输入分布漂移</strong>：用 embedding 把用户 query 向量化，计算与基线分布的余弦距离均值或 Wasserstein 距离，超阈值告警。LangSmith 和 Phoenix（Arize）都内置这个能力。</li>
+<li><strong>延迟</strong>：记录首 token 延迟（TTFT）和总延迟 P95。vLLM 自托管时还要盯 batch 大小、KV cache 命中率。</li>
+<li><strong>成本</strong>：按 <code>prompt_tokens × 单价 + completion_tokens × 单价</code> 实时累加，按租户/会话维度切片。一个常见坑：长上下文把 prompt token 推到 30k+，单次成本比预期高一个量级。</li>
+<li><strong>坏例</strong>：用户负反馈（"点踩"按钮）+ 抽样人工标注 + LLM-as-Judge 三路汇总，命中即进评估集。</li>
+</ol>
+<p>下面是一段把 vLLM 自托管推理接入 Prometheus 的真实配置片段：</p>
+<pre><code class="language-yaml"># 启动 vLLM 并暴露 metrics
+# vllm serve Qwen/Qwen2.5-7B \
+#   --tensor-parallel-size 2 \
+#   --enable-prefix-caching \
+#   --uvicorn-log-level info
+# vLLM 在 /metrics 暴露 Prometheus 格式指标
+</code></pre>
+<p>关键指标包括 <code>vllm:num_requests_running</code>、<code>vllm:num_requests_waiting</code>、<code>vllm:time_to_first_token_seconds</code>、<code>vllm:e2e_request_latency_seconds</code>、<code>vllm:request_inference_time_seconds</code>。配合 Grafana 看 queue 是否堆积，比看 QPS 更能反映容量瓶颈。</p>
+<p>漂移检测的一个最小实现（用 scikit-learn + numpy）：</p>
+<pre><code class="language-python">import numpy as np
+from scipy.stats import wasserstein_distance
+
+baseline = np.load(&quot;emb_baseline.npy&quot;)        # 上线时存好的参考分布
+current  = np.load(&quot;emb_current_week.npy&quot;)    # 本周线上 query 的 embedding
+for d in range(baseline.shape[1] // 16):
+    dist = wasserstein_distance(baseline[:, d], current[:, d])
+    if dist &gt; 0.15:   # 经验阈值，需按业务校准
+        print(f&quot;dim {d} drift: {dist:.3f}&quot;)
+</code></pre>
+<blockquote>
+<p>一个被低估的信号：<strong>用户 query 平均长度</strong>。RAG 应用里，如果它从 12 字慢慢漂到 35 字，多半是用户在反复补上下文——意味着检索质量在悄悄下降。</p>
+</blockquote>
+<h2 id="9-8-回滚机制">9.8 回滚机制</h2>
+<p>回滚要满足三个条件：<strong>可一键、可审计、可追溯数据</strong>。落地方式：</p>
+<ul>
+<li><strong>配置回滚</strong>：CI 把每次 <code>Production</code> 组合 push 进一个 <code>release-history/</code> 目录，回滚 = <code>git revert</code> + 重新部署配置，模型权重不变。</li>
+<li><strong>流量回滚</strong>：用 Seldon Core 或 BentoML 的灰度比例，从 100% 新版本切回 100% 旧版本，秒级生效。</li>
+<li><strong>数据回滚</strong>：检索索引按时间戳快照，回滚 = 切回上一个 index 版本号，配合 embedding 模型版本一起回退（否则维度不一致会崩）。</li>
+</ul>
+<pre><code class="language-bash"># BentoML 一键回滚（假设部署名为 contract-bot）
+bentoml deployment update contract-bot \
+  --bento-version contract_bot:20260615.0   # 指回上一个稳定版本
+</code></pre>
+<p>Seldon Core 在 Kubernetes 上用的是 <code>SeldonDeployment</code> CRD，配合 Argo Rollups 做 canary：</p>
+<pre><code class="language-yaml"># argo-rollout canary for seldon
+strategy:
+  canary:
+    steps:
+      - setWeight: 10
+      - pause: { duration: 30m }
+      - analysis:
+          templates: [{ templateName: llm-eval-gate }]
+      - setWeight: 50
+      - pause: { duration: 1h }
+      - setWeight: 100
+</code></pre>
+<p><code>llm-eval-gate</code> 这个 AnalysisTemplate 会去查 MLflow 或 Prometheus 里 <code>faithfulness</code> 指标，低于 0.85 自动把 rollout 标记为失败并回退。这是把"评估门禁"嵌进 Kubernetes 调度循环的标准做法。</p>
+<h2 id="9-9-工具栈对比">9.9 工具栈对比</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>定位</th>
+<th>优势</th>
+<th>短板</th>
+<th>何时选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MLflow</td>
+<td>实验 + 注册 + 部署 API</td>
+<td>开源、自托管、生态广</td>
+<td>UI 朴素，LLM trace 弱</td>
+<td>合规优先、内网交付</td>
+</tr>
+<tr>
+<td>Kubeflow</td>
+<td>K8s 原生 ML 平台</td>
+<td>与 K8s 深度集成、pipelines 强</td>
+<td>重、运维门槛高</td>
+<td>已有 K8s 团队的大型客户</td>
+</tr>
+<tr>
+<td>Seldon Core</td>
+<td>K8s 推理 + 灰度</td>
+<td>canary/影子流量、指标丰富</td>
+<td>学习曲线陡</td>
+<td>自托管大模型推理</td>
+</tr>
+<tr>
+<td>BentoML</td>
+<td>打包 + 部署一体化</td>
+<td>对 Python 友好、yatai 简单</td>
+<td>多租户弱</td>
+<td>中小规模自托管</td>
+</tr>
+<tr>
+<td>vLLM</td>
+<td>推理引擎</td>
+<td>PagedAttention、高吞吐</td>
+<td>只管推理，不管生命周期</td>
+<td>自托管开源大模型</td>
+</tr>
+<tr>
+<td>LangSmith</td>
+<td>LLM trace + 评估</td>
+<td>trace 可视化、与 LangChain 无缝</td>
+<td>绑定 LangChain，数据出网</td>
+<td>快速迭代期、原型阶段</td>
+</tr>
+<tr>
+<td>Phoenix (Arize)</td>
+<td>开源 LLM 可观测</td>
+<td>自托管、漂移检测</td>
+<td>部署文档较少</td>
+<td>内网可观测需求</td>
+</tr>
+<tr>
+<td>Promptfoo</td>
+<td>prompt 评估门禁</td>
+<td>CI 友好、断言式</td>
+<td>不做部署</td>
+<td>门禁环节</td>
+</tr>
+</tbody>
+</table></div>
+<p>一个被反复验证的组合：<strong>自托管客户 = DVC（数据）+ MLflow（实验+注册）+ Seldon/BentoML（部署）+ vLLM（推理）+ Phoenix（可观测）+ Promptfoo（门禁）</strong>；<strong>云原生客户 = LangSmith + LiteLLM + BentoML</strong>。FDE 在选型时，先问一句"数据能不能出网"，答案直接砍掉一半候选。</p>
+<h2 id="9-10-FDE-在客户现场搭-MLOps-的现实挑战">9.10 FDE 在客户现场搭 MLOps 的现实挑战</h2>
+<p>把上面这套搬到客户机房，真正难的不是工具，是约束：</p>
+<ol>
+<li><strong>网络隔离</strong>：金融、政务客户生产网不通外网，MLflow Tracking Server、模型权重、pip 包全要走内网镜像。<code>pip install</code> 经常要在能联网的跳板机 <code>pip download</code> 再 <code>scp</code> 进去。DVC remote 要对接客户的对象存储（如腾讯云 COS、华为 OBS），endpoint 配错一个字符能调一天。</li>
+<li><strong>GPU 资源稀缺</strong>：客户给到的卡往往只有 2×A100，但要跑 7B 微调 + vLLM 推理 + 评估三件事。FDE 必须把这三件事做成可调度的任务（Kubeflow Pipelines 或简单的 K8s Job），避免互相抢占导致推理延迟爆表。</li>
+<li><strong>评估集是政治问题</strong>：业务方往往不愿意花人天标"金标答案"，理由是"忙"。FDE 的做法是先从线上日志里捞 200 条，自己用 LLM-as-Judge 跑一遍，再把可疑的 50 条丢给业务方确认——把人工成本压到 4 人时内，才能拿到第一版评估集。</li>
+<li><strong>供应商模型静默升级</strong>：OpenAI、Anthropic、阿里通义都曾不通知就换权重。FDE 要在 prompt 里嵌一个"模型指纹"问题（一个对版本敏感的固定问题），每天跑一次，答案变了立刻告警。这是没有文档能教的现场经验。</li>
+<li><strong>审计要求</strong>：金融客户要求每次模型调用可追溯到 prompt 版本、检索版本、操作员。这要求把 <code>git commit</code> / <code>index_version</code> / <code>user_id</code> 写进每次请求的 metadata，并落进不可篡改的日志（如 Elasticsearch 配 WORM 存储）。MLflow 的 run_id 要和业务日志做关联，FDE 经常要写一个中间层把两边打通。</li>
+<li><strong>组织接受度</strong>：业务团队第一次接触"评估门禁"会觉得是阻碍上线。FDE 的妥协方案是先只做"只读门禁"——评估跑挂只发企微告警，不拦 PR，跑两周让团队看到价值，再切到"硬门禁"。这是工程之外的组织节奏控制。</li>
+</ol>
+<h2 id="9-11-一条最小可落地的-LLM-MLOps-骨架">9.11 一条最小可落地的 LLM MLOps 骨架</h2>
+<p>如果客户只给一周时间，FDE 应该优先搭出下面这条最小骨架（按优先级排序）：</p>
+<ol>
+<li>prompt + evalset 进 Git，用 Promptfoo 在 CI 跑评估门禁（半天）。</li>
+<li>MLflow 自托管，记录每次实验的参数和指标（半天）。</li>
+<li>把"金标评估集"和"线上抽检集"分开存，后者每周从线上采样补充（1 天）。</li>
+<li>推理层用 BentoML 或 vLLM，灰度比例硬编码先跑通（1 天）。</li>
+<li>监控先上 P95 延迟 + token 成本 + 用户负反馈率三个指标（1 天）。</li>
+<li>回滚脚本写好，每月演练一次（半天）。</li>
+</ol>
+<p>这六步跑通，才谈得上加漂移检测、LLM-as-Judge、Seldon canary 这些进阶能力。先有骨架，再加肌肉——顺序反了，客户现场就会变成 demo 工程的墓地。</p>
+<h2 id="本专题小结">本专题小结</h2>
+<ul>
+<li>传统 MLOps 管"权重+特征"，LLM MLOps 管"prompt+检索+模型+评估"四元组，且评估成本高于训练之外的任何环节。</li>
+<li>生命周期六段（版本/实验/注册/部署/监控/回滚）以"评估门禁"为枢纽循环，监控发现坏例回流为评估集是新实验的起点。</li>
+<li>版本管理三条独立轨道：DVC 管数据与 checkpoint，MLflow 管实验元数据，Promptfoo/PromptLayer 管 prompt。</li>
+<li>模型注册表的真正管理对象是"配置组合"而非权重，回滚的最小单位也是这个组合。</li>
+<li>CI/CD 多出来的关键一环是评估门禁，Promptfoo + GitHub Actions 是最低成本落地形式。</li>
+<li>监控四件套：漂移、延迟、成本、坏例；首 token 延迟和 query 平均长度是被低估的信号。</li>
+<li>工具栈分两派：自托管（MLflow+Seldon+vLLM+Phoenix）与云原生（LangSmith+LiteLLM+BentoML），选型由"数据能否出网"决定。</li>
+<li>FDE 在客户现场的真实约束是网络、GPU、评估集、供应商静默升级、审计、组织接受度六件事，骨架要先于进阶能力。</li>
+</ul>
+<h2 id="本专题来源">本专题来源</h2>
+<ul>
+<li>MLflow 官方文档：<code>mlflow.org</code>（GenAI metrics、Model Registry、<code>mlflow.evaluate</code>）。</li>
+<li>DVC 官方文档与 <code>dvc.yaml</code> pipeline 规范：<code>dvc.org/doc</code>。</li>
+<li>Promptfoo 官方文档与 <code>promptfooconfig.yaml</code> 配置：<code>promptfoo.dev</code>。</li>
+<li>Weights &amp; Biases 官方文档：<code>docs.wandb.ai</code>。</li>
+<li>Seldon Core 与 Argo Rollouts 的 canary + AnalysisTemplate 实践：<code>docs.seldon.io</code>、<code>argoproj.github.io/rollouts</code>。</li>
+<li>BentoML 部署与版本管理：<code>docs.bentoml.com</code>。</li>
+<li>vLLM Prometheus metrics 列表：<code>docs.vllm.ai</code>（<code>/metrics</code> endpoint）。</li>
+<li>LangSmith trace 与评估：<code>docs.smith.langchain.com</code>。</li>
+<li>Arize Phoenix 开源 LLM 可观测：<code>phoenix.arize.com</code>。</li>
+<li>Honeycomb 团队公开复盘（2024）关于自然语言查询功能评估代码量的工程实践。</li>
+<li>OpenAI API <code>api_version</code> 锁定机制（2024 引入）与供应商模型版本稳定性政策。</li>
+<li>CDEF 方法论中 Engineer 阶段对"可追溯、可复刻、可回滚"的工程化要求作为本专题方法学锚点。</li>
+</ul></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="topic09">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#9-1-为什么传统-MLOps-框架在-LLM-时代失灵">9.1 为什么传统 MLOps 框架在 LLM 时代失灵</a></li><li class="lv2"><a href="#9-2-LLM-应用的完整生命周期">9.2 LLM 应用的完整生命周期</a></li><li class="lv2"><a href="#9-3-版本管理-模型-数据与-prompt-三条独立轨道">9.3 版本管理：模型、数据与 prompt 三条独立轨道</a></li><li class="lv3"><a href="#9-3-1-模型与数据-DVC-MLflow">9.3.1 模型与数据：DVC + MLflow</a></li><li class="lv3"><a href="#9-3-2-prompt-版本-PromptLayer-Promptfoo-LangSmith">9.3.2 prompt 版本：PromptLayer / Promptfoo / LangSmith</a></li><li class="lv2"><a href="#9-4-实验追踪-MLflow-与-Weights-Biases">9.4 实验追踪：MLflow 与 Weights &amp;amp; Biases</a></li><li class="lv2"><a href="#9-5-模型注册与发布-Staging-Production-的真实含义">9.5 模型注册与发布：Staging / Production 的真实含义</a></li><li class="lv2"><a href="#9-6-持续部署-CI-CD-for-LLM-评估即门禁">9.6 持续部署：CI/CD for LLM，评估即门禁</a></li><li class="lv2"><a href="#9-7-监控-漂移-延迟-成本-坏例">9.7 监控：漂移、延迟、成本、坏例</a></li><li class="lv2"><a href="#9-8-回滚机制">9.8 回滚机制</a></li><li class="lv2"><a href="#9-9-工具栈对比">9.9 工具栈对比</a></li><li class="lv2"><a href="#9-10-FDE-在客户现场搭-MLOps-的现实挑战">9.10 FDE 在客户现场搭 MLOps 的现实挑战</a></li><li class="lv2"><a href="#9-11-一条最小可落地的-LLM-MLOps-骨架">9.11 一条最小可落地的 LLM MLOps 骨架</a></li><li class="lv2"><a href="#本专题小结">本专题小结</a></li><li class="lv2"><a href="#本专题来源">本专题来源</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

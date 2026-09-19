@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>深度专题二十四 大模型应用的合规与伦理 · FDE 学习中心</title>
+<meta name="description" content="一句话定位： FDE 把大模型塞进客户真实业务的那一刻，技术决策就变成了法律义务与伦理责任。本专题梳理中外法规红线、行业准入门槛、LLM 特有风险与负责任 AI 落地清单，目…">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#2563eb">FDE-Wiki</a></div>
+<article class="doc">
+  <h1 class="doc-title">深度专题二十四 大模型应用的合规与伦理</h1>
+  <div class="doc-meta"><span style="color:#2563eb">FDE-Wiki</span><span class="sep">·</span><span>约 6,892 字</span><span class="sep">·</span><span>阅读约 17 分钟</span></div>
+  
+  <div class="prose" id="prose"><blockquote>
+<p>一句话定位：FDE 把大模型塞进客户真实业务的那一刻，技术决策就变成了法律义务与伦理责任。本专题梳理中外法规红线、行业准入门槛、LLM 特有风险与负责任 AI 落地清单，目标是让一线工程师在驻场现场能"按图索骥地做合规"，而不是把合规甩给法务事后补。</p>
+</blockquote>
+<h2 id="24-1-FDE-为什么必须把合规当成第一性约束">24.1 FDE 为什么必须把合规当成第一性约束</h2>
+<p>在传统软件交付里，合规通常是"上线前最后一道关"——产品经理提需求，工程师写代码，法务盖章。但大模型应用改变了这个节奏，原因有三：</p>
+<p>第一，<strong>模型本身就是风险源</strong>。一段 CRUD 代码不会自己产生歧视性言论，但一个未对齐的 LLM 可能在客户对话里输出种族歧视内容、泄露训练语料中的隐私、或编造一份导致客户误签合同的"法律意见"。FDE 在 Engineer 阶段每一次 prompt 调整、每一批数据灌入，都在重新塑造这个风险面的形状。</p>
+<p>第二，<strong>合规义务前置到部署环节</strong>。中国《生成式人工智能服务管理暂行办法》第十七条要求"具有舆论属性或社会动员能力"的生成式 AI 服务上线前必须做安全评估并完成算法备案；欧盟《AI Act》把部分高风险系统（如招聘、信贷评分、关键基础设施）的合规义务压在"投放市场之前"。这意味着 FDE 在 Context 阶段就要判断"这个应用踩不踩红线"，而不是 Engineer 完了再回头补。</p>
+<p>第三，<strong>责任主体明确且可追溯</strong>。个保法第六十六条对违法处理个人信息可处以上一年度营业额 5% 以下罚款；生成式 AI 暂行办法第十九条对违反规定的提供者可处 1 万元以上 10 万元以下罚款，情节严重最高 50 万元并暂停服务。FDE 所在的公司作为"提供者"或"受托处理者"，留下的每一行日志、每一份 prompt 模板、每一次数据流转记录，都是事后追责或自证清白的证据。</p>
+<blockquote>
+<p>红线意识：FDE 不是把"合规"当作交付清单上一项 checkbox，而是把它内化成"这条数据能不能进训练集""这个输出能不能直接给到 C 端用户""这次失败要不要人工兜底"的日常工程判断。</p>
+</blockquote>
+<h2 id="24-2-法规全景-中国">24.2 法规全景：中国</h2>
+<h3 id="24-2-1-三部基础法构成的-数据三法">24.2.1 三部基础法构成的"数据三法"</h3>
+<p>中国数据治理的底层是三部法律并行：</p>
+<ul>
+<li><strong>《网络安全法》</strong>（2017 年 6 月施行）：确立网络运营者的安全保护义务、关键信息基础设施保护、数据本地化存储要求。FDE 在政务、能源、金融驻场时，"等保 2.0"（GB/T 22239-2019）的定级备案是绕不开的环节。</li>
+<li><strong>《数据安全法》</strong>（2021 年 9 月施行）：建立数据分类分级制度（一般数据、重要数据、核心数据），重要数据出境需安全评估。FDE 处理的客户业务数据中，凡是涉及行业"重要数据目录"的（如金融、能源、医疗），跨境传输必须走网信办评估。</li>
+<li><strong>《个人信息保护法》</strong>（PIPL，2021 年 11 月施行）：明确"告知—同意"原则、单独同意（敏感信息、出境、公开等场景）、个人信息处理者的安全义务。对 FDE 而言，最常踩坑的是"受托处理"角色——客户把用户数据交给 FDE 团队做模型微调，FDE 公司在法律上是"受托处理者"，必须按客户约定目的、方式处理，不得超范围使用，且合同终止后必须删除或返还。</li>
+</ul>
+<h3 id="24-2-2-生成式-AI-专项-暂行办法-算法备案-深度合成">24.2.2 生成式 AI 专项：暂行办法 + 算法备案 + 深度合成</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>法规/规章</th>
+<th>文号</th>
+<th>核心要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>《生成式人工智能服务管理暂行办法》</td>
+<td>国家网信办等七部门 2023 年 7 月发布，8 月 15 日施行</td>
+<td>第 7 条训练数据合法来源、第 8 条标注规则与质量评估、第 9 条个人信息训练许可、第 15 条生成内容标识、第 17 条安全评估与备案</td>
+</tr>
+<tr>
+<td>《互联网信息服务算法推荐管理规定》</td>
+<td>2022 年 3 月施行</td>
+<td>算法备案、用户权益保护、反沉迷、劳动者保护</td>
+</tr>
+<tr>
+<td>《互联网信息服务深度合成管理规定》</td>
+<td>2023 年 1 月施行</td>
+<td>深度合成（含 AI 生成内容）显著标识、不可见水印、合成类算法备案</td>
+</tr>
+</tbody>
+</table></div>
+<p>FDE 必须分清"算法备案"与"大模型备案"两个层次：</p>
+<ul>
+<li><strong>算法备案</strong>：针对具有舆论属性或社会动员能力的算法推荐/生成服务，应在提供服务之日起 <strong>10 个工作日内</strong>通过"互联网信息服务算法备案系统"完成备案，主体是公司，对象是算法机制。</li>
+<li><strong>大模型备案（生成式 AI 专项安全评估）</strong>：面向公众提供生成式 AI 服务的，需通过 <strong>省级网信办初审 + 国家级技术测试</strong>（内容包括违法不良信息拦截率、价值观对齐、训练数据安全等），通过后由网信办公示"已备案信息"并分配备案号。截至 2024 年 4 月，国家网信办已分批公示备案大模型清单，FDE 接入第三方基座模型时应优先选用已备案模型，并在应用显著位置或详情页公示模型名称与备案号。</li>
+</ul>
+<h3 id="24-2-3-数据出境的三道闸门">24.2.3 数据出境的三道闸门</h3>
+<p>依据《数据出境安全评估办法》（2022 年 9 月施行）、《个人信息出境标准合同办法》（2023 年 6 月施行），数据出境按规模和敏感度分流：</p>
+<ol>
+<li><strong>安全评估</strong>：关键信息基础设施运营者、处理 100 万人以上个人信息的处理者出境、重要数据出境，必须报国家网信办评估。</li>
+<li><strong>标准合同（SCC）备案</strong>：不触发评估的，签署《个人信息出境标准合同》并向省级网信办备案。</li>
+<li><strong>个人信息保护认证</strong>：通过国家网信部门认定的机构进行认证。</li>
+</ol>
+<blockquote>
+<p>实务提醒：FDE 接入海外 LLM API（OpenAI、Anthropic 等）时，用户 prompt 与上下文会出境。一旦涉及客户业务数据或个人信息，必须先判断走哪一道闸门，再决定是否启用。很多驻场项目因此选择国内基座模型或私有化部署。</p>
+</blockquote>
+<h2 id="24-3-法规全景-海外">24.3 法规全景：海外</h2>
+<h3 id="24-3-1-欧盟-GDPR-AI-Act">24.3.1 欧盟 GDPR + AI Act</h3>
+<ul>
+<li><strong>GDPR</strong>（2018 年 5 月施行）：确立"合法、公平、透明""目的限制""数据最小化""准确性""存储限制""完整性保密性"七大原则，赋予数据主体访问权、更正权、删除权（被遗忘权）、可携权、自动化决策反对权。罚款上限为 2000 万欧元或全球营业额 4%（取高者）。LLM 训练数据若包含欧盟数据主体的个人信息，即落入 GDPR 管辖；用户对自动化决策（如 AI 拒贷、AI 招聘筛选）有权要求人工介入与异议。</li>
+<li><strong>EU AI Act</strong>（2024 年 8 月 1 日生效，2026 年 8 月 2 日全面适用）：采用<strong>风险分级</strong>框架——</li>
+<li><strong>不可接受风险</strong>（第 5 条禁止实践）：社会评分、潜意识操纵、工作场所/学校实时远程生物识别等，自 <strong>2025 年 2 月 2 日</strong>起全面禁止。</li>
+<li><strong>高风险</strong>：覆盖招聘、教育录取、信贷评分、司法、关键基础设施、执法等八大领域，自 <strong>2026 年 8 月 2 日</strong>起适用完整义务（风险管理体系、数据治理、技术文档、日志、透明度、人工监督、准确性/稳健性/网络安全）。</li>
+<li><strong>有限风险</strong>：透明度义务（如 chatbot 须告知用户在与 AI 交互、深度合成须标识）。</li>
+<li><strong>最小风险</strong>：无强制义务。</li>
+<li><strong>通用目的 AI 模型（GPAI）</strong>：自 <strong>2025 年 8 月 2 日起</strong>，提供者须公开训练摘要、遵守版权法、配合下游高风险系统提供者；系统性风险模型（算力阈值 10^25 FLOPs）须做模型评估、对抗测试、事件上报。</li>
+</ul>
+<h3 id="24-3-2-美国-行业化-分散式">24.3.2 美国：行业化、分散式</h3>
+<p>美国无统一 AI 法，但形成"垂直行业法 + 州法 + 行政命令 + 自律"组合：</p>
+<ul>
+<li><strong>HIPAA</strong>（1996）：医疗领域的"受保护健康信息"（PHI）处理规则，覆盖 18 类标识符，违规最高单笔 200 万美元。医疗 AI 必须在 BAA（业务伙伴协议）框架下处理 PHI。</li>
+<li><strong>CCPA/CPRA</strong>（加州）：消费者对个人信息享有知情、删除、退出销售/共享、限制敏感信息使用的权利，2023 年起适用。</li>
+<li><strong>NIST AI RMF 1.0</strong>（2023 年 1 月发布）：自愿性风险管理框架，核心是 Govern—Map—Measure—Manage 四大职能，已成为企业 AI 治理事实标准。</li>
+<li><strong>白宫 AI 行政令 14110</strong>（2023 年 10 月）：要求基础模型开发者向商务部报告安全测试结果（红队）、关键基础设施领域 AI 安全标准。</li>
+</ul>
+<h3 id="24-3-3-其他主要辖区">24.3.3 其他主要辖区</h3>
+<ul>
+<li><strong>英国</strong>：倾向"pro-innovation"弹性监管，2023 年发布《AI 监管白皮书》，由现有行业监管机构（如 ICO 管 GDPR、MHRA 管医疗器械）各管一段。</li>
+<li><strong>新加坡</strong>：Model AI Governance Framework（2024 更新第二版）、AI Verify 测试工具箱。</li>
+<li><strong>日本</strong>：2024 年 4 月成立 AI 战略本部，倾向软法引导，对生成式 AI 发布《事业者ガイドライン》。</li>
+</ul>
+<h2 id="24-4-行业监管纵深">24.4 行业监管纵深</h2>
+<h3 id="24-4-1-金融-穿透式监管下的双线合规">24.4.1 金融：穿透式监管下的双线合规</h3>
+<p>金融行业 FDE 必须同时满足"行业监管 + 数据合规"两套要求：</p>
+<ul>
+<li><strong>JR/T 0171-2020《个人金融信息保护技术规范》</strong>：将个人金融信息按敏感度分为 <strong>C1（一般危害）/ C2（较大危害）/ C3（最高危害）</strong> 三级，账户密码、生物识别等属 C3，禁止明文存储。FDE 做风控、客服、营销类 LLM 应用时，必须按分级实施加密、访问控制、脱敏。</li>
+<li><strong>JR/T 0197-2020《金融数据安全数据安全分级指南》</strong>：金融数据按"重要性 + 安全影响"分 5 级，重要数据安全等级不低于 5 级；个人金融信息相关数据参照 JR/T 0171 定级。</li>
+<li>**JR/T 0158-2018《云计算技术金融应用规范》**等：金融上云的合规底线。</li>
+<li><strong>巴塞尔委员会</strong>对模型风险（model risk）的要求（SR 11-7 框架源头）：模型须有完整的开发文档、独立验证、持续监控。LLM 类信用评分模型同样适用——不能因为"黑盒"就豁免可解释性要求。</li>
+<li><strong>反洗钱（AML）</strong>：《反洗钱法》及央行 2 号令要求可疑交易识别与上报。FDE 若用 LLM 做客户尽调（KYC）摘要，必须保证输出可追溯、可复核，不能让模型直接决定是否上报可疑交易。</li>
+<li><strong>金融营销</strong>：《金融营销宣传管理办法》禁止未持牌机构做金融营销宣传；LLM 生成营销文案必须经过持牌审核，且不得含有保本保收益等违规承诺。</li>
+</ul>
+<h3 id="24-4-2-医疗-三类医疗器械证是入场券">24.4.2 医疗：三类医疗器械证是入场券</h3>
+<p>医疗 AI 监管的核心是《医疗器械监督管理条例》及配套规则：</p>
+<ul>
+<li><strong>NMPA 分类界定</strong>：根据《人工智能医用软件产品分类界定指导原则》，凡是基于医疗器械数据、采用 AI 技术实现医疗用途的独立软件，涉及辅助诊断、辅助检测、辅助分诊与评估、辅助决策的，<strong>一般按第三类医疗器械管理</strong>；仅用于成像、存储、传输、检索等非决策用途的，按第二类管理。</li>
+<li><strong>注册审查</strong>：《人工智能医疗器械注册审查指导原则》（2022 年第 8 号）要求申请人建立完整的 AI 系统生存周期过程（设计、开发、验证、确认、部署、维护、退役），并提供训练/测试数据集说明、算法性能评估、泛化能力评估、对抗攻击鲁棒性评估。</li>
+<li><strong>《深度学习辅助决策医疗器械软件审评要点》</strong>（2019 年第 7 号）：聚焦数据集质量控制、算法泛化、网络信息安全、运行环境、版本更新管理。</li>
+<li><strong>真实案例</strong>：2023 年 7 月，数坤科技缺血性卒中 CT 图像辅助评估软件获批 NMPA 三类证；截至 2024 年，已有数十款 AI 影像辅助诊断产品拿到三类证。FDE 在医疗驻场时，<strong>任何向医生输出诊断建议、病灶标注、用药推荐的 LLM/视觉模型，未获三类证前不得用于临床诊断决策</strong>，只能用于科研、教学、内部辅助、非诊断性提示。</li>
+<li><strong>电子病历</strong>：《电子病历应用管理规范》要求电子病历真实、完整、可追溯，签名须符合《电子签名法》。LLM 自动生成病历摘要若被纳入正式病历，必须保留原始记录并经医生签字确认。</li>
+</ul>
+<h3 id="24-4-3-政务-等保-信创-国产化">24.4.3 政务：等保 + 信创 + 国产化</h3>
+<ul>
+<li><strong>等保 2.0</strong>（GB/T 22239-2019）：政务系统一般定三级及以上，FDE 部署大模型应用须同步完成定级、备案、建设整改、等级测评。</li>
+<li><strong>信创要求</strong>：政务关键领域要求 CPU/OS/数据库/中间件国产化替代。FDE 选型时基座模型、推理框架、向量库都需考虑国产化适配（昇腾、海光、寒武纪；麒麟、统信；达梦、人大金仓等）。</li>
+<li><strong>政务数据共享</strong>：《政务信息资源共享管理暂行办法》要求"以共享为原则，不共享为例外"，但涉及国家秘密、商业秘密、个人隐私的须脱敏。</li>
+</ul>
+<h3 id="24-4-4-汽车-数据出境与车云协同">24.4.4 汽车：数据出境与车云协同</h3>
+<ul>
+<li>《汽车数据安全管理若干规定（试行）》（2021 年 10 月施行）：重要数据包括涉及 military 区域的地理位置、车流量、人脸与车牌等，原则上境内存储，出境须安全评估。</li>
+<li>智能网联汽车 OTA、座舱语音助手接入 LLM 时，座舱内语音指令可能含个人信息与地理信息，须按个人信息处理并做数据本地化。</li>
+</ul>
+<h2 id="24-5-LLM-特有的伦理风险清单">24.5 LLM 特有的伦理风险清单</h2>
+<p>传统软件的风险集中在"功能 bug 与安全漏洞"，LLM 则引入了一类<strong>统计性、概率性、不可完全复现</strong>的风险：</p>
+<ol>
+<li>
+<p><strong>偏见与公平（Bias &amp; Fairness）</strong>：训练语料中的性别、种族、地域、年龄偏见会被模型继承甚至放大。典型案例：2018 年亚马逊内部招聘模型因训练数据来自历史男性主导简历，系统性压低女性候选人评分，最终被叫停；ProPublica 2016 年调查 COMPAS 再犯预测系统对黑人被告误报率显著高于白人。LLM 用于简历筛选、信贷预审、绩效评估时，必须做群体公平性测试（demographic parity、equal opportunity、disparate impact ratio）。</p>
+</li>
+<li>
+<p><strong>幻觉与误导（Hallucination）</strong>：模型对事实性问题生成看似合理实则错误的内容。2019 年 Steven Schwartz 律师在 Mata v. Avianca 案中用 ChatGPT 撰写诉状，引用 6 个不存在的判例，被法官罚款 5000 美元并通报。LLM 用于法律咨询、医疗建议、金融研究时，FDE 必须强制接入 RAG（检索增强）+ 引用源标注 + 输出置信度阈值 + 人工复核。</p>
+</li>
+<li>
+<p><strong>隐私泄露（Privacy Leakage）</strong>：训练数据记忆导致的"反向提取"风险。2023 年研究显示，通过特定 prompt 攻击可使 ChatGPT 吐出训练语料中的真实 URL、邮箱、电话片段。FDE 须对训练数据去标识化、对成员推断攻击（membership inference）做测试、对 prompt 与上下文做日志脱敏。</p>
+</li>
+<li>
+<p><strong>透明度与可解释性（Transparency &amp; Explainability）</strong>：高风险场景（信贷、医疗、司法）下用户有权知道"为什么是这个结果"。GPAI 黑盒特性与这一要求存在结构性矛盾。FDE 须分层应对：决策路径日志、特征贡献（如对 LLM 接收的 RAG 文档片段做归因）、模型卡（Model Card）、数据卡（Datasheet for Datasets）。</p>
+</li>
+<li>
+<p><strong>问责（Accountability）</strong>：当 LLM 输出导致损害时责任如何分配？是模型提供者、应用集成方、终端用户还是部署工程师？目前法律仍未形成共识。FDE 的实务做法：合同明确责任边界、关键输出保留人工签字链、对自动化决策保留"人类最终拍板"通道（EU AI Act 第 14 条人工监督义务）。</p>
+</li>
+<li>
+<p><strong>滥用（Misuse）</strong>：LLM 用于批量生成钓鱼邮件、深度伪造色情内容、自动生成恶意代码、舆论操纵。FDE 须在产品侧加护栏：内容安全过滤器、生成速率限制、用户身份核验、滥用模式监控、举报与响应机制。深度合成须按《深度合成管理规定》做显著标识（音频/视频/图像）与不可见水印（元数据）。</p>
+</li>
+<li>
+<p><strong>就业与社会影响（Labor &amp; Societal Impact）</strong>：客服、翻译、初级文案、基础代码等岗位受到显著冲击。负责任的企业应制定员工再培训计划、提供转型通道，而非简单裁员。FDE 在项目立项时应评估"人机协作"而非"机器替代"的方案路径。</p>
+</li>
+</ol>
+<h2 id="24-6-负责任-AI-框架-六大支柱">24.6 负责任 AI 框架：六大支柱</h2>
+<p>综合 OECD AI 原则、NIST AI RMF、欧盟可信赖 AI 伦理指南、信通院《可信人工智能白皮书》，可凝练为六支柱：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>支柱</th>
+<th>内涵</th>
+<th>FDE 落地抓手</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>公平（Fairness）</strong></td>
+<td>不同群体获得同等结果分布，无不当歧视</td>
+<td>偏见审计、群体公平指标、对抗样本测试</td>
+</tr>
+<tr>
+<td><strong>透明（Transparency）</strong></td>
+<td>用户知道在与 AI 互动，知道数据用途</td>
+<td>显著标识、隐私政策、模型卡、数据卡</td>
+</tr>
+<tr>
+<td><strong>可解释（Explainability）</strong></td>
+<td>决策依据可被理解和追溯</td>
+<td>RAG 引用、特征归因、决策日志、案例库</td>
+</tr>
+<tr>
+<td><strong>隐私（Privacy）</strong></td>
+<td>个人信息最小化采集与处理</td>
+<td>数据脱敏、联邦学习、差分隐私、去标识化</td>
+</tr>
+<tr>
+<td><strong>安全（Safety &amp; Security）</strong></td>
+<td>抵御攻击、鲁棒、可靠</td>
+<td>红队测试、对抗训练、护栏、限流、监控</td>
+</tr>
+<tr>
+<td><strong>问责（Accountability）</strong></td>
+<td>责任可追溯到具体主体</td>
+<td>人工监督、审计日志、责任矩阵、第三方验证</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>这六项不是装饰品，而是工程可验收的指标。例如"公平"要落到"性别/地域 disparate impact ratio 在 [0.8, 1.25]"，"可解释"要落到"每条高风险输出附带可点击的 3 条来源"，"问责"要落到"每次自动化决策保留 6 个月可回放日志"。</p>
+</blockquote>
+<h2 id="24-7-FDE-的合规设计清单-全链路五段">24.7 FDE 的合规设计清单：全链路五段</h2>
+<p>FDE 在 CDEF 全流程中应把合规嵌入每一阶段，形成可验收清单：</p>
+<h3 id="Context-勘探阶段">Context 勘探阶段</h3>
+<ul>
+<li>[ ] 客户业务场景是否落入高风险类别（信贷、医疗诊断、招聘、司法）？</li>
+<li>[ ] 数据源是否涉及个人信息、重要数据、国家秘密？分级如何？</li>
+<li>[ ] 是否跨境（数据出境、模型 API 境外调用）？走哪一道闸门？</li>
+<li>[ ] 客户所在行业的准入资质（金融牌照、医疗器械证、等保级别）是否齐备？</li>
+<li>[ ] 是否触发算法备案/大模型备案/深度合成备案？</li>
+</ul>
+<h3 id="Design-设计阶段">Design 设计阶段</h3>
+<ul>
+<li>[ ] 是否优先选用已备案基座模型？</li>
+<li>[ ] 数据采集是否取得合法授权（告知同意 / 单独同意）？是否最小化？</li>
+<li>[ ] 训练/微调数据是否经去标识化、版权清洗、敏感内容过滤？</li>
+<li>[ ] 架构是否支持人工兜底（human-in-the-loop）？</li>
+<li>[ ] 是否设计护栏层（输入过滤、输出审核、敏感词拦截）？</li>
+<li>[ ] 是否预留审计日志、决策追溯、版本管理？</li>
+</ul>
+<h3 id="Engineer-工程阶段">Engineer 工程阶段</h3>
+<ul>
+<li>[ ] 红队测试覆盖：越狱、prompt 注入、成员推断、数据提取、对抗样本？</li>
+<li>[ ] 公平性测试覆盖关键受保护属性？</li>
+<li>[ ] 性能/延迟/成本可观测，幻觉率有量化指标？</li>
+<li>[ ] 隐私保护措施（差分隐私、联邦学习、本地推理）是否到位？</li>
+<li>[ ] 深度合成是否做了显著标识 + 不可见水印？</li>
+</ul>
+<h3 id="Feedback-反馈阶段">Feedback 反馈阶段</h3>
+<ul>
+<li>[ ] 用户投诉/异议渠道是否建立（PIPL 第 50 条、GDPR 自动化决策反对权）？</li>
+<li>[ ] 模型漂移监控（数据分布、输出分布）是否上线？</li>
+<li>[ ] 事故响应流程（误判、泄露、违规输出）是否演练？</li>
+<li>[ ] 持续训练的数据合规是否闭环（增量数据授权）？</li>
+<li>[ ] 定期重新评估备案状态（模型重大变更需变更备案）。</li>
+</ul>
+<h2 id="24-8-算法备案与大模型备案-操作要点">24.8 算法备案与大模型备案：操作要点</h2>
+<p><strong>算法备案系统</strong>（互联网信息服务算法备案系统，beian.cac.gov.cn）填写要点：</p>
+<ul>
+<li>服务形式：APP、网站、小程序；算法类型：生成合成类、个性化推送类、排序精选类、检索过滤类、调度决策类。</li>
+<li>数据流转：输入数据类型、是否含个人信息、留存时长。</li>
+<li>算法机制：核心逻辑、模型、参数规模、训练数据来源与规模。</li>
+<li>风险评估：违法不良信息、意识形态、伦理道德、隐私、未成年人保护。</li>
+<li>自评估报告与公示。</li>
+</ul>
+<p><strong>大模型备案</strong>（生成式 AI 专项）流程通常为：</p>
+<ol>
+<li>内部安全评估（违法内容拦截、价值观对齐、训练数据合法性、个人信息处理、生成内容标识）。</li>
+<li>省级网信办初审，材料包括算法机制说明、安全自评估报告、模型能力说明。</li>
+<li>国家级技术测试（黑盒测试、价值观测试、安全能力测试、隐私泄露测试）。</li>
+<li>网信办公示备案号。</li>
+<li>应用显著位置/详情页公示模型名称与备案号。</li>
+<li>重大变更（架构、参数规模、训练数据、应用场景）须变更备案。</li>
+</ol>
+<blockquote>
+<p>FDE 接入第三方已备案模型并非豁免自身备案义务。若 FDE 在已备案基座之上做了显著微调或新增了面向公众的服务能力，仍可能构成"提供者"角色，需重新评估是否触发备案。</p>
+</blockquote>
+<h2 id="24-9-伦理审查委员会与企业-AI-治理">24.9 伦理审查委员会与企业 AI 治理</h2>
+<p>成熟企业的 AI 治理结构通常分三层：</p>
+<ul>
+<li><strong>董事会/高管层</strong>：制定 AI 伦理原则与风险偏好，承担最终责任。例如 Google 2018 年设立 AI Principles 与外部高级技术委员会（后因争议解散重组）；微软设立 Office of Responsible AI； Anthropic 设立"Responsible Scaling Policy"按能力等级触发安全投入门槛。</li>
+<li><strong>AI 伦理委员会（跨部门）</strong>：由法务、安全、产品、技术、外部专家组成，对高风险项目做立项审查、上线评审、事故复盘。中国科技部 2023 年发布的《科技伦理审查办法（试行）》要求"涉及人以受试者、可能影响生命健康安全、可能产生重大伦理风险"的科技活动须经伦理审查委员会前置审查。</li>
+<li><strong>执行层</strong>：项目级 AI 风险评估（AIRA）、红队、模型卡发布流程、第三方独立验证、持续监控仪表盘。</li>
+</ul>
+<p>FDE 在项目中应主动识别需要伦理审查的节点（如新增涉及未成年人、医疗、司法的能力），提前 4–8 周启动审查流程，避免上线前被卡。</p>
+<h2 id="24-10-真实案例与教训">24.10 真实案例与教训</h2>
+<p><strong>案例一：COMPAS 再犯预测的种族偏见（2016）</strong>。ProPublica 调查美国法院广泛使用的 COMPAS 算法，发现其对黑人被告的"高风险"误报率是白人的两倍，而对白人被告的"低风险"漏报率更高。教训：高风险决策场景下，群体公平性测试是强制项，不能只看总体准确率。</p>
+<p><strong>案例二：亚马逊招聘 AI 被叫停（2018）</strong>。模型在 2014–2017 年内部研发，因训练数据来自十年间以男性为主的简历，自动降权含"women's"字样的简历（如"女子国际象棋俱乐部队长"）。教训：训练数据的历史偏见是模型偏见的根源，数据审计与再平衡必须前置。</p>
+<p><strong>案例三：Mata v. Avianca 虚假判例（2023）</strong>。律师 Steven Schwartz 用 ChatGPT 撰写诉状，6 个引用判例全部为模型虚构，法官 P. Kevin Castel 对律师及其律所各罚款 5000 美元。教训：LLM 输出在专业领域必须 RAG + 源引用 + 人工核验，绝不可直接采信。</p>
+<p><strong>案例四：意大利 Garble 暂时封禁 ChatGPT（2023 年 3 月）</strong>。意大利数据保护局认定 OpenAI 缺乏合法处理个人信息的法律基础、未做年龄核验、未告知用户数据如何被用于训练。OpenAI 一个月后完成整改（隐私声明、年龄门、欧洲用户退出训练选项）才恢复服务。教训：GDPR 合规是出海欧洲的硬门槛，"合法基础"必须显式声明。</p>
+<p><strong>案例五：澳大利亚地区 AI 错误建议诉讼（2024）</strong>。多个司法管辖区出现律师/顾问因直接引用 AI 生成错误建议被追责。教训：专业服务领域 LLM 应定位为"助理"而非"决策者"，输出须署名人工负责人。</p>
+<p><strong>案例六：深度伪造诈骗（2024）</strong>。香港 Arup 工程公司一名财务人员被深度伪造的"CFO 视频会议"骗走 2560 万美元。教训：深度合成标识、生物识别二次核验、高风险转账多重授权是底线。</p>
+<h2 id="24-11-FDE-的红线清单-口袋版">24.11 FDE 的红线清单（口袋版）</h2>
+<p>驻场现场随手对照，踩中任一条立即停手升级：</p>
+<ol>
+<li>未取得个人信息单独同意就把用户数据灌入训练。</li>
+<li>涉及医疗诊断/信贷决策/司法判决的 LLM 输出未设人工兜底直接对外。</li>
+<li>跨境调用境外 LLM API 处理客户重要数据或个人信息未做出境评估。</li>
+<li>具有舆论属性的生成式 AI 服务上线未做大模型备案。</li>
+<li>深度合成内容未做显著标识与水印即对外发布。</li>
+<li>训练数据含未授权版权内容且未做清洗即商用。</li>
+<li>高风险场景未做群体公平性测试即上线。</li>
+<li>自动化决策未提供人工介入与异议通道。</li>
+<li>模型输出无审计日志、无版本管理、不可追溯。</li>
+<li>接到用户投诉/监管问询未在规定时限内响应。</li>
+</ol>
+<blockquote>
+<p>把这十条贴在工位上，比任何 PPT 都管用。合规不是"上线后补"，而是"每一次 commit 都过的关"。</p>
+</blockquote>
+<h2 id="本专题小结">本专题小结</h2>
+<p>大模型应用的合规与伦理不是法务部门的独立工作，而是 FDE 在 CDEF 全流程必须内化的工程约束。中国以"数据三法 + 生成式 AI 暂行办法 + 算法/大模型备案 + 深度合成"构成多层次监管，海外以 GDPR + EU AI Act + 行业法（HIPAA 等）形成风险分级框架。行业准入方面，金融的 JR/T 0171 数据分级、医疗的 NMPA 三类证、政务的等保 + 信创、汽车的数据出境各自构成入场券。LLM 特有的偏见、幻觉、隐私、透明度、问责、滥用、就业七大风险，须以公平、透明、可解释、隐私、安全、问责六大支柱为框架做工程化应对。FDE 应在 Context 勘探、Design 设计、Engineer 工程、Feedback 反馈四个阶段分别建立可验收的合规清单，把算法备案与大模型备案、伦理审查、红队测试、公平性测试、人工兜底、审计日志、深度合成标识、用户异议通道等落到代码与流程里。真实案例（COMPAS、亚马逊招聘、Mata 案、Garble 封禁、Arup 诈骗）反复证明：合规事故的代价远高于前置投入，FDE 的红线意识就是客户的护城河。</p>
+<h2 id="本专题来源">本专题来源</h2>
+<ul>
+<li>国家互联网信息办公室.《生成式人工智能服务管理暂行办法》. https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm</li>
+<li>国家互联网信息办公室.《互联网信息服务算法推荐管理规定》《互联网信息服务深度合成管理规定》《数据出境安全评估办法》. www.cac.gov.cn</li>
+<li>国家互联网信息办公室.生成式人工智能服务已备案信息公告. https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm</li>
+<li>全国人民代表大会常务委员会.《中华人民共和国网络安全法》《数据安全法》《个人信息保护法》.</li>
+<li>中国人民银行.JR/T 0171-2020《个人金融信息保护技术规范》. https://cfstc.pbc.gov.cn/bzgk/detail/?id=0\&amp;bzId=1856</li>
+<li>中国人民银行.JR/T 0197-2020《金融数据 安全 数据安全分级指南》.</li>
+<li>国家药品监督管理局.《人工智能医用软件产品分类界定指导原则》《人工智能医疗器械注册审查指导原则》（2022 年第 8 号）《深度学习辅助决策医疗器械软件审评要点》（2019 年第 7 号）. www.nmpa.gov.cn</li>
+<li>科学技术部.《科技伦理审查办法（试行）》（2023）.</li>
+<li>European Union. Regulation (EU) 2024/1689 (AI Act). https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai</li>
+<li>European Parliament and Council. Regulation (EU) 2016/679 (GDPR).</li>
+<li>NIST. AI Risk Management Framework 1.0 (2023). https://www.nist.gov/itl/ai-risk-management-framework</li>
+<li>U.S. HHS. HIPAA Privacy Rule.</li>
+<li>OECD. OECD AI Principles (2019, updated 2024).</li>
+<li>ProPublica. "Machine Bias" (2016, COMPAS 调查).</li>
+<li>Reuters. 亚马逊招聘 AI 叫停报道（2018）.</li>
+<li>Mata v. Avianca, Inc., Case 1:22-cv-1461（美国纽约南区联邦地区法院，2023）.</li>
+<li>Garante per la protezione dei dati personali. ChatGPT 临时限制令（2023 年 3 月）.</li>
+<li>Arup 深度伪造诈骗案件公开报道（2024）.</li>
+<li>信通院.《可信人工智能白皮书》《人工智能伦理治理标准化指南》.</li>
+</ul></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="topic24">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#24-1-FDE-为什么必须把合规当成第一性约束">24.1 FDE 为什么必须把合规当成第一性约束</a></li><li class="lv2"><a href="#24-2-法规全景-中国">24.2 法规全景：中国</a></li><li class="lv3"><a href="#24-2-1-三部基础法构成的-数据三法">24.2.1 三部基础法构成的&quot;数据三法&quot;</a></li><li class="lv3"><a href="#24-2-2-生成式-AI-专项-暂行办法-算法备案-深度合成">24.2.2 生成式 AI 专项：暂行办法 + 算法备案 + 深度合成</a></li><li class="lv3"><a href="#24-2-3-数据出境的三道闸门">24.2.3 数据出境的三道闸门</a></li><li class="lv2"><a href="#24-3-法规全景-海外">24.3 法规全景：海外</a></li><li class="lv3"><a href="#24-3-1-欧盟-GDPR-AI-Act">24.3.1 欧盟 GDPR + AI Act</a></li><li class="lv3"><a href="#24-3-2-美国-行业化-分散式">24.3.2 美国：行业化、分散式</a></li><li class="lv3"><a href="#24-3-3-其他主要辖区">24.3.3 其他主要辖区</a></li><li class="lv2"><a href="#24-4-行业监管纵深">24.4 行业监管纵深</a></li><li class="lv3"><a href="#24-4-1-金融-穿透式监管下的双线合规">24.4.1 金融：穿透式监管下的双线合规</a></li><li class="lv3"><a href="#24-4-2-医疗-三类医疗器械证是入场券">24.4.2 医疗：三类医疗器械证是入场券</a></li><li class="lv3"><a href="#24-4-3-政务-等保-信创-国产化">24.4.3 政务：等保 + 信创 + 国产化</a></li><li class="lv3"><a href="#24-4-4-汽车-数据出境与车云协同">24.4.4 汽车：数据出境与车云协同</a></li><li class="lv2"><a href="#24-5-LLM-特有的伦理风险清单">24.5 LLM 特有的伦理风险清单</a></li><li class="lv2"><a href="#24-6-负责任-AI-框架-六大支柱">24.6 负责任 AI 框架：六大支柱</a></li><li class="lv2"><a href="#24-7-FDE-的合规设计清单-全链路五段">24.7 FDE 的合规设计清单：全链路五段</a></li><li class="lv3"><a href="#Context-勘探阶段">Context 勘探阶段</a></li><li class="lv3"><a href="#Design-设计阶段">Design 设计阶段</a></li><li class="lv3"><a href="#Engineer-工程阶段">Engineer 工程阶段</a></li><li class="lv3"><a href="#Feedback-反馈阶段">Feedback 反馈阶段</a></li><li class="lv2"><a href="#24-8-算法备案与大模型备案-操作要点">24.8 算法备案与大模型备案：操作要点</a></li><li class="lv2"><a href="#24-9-伦理审查委员会与企业-AI-治理">24.9 伦理审查委员会与企业 AI 治理</a></li><li class="lv2"><a href="#24-10-真实案例与教训">24.10 真实案例与教训</a></li><li class="lv2"><a href="#24-11-FDE-的红线清单-口袋版">24.11 FDE 的红线清单（口袋版）</a></li><li class="lv2"><a href="#本专题小结">本专题小结</a></li><li class="lv2"><a href="#本专题来源">本专题来源</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

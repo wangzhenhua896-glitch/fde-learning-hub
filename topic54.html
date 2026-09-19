@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>深度专题五十四 AI 系统的容量规划与成本建模 · FDE 学习中心</title>
+<meta name="description" content="在 FDE （前沿部署工程师）的真实交付现场，最常被客户追问的两个问题是：&quot;这套 AI 系统到底要花多少钱？&quot;和&quot;峰值来了扛不扛得住？&quot;这两个问题本质上是同一个问题——容量规…">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#2563eb">FDE-Wiki</a></div>
+<article class="doc">
+  <h1 class="doc-title">深度专题五十四 AI 系统的容量规划与成本建模</h1>
+  <div class="doc-meta"><span style="color:#2563eb">FDE-Wiki</span><span class="sep">·</span><span>约 4,187 字</span><span class="sep">·</span><span>阅读约 10 分钟</span></div>
+  
+  <div class="prose" id="prose"><h2 id="54-1-为什么容量规划是-FDE-的必备能力">54.1 为什么容量规划是 FDE 的必备能力</h2>
+<p>在 FDE（前沿部署工程师）的真实交付现场，最常被客户追问的两个问题是："这套 AI 系统到底要花多少钱？"和"峰值来了扛不扛得住？"这两个问题本质上是同一个问题——容量规划与成本建模。</p>
+<p>算力贵是行业级事实。一张 NVIDIA H100（80GB）的按小时云单价在 2024–2025 年间长期维持在 2.5–4.0 美元/卡·小时区间，A100（80GB）约 1.5–2.5 美元/卡·小时。一个典型的 8 卡 H100 节点跑满一天就是 480–770 美元，一个月（按 720 小时）就是 1.4 万–2.3 万美元。客户听到这个数字后，第二句话几乎一定是："能不能少用点卡？"或者"能不能告诉我什么时候该扩、什么时候该缩？"</p>
+<p>这就是 FDE 必须掌握容量规划的根本原因：</p>
+<ul>
+<li><strong>预算可控</strong>：客户决策层需要在立项前看到 TCO（Total Cost of Ownership，总拥有成本）区间，否则项目根本拿不到预算审批。</li>
+<li><strong>SLA 可达</strong>：客户业务方会承诺 P95 延迟、可用率、吞吐量指标，FDE 必须把业务指标翻译成 GPU 数量，否则上线即违约。</li>
+<li><strong>可辩护</strong>：当 CFO（首席财务官）质问"为什么是 16 张卡而不是 8 张"时，FDE 必须能拿出测算公式和数据来源，而不是凭感觉。</li>
+</ul>
+<blockquote>
+<p>一句话原则：FDE 的容量规划不是"拍脑袋估个数"，而是"业务负载 → token 流量 → GPU 数量 → 美元成本"的可追溯推导链。</p>
+</blockquote>
+<p>值得强调的是，传统 Web 系统的容量规划以 QPS（Queries Per Second）为核心指标，而 LLM 系统必须以 <strong>token/秒</strong> 为核心。原因很简单：同一个"请求"，输入 200 token、输出 50 token 的成本，和输入 8000 token、输出 2000 token 的成本相差几十倍。如果按请求计数来规划，必然系统性低估算力需求。</p>
+<h2 id="54-2-容量估算-从业务流量到-GPU-数量">54.2 容量估算：从业务流量到 GPU 数量</h2>
+<h3 id="54-2-1-四步推导法">54.2.1 四步推导法</h3>
+<p>容量估算遵循一条清晰的推导链：</p>
+<ol>
+<li><strong>业务流量</strong> → 日均请求量、峰值 QPS、平均会话轮次</li>
+<li><strong>token 流量</strong> → 平均输入/输出 token 数、峰值 token/秒</li>
+<li><strong>单卡吞吐</strong> → 目标模型在目标硬件上的 token/秒（实测）</li>
+<li><strong>GPU 数量</strong> → 峰值 token/秒 ÷ 单卡吞吐 ÷ 利用率余量</li>
+</ol>
+<h3 id="54-2-2-核心估算公式">54.2.2 核心估算公式</h3>
+<blockquote>
+<p><strong>公式 54.1（峰值 token 吞吐）</strong>
+<code>峰值输出 token/秒 = 峰值 QPS × 平均输出 token 数 ÷ 平均解码并行度调整系数</code></p>
+<p>更稳妥的工程化写法：
+<code>峰值 token/秒（输出）= 峰值并发请求数 × 单请求输出 token/秒</code>
+<code>峰值 token/秒（输入）= 峰值 QPS × 平均输入 token 数</code>（prefill 瞬时压力）</p>
+<p><strong>公式 54.2（GPU 数量）</strong>
+<code>所需 GPU 数 = 峰值 token/秒 ÷（单卡 token/秒 × 利用率）× 冗余系数</code>
+其中：利用率通常取 0.7–0.8（留出调度、KV cache 抖动空间）；冗余系数取 1.2–1.5（应对突发流量与单点故障）。</p>
+</blockquote>
+<h3 id="54-2-3-单卡吞吐的实测参考值">54.2.3 单卡吞吐的实测参考值</h3>
+<p>单卡 token/秒不能从厂商 PPT 抄，必须用目标模型 + 目标硬件 + 目标推理引擎（vLLM / TensorRT-LLM / SGLang）实测。下面给出 2024–2025 年公开基准的区间参考，<strong>仅供初估，落地必须自测</strong>：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>模型</th>
+<th>硬件</th>
+<th>推理引擎</th>
+<th>输出吞吐（token/秒/卡）</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama-3 8B FP16</td>
+<td>A100 80GB</td>
+<td>vLLM 连续批处理</td>
+<td>2500–3500</td>
+<td>高并发场景</td>
+</tr>
+<tr>
+<td>Llama-3 8B FP16</td>
+<td>H100 80GB</td>
+<td>vLLM 连续批处理</td>
+<td>4000–5500</td>
+<td>较 A100 提升 50–60%</td>
+</tr>
+<tr>
+<td>Llama-3 70B FP16</td>
+<td>A100 80GB ×8（张量并行）</td>
+<td>vLLM</td>
+<td>800–1400（每卡均摊）</td>
+<td>需 8 卡才能装下权重</td>
+</tr>
+<tr>
+<td>Llama-3 70B FP16</td>
+<td>H100 80GB ×8</td>
+<td>vLLM</td>
+<td>1500–2200（每卡均摊）</td>
+<td>MoE 模型 H100 提升更明显</td>
+</tr>
+<tr>
+<td>Mixtral 8×7B FP16</td>
+<td>H100 80GB</td>
+<td>vLLM</td>
+<td>1800–2800</td>
+<td>arXiv 实测：1 rps 时 $15.25/M token，25 rps 时骤降</td>
+</tr>
+</tbody>
+</table></div>
+<p>数据来源：arXiv 2606.11690（并发感知成本方法论）、Anyscale 连续批处理基准、NVIDIA Developer Blog（LLM Benchmarking Fundamentals）。</p>
+<h3 id="54-2-4-一个完整测算示例">54.2.4 一个完整测算示例</h3>
+<p><strong>场景</strong>：某金融客户客服助手，Llama-3 70B FP16，部署在 H100 80GB。</p>
+<ul>
+<li>日均请求量：50 万次会话，平均 3 轮对话</li>
+<li>单轮平均：输入 1200 token，输出 350 token</li>
+<li>峰值 QPS：业务高峰 80 QPS（早 9–10 点开盘时段）</li>
+<li>峰值并发：80 × 平均响应时长（约 7 秒）≈ 560 并发</li>
+</ul>
+<p><strong>测算</strong>：</p>
+<ol>
+<li>峰值输出 token/秒 = 560 并发 × 单请求输出 50 token/秒 ≈ 28000 token/秒</li>
+<li>单卡 H100 吞吐（70B、高并发）≈ 1800 token/秒</li>
+<li>所需 GPU 数 = 28000 ÷ (1800 × 0.75) × 1.3 ≈ 27 张 → 向上取 32 张（4 个 8 卡节点）</li>
+</ol>
+<p><strong>结论</strong>：4 个 8 卡 H100 节点，月度推理算力成本约 4 × 8 × 720 × 3.0 ≈ 6.9 万美元/月。这个数字必须在立项前摆到客户决策层桌上。</p>
+<h2 id="54-3-推理成本模型">54.3 推理成本模型</h2>
+<h3 id="54-3-1-token-成本的核心公式">54.3.1 token 成本的核心公式</h3>
+<blockquote>
+<p><strong>公式 54.3（每百万 token 成本）</strong>
+<code>成本/百万 token =（GPU 小时单价 × 10⁶）÷（单卡 token/秒 × 3600 × GPU 利用率 × 张量并行度）</code></p>
+</blockquote>
+<p>以 H100 3.0 美元/小时、单卡 1800 token/秒、利用率 0.75 为例：</p>
+<p><code>成本/百万 token =（3.0 × 10⁶）÷（1800 × 3600 × 0.75）≈ 0.62 美元/百万输出 token</code></p>
+<p>对比 OpenAI GPT-4o（2025 年公开定价约 2.50 美元/百万输入、10 美元/百万输出），自建 70B 模型在输出侧便宜约 16 倍——但前提是 GPU 利用率真的能撑到 0.75。这就是下一节的胜负手。</p>
+<h3 id="54-3-2-GPU-利用率-成本模型的胜负手">54.3.2 GPU 利用率：成本模型的胜负手</h3>
+<p>未优化的推理服务，GPU 利用率往往只有 <strong>20–40%</strong>（Spheron、YottaLabs 公开数据）。这意味着同样一张卡，优化前后的有效吞吐差 2–4 倍，对应成本差也是 2–4 倍。</p>
+<p>利用率低的根因有三类，对应的解法也不同：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>低利用率根因</th>
+<th>现象</th>
+<th>解法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>静态批处理</td>
+<td>请求到齐才批，GPU 空等</td>
+<td>连续批处理（continuous batching）</td>
+</tr>
+<tr>
+<td>内存碎片</td>
+<td>KV cache 装不下，频繁 OOM</td>
+<td>PagedAttention（vLLM）</td>
+</tr>
+<tr>
+<td>prefill/decode 混跑</td>
+<td>prefill 算力密集，decode 访存密集，互相阻塞</td>
+<td>chunked prefill / 分离式推理</td>
+</tr>
+</tbody>
+</table></div>
+<p>Anyscale 的公开基准显示，vLLM 的连续批处理 + PagedAttention 相比朴素批处理可获得最高 <strong>23 倍吞吐提升</strong>，同时降低 p50 延迟。这是单一最大杠杆。</p>
+<h3 id="54-3-3-批处理增益曲线">54.3.3 批处理增益曲线</h3>
+<p>并发度对每 token 成本的影响是幂律衰减。arXiv 2606.11690 给出的 Mixtral 8×7B 在 H100 上的实测：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>并发（rps）</th>
+<th>每百万 token 成本</th>
+<th>相对 1 rps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>15.25 美元</td>
+<td>1.0×</td>
+</tr>
+<tr>
+<td>5</td>
+<td>4.80 美元</td>
+<td>0.31×</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2.40 美元</td>
+<td>0.16×</td>
+</tr>
+<tr>
+<td>25</td>
+<td>0.90 美元</td>
+<td>0.06×</td>
+</tr>
+</tbody>
+</table></div>
+<p>从 1 rps 到 25 rps，每 token 成本下降约 17 倍。这意味着：<strong>低流量场景下自建推理的单 token 成本可能比调 API 还贵</strong>。FDE 必须诚实告诉客户：如果日均请求量只有几千次，直接调 API 几乎一定更划算。</p>
+<h2 id="54-4-训练与微调成本">54.4 训练与微调成本</h2>
+<h3 id="54-4-1-三类成本拆解">54.4.1 三类成本拆解</h3>
+<p>训练/微调成本不是单一数字，而是三类成本叠加：</p>
+<ol>
+<li><strong>算力成本</strong>：GPU 小时 × 单价</li>
+<li><strong>数据成本</strong>：标注、清洗、人工审核</li>
+<li><strong>人力成本</strong>：ML 工程师、数据工程师、领域专家</li>
+</ol>
+<h3 id="54-4-2-微调算力成本实测区间">54.4.2 微调算力成本实测区间</h3>
+<p>以 Llama-3 70B 为例（io.net、Anyscale、Introl 公开数据汇总）：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>硬件需求</th>
+<th>单次成本</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LoRA / QLoRA</td>
+<td>1–2 张 H100 或 RTX 4090</td>
+<td>15–30 美元/次</td>
+<td>任务适配、风格对齐</td>
+</tr>
+<tr>
+<td>7B 模型 LoRA</td>
+<td>单消费级 GPU</td>
+<td>&lt;10 美元/次</td>
+<td>快速实验</td>
+</tr>
+<tr>
+<td>全参数微调 70B</td>
+<td>8× H100 80GB，1 天</td>
+<td>200–300 美元/次</td>
+<td>领域深度注入</td>
+</tr>
+<tr>
+<td>全参数微调 70B（大规模）</td>
+<td>16× A100 80GB</td>
+<td>1000+ 美元/次</td>
+<td>生产级定制</td>
+</tr>
+</tbody>
+</table></div>
+<p>关键结论：<strong>LoRA/QLoRA 通常能以 0.1% 的成本达到全参数微调 95–99% 的效果</strong>（Michiel Horstman、Exxact 公开评测）。在客户预算敏感时，FDE 应优先推荐 LoRA 路线，把全参数微调留作"效果不达标时的兜底"。</p>
+<h3 id="54-4-3-数据成本-被严重低估的一项">54.4.3 数据成本：被严重低估的一项</h3>
+<p>数据成本是 FDE 报价中最容易遗漏的项。一个典型的垂直领域微调项目，数据成本往往占总成本的 40–60%：</p>
+<ul>
+<li><strong>专家标注</strong>：医疗、法律、金融领域，单条高质量样本 5–30 元人民币</li>
+<li><strong>多轮校验</strong>：每条样本通常需要 2–3 轮交叉审核</li>
+<li><strong>数据清洗</strong>：去重、去毒、格式统一，约占标注成本的 20–30%</li>
+</ul>
+<blockquote>
+<p>测算公式：<code>数据成本 = 样本数 × 单条标注单价 ×（1 + 校验轮次系数）×（1 + 清洗系数）</code></p>
+</blockquote>
+<p>示例：1 万条金融问答样本，单价 15 元，校验系数 0.3，清洗系数 0.25：</p>
+<p><code>10000 × 15 × 1.3 × 1.25 ≈ 24.4 万元</code></p>
+<p>这个数字必须在方案中显式列出，否则客户会以为"微调就是跑个脚本"。</p>
+<h2 id="54-5-RAG-系统成本">54.5 RAG 系统成本</h2>
+<p>RAG（检索增强生成）的成本结构由四个组件叠加：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>组件</th>
+<th>成本驱动</th>
+<th>典型计价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>向量数据库</td>
+<td>存储量 + 查询 QPS</td>
+<td>Pinecone 按维度+副本；自建 Milvus 按 CPU+内存+SSD</td>
+</tr>
+<tr>
+<td>嵌入模型</td>
+<td>文档数 × 平均长度 + 查询数</td>
+<td>每百万 token 0.02–0.13 美元（text-embedding-3 量级）</td>
+</tr>
+<tr>
+<td>检索</td>
+<td>查询 QPS × 召回数</td>
+<td>向量库 + 重排序模型</td>
+</tr>
+<tr>
+<td>生成</td>
+<td>召回上下文长度 × 生成长度</td>
+<td>见 54.3</td>
+</tr>
+</tbody>
+</table></div>
+<p>RAG 的隐性成本在于<strong>上下文膨胀</strong>：召回 5 段、每段 500 token，意味着每次生成都要多消耗 2500 输入 token。如果日均 50 万查询，仅上下文部分就是 12.5 亿 token/日的额外输入压力。FDE 在做 RAG 方案时，必须把"召回数 × 平均段长"作为一个独立成本项测算，而不是只算生成模型。</p>
+<blockquote>
+<p>优化杠杆：召回段数从 5 降到 3（配合重排序）、段长从 500 压到 300、嵌入模型用开源 BGE-M3 自建——三项叠加通常能把 RAG 生成成本降 40–60%。</p>
+</blockquote>
+<h2 id="54-6-Agent-系统成本">54.6 Agent 系统成本</h2>
+<p>Agent 是 LLM 成本结构中最难预测的一类，因为它<strong>放大了所有不确定性</strong>：</p>
+<ul>
+<li><strong>多轮放大</strong>：一个任务平均 5–15 轮 LLM 调用，每轮都消耗 token</li>
+<li><strong>多模型组合</strong>：规划用大模型（如 Claude/GPT-4 量级）、执行用小模型（7B–14B）、嵌入用专用模型</li>
+<li><strong>工具调用</strong>：每次工具调用的输入输出都进入下一轮上下文，token 累积增长</li>
+<li><strong>失败重试</strong>：工具失败、规划错误导致的重试，成本翻倍</li>
+</ul>
+<h3 id="54-6-1-Agent-成本测算公式">54.6.1 Agent 成本测算公式</h3>
+<blockquote>
+<p><strong>公式 54.4（单任务 Agent 成本）</strong>
+<code>单任务成本 = 平均轮次 × Σ（每轮输入 token × 输入单价 + 输出 token × 输出单价）×（1 + 重试率）</code></p>
+</blockquote>
+<p>实测经验值：一个中等复杂度的企业 Agent 任务（如"查订单 → 改地址 → 发通知"），平均 8 轮、每轮输入 2000 token、输出 400 token，使用 GPT-4o 量级模型：</p>
+<p><code>8 × (2000 × 2.5/10⁶ + 400 × 10/10⁶) × 1.2 ≈ 0.058 美元/任务</code></p>
+<p>看起来便宜，但放到日均 10 万任务的规模上就是 <strong>5800 美元/天，约 17 万美元/月</strong>。Agent 的成本爆炸是指数级的，FDE 必须在 PoC 阶段就建立 token 消耗的实时看板。</p>
+<h3 id="54-6-2-Agent-成本优化策略">54.6.2 Agent 成本优化策略</h3>
+<ul>
+<li><strong>模型分级路由</strong>：简单判断用 7B，复杂规划才调大模型，可降本 50–70%</li>
+<li><strong>上下文压缩</strong>：用摘要模型压缩历史轮次，避免线性增长</li>
+<li><strong>工具结果裁剪</strong>：工具返回的原始 JSON 只保留必要字段</li>
+<li><strong>缓存工具结果</strong>：相同工具调用直接命中缓存</li>
+</ul>
+<h2 id="54-7-存储-网络与运维成本">54.7 存储、网络与运维成本</h2>
+<p>算力成本之外的三项隐性成本，常被 FDE 低估：</p>
+<ul>
+<li><strong>存储成本</strong>：模型权重（70B FP16 约 140GB）、KV cache（高并发时数十 GB/卡）、训练数据集（TB 级）、日志与审计数据。云上对象存储约 0.023 美元/GB/月，但高频访问会叠加请求费与出口费。</li>
+<li><strong>网络成本</strong>：跨可用区流量、跨区域复制、出口带宽。云厂商出口流量 0.08–0.12 美元/GB，大规模推理集群的跨节点通信（张量并行）会显著推高网络成本。</li>
+<li><strong>运维成本</strong>：监控（Prometheus + Grafana）、日志（ELK）、告警、值班工程师人力。这部分约占总算力成本的 15–25%。</li>
+</ul>
+<blockquote>
+<p>经验值：自建集群的 TCO 中，硬件只占 50–60%，剩下 40–50% 是电力、机房、网络、人力。FDE 在比较"自建 vs API"时必须算全口径，不能只比 GPU 单价。</p>
+</blockquote>
+<h2 id="54-8-总拥有成本-TCO-建模">54.8 总拥有成本（TCO）建模</h2>
+<h3 id="54-8-1-TCO-五层模型">54.8.1 TCO 五层模型</h3>
+<p>FDE 给客户的 TCO 报告应包含以下五层，缺一不可：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>层级</th>
+<th>内容</th>
+<th>占比经验值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1 算力</td>
+<td>推理 + 训练 GPU</td>
+<td>40–55%</td>
+</tr>
+<tr>
+<td>L2 存储/网络</td>
+<td>向量库、对象存储、出口流量</td>
+<td>10–15%</td>
+</tr>
+<tr>
+<td>L3 数据</td>
+<td>标注、清洗、采购</td>
+<td>15–25%（项目初期更高）</td>
+</tr>
+<tr>
+<td>L4 人力</td>
+<td>ML 工程师、运维、领域专家</td>
+<td>15–25%</td>
+</tr>
+<tr>
+<td>L5 软件/许可</td>
+<td>商业模型 API、向量库企业版、MLOps 平台</td>
+<td>5–10%</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="54-8-2-自建-vs-API-的决策矩阵">54.8.2 自建 vs API 的决策矩阵</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>调 API</th>
+<th>自建</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初期投入</td>
+<td>极低（按量付费）</td>
+<td>高（集群采购/租赁）</td>
+</tr>
+<tr>
+<td>单 token 成本（高流量）</td>
+<td>高</td>
+<td>低（量大后反超）</td>
+</tr>
+<tr>
+<td>单 token 成本（低流量）</td>
+<td>低</td>
+<td>高（利用率低）</td>
+</tr>
+<tr>
+<td>数据合规</td>
+<td>依赖供应商承诺</td>
+<td>完全自主</td>
+</tr>
+<tr>
+<td>定制能力</td>
+<td>受限</td>
+<td>完全可控</td>
+</tr>
+<tr>
+<td>运维负担</td>
+<td>几乎为零</td>
+<td>高</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>拐点经验：当日均 token 消耗超过约 <strong>5–10 亿 token/日</strong>（输出 token 计），自建通常开始比 API 便宜。低于这个量级，调 API 几乎一定更经济。FDE 不要为了"显得专业"而强行推荐自建。</p>
+</blockquote>
+<h2 id="54-9-成本优化杠杆全景">54.9 成本优化杠杆全景</h2>
+<h3 id="54-9-1-六大杠杆排序-按性价比">54.9.1 六大杠杆排序（按性价比）</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>杠杆</th>
+<th>成本降幅</th>
+<th>质量影响</th>
+<th>实施难度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 连续批处理（continuous batching）</td>
+<td>5–23× 吞吐</td>
+<td>几乎无</td>
+<td>低（换推理引擎即可）</td>
+</tr>
+<tr>
+<td>2. 权重量化（INT8/INT4）</td>
+<td>50–75% 显存</td>
+<td>95–99% 精度</td>
+<td>中（需校准）</td>
+</tr>
+<tr>
+<td>3. KV cache 量化（INT4）</td>
+<td>44–68% cache 显存</td>
+<td>极小（带校准）</td>
+<td>中</td>
+</tr>
+<tr>
+<td>4. 语义缓存（GPTCache）</td>
+<td>命中部分免算</td>
+<td>无</td>
+<td>中（需评估命中率）</td>
+</tr>
+<tr>
+<td>5. 模型分级路由</td>
+<td>50–70%</td>
+<td>任务相关，需评测</td>
+<td>高（需路由策略）</td>
+</tr>
+<tr>
+<td>6. 弹性扩缩容</td>
+<td>20–40%</td>
+<td>无</td>
+<td>高（需流量预测）</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="54-9-2-杠杆详解">54.9.2 杠杆详解</h3>
+<p><strong>量化</strong>：FP16 → INT8 显存减半、成本降约 50%、精度保留 95–99%；FP16 → INT4 显存降 75%、精度保留 90–95%。INT4 KV cache 相比 INT8 再省 44%、相比 FP16 省 68%（OpenVINO、LMDeploy 实测）。量化是性价比最高的单一杠杆。</p>
+<p><strong>语义缓存</strong>：对重复或语义相近的查询直接返回缓存结果，完全省掉推理。命中率取决于业务——客服 FAQ 类场景可达 30–50%，开放问答场景通常 &lt;10%。FDE 必须先实测命中率再决定是否上线。</p>
+<p><strong>模型分级路由</strong>：用一个轻量分类器（甚至规则）判断请求难度，简单请求走 7B，复杂请求走 70B。实测可降本 50–70%，但需要严格的 A/B 评测保证质量不退化。</p>
+<p><strong>弹性扩缩容</strong>：基于流量预测自动扩缩 GPU 节点。日间流量是夜间的 5–10 倍的场景下，弹性可省 30–50% 成本。难点在于冷启动慢（模型加载需 1–5 分钟），需配合预热策略。</p>
+<h2 id="54-10-给客户做容量与成本方案的模板">54.10 给客户做容量与成本方案的模板</h2>
+<p>FDE 交付一份可被客户决策层认可的容量成本方案，建议包含以下七个部分：</p>
+<ol>
+<li><strong>业务负载画像</strong>：日均/峰值 QPS、平均 token、会话轮次、季节性波动</li>
+<li><strong>模型与硬件选型</strong>：目标模型、量化方案、推理引擎、硬件规格</li>
+<li><strong>容量推导</strong>：用公式 54.1、54.2 完整推导 GPU 数量，附实测单卡吞吐数据来源</li>
+<li><strong>成本拆解表</strong>：按 54.8.1 的五层模型分项列出，标注假设与单价来源</li>
+<li><strong>优化路径</strong>：列出拟采用的优化杠杆及预期收益（量化表格）</li>
+<li><strong>风险与边界</strong>：峰值余量、单点故障、扩容冷启动时间、数据增长曲线</li>
+<li><strong>决策建议</strong>：自建 vs API 的拐点分析、分阶段扩容路线图</li>
+</ol>
+<blockquote>
+<p>FDE 红线：方案里每一个数字都必须能追溯到来源（公开基准、自测数据、云厂商定价页），不能出现"经验上大概"这类不可辩护的表述。</p>
+</blockquote>
+<h2 id="54-11-反模式与陷阱">54.11 反模式与陷阱</h2>
+<p>FDE 在做容量规划时最常踩的坑：</p>
+<ul>
+<li><strong>低估峰值</strong>：只看日均 QPS，忽视早晚高峰的 5–10 倍峰值。正确做法是按 P99 流量规划，留 1.2–1.5 倍冗余。</li>
+<li><strong>忽视 prefill 压力</strong>：只算输出 token 吞吐，不算输入 token 的瞬时 prefill 算力压力。长输入请求会瞬间打满 GPU，导致 TTFT（Time To First Token）飙升。</li>
+<li><strong>按请求数而非 token 数规划</strong>：这是最经典的错误，会导致系统性低估 3–10 倍。</li>
+<li><strong>忽视利用率</strong>：假设 GPU 跑满 100%，实际只有 20–40%。必须用真实利用率测算。</li>
+<li><strong>漏算隐性成本</strong>：只报 GPU 单价，不报网络、存储、人力、数据成本，导致客户预算被击穿。</li>
+<li><strong>盲目推荐自建</strong>：低流量场景下自建比 API 贵几倍，却因为"显得专业"而推荐，损害客户信任。</li>
+<li><strong>忽视冷启动</strong>：弹性扩容时模型加载需数分钟，峰值来了扩不出来，直接 SLA 违约。</li>
+<li><strong>量化不做评测</strong>：直接上 INT4 不测精度，质量退化后才回滚，浪费一周工期。</li>
+</ul>
+<h2 id="本专题小结">本专题小结</h2>
+<p>AI 系统的容量规划与成本建模，本质上是把"业务流量"翻译成"美元"的工程化推导。核心要点：</p>
+<ol>
+<li><strong>以 token/秒为基本单位</strong>，而非 QPS；这是与传统 Web 容量规划最大的区别。</li>
+<li><strong>利用率是成本胜负手</strong>，连续批处理 + PagedAttention 是单一最大杠杆（最高 23 倍吞吐）。</li>
+<li><strong>并发度决定单 token 成本</strong>，低流量场景自建比 API 更贵，FDE 要敢于建议客户调 API。</li>
+<li><strong>TCO 必须五层全口径</strong>：算力、存储网络、数据、人力、软件许可，漏任何一层都会让报价失真。</li>
+<li><strong>量化是性价比最高的优化</strong>，INT8 保留 95–99% 精度、降本 50%，应作为默认选项。</li>
+<li><strong>每个数字都要可追溯</strong>，FDE 的专业度体现在公式与数据来源，而不是"经验估算"。</li>
+<li><strong>Agent 与 RAG 是成本放大器</strong>，必须在 PoC 阶段就建立 token 消耗实时看板，防止指数级失控。</li>
+</ol>
+<p>容量规划不是一次性工作，而是一个随业务增长、模型迭代、硬件演进而持续更新的动态模型。FDE 的价值，在于把这个模型建得足够扎实，让客户在任何时刻都能回答"再加一个业务线要花多少钱"。</p>
+<h2 id="本专题来源">本专题来源</h2>
+<p>本专题数据与公式综合自以下公开来源：</p>
+<ul>
+<li>arXiv 2606.11690《A Concurrency-Aware Methodology for LLM Infrastructure Cost》（H100 上 Mixtral 8×7B 的并发-成本实测，1→25 rps 成本降约 17 倍）</li>
+<li>arXiv 2511.17593《A Performance Study of vLLM and HuggingFace TGI》（vLLM vs TGI 吞吐、延迟、利用率对比）</li>
+<li>NVIDIA Developer Blog《LLM Inference Benchmarking: Fundamental Concepts》（TPS、TTFT 基准定义）</li>
+<li>Anyscale《Achieve 23x LLM Inference Throughput with Continuous Batching》（连续批处理 23 倍吞吐提升基准）</li>
+<li>Anyscale《Fine-Tuning LLMs: LoRA or Full-Parameter — An In-Depth Analysis with Llama-2》</li>
+<li>io.net《LLM Fine-Tuning Budget Guide》（LoRA/QLoRA/全参数微调成本区间：7B LoRA &lt;10 美元、70B QLoRA 15–30 美元、70B 全参数 200–300 美元）</li>
+<li>Introl《Fine-Tuning Infrastructure: LoRA, QLoRA, and PEFT at Scale (2025)》</li>
+<li>OpenVINO / LMDeploy 文档（INT4 KV cache 量化：较 INT8 省 44%、较 FP16 省 68%）</li>
+<li>Morphllm《LLM Inference Optimization: Cut Cost &amp; Latency at Every Layer》（FP16→INT8 降本 50% 保留 95–99% 精度；FP16→INT4 降本 75% 保留 90–95% 精度）</li>
+<li>Spheron、YottaLabs 公开分析（未优化推理 GPU 利用率仅 20–40%）</li>
+<li>GMI Cloud《Compare GPU Cloud Pricing for LLM Inference Workloads》（每 token 成本公式：GPU 小时单价 / 3600 / token/秒）</li>
+<li>Databricks《LLM Inference Performance Engineering: Best Practices》</li>
+<li>Run.ai《Serving Large Language Models: Benchmarking Study》（vLLM vs TensorRT-LLM 在不同 QPS 与 batch 下的吞吐曲线）</li>
+</ul>
+<blockquote>
+<p>落地提示：以上单卡吞吐与成本数字为公开基准区间，实际项目必须用目标模型 + 目标硬件 + 目标推理引擎自测校准。云厂商 GPU 单价随区域、租期（按量/包月/预留）、供需波动较大，报价时以云厂商定价页实时数据为准。</p>
+</blockquote></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="topic54">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#54-1-为什么容量规划是-FDE-的必备能力">54.1 为什么容量规划是 FDE 的必备能力</a></li><li class="lv2"><a href="#54-2-容量估算-从业务流量到-GPU-数量">54.2 容量估算：从业务流量到 GPU 数量</a></li><li class="lv3"><a href="#54-2-1-四步推导法">54.2.1 四步推导法</a></li><li class="lv3"><a href="#54-2-2-核心估算公式">54.2.2 核心估算公式</a></li><li class="lv3"><a href="#54-2-3-单卡吞吐的实测参考值">54.2.3 单卡吞吐的实测参考值</a></li><li class="lv3"><a href="#54-2-4-一个完整测算示例">54.2.4 一个完整测算示例</a></li><li class="lv2"><a href="#54-3-推理成本模型">54.3 推理成本模型</a></li><li class="lv3"><a href="#54-3-1-token-成本的核心公式">54.3.1 token 成本的核心公式</a></li><li class="lv3"><a href="#54-3-2-GPU-利用率-成本模型的胜负手">54.3.2 GPU 利用率：成本模型的胜负手</a></li><li class="lv3"><a href="#54-3-3-批处理增益曲线">54.3.3 批处理增益曲线</a></li><li class="lv2"><a href="#54-4-训练与微调成本">54.4 训练与微调成本</a></li><li class="lv3"><a href="#54-4-1-三类成本拆解">54.4.1 三类成本拆解</a></li><li class="lv3"><a href="#54-4-2-微调算力成本实测区间">54.4.2 微调算力成本实测区间</a></li><li class="lv3"><a href="#54-4-3-数据成本-被严重低估的一项">54.4.3 数据成本：被严重低估的一项</a></li><li class="lv2"><a href="#54-5-RAG-系统成本">54.5 RAG 系统成本</a></li><li class="lv2"><a href="#54-6-Agent-系统成本">54.6 Agent 系统成本</a></li><li class="lv3"><a href="#54-6-1-Agent-成本测算公式">54.6.1 Agent 成本测算公式</a></li><li class="lv3"><a href="#54-6-2-Agent-成本优化策略">54.6.2 Agent 成本优化策略</a></li><li class="lv2"><a href="#54-7-存储-网络与运维成本">54.7 存储、网络与运维成本</a></li><li class="lv2"><a href="#54-8-总拥有成本-TCO-建模">54.8 总拥有成本（TCO）建模</a></li><li class="lv3"><a href="#54-8-1-TCO-五层模型">54.8.1 TCO 五层模型</a></li><li class="lv3"><a href="#54-8-2-自建-vs-API-的决策矩阵">54.8.2 自建 vs API 的决策矩阵</a></li><li class="lv2"><a href="#54-9-成本优化杠杆全景">54.9 成本优化杠杆全景</a></li><li class="lv3"><a href="#54-9-1-六大杠杆排序-按性价比">54.9.1 六大杠杆排序（按性价比）</a></li><li class="lv3"><a href="#54-9-2-杠杆详解">54.9.2 杠杆详解</a></li><li class="lv2"><a href="#54-10-给客户做容量与成本方案的模板">54.10 给客户做容量与成本方案的模板</a></li><li class="lv2"><a href="#54-11-反模式与陷阱">54.11 反模式与陷阱</a></li><li class="lv2"><a href="#本专题小结">本专题小结</a></li><li class="lv2"><a href="#本专题来源">本专题来源</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

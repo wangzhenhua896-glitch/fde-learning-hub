@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第八章：多智能体协同与自定义工具链开发 · FDE 学习中心</title>
+<meta name="description" content="在真实的企业级业务流中，依赖单一 Prompt 提示词引导大模型完成复杂的长链任务是极其不现实的。如果系统需要审计数据库的一张表、分析计算结果、根据异常值生成财务对账报告、并将报告打包通过邮件发送给对应的风控总监，单一 LLM 在面对如此繁">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup open"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a class="on" href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#0d9488">Handbook</a></div>
+<article class="doc">
+  <h1 class="doc-title">第八章：多智能体协同与自定义工具链开发</h1>
+  <div class="doc-meta"><span style="color:#0d9488">Handbook</span><span class="sep">·</span><span>约 1,301 字</span><span class="sep">·</span><span>阅读约 3 分钟</span></div>
+  <div class="origin">来源：FDE-Handbook 中文版（github.com/goday-org，CC BY-NC-SA 4.0）</div>
+  <div class="prose" id="prose"><p>在真实的企业级业务流中，依赖单一 Prompt 提示词引导大模型完成复杂的长链任务是极其不现实的。如果系统需要审计数据库的一张表、分析计算结果、根据异常值生成财务对账报告、并将报告打包通过邮件发送给对应的风控总监，单一 LLM 在面对如此繁杂的推理链时，很容易在中间步骤发生逻辑偏离或执行中断。为了应对这种长链、复杂的场景，FDE 部署了<strong>多智能体协同（Multi-Agent Systems）</strong> 架构。</p>
+<p>在多智能体架构中，复杂的全局任务被拆解为若干个具备专业职能的 Agent（例如数据库查询 Agent、数据合规校验 Agent、SRE 报警 Agent），各 Agent 相互协作。它们通过绑定自定义的工具来操作云端接口，在共享状态机中协同读写，并具备出错自动修复的自愈能力。</p>
+<p>本章将系统拆解多智能体协同的设计模式，提供一个完整的基于 LangGraph 状态管理思想的 Python 多 Agent 协作闭环，并给出 Token 消耗优化的生产实践经验。</p>
+<hr />
+<h2 id="1-多智能体协同拓扑-Supervisor-架构">1. 多智能体协同拓扑：Supervisor 架构</h2>
+<p>在生产环境中，多智能体之间的协作机制通常分为<strong>主管-工人（Supervisor-Worker）</strong>模型和<strong>对等网络（Peer-to-Peer）</strong>模型。其中，Supervisor 架构在企业级场景最受青睐：由一个中心主管 Agent 负责接收用户指令、拆解子任务并分发给具体执行的 Worker Agent，最后由主管 Agent 聚合结果输出。</p>
+<p><svg viewBox="0 0 750 250" width="100%" height="auto" style="background-color: #fafafa; border: 1px solid #e1e1e8; border-radius: 4px; margin: 20px 0; display: block;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+    </marker>
+  </defs></p>
+<!-- User Input -->
+<p><rect x="20" y="90" width="110" height="60" fill="#f4f4f6" stroke="#333" stroke-width="2" rx="6" />
+  <text x="75" y="125" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#111">用户原始诉求</text></p>
+<!-- Connection to Supervisor -->
+<p><line x1="130" y1="120" x2="200" y2="120" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)" /></p>
+<!-- Supervisor Node -->
+<p><rect x="210" y="65" width="160" height="110" fill="#e8f0fe" stroke="#1a73e8" stroke-width="2" rx="6" />
+  <text x="290" y="90" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1a73e8">主管智能体 SUPERVISOR</text>
+  <text x="290" y="115" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">规划任务执行路径</text>
+  <text x="290" y="130" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#333">分发子任务并收集反馈</text>
+  <text x="290" y="145" text-anchor="middle" font-family="monospace" font-size="8" fill="#1a73e8">全局状态机协调器</text></p>
+<!-- Split paths from Supervisor to Worker Agents -->
+<p><path d="M 370 120 L 460 60" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)" />
+  <path d="M 370 120 L 460 120" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)" />
+  <path d="M 370 120 L 460 180" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)" /></p>
+<!-- Worker Agent 1: DBA Agent -->
+<p><rect x="470" y="30" width="220" height="50" fill="#fff" stroke="#666" rx="4" />
+  <text x="580" y="50" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="10">数据库 Worker (生成并执行 SQL)</text>
+  <text x="580" y="68" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">绑工具: postgres_query</text></p>
+<!-- Worker Agent 2: Validator Agent -->
+<p><rect x="470" y="95" width="220" height="50" fill="#fff" stroke="#666" rx="4" />
+  <text x="580" y="115" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="10">断言校验 Worker (质量与越界审计)</text>
+  <text x="580" y="133" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">绑工具: dbt_assert_runner</text></p>
+<!-- Worker Agent 3: SRE Agent -->
+<p><rect x="470" y="160" width="220" height="50" fill="#fff" stroke="#666" rx="4" />
+  <text x="580" y="180" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="10">通知推送 Worker (Slack 与 Pager)</text>
+  <text x="580" y="198" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">绑工具: pager_dispatch</text>
+</svg></p>
+<p>为了防止各 Agent 在复杂的循环跳转中发生“死循环”或逻辑失控，FDE 采用类似于 <strong>LangGraph</strong> 的有向无环/环状图来约束状态转移，在每一次 Agent 执行完毕后对其输出状态进行严格规整。</p>
+<hr />
+<h2 id="2-状态机协同实战-基于状态字典的-Agent-闭环">2. 状态机协同实战：基于状态字典的 Agent 闭环</h2>
+<p>以下 Python 脚本完整模拟了 Supervisor 调度“数据库 Agent”与“数据校验 Agent”协同对账的过程，展示了多智能体之间如何通过共享的全局 State 字典进行数据通信。</p>
+<pre><code class="language-python"># multi_agent_orchestrator.py
+from typing import Dict, TypedDict, List
+import json
+
+# 定义所有 Agent 共享的全局状态机上下文
+class AgentState(TypedDict):
+    original_query: str
+    sql_query: str
+    query_result: List[Dict]
+    validation_status: str
+    final_answer: str
+    errors: List[str]
+
+# 数据库执行智能体绑定的工具
+def execute_sql_tool(state: AgentState) -&gt; AgentState:
+    print(&quot;\n[DB Agent] 收到执行指令，开始审计 SQL 语句...&quot;)
+    query = state.get(&quot;sql_query&quot;, &quot;&quot;)
+
+    # 简易防护安全注入
+    if &quot;DROP&quot; in query.upper() or &quot;DELETE&quot; in query.upper():
+        state[&quot;errors&quot;].append(&quot;检测到高危 SQL 指令，拒绝执行。&quot;)
+        state[&quot;validation_status&quot;] = &quot;FAILED&quot;
+        return state
+
+    print(f&quot;[DB Agent] 正在安全隔离网内执行: {query}&quot;)
+    # 模拟返回的物理数据行
+    state[&quot;query_result&quot;] = [
+        {&quot;customer_id&quot;: &quot;CUST_01&quot;, &quot;balance&quot;: 50000},
+        {&quot;customer_id&quot;: &quot;CUST_02&quot;, &quot;balance&quot;: 12000}
+    ]
+    state[&quot;validation_status&quot;] = &quot;PENDING_VALIDATION&quot;
+    return state
+
+# 质量校验智能体绑定的工具
+def validate_results_tool(state: AgentState) -&gt; AgentState:
+    print(&quot;\n[Validator Agent] 收到校验请求，对数据明细进行断言审计...&quot;)
+    results = state.get(&quot;query_result&quot;, [])
+
+    # 审查每一行数据是否符合业务财务规范
+    for row in results:
+        if row.get(&quot;balance&quot;, 0) &lt; 0:
+            state[&quot;errors&quot;].append(f&quot;数据异常：客户 {row.get('customer_id')} 余额为负数。&quot;)
+            state[&quot;validation_status&quot;] = &quot;FAILED&quot;
+            return state
+
+    state[&quot;validation_status&quot;] = &quot;PASSED&quot;
+    return state
+
+# 主管智能体 (Orchestrator Control Loop)
+def run_orchestrator(query: str):
+    # 初始化全局状态
+    state: AgentState = {
+        &quot;original_query&quot;: query,
+        &quot;sql_query&quot;: &quot;SELECT customer_id, balance FROM accounts WHERE balance &gt; 10000&quot;,
+        &quot;query_result&quot;: [],
+        &quot;validation_status&quot;: &quot;START&quot;,
+        &quot;final_answer&quot;: &quot;&quot;,
+        &quot;errors&quot;: []
+    }
+
+    # 步骤 1：触发 DB 提取
+    state = execute_sql_tool(state)
+    if &quot;FAILED&quot; in state[&quot;validation_status&quot;]:
+        print(f&quot;[Supervisor] 调度流强行终止，原因: {state['errors'][-1]}&quot;)
+        return
+
+    # 步骤 2：触发数据校验
+    state = validate_results_tool(state)
+    if state[&quot;validation_status&quot;] == &quot;FAILED&quot;:
+        print(f&quot;[Supervisor] 调度流强行终止，原因: {state['errors'][-1]}&quot;)
+        return
+
+    # 步骤 3：主管收纳汇总，输出最终答复
+    if state[&quot;validation_status&quot;] == &quot;PASSED&quot;:
+        state[&quot;final_answer&quot;] = f&quot;已审计 {len(state['query_result'])} 条客户账目，数据通过质量校验规则。&quot;
+        print(f&quot;\n[Supervisor] 流程流转完毕: {state['final_answer']}&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    run_orchestrator(&quot;帮我查询余额大于 10000 的客户数据&quot;)
+</code></pre>
+<hr />
+<h2 id="3-错误自愈与-Token-消耗治理">3. 错误自愈与 Token 消耗治理</h2>
+<p>让多智能体在企业生产环境中长周期运行，需要解决健壮性与运行成本的现实问题。</p>
+<h3 id="1-工具调用异常自愈-Self-Healing">1. 工具调用异常自愈（Self-Healing）</h3>
+<p>如果在执行 SQL 或调用 REST 接口时，由于多打了一个分号或数据库表字段拼写错误而报错，优秀的系统不应该直接崩溃。FDE 会捕获底层抛出的异常堆栈，将错误日志作为新的 Prompt 投喂给执行 Agent，指导大模型自主修正代码。</p>
+<pre><code>[Agent 提请 SQL] -&gt; 数据库引擎返回: Column &quot;cust_name&quot; does not exist
+[主管 Agent 捕获异常] -&gt; 作为 Prompt 重新提交: &quot;数据库报错字段不存在，请检查元数据重新修正。&quot;
+[Agent 自我检视修复] -&gt; &quot;抱歉，真实列名为 customer_name，我已重新生成 SQL 提请执行。&quot;
+</code></pre>
+<h3 id="2-消息剪枝与上下文治理-Context-Management">2. 消息剪枝与上下文治理（Context Management）</h3>
+<p>随着 Agent 在回路中不断流转，Prompt 交互记录会迅速膨胀，导致 API 调用成本激增、且响应延迟不断爬升。FDE 常用以下策略限制上下文体积：
+* <strong>历史剪枝（Message Pruning）</strong>：当某个 Worker Agent 执行完子任务后，主管 Agent 仅在其全局 State 中记录其汇总的结论 JSON，并把之前几十轮冗长的数据通信明细从 LLM 上下文中彻底剪除。
+* <strong>总结重构（Summary Memory）</strong>：每隔固定步数，调用一次轻量级模型对当前排查的轨迹进行语义压缩，用一段几百字的总结替换所有的历史聊天链。</p>
+<hr />
+<h2 id="本章小结">本章小结</h2>
+<p>多智能体系统是企业级应用走向“全自动运行”的必由之路。通过建立以 Supervisor 为核心的全局状态机、编写具备错误诊断能力的自愈型工具组件，并实施严格的上下文消息剪枝，FDE 能够帮助企业搭建出坚固、能够自动应对现场复杂技术突发情况的自动化作业管道。</p></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="hb8">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#1-多智能体协同拓扑-Supervisor-架构">1. 多智能体协同拓扑：Supervisor 架构</a></li><li class="lv2"><a href="#2-状态机协同实战-基于状态字典的-Agent-闭环">2. 状态机协同实战：基于状态字典的 Agent 闭环</a></li><li class="lv2"><a href="#3-错误自愈与-Token-消耗治理">3. 错误自愈与 Token 消耗治理</a></li><li class="lv3"><a href="#1-工具调用异常自愈-Self-Healing">1. 工具调用异常自愈（Self-Healing）</a></li><li class="lv3"><a href="#2-消息剪枝与上下文治理-Context-Management">2. 消息剪枝与上下文治理（Context Management）</a></li><li class="lv2"><a href="#本章小结">本章小结</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

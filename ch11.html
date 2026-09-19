@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 11 章 金融业:智能风控、尽调自动化、反金融犯罪与投研 · FDE 学习中心</title>
+<meta name="description" content="本章一句话 :金融是 FDE 最先大规模落地、也是约束最重的行业;从 Anthropic-FIS 的反金融犯罪 Agent,到城商行的智能风控与尽调自动化,FDE 在金融的价…">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup open"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a class="on" href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#2563eb">FDE-Wiki</a></div>
+<article class="doc">
+  <h1 class="doc-title">第 11 章 金融业:智能风控、尽调自动化、反金融犯罪与投研</h1>
+  <div class="doc-meta"><span style="color:#2563eb">FDE-Wiki</span><span class="sep">·</span><span>约 2,041 字</span><span class="sep">·</span><span>阅读约 5 分钟</span></div>
+  
+  <div class="prose" id="prose"><blockquote>
+<p><strong>本章一句话</strong>:金融是 FDE 最先大规模落地、也是约束最重的行业;从 Anthropic-FIS 的反金融犯罪 Agent,到城商行的智能风控与尽调自动化,FDE 在金融的价值=强合规下的真实 ROI。</p>
+</blockquote>
+<h2 id="11-1-金融业-AI-落地的特征与约束">11.1 金融业 AI 落地的特征与约束</h2>
+<p>金融业是 FDE 的"高价值 + 高约束"典型战场。理解金融 FDE,先理解它的三个特征:</p>
+<p><strong>特征一:数据密集、价值密集</strong>
+金融业天然是数据驱动行业(交易、账户、信贷、行情),AI 能产生直接、可量化的金钱价值(省成本、增收入、避风险)。这使金融成为 FDE 最愿意付费的行业之一。</p>
+<p><strong>特征二:强监管、强合规</strong>
+金融受最严监管:《商业银行法》、巴塞尔协议、《个人信息保护法》《数据安全法》、JR/T 0171(人工智能金融应用)、模型可解释性要求、反洗钱(AML)等。FDE 的任何系统,必须"可解释、可审计、可追溯"。</p>
+<p><strong>特征三:风险厌恶、容错低</strong>
+金融出错代价极高(一次错误放贷、一次误判冻结账户,都可能是真金白银损失或监管处罚)。这决定金融 AI 必须"稳"字当头,HITL、灰度、兜底不可省。</p>
+<p><strong>市场数据(2026)</strong></p>
+<ul>
+<li>Cambridge Judge Business School《2026 Global AI in Financial Services Report》:<strong>软件工程是金融业最成熟的 AI 应用,42% 已全面部署</strong>,同时是首要网络风险;</li>
+<li>Cyberhaven《2026 AI Adoption &amp; Risk Report》:<strong>前沿型与保守型金融机构的 AI 采用率差距高达 17 倍</strong>——领先者已大规模落地,落后者还在观望;</li>
+<li>Anthropic 与 FIS 合作共建反金融犯罪 AI Agent,FDE 进驻;</li>
+<li>EY 招"FDE, Applied AI Manager (Financial Services Consulting)",JD 明确列出 prompt injection、data poisoning、model extraction 等 LLM 风险;</li>
+<li>Deloitte 招"Product FDE, BankingSuite",面向区域银行/社区银行;</li>
+<li>LinkedIn 行业观察:FDE 岗位 2025 年增长 800%+,OpenAI/Anthropic/Salesforce 都在金融建专门 FDE 团队。</li>
+</ul>
+<h2 id="11-2-反金融犯罪-反欺诈-Anthropic-FIS-标杆案例">11.2 反金融犯罪 / 反欺诈:Anthropic-FIS 标杆案例</h2>
+<p><strong>反金融犯罪(Financial Crimes:反洗钱 AML、反欺诈、反恐怖融资)是 FDE 在金融的标志性场景。</strong></p>
+<p><strong>Anthropic-FIS 案例拆解</strong>
+2026 年,Anthropic 与全球支付巨头 FIS 合作,共建"反金融犯罪 AI Agent"。核心做法:</p>
+<ul>
+<li>Anthropic 的 Applied AI 团队和 FDE <strong>进驻 FIS</strong>,共同设计、共同交付;</li>
+<li>用 Claude 系列 LLM + Agent 编排,构建能<strong>自主调查可疑交易</strong>的 Agent(读交易流水、关联账户、调取客户档案、生成调查报告);</li>
+<li>把 agentic AI 能力<strong>转移给 FIS</strong> 团队(知识转移);</li>
+<li>强调<strong>安全与可控</strong>(Anthropic 的对齐基因)。</li>
+</ul>
+<p><strong>这个案例的 FDE 价值</strong></p>
+<ul>
+<li>不是"卖一个反欺诈模型",而是"派 FDE 把反金融犯罪变成 Agent 系统";</li>
+<li>CDEF 全流程体现:Context(理解 AML 调查流程)→ Design(Agent 编排 + HITL)→ Engineer(进驻搭建)→ Feedback(效果回流 + 能力转移);</li>
+<li>体现了"FDE 是新的 AI 瓶颈"——FIS 有数据、有场景,但需要 Anthropic 的 FDE 把它跑通。</li>
+</ul>
+<p><strong>反金融犯罪 AI 的技术要点</strong></p>
+<ul>
+<li><strong>图分析</strong>:账户-交易-实体的关联图谱,识别团伙作案;</li>
+<li><strong>时序异常检测</strong>:交易行为的时序模式异常;</li>
+<li><strong>LLM 调查 Agent</strong>:自动化证据收集、报告生成(省去调查员大量重复工作);</li>
+<li><strong>HITL</strong>:高风险决策(冻结账户、上报)仍由人审;</li>
+<li><strong>可解释</strong>:每一步调查都要留痕,满足监管。</li>
+</ul>
+<h2 id="11-3-智能风控-规则-评分卡-机器学习-大模型">11.3 智能风控:规则 + 评分卡 + 机器学习 + 大模型</h2>
+<p><strong>智能风控是金融 FDE 的"基本盘"——融合多代技术,分层防御。</strong></p>
+<p><strong>分层风控架构</strong></p>
+<ol>
+<li><strong>规则层</strong>:硬规则(如"单笔超 X 万触发审核"),快、可解释、覆盖明确风险;</li>
+<li><strong>评分卡层</strong>:传统信用评分(A卡、B卡、C卡),用逻辑回归,可解释、稳定;</li>
+<li><strong>机器学习层</strong>:<strong>LightGBM / XGBoost</strong> 等梯度提升树,捕捉非线性,精度高;</li>
+<li><strong>大模型层</strong>:LLM 用于非结构化数据理解(企业财报、舆情、尽调材料)、复杂关联推理。</li>
+</ol>
+<blockquote>
+<p><strong>可照抄要点(LightGBM 风控子模型,城商行常见)</strong>:</p>
+<p>```python
+import lightgbm as lgb</p>
+<h1 id="_1">特征:申请人多头借贷、征信查询次数、收入负债比、历史逾期...</h1>
+<p>model = lgb.LGBMClassifier(
+    n_estimators=500, max_depth=6, learning_rate=0.05,
+    num_leaves=31, min_child_samples=50,
+    objective='binary', metric='auc'
+)
+model.fit(X_train, y_train, eval_set=[(X_val, y_val)],
+          callbacks=[lgb.early_stopping(50)])</p>
+<h1 id="psiks">上线必备:PSI/KS 监控特征与模型稳定性(监管要求)</h1>
+<p>```</p>
+</blockquote>
+<p><strong>模型监控(合规要求)</strong></p>
+<ul>
+<li><strong>PSI(群体稳定性指数)</strong>:特征/分数分布漂移监控,&gt;0.25 预警;</li>
+<li><strong>KS</strong>:区分度监控;</li>
+<li><strong>SHAP</strong>:可解释性,满足监管"可解释"要求;</li>
+<li><strong>AUC</strong>:整体区分度。</li>
+</ul>
+<p><strong>风控 FDE 的现实</strong>
+客户的真实风控,不是"上一个最强模型",而是"<strong>规则 + 评分卡 + ML + LLM 分层,可解释、可监控、可回退</strong>"。FDE 的价值,是把这个分层架构在客户环境跑通、对接进信贷决策系统、建立监控。</p>
+<h2 id="11-4-信贷尽调报告自动化">11.4 信贷尽调报告自动化</h2>
+<p><strong>信贷尽调报告自动化,是 FDE 在金融"立竿见影"的场景——把信贷员 3—4 小时/份的手工尽调,压到 20 分钟。</strong></p>
+<p><strong>场景痛点</strong>
+城商行/消费金融,年申请量大(如年申请 200 万笔),尽调报告靠信贷员手工写:翻财报、查工商、读流水、写分析,一份 3—4 小时,效率低、质量不稳。</p>
+<p><strong>FDE 落地方案(参考城商行/消金典型方案)</strong></p>
+<ul>
+<li><strong>多源数据融合</strong>:工商、税务、司法、舆情、财报、流水;</li>
+<li><strong>RAG + 结构化输出</strong>:LLM 基于检索到的材料,按尽调模板生成报告;</li>
+<li><strong>评分卡 + ML 辅助</strong>:量化风险指标;</li>
+<li><strong>HITL</strong>:信贷员审核 + 补充,Agent 生成草稿;</li>
+<li><strong>可追溯</strong>:每一条结论标注来源材料,满足合规。</li>
+</ul>
+<blockquote>
+<p><strong>ROI 量化</strong>:尽调报告从 3—4 小时/份压到约 20 分钟/份(信贷员主要做审核与判断),效率提升约 10 倍。一个年申请 200 万笔的消金,潜在节省的人力成本以千万计。</p>
+</blockquote>
+<h2 id="11-5-智能投研">11.5 智能投研</h2>
+<p><strong>智能投研是 FDE 在金融"高附加值"场景——帮分析师从海量信息里快速提炼洞察。</strong></p>
+<p><strong>典型应用</strong></p>
+<ul>
+<li><strong>研报生成</strong>:Agent 自动收集行业数据、生成研报初稿;</li>
+<li><strong>财报分析</strong>:LLM 读财报,提取关键指标、异常、风险;</li>
+<li><strong>舆情监测</strong>:实时监测上市公司舆情,预警;</li>
+<li><strong>投研问答</strong>:分析师用自然语言问"这家公司近三年毛利率趋势",RAG + LLM 回答。</li>
+</ul>
+<p><strong>FDE 价值</strong>
+投研的核心是"信息处理效率",正是 LLM + RAG 的强项。FDE 把投研知识库工程化(财报、研报、新闻的结构化 + 检索),让分析师产能倍增。</p>
+<h2 id="11-6-合规与监管科技-RegTech">11.6 合规与监管科技(RegTech)</h2>
+<p><strong>RegTech(监管科技)本身是 FDE 的落地场景——用 AI 帮金融机构满足监管。</strong></p>
+<p><strong>典型应用</strong></p>
+<ul>
+<li><strong>监管报送自动化</strong>:把业务数据按监管口径自动转换、报送;</li>
+<li><strong>合规审查</strong>:用 LLM 审查合同、制度是否符合最新法规;</li>
+<li><strong>反洗钱监测</strong>:见 11.2;</li>
+<li><strong>员工行为合规</strong>:监测异常交易、利益冲突。</li>
+</ul>
+<h2 id="11-7-金融-FDE-的技术栈与合规要点">11.7 金融 FDE 的技术栈与合规要点</h2>
+<p><strong>技术栈(金融典型)</strong></p>
+<ul>
+<li>模型:国产模型私有化(通义/智谱/DeepSeek)+ 必要时闭源 API(出境允许的场景);</li>
+<li>推理:vLLM 私有化;</li>
+<li>RAG:向量库(Milvus)+ 财报/研报/法规知识库;</li>
+<li>Agent:LangGraph(有状态、可审计);</li>
+<li>数据:特征平台 + 实时风控引擎;</li>
+<li>可观测:全链路追踪(满足审计)。</li>
+</ul>
+<p><strong>合规要点</strong></p>
+<ul>
+<li><strong>数据不出域</strong>:私有化部署;</li>
+<li><strong>可解释</strong>:SHAP、决策留痕;</li>
+<li><strong>可审计</strong>:全链路日志、模型版本管理;</li>
+<li><strong>模型治理</strong>:JR/T 0171、模型上线评审、定期验证;</li>
+<li><strong>安全</strong>:prompt injection 防护、数据脱敏、权限管控;</li>
+<li><strong>HITL</strong>:高风险决策人审。</li>
+</ul>
+<h2 id="11-8-ROI-案例与数据">11.8 ROI 案例与数据</h2>
+<p>综合公开案例与典型方案,金融 FDE 的 ROI 量级:</p>
+<ul>
+<li><strong>尽调自动化</strong>:效率提升 ~10 倍(3—4 小时→20 分钟/份);</li>
+<li><strong>反欺诈</strong>:调查员效率提升数倍,误报率下降;</li>
+<li><strong>智能客服</strong>:替代 30%—50% 人工咨询;</li>
+<li><strong>风控</strong>:坏账率下降、自动化审批通过率提升;</li>
+<li><strong>典型城商行/消金 AI 项目年化价值</strong>:千万级人民币(成本节约 + 风险规避)。</li>
+</ul>
+<blockquote>
+<p><strong>FDE 在金融的价值公式</strong>:强合规 × 真实 ROI × 可持续运营 = 高客单、高续约、高壁垒的交付。这也是为什么 EY、Deloitte、Anthropic 都在金融重兵投入 FDE。</p>
+</blockquote>
+<h2 id="本章小结">本章小结</h2>
+<ul>
+<li>金融是 FDE 高价值高约束战场:数据密集、强监管、容错低;</li>
+<li>反金融犯罪是标杆(Anthropic-FIS),FDE 进驻共建 Agent + 能力转移;</li>
+<li>智能风控分层:规则 + 评分卡 + LightGBM + 大模型,配 PSI/KS/SHAP 监控;</li>
+<li>信贷尽调自动化:RAG + 结构化输出,3—4 小时压到 20 分钟,效率 ~10 倍;</li>
+<li>智能投研/RegTech 是高附加值场景;</li>
+<li>技术栈:国产私有化 + RAG + LangGraph + 全链路审计;</li>
+<li>合规:数据不出域、可解释、可审计、模型治理、HITL;</li>
+<li>ROI:尽调 10 倍提效、千万级年化价值。</li>
+</ul>
+<blockquote>
+<p><strong>本章来源</strong>:CIO.com(FIS-Anthropic)、FIS 投资者新闻、Cambridge Judge《2026 Global AI in Financial Services Report》、Cyberhaven《2026 AI Adoption &amp; Risk Report》、EY/Deloitte FDE 金融 JD、LinkedIn(800% FDE 增长)、JR/T 0171、用户库《FDE落地方案_金融智能风控与尽调》。</p>
+</blockquote></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="ch11">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#11-1-金融业-AI-落地的特征与约束">11.1 金融业 AI 落地的特征与约束</a></li><li class="lv2"><a href="#11-2-反金融犯罪-反欺诈-Anthropic-FIS-标杆案例">11.2 反金融犯罪 / 反欺诈:Anthropic-FIS 标杆案例</a></li><li class="lv2"><a href="#11-3-智能风控-规则-评分卡-机器学习-大模型">11.3 智能风控:规则 + 评分卡 + 机器学习 + 大模型</a></li><li class="lv2"><a href="#11-4-信贷尽调报告自动化">11.4 信贷尽调报告自动化</a></li><li class="lv2"><a href="#11-5-智能投研">11.5 智能投研</a></li><li class="lv2"><a href="#11-6-合规与监管科技-RegTech">11.6 合规与监管科技(RegTech)</a></li><li class="lv2"><a href="#11-7-金融-FDE-的技术栈与合规要点">11.7 金融 FDE 的技术栈与合规要点</a></li><li class="lv2"><a href="#11-8-ROI-案例与数据">11.8 ROI 案例与数据</a></li><li class="lv2"><a href="#本章小结">本章小结</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

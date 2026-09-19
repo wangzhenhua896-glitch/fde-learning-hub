@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第五章：混合云架构与安全着陆区设计 · FDE 学习中心</title>
+<meta name="description" content="在企业级客户的私有基础设施中部署高价值数据平台，必须对云网络安全及“着陆区（Landing Zone）”架构有极深的设计认知。大型企业或金融机构绝不允许任何外部软件暴露在公网，或者在不设防的网络中直连其核心数据库。相反，他们通常会要求所有系">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup open"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a class="on" href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#0d9488">Handbook</a></div>
+<article class="doc">
+  <h1 class="doc-title">第五章：混合云架构与安全着陆区设计</h1>
+  <div class="doc-meta"><span style="color:#0d9488">Handbook</span><span class="sep">·</span><span>约 1,072 字</span><span class="sep">·</span><span>阅读约 3 分钟</span></div>
+  <div class="origin">来源：FDE-Handbook 中文版（github.com/goday-org，CC BY-NC-SA 4.0）</div>
+  <div class="prose" id="prose"><p>在企业级客户的私有基础设施中部署高价值数据平台，必须对云网络安全及“着陆区（Landing Zone）”架构有极深的设计认知。大型企业或金融机构绝不允许任何外部软件暴露在公网，或者在不设防的网络中直连其核心数据库。相反，他们通常会要求所有系统运行在隔离的私有子网内、通过安全隧道或专用物理网闸进行跨网连接，并基于最小特权原则对云端资源访问实施严格的身份授权。</p>
+<p>本章将详细拆解基于 GCP 的安全着陆区网络架构设计——特别是共享 VPC（Shared VPC）拓扑与 GKE 私有集群，并提供完整的 Terraform 代码以实现基础设施的声明式自动部署。</p>
+<hr />
+<h2 id="1-经典着陆区网络架构-共享-VPC-Shared-VPC">1. 经典着陆区网络架构：共享 VPC (Shared VPC)</h2>
+<p>在大型企业中，网络管理与应用开发通常是完全分离的。网络资源（如 VPC、子网、路由及防火墙规则）由中心化的<strong>宿主项目（Host Project）</strong>统一管控；而具体的业务系统则运行在独立的<strong>服务项目（Service Project）</strong>中，通过共享接口挂载到宿主项目的网卡上。</p>
+<p><svg viewBox="0 0 750 240" width="100%" height="auto" style="background-color: #fafafa; border: 1px solid #e1e1e8; border-radius: 4px; margin: 20px 0; display: block;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+    </marker>
+  </defs></p>
+<!-- Host Project Boundary -->
+<p><rect x="20" y="30" width="310" height="180" fill="#f4f4f6" stroke="#333" stroke-width="2" rx="6" />
+  <text x="175" y="50" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#111">宿主项目 HOST PROJECT (网络运维团队管理)</text></p>
+<p><rect x="40" y="70" width="270" height="120" fill="#fff" stroke="#666" stroke-dasharray="3" rx="4" />
+  <text x="175" y="90" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="10" fill="#333">共享 VPC (Shared VPC: 10.0.0.0/16)</text></p>
+<p><rect x="60" y="110" width="105" height="60" fill="#e8f0fe" stroke="#1a73e8" rx="3" />
+  <text x="112" y="130" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="9" fill="#1a73e8">GKE 节点子网</text>
+  <text x="112" y="145" text-anchor="middle" font-family="monospace" font-size="8" fill="#555">10.100.0.0/20</text></p>
+<p><rect x="185" y="110" width="105" height="60" fill="#e8f0fe" stroke="#1a73e8" rx="3" />
+  <text x="237" y="130" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="9" fill="#1a73e8">核心业务子网</text>
+  <text x="237" y="145" text-anchor="middle" font-family="monospace" font-size="8" fill="#555">10.200.0.0/20</text></p>
+<!-- Share Action -->
+<p><line x1="330" y1="120" x2="410" y2="120" stroke="#1a73e8" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="370" y="110" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#1a73e8" font-weight="bold">跨项目子网共享</text></p>
+<!-- Service Project Boundary -->
+<p><rect x="420" y="30" width="310" height="180" fill="#e3f2fd" stroke="#1a73e8" stroke-width="2" rx="6" />
+  <text x="575" y="50" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1a73e8">服务项目 SERVICE PROJECT (业务部署)</text></p>
+<p><rect x="450" y="80" width="250" height="110" fill="#fff" stroke="#1a73e8" rx="4" />
+  <text x="575" y="105" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="11" fill="#111">私有 GKE 容器集群</text>
+  <text x="575" y="125" text-anchor="middle" font-family="monospace" font-size="9" fill="#666">节点网络挂载至宿主子网</text>
+  <text x="575" y="140" text-anchor="middle" font-family="monospace" font-size="9" fill="#666">Master 控制面私网 IP</text>
+</svg></p>
+<h3 id="共享-VPC-架构的独特优势">共享 VPC 架构的独特优势：</h3>
+<ol>
+<li><strong>安全审计集中化</strong>：宿主项目锁死防火墙与路由变更权限，使得客户的网安部门能集中审计所有的出口与入口流量，而无需阻碍应用开发。</li>
+<li><strong>完全私有化</strong>：部署在服务项目中的 GKE 计算节点与数据库都仅分配私网 IP。外部进入的流量必须经过受控网关（如 Cloud Interconnect 或 Private Service Connect）。</li>
+</ol>
+<hr />
+<h2 id="2-基础设施即代码-搭建安全着陆区-Terraform">2. 基础设施即代码：搭建安全着陆区 Terraform</h2>
+<p>为了确保客户环境搭建的绝对一致性并排除手工配置隐患，FDE 通过 Terraform 进行声明式的基础设施定义。</p>
+<h3 id="1-宿主项目-Host-Project-网络定义">1. 宿主项目（Host Project）网络定义</h3>
+<p>以下代码用于在宿主项目中划定共享 VPC 及专属的 GKE 私网子网：</p>
+<pre><code class="language-hcl"># host_network.tf
+provider &quot;google&quot; {
+  project = var.host_project_id
+  region  = var.region
+}
+
+resource &quot;google_compute_network&quot; &quot;shared_vpc&quot; {
+  name                    = &quot;shared-vpc-network&quot;
+  auto_create_subnetworks = false
+}
+
+resource &quot;google_compute_subnetwork&quot; &quot;gke_subnet&quot; {
+  name          = &quot;gke-private-subnet&quot;
+  ip_cidr_range = &quot;10.100.0.0/20&quot;
+  network       = google_compute_network.shared_vpc.id
+  region        = var.region
+
+  # 启用私网 Google 访问通道 (GKE 节点访问 GCP 基础 API)
+  private_ip_google_access = true
+
+  # 为 GKE Pods 动态分配的辅助网段
+  secondary_ip_range {
+    range_name    = &quot;gke-pods-range&quot;
+    ip_cidr_range = &quot;172.16.0.0/16&quot;
+  }
+
+  # 为 GKE Services 动态分配的辅助网段
+  secondary_ip_range {
+    range_name    = &quot;gke-services-range&quot;
+    ip_cidr_range = &quot;172.17.0.0/20&quot;
+  }
+}
+</code></pre>
+<h3 id="2-服务项目-Service-Project-私有-GKE-集群定义">2. 服务项目（Service Project）私有 GKE 集群定义</h3>
+<p>以下代码配置了在业务服务项目中搭建的 GKE 私有集群，其物理子网挂载在上述宿主项目的共享 VPC 上：</p>
+<pre><code class="language-hcl"># service_gke.tf
+provider &quot;google&quot; {
+  project = var.service_project_id
+  region  = var.region
+}
+
+resource &quot;google_container_cluster&quot; &quot;private_cluster&quot; {
+  name     = &quot;fde-private-gke-cluster&quot;
+  location = var.region
+
+  # 指定挂载在宿主项目下的网络和子网
+  network    = &quot;projects/${var.host_project_id}/global/networks/${google_compute_network.shared_vpc.name}&quot;
+  subnetwork = &quot;projects/${var.host_project_id}/regions/${var.region}/subnetworks/${google_compute_subnetwork.gke_subnet.name}&quot;
+
+  # 开启私有集群配置 (禁止节点分配公网 IP)
+  private_cluster_config {
+    enable_private_nodes    = true
+    enable_private_endpoint = true
+    master_ipv4_cidr_block  = &quot;172.18.0.0/28&quot;
+  }
+
+  ip_allocation_policy {
+    cluster_secondary_range_name  = &quot;gke-pods-range&quot;
+    services_secondary_range_name = &quot;gke-services-range&quot;
+  }
+
+  # 启用 Workload Identity 安全身份绑定
+  workload_identity_config {
+    workload_pool = &quot;${var.service_project_id}.svc.id.goog&quot;
+  }
+
+  node_config {
+    machine_type = &quot;e2-standard-4&quot;
+    metadata = {
+      disable-legacy-endpoints = &quot;true&quot;
+    }
+  }
+}
+</code></pre>
+<hr />
+<h2 id="3-安全凭证映射-GCP-工作负载身份-Workload-Identity">3. 安全凭证映射：GCP 工作负载身份（Workload Identity）</h2>
+<p>在高度受控的企业环境中，静态服务账号密钥（JSON 文件）是被严密管控的重大风险点。静态密钥文件一旦随代码被误提交至 Git 仓库，或者从系统内部泄露出去，外部黑客就能长驱直入获取所有的云端存储。</p>
+<p>FDE 彻底弃用静态密钥，转而使用 GCP 的 <strong>Workload Identity</strong> 机制。该机制允许 GKE 内部的 Kubernetes 服务账号（KSA）与云端的 Google 服务账号（GSA）进行无感安全映射，从而让 Pod 无需密钥文件，仅凭动态生成的短期令牌便可直接访问 BigQuery、Cloud Storage 或 Vertex AI 等云端接口。</p>
+<pre><code class="language-hcl"># workload_identity.tf
+resource &quot;google_service_account&quot; &quot;platform_gsa&quot; {
+  project      = var.service_project_id
+  account_id   = &quot;fde-data-processor-gsa&quot;
+  display_name = &quot;应用专用的 GCP 服务账号&quot;
+}
+
+# 授权 Kubernetes 中的特定 ServiceAccount 冒充该 GCP 服务账号的权限
+resource &quot;google_service_account_iam_member&quot; &quot;workload_identity_binding&quot; {
+  service_account_id = google_service_account.platform_gsa.name
+  role               = &quot;roles/iam.workloadIdentityUser&quot;
+  member             = &quot;serviceAccount:${var.service_project_id}.svc.id.goog[fde-namespace/data-processor-ksa]&quot;
+}
+</code></pre>
+<h3 id="Kubernetes-Service-Account-的安全注解配置">Kubernetes Service Account 的安全注解配置</h3>
+<p>在 GKE 集群内，FDE 通过在 ServiceAccount 配置清单中添加特定注解，将其与 GCP 角色绑定：</p>
+<pre><code class="language-yaml">apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: data-processor-ksa
+  namespace: fde-namespace
+  annotations:
+    # 与云端 GSA 服务账号完成映射
+    iam.gke.io/gcp-service-account: &quot;fde-data-processor-gsa@service-project-id.iam.gserviceaccount.com&quot;
+</code></pre>
+<p>这确保了在 GKE 容器中运行的程序无需挂载任何 JSON 密钥，也能安全且透明地拉取 BigQuery 表或调用大模型 API。</p>
+<hr />
+<h2 id="本章小结">本章小结</h2>
+<p>建立安全、高度隔离的云端着陆区是确保数据系统在企业场景安全着陆的关键前提。通过严密设计 Host-Service 项目下的共享 VPC、搭建完全私有的 GKE 隔离容器环境，并基于 Workload Identity 进行去密钥化的安全身份打通，FDE 成功在严苛的企业合规规范下，为平台构建了坚不可摧的安全边界。</p></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="hb5">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#1-经典着陆区网络架构-共享-VPC-Shared-VPC">1. 经典着陆区网络架构：共享 VPC (Shared VPC)</a></li><li class="lv3"><a href="#共享-VPC-架构的独特优势">共享 VPC 架构的独特优势：</a></li><li class="lv2"><a href="#2-基础设施即代码-搭建安全着陆区-Terraform">2. 基础设施即代码：搭建安全着陆区 Terraform</a></li><li class="lv3"><a href="#1-宿主项目-Host-Project-网络定义">1. 宿主项目（Host Project）网络定义</a></li><li class="lv3"><a href="#2-服务项目-Service-Project-私有-GKE-集群定义">2. 服务项目（Service Project）私有 GKE 集群定义</a></li><li class="lv2"><a href="#3-安全凭证映射-GCP-工作负载身份-Workload-Identity">3. 安全凭证映射：GCP 工作负载身份（Workload Identity）</a></li><li class="lv3"><a href="#Kubernetes-Service-Account-的安全注解配置">Kubernetes Service Account 的安全注解配置</a></li><li class="lv2"><a href="#本章小结">本章小结</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

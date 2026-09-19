@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 12 章 医疗健康:病历质控、DRG、医学影像、临床文档与药企 · FDE 学习中心</title>
+<meta name="description" content="本章一句话 :医疗 AI 不是&quot;选个模型&quot;,而是&quot;把 AI 安全地嵌进活的临床工作流、处理好 PHI&quot;;从病历质控、DRG 分组到临床文档自动化,FDE 在医疗的价值在于&quot;合…">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup open"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a class="on" href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#2563eb">FDE-Wiki</a></div>
+<article class="doc">
+  <h1 class="doc-title">第 12 章 医疗健康:病历质控、DRG、医学影像、临床文档与药企</h1>
+  <div class="doc-meta"><span style="color:#2563eb">FDE-Wiki</span><span class="sep">·</span><span>约 1,886 字</span><span class="sep">·</span><span>阅读约 5 分钟</span></div>
+  
+  <div class="prose" id="prose"><blockquote>
+<p><strong>本章一句话</strong>:医疗 AI 不是"选个模型",而是"把 AI 安全地嵌进活的临床工作流、处理好 PHI";从病历质控、DRG 分组到临床文档自动化,FDE 在医疗的价值在于"合规前提下的真实临床赋能"。</p>
+</blockquote>
+<h2 id="12-1-医疗-AI-落地的特征与约束">12.1 医疗 AI 落地的特征与约束</h2>
+<p>医疗是 FDE 最"谨慎"的行业——因为出错可能影响生命和健康。理解医疗 FDE,先理解它的特征:</p>
+<p><strong>特征一:PHI(受保护健康信息)是红线</strong>
+医疗数据含大量敏感个人信息(诊断、用药、基因),受《个人信息保护法》《数据安全法》、HIPAA(海外)等严格保护。<strong>数据不出院、脱敏、权限管控</strong>是硬约束。</p>
+<p><strong>特征二:嵌进临床工作流才算数</strong>
+Teamvoy 指出:医疗 AI 实施意味着"<strong>把 AI 嵌进处理 PHI 的活的临床工作流</strong>",而不是在 demo 里选个模型。医生很忙、临床流程很紧,AI 要"无感"地融进现有工作流(HIS/EMR 系统),否则没人用。</p>
+<p><strong>特征三:强证据、可追溯</strong>
+医疗决策关系生命,AI 必须有证据链、可追溯、可解释,"黑盒 AI"在医疗不可接受。</p>
+<p><strong>市场信号(2026)</strong></p>
+<ul>
+<li>IBM Consulting 的 <strong>Forward Deployed Units(FDU)</strong> 特别强调适合医疗等高监管行业;</li>
+<li>Healthcare IT Today(2026.04)提出 <strong>FDCE(Forward-Deployed Context Engineering)</strong>,医疗是核心场景;</li>
+<li>Keragon 列举医疗 AI Agent 真实用例:<strong>临床文档(clinical documentation)、预授权(prior authorization)</strong>;</li>
+<li>Commure(医疗 AI 公司)FDE <strong>驻场比例高达 50%</strong>——医疗 FDE 的现场性极强。</li>
+</ul>
+<h2 id="12-2-病历内涵质控-HIS-EMR-对接-NER-规则引擎">12.2 病历内涵质控:HIS/EMR 对接 + NER + 规则引擎</h2>
+<p><strong>病历质控是医疗 FDE 的"基本盘"——三甲医院病历质控覆盖率往往 &lt;30%,AI 能大幅提升。</strong></p>
+<p><strong>场景痛点</strong>
+三甲医院(如 1500 床、年出院 8 万人次),病历内涵质控靠质控员人工抽审,覆盖率低(&lt;30%)、滞后(出院后才审)、标准不一。</p>
+<p><strong>FDE 落地方案(参考三甲典型方案)</strong></p>
+<ul>
+<li><strong>HIS/EMR 视图对接</strong>:建临床数据视图(诊断、手术、用药、检验、影像);</li>
+<li><strong>脱敏</strong>:病历文本脱敏后进 AI;</li>
+<li><strong>病历 NER(命名实体识别)</strong>:提取诊断、手术、药品、检查等实体;</li>
+<li><strong>规则引擎质控</strong>:对照质控规则(逻辑性、完整性、一致性)自动审查;</li>
+<li><strong>CHS-DRG 分组校验</strong>:见 12.3;</li>
+<li><strong>编码建议</strong>:辅助病案编码员给 ICD 编码。</li>
+</ul>
+<p><strong>技术要点</strong></p>
+<ul>
+<li>NER 模型(医疗领域微调,如基于开源医疗 LLM);</li>
+<li>规则引擎(Drools/自研)承载质控规则;</li>
+<li>与 HIS/EMR 集成(HL7/FHIR 标准);</li>
+<li>质控结果回流给医生/质控员。</li>
+</ul>
+<blockquote>
+<p><strong>价值</strong>:质控覆盖率从 &lt;30% 提升到 ~90%(全量自动初筛 + 人工复核),质控前置到出院前,减少 DRG 亏损和纠纷。</p>
+</blockquote>
+<h2 id="12-3-DRG-分组与费用质控-CHS-DRG-ICD-编码">12.3 DRG 分组与费用质控:CHS-DRG + ICD 编码</h2>
+<p><strong>DRG(Diagnosis Related Groups,疾病诊断相关分组)是中国医保支付改革的核心——AI 在这的价值直接关系医院收入。</strong></p>
+<p><strong>场景痛点</strong></p>
+<ul>
+<li>DRG 按病例分组付费,分组取决于<strong>主诊断 + 手术 + 并发症</strong>的 ICD 编码;</li>
+<li>编码不准 → 分组错误 → 医院亏钱(高编码漏报)或违规(低诊断高编码,被监管处罚);</li>
+<li>病案编码员工作量大、易错。</li>
+</ul>
+<p><strong>FDE 落地方案</strong></p>
+<ul>
+<li><strong>CHS-DRG 分组器</strong>:对照国家 CHS-DRG 分组方案,自动校验分组;</li>
+<li><strong>ICD-10 / ICD-9-CM-3 编码辅助</strong>:LLM 读病历,建议主诊断/手术编码;</li>
+<li><strong>费用质控</strong>:识别"高编/低编/漏编"风险;</li>
+<li><strong>盈亏分析</strong>:预测每个病例的 DRG 盈亏。</li>
+</ul>
+<blockquote>
+<p><strong>可照抄要点(DRG 校验核心逻辑)</strong>:</p>
+<p><code>输入:病历文本(主诊断、其他诊断、手术、并发症)
+步骤1:NER 提取诊断与手术实体
+步骤2:映射到 ICD-10(诊断)/ ICD-9-CM-3(手术)编码
+步骤3:按 CHS-&lt;abbr class="term" title="疾病诊断相关分组(医保支付)"&gt;DRG&lt;/abbr&gt; 分组方案 → MDC → A&lt;abbr class="term" title="疾病诊断相关分组(医保支付)"&gt;DRG&lt;/abbr&gt; → &lt;abbr class="term" title="疾病诊断相关分组(医保支付)"&gt;DRG&lt;/abbr&gt;
+步骤4:校验"主诊断与手术是否匹配、并发症是否影响分组"
+步骤5:输出分组结果 + 盈亏预测 + 编码修正建议</code></p>
+</blockquote>
+<p><strong>合规要点</strong></p>
+<ul>
+<li>用真实标准(ICD-10、ICD-9-CM-3、CHS-DRG),不用杜撰;</li>
+<li>数据不出院(私有化);</li>
+<li>编码建议给编码员参考,最终人定(HITL)。</li>
+</ul>
+<h2 id="12-4-医学影像-AI-辅助诊断">12.4 医学影像:AI 辅助诊断</h2>
+<p><strong>医学影像是医疗 AI 最成熟的领域之一——但 FDE 的角色不是"造影像模型",而是"把影像 AI 嵌进放射科工作流"。</strong></p>
+<p><strong>典型应用</strong></p>
+<ul>
+<li><strong>肺结节筛查</strong>:CT 自动检测结节,提示放射科医生;</li>
+<li><strong>眼底筛查</strong>:糖尿病视网膜病变筛查;</li>
+<li><strong>病理 AI</strong>:辅助病理切片分析;</li>
+<li><strong>乳腺钼靶</strong>:早期筛查。</li>
+</ul>
+<p><strong>FDE 的角色</strong>
+影像模型往往由专业医疗 AI 公司(联影、推想、数坤)提供,FDE 负责:</p>
+<ul>
+<li>把模型对接进 PACS/RIS 系统;</li>
+<li>处理影像数据流(DICOM 接入、预处理);</li>
+<li>嵌进放射科医生阅片工作流;</li>
+<li>建立监控(模型性能、漏诊/误诊追踪);</li>
+<li>合规(三类医疗器械证、数据脱敏)。</li>
+</ul>
+<h2 id="12-5-临床文档自动化-把医生从文书里解放">12.5 临床文档自动化:把医生从文书里解放</h2>
+<p><strong>临床文档自动化是医疗 FDE 的"高频痛点"场景——医生大量时间花在写病历/填表上,AI 能解放医生时间。</strong></p>
+<p><strong>典型应用(Keragon 等真实用例)</strong></p>
+<ul>
+<li><strong>临床文档(clinical documentation)</strong>:AI 听诊/语音转病历草稿,医生审核;</li>
+<li><strong>预授权(prior authorization)</strong>:AI 自动准备保险预授权材料,省去医生填表;</li>
+<li><strong>出院小结</strong>:自动生成出院摘要;</li>
+<li><strong>随访</strong>:自动生成随访计划与话术。</li>
+</ul>
+<p><strong>IBM FDU 在医疗</strong>
+IBM 的 Forward Deployed Units 特别适合医疗——结构化交付、可审计、可追溯,满足医疗对"可靠性"的极致要求。FDU 把临床文档自动化这类场景,做成可复制的交付单元。</p>
+<p><strong>FDCE 在医疗(Healthcare IT Today)</strong>
+Forward-Deployed Context Engineering 在医疗的体现:FDE 把这家医院的具体病种、模板、规则、医生习惯"上下文化"进 AI,让通用模型变成"这家医院的临床助手"。</p>
+<h2 id="12-6-药企-药物研发与文献分析">12.6 药企:药物研发与文献分析</h2>
+<p><strong>药企是医疗 AI 的另一大客户——FDE 在药企的价值在"研发提效"。</strong></p>
+<p><strong>典型应用</strong></p>
+<ul>
+<li><strong>文献分析</strong>:LLM 读海量医学文献,提取靶点、化合物、临床数据;</li>
+<li><strong>药物重定位</strong>:AI 发现已有药物的新适应症;</li>
+<li><strong>临床试验匹配</strong>:AI 给患者匹配临床试验;</li>
+<li><strong>注册申报</strong>:自动化药品注册材料准备;</li>
+<li><strong>医药代表赋能</strong>:RAG 让医药代表快速回答医生问题。</li>
+</ul>
+<h2 id="12-7-医疗-FDE-的合规要点">12.7 医疗 FDE 的合规要点</h2>
+<p>医疗合规是 FDE 的"生死线":</p>
+<ul>
+<li><strong>数据不出院</strong>:私有化部署,病历数据绝不出医院;</li>
+<li><strong>脱敏</strong>:病历文本脱敏后再进 AI;</li>
+<li><strong>权限</strong>:严格的数据访问权限;</li>
+<li><strong>医疗器械合规</strong>:用于诊断的 AI 需三类医疗器械证(NMPA);</li>
+<li><strong>可追溯</strong>:所有 AI 辅助决策留痕;</li>
+<li><strong>HITL</strong>:AI 仅辅助,最终决策由医生;</li>
+<li><strong>个保法/数安法</strong>:敏感个人信息特殊处理。</li>
+</ul>
+<h2 id="12-8-ROI-案例与数据">12.8 ROI 案例与数据</h2>
+<ul>
+<li><strong>病历质控</strong>:覆盖率 &lt;30%→~90%,质控前置减少 DRG 亏损(典型三甲年化 130—410 万人民币价值);</li>
+<li><strong>DRG 编码辅助</strong>:编码准确率提升,减少高编/漏编损失;</li>
+<li><strong>临床文档</strong>:医生文书时间减少 30%—50%,产能释放;</li>
+<li><strong>影像筛查</strong>:早期发现,降低漏诊(社会价值巨大);</li>
+<li><strong>驻场强度</strong>:Commure FDE 驻场 50%,体现医疗 FDE 的现场依赖。</li>
+</ul>
+<h2 id="本章小结">本章小结</h2>
+<ul>
+<li>医疗 FDE 特征:PHI 红线、嵌进临床工作流、强证据可追溯;</li>
+<li>病历内涵质控:HIS/EMR 对接 + NER + 规则引擎,覆盖率 &lt;30%→90%;</li>
+<li>DRG 分组与费用质控:CHS-DRG + ICD 编码辅助,直接关系医院收入;</li>
+<li>医学影像:FDE 负责把影像 AI 嵌进放射科工作流,非造模型;</li>
+<li>临床文档自动化:IBM FDU/FDCE 在医疗,解放医生文书时间;</li>
+<li>药企:文献分析、药物重定位、临床试验匹配;</li>
+<li>合规:数据不出院、脱敏、医疗器械证、HITL、个保法/数安法;</li>
+<li>ROI:质控千万级、文档提效 30%—50%。</li>
+</ul>
+<blockquote>
+<p><strong>本章来源</strong>:IBM Newsroom(FDU)、Healthcare IT Today《From Pilots to Production》(FDCE)、Teamvoy《AI Implementation in Healthcare》、Keragon《AI Agent Examples》、Commure(50% 驻场)、ICD-10/ICD-9-CM-3/CHS-DRG 标准、用户库《FDE落地方案_医院病历质控与DRG》。</p>
+</blockquote></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="ch12">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#12-1-医疗-AI-落地的特征与约束">12.1 医疗 AI 落地的特征与约束</a></li><li class="lv2"><a href="#12-2-病历内涵质控-HIS-EMR-对接-NER-规则引擎">12.2 病历内涵质控:HIS/EMR 对接 + NER + 规则引擎</a></li><li class="lv2"><a href="#12-3-DRG-分组与费用质控-CHS-DRG-ICD-编码">12.3 DRG 分组与费用质控:CHS-DRG + ICD 编码</a></li><li class="lv2"><a href="#12-4-医学影像-AI-辅助诊断">12.4 医学影像:AI 辅助诊断</a></li><li class="lv2"><a href="#12-5-临床文档自动化-把医生从文书里解放">12.5 临床文档自动化:把医生从文书里解放</a></li><li class="lv2"><a href="#12-6-药企-药物研发与文献分析">12.6 药企:药物研发与文献分析</a></li><li class="lv2"><a href="#12-7-医疗-FDE-的合规要点">12.7 医疗 FDE 的合规要点</a></li><li class="lv2"><a href="#12-8-ROI-案例与数据">12.8 ROI 案例与数据</a></li><li class="lv2"><a href="#本章小结">本章小结</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

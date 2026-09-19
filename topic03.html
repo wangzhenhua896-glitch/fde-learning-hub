@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>深度专题三 评估驱动开发(Eval-Driven Development) · FDE 学习中心</title>
+<meta name="description" content="专题定位 :2026 年 LLM 工程的最大共识是&quot;评估前移&quot;——不再等上线才知道效果,而是把评估嵌入开发全循环。本专题讲 FDE 如何搭一套能持续度量、驱动迭代的评估体系。">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#2563eb">FDE-Wiki</a></div>
+<article class="doc">
+  <h1 class="doc-title">深度专题三 评估驱动开发(Eval-Driven Development)</h1>
+  <div class="doc-meta"><span style="color:#2563eb">FDE-Wiki</span><span class="sep">·</span><span>约 1,463 字</span><span class="sep">·</span><span>阅读约 4 分钟</span></div>
+  
+  <div class="prose" id="prose"><blockquote>
+<p><strong>专题定位</strong>:2026 年 LLM 工程的最大共识是"评估前移"——不再等上线才知道效果,而是把评估嵌入开发全循环。本专题讲 FDE 如何搭一套能持续度量、驱动迭代的评估体系。</p>
+</blockquote>
+<h2 id="一-为什么-评估驱动-是-2026-的范式">一、为什么"评估驱动"是 2026 的范式</h2>
+<p>传统软件有单元测试/集成测试,效果可自动验证。但 LLM 应用长期是"黑盒"——开发者改了 prompt 或换模型,只能靠"人工看看几个例子"判断好坏,既不可重复,也不可靠。</p>
+<p><strong>评估驱动开发(Eval-Driven Development)</strong> 把软件工程的"测试驱动"思想搬到 LLM:</p>
+<ul>
+<li>先定义评估集和指标,再开发;</li>
+<li>每次改动(prompt/模型/RAG)都跑评估,量化影响;</li>
+<li>用数据决定"改了是变好还是变坏",而不是靠感觉。</li>
+</ul>
+<blockquote>
+<p><strong>为什么 2026 才普及</strong>:早期 LLM 应用简单(单轮问答),评估需求弱;2025—2026 Agent/RAG 复杂化,不评估就无法迭代,评估驱动成刚需。</p>
+</blockquote>
+<h2 id="二-评估的三层结构">二、评估的三层结构</h2>
+<p><strong>第一层:组件评估(检索/生成各自)</strong></p>
+<ul>
+<li>检索:召回率、精确率、MRR;</li>
+<li>生成:忠实度、相关性;</li>
+<li>工具:调用准确率。</li>
+</ul>
+<p><strong>第二层:端到端评估(整个系统)</strong></p>
+<ul>
+<li>任务成功率;</li>
+<li>答案质量(忠实/相关/完整);</li>
+<li>用户满意度。</li>
+</ul>
+<p><strong>第三层:业务评估(对齐北极星)</strong></p>
+<ul>
+<li>良品率、准确率、成本、转化率;</li>
+<li>直接对照项目北极星指标(见<a href="ch07.html">第 7 章</a>结果定义卡)。</li>
+</ul>
+<h2 id="三-评估集构建">三、评估集构建</h2>
+<p><strong>评估集是评估的命脉。</strong> 没有好评估集,评估就是空谈。</p>
+<p><strong>评估集来源</strong></p>
+<ul>
+<li><strong>真实查询</strong>:从客户真实使用中采样;</li>
+<li><strong>边界用例</strong>:人工构造难例、对抗例;</li>
+<li><strong>golden set</strong>:人工标注的标准问答对;</li>
+<li><strong>bad case</strong>:历史出错的案例,纳入回归集。</li>
+</ul>
+<p><strong>评估集规模</strong></p>
+<ul>
+<li>起步:50—200 条覆盖核心场景;</li>
+<li>成熟:500—2000 条,含各类边界;</li>
+<li>持续扩充:bad case 不断回流。</li>
+</ul>
+<p><strong>评估集管理</strong></p>
+<ul>
+<li>版本化(每次评估用哪个集);</li>
+<li>标注规范(怎么算"对");</li>
+<li>防污染(评估集不能进训练)。</li>
+</ul>
+<h2 id="四-LLM-as-Judge-用强模型当评审">四、LLM-as-Judge:用强模型当评审</h2>
+<p><strong>LLM-as-Judge 是 2026 评估的主流手段——用强模型(GPT-4 级)评判被评估系统的输出。</strong></p>
+<p><strong>优点</strong></p>
+<ul>
+<li>可大规模(比人工快);</li>
+<li>可多维度(忠实/相关/完整);</li>
+<li>可解释(给出评判理由)。</li>
+</ul>
+<p><strong>陷阱</strong></p>
+<ul>
+<li><strong>偏差</strong>:judge 偏好同源模型、偏好长答案、偏好自信表达;</li>
+<li><strong>成本</strong>:大规模调用贵;</li>
+<li><strong>自身不准</strong>:judge 也会错。</li>
+</ul>
+<p><strong>最佳实践</strong></p>
+<ul>
+<li>judge 用比被评更强的模型;</li>
+<li>用 rubric(评分细则)约束 judge;</li>
+<li>人工抽验 judge 质量;</li>
+<li>关键决策不唯 judge(加人工)。</li>
+</ul>
+<h2 id="五-评估指标体系-给-FDE-的清单">五、评估指标体系(给 FDE 的清单)</h2>
+<p><strong>检索质量</strong></p>
+<ul>
+<li>Recall@k:相关文档在 top-k 的比例;</li>
+<li>Precision@k:top-k 里相关的比例;</li>
+<li>MRR:第一个相关文档的排名倒数;</li>
+<li>NDCG:考虑排序的质量。</li>
+</ul>
+<p><strong>生成质量</strong></p>
+<ul>
+<li>Faithfulness(忠实度):答案是否可由检索内容支持(防幻觉);</li>
+<li>Answer Relevancy:答案是否切题;</li>
+<li>Context Precision/Recall:检索上下文质量。</li>
+</ul>
+<p><strong>Agent 质量</strong></p>
+<ul>
+<li>Tool Call Accuracy:工具调用是否正确;</li>
+<li>Plan Quality:规划是否合理;</li>
+<li>Task Success Rate:任务是否完成;</li>
+<li>Step Efficiency:步数是否过多。</li>
+</ul>
+<p><strong>系统质量</strong></p>
+<ul>
+<li>Latency:延迟;</li>
+<li>Cost:成本(token/调用);</li>
+<li>Error Rate:错误率。</li>
+</ul>
+<p><strong>业务质量</strong></p>
+<ul>
+<li>对照北极星(良品率、准确率、ROI)。</li>
+</ul>
+<h2 id="六-评估工具-2026">六、评估工具(2026)</h2>
+<p><strong>RAGAS</strong>:RAG 专用评估(忠实度/相关性/上下文指标);
+<strong>TruLens</strong>:LLM 应用评估与追踪;
+<strong>LangSmith Eval</strong>:LangChain 生态评估;
+<strong>Phoenix(Arize)</strong>:LLM 评估与可观测;
+<strong>DeepEval</strong>:开源 LLM 单元测试框架;
+<strong>Promptfoo</strong>:prompt/模型对比评估。</p>
+<blockquote>
+<p><strong>选型</strong>:RAG 用 RAGAS,通用用 TruLens/LangSmith,对比 prompt/模型用 Promptfoo。</p>
+</blockquote>
+<h2 id="七-评估驱动的开发循环">七、评估驱动的开发循环</h2>
+<p><strong>核心循环</strong></p>
+<ol>
+<li>定义/更新评估集;</li>
+<li>跑评估,得到基线指标;</li>
+<li>改动(prompt/模型/RAG/Agent);</li>
+<li>再跑评估,对比基线;</li>
+<li>数据决定保留/回滚;</li>
+<li>bad case 回流评估集。</li>
+</ol>
+<p><strong>这个循环的关键</strong></p>
+<ul>
+<li><strong>自动化</strong>:每次改动自动跑评估(CI);</li>
+<li><strong>可对比</strong>:历史指标可追溯;</li>
+<li><strong>有门槛</strong>:定"达标线",不达标不发布;</li>
+<li><strong>快反馈</strong>:评估要快(不能一次跑几小时)。</li>
+</ul>
+<h2 id="八-持续评估-CI-for-LLM">八、持续评估:CI for LLM</h2>
+<p><strong>把评估嵌入 CI/CD,是 2026 成熟团队的标志。</strong></p>
+<p><strong>LLM CI 的实践</strong></p>
+<ul>
+<li>prompt/模型变更触发评估;</li>
+<li>评估不达标阻断发布;</li>
+<li>回归集防止"修一个坏一个";</li>
+<li>评估结果可视化看板。</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li>评估有随机性(LLM 非确定),要多次平均;</li>
+<li>评估本身要维护(评估集/指标更新);</li>
+<li>成本(CI 跑评估要花钱)。</li>
+</ul>
+<h2 id="九-在线评估-AB-与反馈">九、在线评估:AB 与反馈</h2>
+<p><strong>离线评估之外,还要在线评估。</strong></p>
+<p><strong>在线评估手段</strong></p>
+<ul>
+<li><strong>AB 测试</strong>:新旧版本分流,对比业务指标;</li>
+<li><strong>影子模式</strong>:新版本跑但不影响真实业务,对比;</li>
+<li><strong>用户反馈</strong>:点赞/点踩、评分、举报;</li>
+<li><strong>bad case 监控</strong>:线上错误自动收集。</li>
+</ul>
+<p><strong>在线 vs 离线</strong></p>
+<ul>
+<li>离线:快、可控、但可能与真实有差;</li>
+<li>在线:真实、但慢、有风险;</li>
+<li>两者结合:离线筛,在线验。</li>
+</ul>
+<h2 id="十-评估的常见误区">十、评估的常见误区</h2>
+<p><strong>误区一:只看整体指标</strong>
+整体准确率 90% 可能掩盖"某类用例 0%"。要分场景看。</p>
+<p><strong>误区二:评估集污染</strong>
+评估集混进训练/RAG,指标虚高。要隔离。</p>
+<p><strong>误区三:唯 LLM-as-Judge</strong>
+judge 会错,关键场景要人工。</p>
+<p><strong>误区四:评估不更新</strong>
+业务变化,评估集/指标要跟着变。</p>
+<p><strong>误区五:评估与业务脱节</strong>
+评估指标高但业务价值没提升——要始终对齐北极星。</p>
+<h2 id="本专题小结">本专题小结</h2>
+<ul>
+<li>评估驱动开发 = 测试驱动思想搬到 LLM,先评再开发,数据决定迭代;</li>
+<li>评估三层:组件(检索/生成/工具)、端到端、业务;</li>
+<li>评估集是命脉:真实+边界+golden+bad case,版本化、防污染;</li>
+<li>LLM-as-Judge 是主流,但有偏差,需 rubric+人工抽验;</li>
+<li>指标体系:检索(Recall/Precision/MRR)、生成(Faithfulness/Relevancy)、Agent(Tool/Plan/Success)、系统(延迟/成本)、业务(北极星);</li>
+<li>工具:RAGAS/TruLens/LangSmith/Phoenix/DeepEval/Promptfoo;</li>
+<li>开发循环:定义集→基线→改动→再评→数据决策→bad case 回流;</li>
+<li>持续评估:LLM CI,变更触发、不达标阻断;</li>
+<li>在线评估:AB/影子/反馈/bad case 监控,与离线结合;</li>
+<li>误区:只看整体/污染/唯judge/不更新/脱节业务。</li>
+</ul>
+<blockquote>
+<p><strong>本专题来源</strong>:RAGAS/TruLens/LangSmith/Promptfoo 文档、O'Reilly《AI Agents Stack 2026》、LangChain eval 指南、用户库《FDE工程化工具链》《fde-delivery 70-pitfalls-checklists》、本书第 7、9 章。</p>
+</blockquote></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="topic03">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#一-为什么-评估驱动-是-2026-的范式">一、为什么&quot;评估驱动&quot;是 2026 的范式</a></li><li class="lv2"><a href="#二-评估的三层结构">二、评估的三层结构</a></li><li class="lv2"><a href="#三-评估集构建">三、评估集构建</a></li><li class="lv2"><a href="#四-LLM-as-Judge-用强模型当评审">四、LLM-as-Judge:用强模型当评审</a></li><li class="lv2"><a href="#五-评估指标体系-给-FDE-的清单">五、评估指标体系(给 FDE 的清单)</a></li><li class="lv2"><a href="#六-评估工具-2026">六、评估工具(2026)</a></li><li class="lv2"><a href="#七-评估驱动的开发循环">七、评估驱动的开发循环</a></li><li class="lv2"><a href="#八-持续评估-CI-for-LLM">八、持续评估:CI for LLM</a></li><li class="lv2"><a href="#九-在线评估-AB-与反馈">九、在线评估:AB 与反馈</a></li><li class="lv2"><a href="#十-评估的常见误区">十、评估的常见误区</a></li><li class="lv2"><a href="#本专题小结">本专题小结</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

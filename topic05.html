@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>深度专题五 数据工程实战:企业 AI 的 70% 与看不见的地基 · FDE 学习中心</title>
+<meta name="description" content="专题定位 :行业里有句话——&quot;企业 AI 项目 70% 的工作量在数据工程&quot;。这不是夸张。本专题讲 FDE 在客户现场面对的真实数据工程挑战,以及如何用工程化方法搞定它们。">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#2563eb">FDE-Wiki</a></div>
+<article class="doc">
+  <h1 class="doc-title">深度专题五 数据工程实战:企业 AI 的 70% 与看不见的地基</h1>
+  <div class="doc-meta"><span style="color:#2563eb">FDE-Wiki</span><span class="sep">·</span><span>约 1,664 字</span><span class="sep">·</span><span>阅读约 4 分钟</span></div>
+  
+  <div class="prose" id="prose"><blockquote>
+<p><strong>专题定位</strong>:行业里有句话——"企业 AI 项目 70% 的工作量在数据工程"。这不是夸张。本专题讲 FDE 在客户现场面对的真实数据工程挑战,以及如何用工程化方法搞定它们。</p>
+</blockquote>
+<h2 id="一-为什么数据工程占-70">一、为什么数据工程占 70%</h2>
+<p>模型是现成的(开源/国产),prompt 可以调,但<strong>客户的真实数据,是 FDE 必须亲手处理的"烂泥潭"</strong>:</p>
+<ul>
+<li><strong>散</strong>:数据散落在几十个系统(ERP/CRM/HIS/MES/Excel/纸质);</li>
+<li><strong>脏</strong>:缺失、错误、重复、不一致、格式混乱;</li>
+<li><strong>乱</strong>:同一概念多个口径,主数据不统一;</li>
+<li><strong>封</strong>:老系统没 API,只有数据库直连或导出文件;</li>
+<li><strong>险</strong>:敏感数据要脱敏,权限要管控;</li>
+<li><strong>变</strong>:业务变化,数据口径随之变化。</li>
+</ul>
+<blockquote>
+<p><strong>FDE 的现实判断</strong>:一个客户项目,把数据理顺、接通、质量达标,往往就耗掉大半工期。模型反而是最后几步。忽视数据工程的 FDE,必然在现场翻车。</p>
+</blockquote>
+<h2 id="二-数据接入-批-流-多源">二、数据接入:批、流、多源</h2>
+<p><strong>批处理(Batch)</strong></p>
+<ul>
+<li>定时从源系统抽数(每日/每小时);</li>
+<li>工具:Spark、Pandas(小数据)、DataX、Sqoop;</li>
+<li>适合:不需要实时的场景。</li>
+</ul>
+<p><strong>流处理(Streaming)</strong></p>
+<ul>
+<li>实时捕获数据变更(CDC);</li>
+<li>工具:Flink、Kafka Streams、Debezium(CDC);</li>
+<li>适合:实时风控、实时监控、实时推荐。</li>
+</ul>
+<p><strong>多源接入的挑战</strong></p>
+<ul>
+<li>不同系统协议各异(JDBC/REST/文件/MQ);</li>
+<li>增量识别(怎么知道哪些变了);</li>
+<li>schema 演进(源系统加字段);</li>
+<li>抽取压力(不能把源系统拖垮)。</li>
+</ul>
+<blockquote>
+<p><strong>可照抄(CDC 增量同步,企业常用)</strong>:</p>
+<p><code>源数据库 → Debezium(捕获 binlog 变更)→ Kafka → Flink(清洗转换)→ 目标库/特征平台</code></p>
+</blockquote>
+<h2 id="三-数据清洗-脏数据处理实战">三、数据清洗:脏数据处理实战</h2>
+<p><strong>常见脏数据与处理</strong></p>
+<ul>
+<li><strong>缺失值</strong>:删除/填充/标记;</li>
+<li><strong>重复</strong>:去重(基于主键/模糊匹配);</li>
+<li><strong>格式不一致</strong>:统一(日期、电话、地址);</li>
+<li><strong>错误值</strong>:规则/统计识别并修正;</li>
+<li><strong>异常值</strong>:箱线图/孤立森林识别;</li>
+<li><strong>编码问题</strong>:GBK/UTF-8 转换。</li>
+</ul>
+<p><strong>清洗的工程化</strong></p>
+<ul>
+<li>规则可配置(而非硬编码);</li>
+<li>清洗日志(改了什么,可追溯);</li>
+<li>可重跑(幂等);</li>
+<li>质量度量(清洗前后质量对比)。</li>
+</ul>
+<blockquote>
+<p><strong>FDE 的经验</strong>:清洗规则本身是"业务知识"——比如"这个字段为 0 表示未填,不是真的 0"。这些知识要从客户业务人员那里挖出来,沉淀成规则。</p>
+</blockquote>
+<h2 id="四-特征工程-把数据变成模型可用的特征">四、特征工程:把数据变成模型可用的特征</h2>
+<p><strong>特征工程是 ML 的核心环节(风控、推荐等场景)。</strong></p>
+<p><strong>特征类型</strong></p>
+<ul>
+<li>统计特征:均值、方差、计数、比率;</li>
+<li>时序特征:滞后值、滑动窗口、趋势;</li>
+<li>频域特征:对振动/声音信号做 FFT;</li>
+<li>交叉特征:字段组合;</li>
+<li>嵌入特征:用模型把类别/文本转向量。</li>
+</ul>
+<p><strong>特征平台(Feature Store)</strong></p>
+<ul>
+<li>统一管理特征定义、计算、服务;</li>
+<li>保证训练与推理特征一致(避免 training-serving skew);</li>
+<li>工具:Feast、Tecton、自建。</li>
+</ul>
+<p><strong>特征工程的工程化</strong></p>
+<ul>
+<li>特征版本化;</li>
+<li>特征血缘(这个特征怎么算的);</li>
+<li>特征监控(分布漂移)。</li>
+</ul>
+<h2 id="五-数据质量监控-让数据-可信">五、数据质量监控:让数据"可信"</h2>
+<p><strong>数据质量是 AI 的生命线——垃圾进,垃圾出。</strong></p>
+<p><strong>数据质量维度</strong></p>
+<ul>
+<li>完整性:该有的有没有;</li>
+<li>准确性:对不对;</li>
+<li>一致性:多源是否一致;</li>
+<li>时效性:新不新;</li>
+<li>唯一性:有没有重复;</li>
+<li>合规性:敏感数据处理对不对。</li>
+</ul>
+<p><strong>监控工具</strong></p>
+<ul>
+<li>Great Expectations:声明式数据质量断言;</li>
+<li>Soda:数据质量监控;</li>
+<li>Deequ(AWS):大规模数据质量。</li>
+</ul>
+<p><strong>监控实践</strong></p>
+<ul>
+<li>数据管道每步加质量检查;</li>
+<li>不达标阻断/告警;</li>
+<li>质量看板(可视化数据健康度)。</li>
+</ul>
+<blockquote>
+<p><strong>可照抄(Great Expectations 质量检查)</strong>:</p>
+<p>```python
+import great_expectations as gx
+df = ...  # 客户数据</p>
+<h1 id="95-0100">期望:某字段非空率 &gt; 95%,值在 [0,100]</h1>
+<h1 id="_1">不达标 → 告警/阻断下游</h1>
+<p>```</p>
+</blockquote>
+<h2 id="六-增量同步-百万级数据不能全量重建">六、增量同步:百万级数据不能全量重建</h2>
+<p><strong>全量重建对百万级数据不可行,必须增量。</strong></p>
+<p><strong>增量策略</strong></p>
+<ul>
+<li>基于 CDC(binlog 变更);</li>
+<li>基于时间戳(updated_at);</li>
+<li>基于版本号;</li>
+<li>基于哈希对比。</li>
+</ul>
+<p><strong>增量到向量库(RAG)</strong></p>
+<ul>
+<li>文档变更 → 重新切分/嵌入 → 更新对应向量;</li>
+<li>用文档哈希判断变更;</li>
+<li>删除/修改/新增分别处理;</li>
+<li>不能全量重建(太慢太贵)。</li>
+</ul>
+<h2 id="七-数据治理-分级-血缘与合规">七、数据治理:分级、血缘与合规</h2>
+<p><strong>数据治理是 FDE 在强监管行业的必修课。</strong></p>
+<p><strong>数据分级分类</strong></p>
+<ul>
+<li>按敏感度(公开/内部/敏感/机密);</li>
+<li>决定存储/传输/访问/脱敏方式。</li>
+</ul>
+<p><strong>数据血缘(Data Lineage)</strong></p>
+<ul>
+<li>记录数据"从哪来、经过什么处理、到哪去";</li>
+<li>用于影响分析、问题追溯、合规审计;</li>
+<li>工具:Apache Atlas、OpenLineage、自建。</li>
+</ul>
+<p><strong>合规</strong></p>
+<ul>
+<li>个保法/数安法/等保;</li>
+<li>敏感数据脱敏;</li>
+<li>数据不出域;</li>
+<li>访问审计。</li>
+</ul>
+<h2 id="八-数据工具栈-2026-生产级">八、数据工具栈(2026 生产级)</h2>
+<p><strong>批处理</strong>:Spark、Dask、Pandas;
+<strong>流处理</strong>:Flink、Kafka、Debezium;
+<strong>编排</strong>:Temporal、Prefect、Airflow;
+<strong>转换</strong>:dbt(SQL 转换);
+<strong>特征</strong>:Feast、Tecton;
+<strong>质量</strong>:Great Expectations、Soda;
+<strong>血缘</strong>:Apache Atlas、OpenLineage;
+<strong>向量库</strong>:Milvus、Qdrant;
+<strong>时序</strong>:InfluxDB、TDengine。</p>
+<blockquote>
+<p><strong>Stord FDE JD 明确要求 Temporal/Prefect/Airflow 经验</strong>——这印证数据编排是 FDE 核心技能。</p>
+</blockquote>
+<h2 id="九-客户现场的数据工程真实挑战">九、客户现场的数据工程真实挑战</h2>
+<p><strong>挑战一:源系统没接口</strong></p>
+<ul>
+<li>老旧 ERP/MES 只有数据库或导出文件;</li>
+<li>FDE 要写各种适配器"抠"数据。</li>
+</ul>
+<p><strong>挑战二:口径不一致</strong></p>
+<ul>
+<li>同一个"客户数",销售/财务/运营各算各的;</li>
+<li>FDE 要拉通对齐口径(这往往涉及政治)。</li>
+</ul>
+<p><strong>挑战三:数据所有权</strong></p>
+<ul>
+<li>数据分散在不同部门,谁都不愿给;</li>
+<li>FDE 要协调(这考验软技能)。</li>
+</ul>
+<p><strong>挑战四:数据质量超预期地差</strong></p>
+<ul>
+<li>demo 时数据漂亮,真实数据一塌糊涂;</li>
+<li>FDE 要边清洗边推进。</li>
+</ul>
+<p><strong>挑战五:实时性 vs 成本</strong></p>
+<ul>
+<li>客户要实时,但实时管道成本高;</li>
+<li>FDE 要权衡(准实时可能够)。</li>
+</ul>
+<h2 id="十-数据工程的-FDE-价值">十、数据工程的 FDE 价值</h2>
+<p><strong>为什么 FDE 必须懂数据工程</strong></p>
+<ul>
+<li>数据是 AI 的地基,地基不行 AI 白搭;</li>
+<li>数据工程占 70% 工作量,不懂就被困住;</li>
+<li>数据工程的"业务知识"(口径、规则)正是 FDE 的差异化;</li>
+<li>客户买的是"跑通的系统",而系统跑通的前提是数据通。</li>
+</ul>
+<blockquote>
+<p><strong>判断</strong>:一个不懂模型但精通数据工程的 FDE,在现场比一个精通模型但不懂数据的 FDE 更有用。这是反直觉但真实的。</p>
+</blockquote>
+<h2 id="本专题小结">本专题小结</h2>
+<ul>
+<li>数据工程占企业 AI 70% 工作量,客户的真实数据是烂泥潭;</li>
+<li>接入:批(Spark)/流(Flink+CDC)/多源,增量同步是关键;</li>
+<li>清洗:缺失/重复/格式/异常/编码,规则可配置+可追溯+幂等;</li>
+<li>特征工程:统计/时序/频域/交叉/嵌入,特征平台防 training-serving skew;</li>
+<li>质量监控:完整性/准确性/一致性/时效性,GX/Soda 每步检查;</li>
+<li>增量:CDC/时间戳/哈希,RAG 向量增量更新;</li>
+<li>治理:分级/血缘/合规,Atlas/OpenLineage;</li>
+<li>工具栈:Spark/Flink/Temporal/dbt/Feast/GX/Milvus;</li>
+<li>现场挑战:无接口/口径不一/所有权/质量差/实时成本;</li>
+<li>FDE 懂数据工程比懂模型更实用。</li>
+</ul>
+<blockquote>
+<p><strong>本专题来源</strong>:Spark/Flink/dbt/Great Expectations/Temporal 文档、Stord FDE JD、用户库《FDE工程化工具链》《fde-delivery 30-engineer/120-deployment-runbook》、本书<a href="ch09.html">第 9 章</a>。</p>
+</blockquote></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="topic05">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#一-为什么数据工程占-70">一、为什么数据工程占 70%</a></li><li class="lv2"><a href="#二-数据接入-批-流-多源">二、数据接入:批、流、多源</a></li><li class="lv2"><a href="#三-数据清洗-脏数据处理实战">三、数据清洗:脏数据处理实战</a></li><li class="lv2"><a href="#四-特征工程-把数据变成模型可用的特征">四、特征工程:把数据变成模型可用的特征</a></li><li class="lv2"><a href="#五-数据质量监控-让数据-可信">五、数据质量监控:让数据&quot;可信&quot;</a></li><li class="lv2"><a href="#六-增量同步-百万级数据不能全量重建">六、增量同步:百万级数据不能全量重建</a></li><li class="lv2"><a href="#七-数据治理-分级-血缘与合规">七、数据治理:分级、血缘与合规</a></li><li class="lv2"><a href="#八-数据工具栈-2026-生产级">八、数据工具栈(2026 生产级)</a></li><li class="lv2"><a href="#九-客户现场的数据工程真实挑战">九、客户现场的数据工程真实挑战</a></li><li class="lv2"><a href="#十-数据工程的-FDE-价值">十、数据工程的 FDE 价值</a></li><li class="lv2"><a href="#本专题小结">本专题小结</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

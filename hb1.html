@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第一章：前向部署工程师（FDE）的角色与使命 · FDE 学习中心</title>
+<meta name="description" content="在当今的软件工程领域，“软件工程师”这一头衔涵盖了极其广泛的细分学科。有些工程师在企业总部致力于优化编译器性能，而另一些则专注于设计精美的前端界面或扩展高并发的分布式数据库。然而，在企业级级应用——特别是在企业数据中台和应用型人工智能（Ap">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup open"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a class="on" href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#0d9488">Handbook</a></div>
+<article class="doc">
+  <h1 class="doc-title">第一章：前向部署工程师（FDE）的角色与使命</h1>
+  <div class="doc-meta"><span style="color:#0d9488">Handbook</span><span class="sep">·</span><span>约 2,216 字</span><span class="sep">·</span><span>阅读约 6 分钟</span></div>
+  <div class="origin">来源：FDE-Handbook 中文版（github.com/goday-org，CC BY-NC-SA 4.0）</div>
+  <div class="prose" id="prose"><p>在当今的软件工程领域，“软件工程师”这一头衔涵盖了极其广泛的细分学科。有些工程师在企业总部致力于优化编译器性能，而另一些则专注于设计精美的前端界面或扩展高并发的分布式数据库。然而，在企业级级应用——特别是在企业数据中台和应用型人工智能（Applied AI）蓬勃发展的时代，标准化的软件产品与客户现场杂乱、陈旧且复杂的 IT 现实环境之间存在着一道巨大的鸿沟。</p>
+<p>这道鸿沟，正是<strong>前向部署工程师（Forward Deployed Engineer，简称 FDE）</strong>大展拳脚的舞台。</p>
+<p>前向部署工程师这一角色最早由 Palantir 等硅谷顶级科技企业推广开来，是一种为了连接“核心产品研发”与“客户业务落地”而精心设计的技术专家角色。FDE 的使命绝非在无菌的实验室中闭门造车，而是直接深入客户现场（或接入其高度受控的私有云端），负责核心软件平台在客户复杂环境下的部署、集成、定制，并切实证明系统的商业价值。</p>
+<p>本章将详细剖析 FDE 的独特角色定位，探讨核心产品（Dev）与客户定制化集成（Delta）之间的架构边界，并系统介绍前向部署工程的完整生命周期阶段。</p>
+<hr />
+<h2 id="1-FDE-角色定位">1. FDE 角色定位</h2>
+<p>FDE 是一个跨学科的混合体：他们既是资深系统研发工程师，又是高阶解决方案架构师，同时还扮演着管理咨询顾问的角色。他们被派驻到客户一线，面对企业级最严苛的工程挑战：如何将标准化的核心产品平台与客户碎片化、低质量且高度敏感的安全数据架构无缝对接。</p>
+<p>为了更清晰地理解 FDE，我们可以将其与另外三个常见的技术角色进行横向比对：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">前向部署工程师 (FDE)</th>
+<th style="text-align: left;">软件开发工程师 (SWE)</th>
+<th style="text-align: left;">解决方案架构师 (SA)</th>
+<th style="text-align: left;">技术咨询顾问 (Consultant)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>主要工作地点</strong></td>
+<td style="text-align: left;">客户现场 / 混合办公</td>
+<td style="text-align: left;">公司总部</td>
+<td style="text-align: left;">客户对接 / 远程</td>
+<td style="text-align: left;">客户现场</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>代码所有权</strong></td>
+<td style="text-align: left;">客户定制集成 (Delta) &amp; 核心产品</td>
+<td style="text-align: left;">核心产品代码库</td>
+<td style="text-align: left;">高层架构设计 (不写代码)</td>
+<td style="text-align: left;">系统胶水代码</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>关注点深度</strong></td>
+<td style="text-align: left;">极深 (全栈数据与系统级调试)</td>
+<td style="text-align: left;">深 (聚焦核心产品功能)</td>
+<td style="text-align: left;">广 (多产品线与方案)</td>
+<td style="text-align: left;">视项目而定 (通常偏通用)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>核心衡量指标</strong></td>
+<td style="text-align: left;">生产环境上线与商业价值释放</td>
+<td style="text-align: left;">代码质量、系统扩展性</td>
+<td style="text-align: left;">架构设计方案签署率</td>
+<td style="text-align: left;">项目计费工时</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="FDE-核心技能矩阵">FDE 核心技能矩阵</h3>
+<p>在复杂的客户现场环境中，一名合格的 FDE 必须具备以下三大核心能力：
+1. <strong>全栈系统工程能力</strong>：FDE 必须熟练驾驭主流云平台（如 GCP/AWS）、Kubernetes 容器编排、Spark/Ray 分布式计算计算、数据库底层原理、以及各类大模型 API。
+2. <strong>业务领域快速适应力</strong>：周一，FDE 可能在某家顶级投资银行审计交易底账；到了周四，他们可能已经身处某家大型制造工厂优化供应链 IoT 轨迹数据。他们必须在数天内吃透全新的业务场景。
+3. <strong>高情商外交能力</strong>：在客户现场，FDE 经常需要面对不配合甚至充满敌意的干系人。例如，认为自动化系统会抢走自己饭碗的 DBA 团队，或者对一切集成申请习惯性给予否定答复的安全合规官。</p>
+<hr />
+<h2 id="2-产品研发-Dev-vs-客户集成-Delta-架构模型">2. “产品研发 (Dev) vs. 客户集成 (Delta)”架构模型</h2>
+<p>对于任何以 FDE 为核心交付模式的软件企业而言，最关键的架构决策莫过于在代码层面划定明确的界限：即<strong>核心产品平台（Dev）</strong>与<strong>客户定制集成（Delta）</strong>的完全解耦。</p>
+<p>如果没有这个清晰的边界，企业级软件服务商将不可避免地跌入“定制化外包的泥潭”——为每个客户拉取独立的分支（Fork），导致系统升级成为不可能完成的任务，最终彻底拖垮软件的边际利润率。</p>
+<p><svg viewBox="0 0 700 250" width="100%" height="auto" style="background-color: #fafafa; border: 1px solid #e1e1e8; border-radius: 4px; margin: 20px 0; display: block;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+    </marker>
+  </defs>
+  <!-- Dev (Core Product Platform) --></p>
+<p><rect x="50" y="50" width="220" height="150" fill="#f4f4f6" stroke="#333" stroke-width="2" rx="8" />
+  <text x="160" y="35" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#111">DEV (核心产品平台)</text>
+  <rect x="70" y="70" width="180" height="40" fill="#fff" stroke="#666" rx="4" />
+  <text x="160" y="95" text-anchor="middle" font-family="monospace" font-size="11">标准 API / 通用 Schema</text>
+  <rect x="70" y="130" width="180" height="40" fill="#fff" stroke="#666" rx="4" />
+  <text x="160" y="155" text-anchor="middle" font-family="monospace" font-size="11">核心计算引擎算子</text></p>
+<!-- Link Arrow -->
+<p><line x1="270" y1="125" x2="420" y2="125" stroke="#333" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4" />
+  <text x="345" y="115" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#666">Delta 集成层</text></p>
+<!-- Delta (Client-specific Integration) -->
+<p><rect x="430" y="50" width="220" height="150" fill="#e8f0fe" stroke="#1a73e8" stroke-width="2" rx="8" />
+  <text x="540" y="35" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13" fill="#1a73e8">DELTA (客户定制集成)</text>
+  <rect x="450" y="70" width="180" height="40" fill="#fff" stroke="#1a73e8" rx="4" />
+  <text x="540" y="95" text-anchor="middle" font-family="monospace" font-size="11">遗留系统接口适配器</text>
+  <rect x="450" y="130" width="180" height="40" fill="#fff" stroke="#1a73e8" rx="4" />
+  <text x="540" y="155" text-anchor="middle" font-family="monospace" font-size="11">客户专属安全访问控制</text>
+</svg></p>
+<h3 id="1-核心产品平台-Dev">1. 核心产品平台（Dev）</h3>
+<p>Dev 层是由公司总部研发团队维护的核心产品。它被设计为高度抽象、行业无关且高度可配置的。它包含核心计算算法、管理控制台、通用权限模型以及标准数据格式。
+* <strong>基本原则</strong>：Dev 层代码库中<strong>绝对不能</strong>包含任何客户特有的字段名、硬编码的表结构或针对特定单一客户的打通逻辑。如果有新需求，必须将其抽象设计为通用的配置项，通过 Feature Flags 动态控制。</p>
+<h3 id="2-客户定制集成-Delta">2. 客户定制集成（Delta）</h3>
+<p>Delta 层是由派驻现场的 FDE 针对特定客户编写的定制化集成代码。它主要包含：
+* 数据清洗与转换管道（如 dbt 脚本），负责将客户遗留数据库的表结构映射到 Dev 的标准 Schema 中。
+* 客户专属的安全网关插件（如对接客户特有的身份认证源 Active Directory）。
+* 与客户旧有核心主机系统（Mainframe）进行通信的 API 转换逻辑。
+* 结合客户具体业务规范（SOP）定制的智能 Agent 决策链。</p>
+<h3 id="反馈机制-将-Delta-沉淀为-Dev">反馈机制：将 Delta 沉淀为 Dev</h3>
+<p>FDE 是总部研发团队最重要的眼睛和耳朵。当 FDE 发现自己在三个不同的项目中重复编写某种类似的“Delta”适配器时，这意味着核心产品存在功能缺失。FDE 会与产品经理沟通，推动将这些公共功能提炼并重构进 Dev 层中，转化为核心产品的标准原生功能。</p>
+<hr />
+<h2 id="3-FDE-现场交付生命周期">3. FDE 现场交付生命周期</h2>
+<p>一次成功的 FDE 项目交付遵循严谨的、阶段性的生命周期流程，引导客户系统从混乱无序走向稳健运行并顺利移交：</p>
+<p><svg viewBox="0 0 750 180" width="100%" height="auto" style="background-color: #fafafa; border: 1px solid #e1e1e8; border-radius: 4px; margin: 20px 0; display: block;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+    </marker>
+  </defs></p>
+<!-- Phase 1 -->
+<p><rect x="20" y="40" width="120" height="80" fill="#fff" stroke="#333" stroke-width="1.5" rx="5" />
+  <text x="80" y="70" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12">1. 需求技术调研</text>
+  <text x="80" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">审计数据与网络</text>
+  <text x="80" y="105" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">定义 MVV 范围</text></p>
+<!-- Arrow 1-2 -->
+<p><line x1="140" y1="80" x2="170" y2="80" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)" /></p>
+<!-- Phase 2 -->
+<p><rect x="170" y="40" width="120" height="80" fill="#fff" stroke="#333" stroke-width="1.5" rx="5" />
+  <text x="230" y="70" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12">2. 着陆区准备</text>
+  <text x="230" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">VPC SC 与权限</text>
+  <text x="230" y="105" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">IaC 自动化配置</text></p>
+<!-- Arrow 2-3 -->
+<p><line x1="290" y1="80" x2="320" y2="80" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)" /></p>
+<!-- Phase 3 -->
+<p><rect x="320" y="40" width="120" height="80" fill="#fff" stroke="#333" stroke-width="1.5" rx="5" />
+  <text x="380" y="70" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12">3. 数据与集成</text>
+  <text x="380" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">编写 Delta 适配器</text>
+  <text x="380" y="105" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">构建数据流管道</text></p>
+<!-- Arrow 3-4 -->
+<p><line x1="440" y1="80" x2="470" y2="80" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)" /></p>
+<!-- Phase 4 -->
+<p><rect x="470" y="40" width="120" height="80" fill="#fff" stroke="#333" stroke-width="1.5" rx="5" />
+  <text x="530" y="70" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12">4. 系统评估</text>
+  <text x="530" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">AutoSxS 自动评测</text>
+  <text x="530" y="105" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">用户试用校验</text></p>
+<!-- Arrow 4-5 -->
+<p><line x1="590" y1="80" x2="620" y2="80" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)" /></p>
+<!-- Phase 5 -->
+<p><rect x="620" y="40" width="110" height="80" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5" rx="5" />
+  <text x="675" y="70" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#2e7d32">5. 运维移交</text>
+  <text x="675" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#2e7d32">SRE 应急预案</text>
+  <text x="675" y="105" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#2e7d32">系统控制权交接</text>
+</svg></p>
+<h3 id="第一阶段-需求与技术调研-Discovery">第一阶段：需求与技术调研（Discovery）</h3>
+<p>在编写任何代码之前，FDE 必须对客户的数据和 IT 环境进行深入审计。在此阶段，FDE 获取源系统的只读访问权限，剖析表结构及潜在的数据质量缺陷。最关键的任务是协调干系人达成一致，定义出<strong>最小可行价值（MVV）</strong>——即用最小的集成范围，撬动立竿见影的业务实用性。</p>
+<h3 id="第二阶段-安全着陆区准备-Landing-Zone">第二阶段：安全着陆区准备（Landing Zone）</h3>
+<p>在这一阶段，FDE 负责搭建并加固系统运行的云端基础设施。FDE 需要与客户的网络运维（NetOps）和安全运维（SecOps）团队通力协作，配置 Shared VPC 网络、部署私有 Kubernetes（GKE）集群，并配置 VPC SC 安全边界以防范敏感数据外泄。所有资源均用 Terraform 实现代码化管理。</p>
+<h3 id="第三阶段-数据清洗与-Delta-集成">第三阶段：数据清洗与 Delta 集成</h3>
+<p>安全底座就绪后，FDE 开始构建 Delta 集成层。他们使用 dbt 构建自动化清洗与去重的数据流水线，配置 Workload Identity 消除明文密钥文件，并为对接客户内部 legacy 系统接口开发定制化的 Agent 工具集。</p>
+<h3 id="第四阶段-大模型与系统评估-Evaluation">第四阶段：大模型与系统评估（Evaluation）</h3>
+<p>一旦系统调通，必须进行科学严谨的评估。FDE 使用 Vertex AI 的 AutoSxS 等自动评估流水线，对大模型 Agent 的生成质量、忠实度等指标进行千级别的数据集跑分测试。同时引导业务代表开始系统试用，在真实场景中检验运行表现。</p>
+<h3 id="第五阶段-运维移交-Handover">第五阶段：运维移交（Handover）</h3>
+<p>最后一个阶段是系统移交。FDE 不可能永久驻留在某一个客户现场。他们必须完成代码打包归档，编写详尽的 SRE 应急维护预案（Runbooks），配置完善的 Grafana 监控大屏及延迟费用告警阈值，并培训客户的 IT 人员接管系统的日常运维。</p>
+<hr />
+<h2 id="本章小结">本章小结</h2>
+<p>前向部署工程师是现代软件工程向复杂企业落地演进的桥梁。通过高超的技术能力和坚韧的外交策略，FDE 能将客户杂乱的局域网环境打磨成坚固的生产运行底座。通过在系统架构上死守 Dev 与 Delta 的边界，FDE 既保护了软件公司的核心利润率，又通过高质量的定制打通，为客户释放了巨大的商业价值。</p></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="hb1">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#1-FDE-角色定位">1. FDE 角色定位</a></li><li class="lv3"><a href="#FDE-核心技能矩阵">FDE 核心技能矩阵</a></li><li class="lv2"><a href="#2-产品研发-Dev-vs-客户集成-Delta-架构模型">2. “产品研发 (Dev) vs. 客户集成 (Delta)”架构模型</a></li><li class="lv3"><a href="#1-核心产品平台-Dev">1. 核心产品平台（Dev）</a></li><li class="lv3"><a href="#2-客户定制集成-Delta">2. 客户定制集成（Delta）</a></li><li class="lv3"><a href="#反馈机制-将-Delta-沉淀为-Dev">反馈机制：将 Delta 沉淀为 Dev</a></li><li class="lv2"><a href="#3-FDE-现场交付生命周期">3. FDE 现场交付生命周期</a></li><li class="lv3"><a href="#第一阶段-需求与技术调研-Discovery">第一阶段：需求与技术调研（Discovery）</a></li><li class="lv3"><a href="#第二阶段-安全着陆区准备-Landing-Zone">第二阶段：安全着陆区准备（Landing Zone）</a></li><li class="lv3"><a href="#第三阶段-数据清洗与-Delta-集成">第三阶段：数据清洗与 Delta 集成</a></li><li class="lv3"><a href="#第四阶段-大模型与系统评估-Evaluation">第四阶段：大模型与系统评估（Evaluation）</a></li><li class="lv3"><a href="#第五阶段-运维移交-Handover">第五阶段：运维移交（Handover）</a></li><li class="lv2"><a href="#本章小结">本章小结</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

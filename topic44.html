@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>深度专题四十四 AI 项目的招投标与售前 · FDE 学习中心</title>
+<meta name="description" content="本专题写给在政企 AI 项目里&quot;陪着招投标走完全程&quot;的 FDE/FDSE。它不是投标经理的培训手册,而是把 FDE 在售前阶段的真实动作——技术方案撰写、可行性论证、PoC …">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#2563eb">FDE-Wiki</a></div>
+<article class="doc">
+  <h1 class="doc-title">深度专题四十四 AI 项目的招投标与售前</h1>
+  <div class="doc-meta"><span style="color:#2563eb">FDE-Wiki</span><span class="sep">·</span><span>约 7,354 字</span><span class="sep">·</span><span>阅读约 18 分钟</span></div>
+  
+  <div class="prose" id="prose"><blockquote>
+<p>本专题写给在政企 AI 项目里"陪着招投标走完全程"的 FDE/FDSE。它不是投标经理的培训手册,而是把 FDE 在售前阶段的真实动作——技术方案撰写、可行性论证、PoC 设计、评标得分提升、售前与交付的衔接——拆到可执行的颗粒度。所有模板、字段、案例都来自真实交付,可直接套用。核心立场:<strong>售前 FDE 不是"陪标的工程师",而是"决定这一单能不能拿、拿了能不能交付"的胜负手。</strong></p>
+</blockquote>
+<h2 id="一-FDE-在售前-招投标里的真实位置">一、FDE 在售前/招投标里的真实位置</h2>
+<p>很多人对 FDE 的刻板印象是"客户现场的工程兵",但在中国政企市场,一个 FDE 总工时的 <strong>30%–40%</strong> 消耗在售前阶段(免费 PoC、方案评审、标书撰写、答辩),这个比例远高于海外(海外 FDE 售前工时通常 &lt; 15%)。原因很简单:中国政企的决策链是 <strong>业务处室 → 信息中心 → 大数据局 → 分管领导 → 招投标 → 总集成商中标 → 分包到 ISV → FDE 进场</strong>,从首次接触到签约平均 <strong>6–12 个月</strong>,大型央国企 <strong>12–18 个月</strong>。在这条长链上,FDE 是唯一一个既懂技术、又能进客户现场、还懂业务的人,售前阶段几乎绕不开。</p>
+<p>FDE 在招投标里承担四件事,缺一件就丢分:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>售前动作</th>
+<th>产出物</th>
+<th>对中标的影响</th>
+<th>不是 FDE 干会怎样</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>技术方案书撰写</td>
+<td>标书技术分册(60–100 页)</td>
+<td>直接占技术分 40–60 分</td>
+<td>销售写的方案空洞、对不上需求,技术分垫底</td>
+</tr>
+<tr>
+<td>可行性论证</td>
+<td>技术可行性报告 + ROI 测算</td>
+<td>决定评委敢不敢投你</td>
+<td>客户质疑"是不是画饼",商务分也跟着塌</td>
+</tr>
+<tr>
+<td>PoC 设计与执行</td>
+<td>PoC 演示 + 指标对比报告</td>
+<td>大单(500 万+)的入场券</td>
+<td>没做 PoC 直接投标,技术分被做过 PoC 的对手碾压</td>
+</tr>
+<tr>
+<td>报价支撑</td>
+<td>工作量分解(WBS)、人天/算力/许可拆分</td>
+<td>让报价有依据、不被判低价恶意竞争</td>
+<td>报价被质疑"低于成本",废标</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>一句话:FDE 在招投标里是<strong>技术方案的真值来源</strong>。销售负责关系和商务,FDE 负责让评委相信"这家能干出来"。这俩活儿都干不好,标就是废的。</p>
+</blockquote>
+<h2 id="二-中国政企招投标流程-FDE-必须背熟的五个环节">二、中国政企招投标流程:FDE 必须背熟的五个环节</h2>
+<p>很多 FDE 以为招投标就是"看到标书就投标",这是对流程的致命误解。中国政企的招投标是<strong>强流程、强合规</strong>的游戏,任何一个环节踩雷都直接废标。FDE 要在客户关系早期就理解整条链:</p>
+<h3 id="2-1-需求立项-招标前-6-12-个月">2.1 需求立项(招标前 6–12 个月)</h3>
+<p>客户业务部门提出需求,信息中心立项,走预算。FDE 在这个阶段就该进场——通过免费的技术交流、行业分享,把客户的<strong>需求规格</strong>往自己有优势的方向引。一个关键的灰色技巧是"参数引导":在客户写技术参数时,把自己产品的独特能力(如某种特定场景的精度、某种私有化部署能力)写进技术参数,后面对手达不到参数就被废标。这是合法的(只要参数不是为单一供应商量身定制的歧视性条款),但需要在《政府采购需求管理办法》框架内操作。</p>
+<h3 id="2-2-标书编制-招标前-1-2-个月">2.2 标书编制(招标前 1–2 个月)</h3>
+<p>客户(或委托的招标代理)编制招标文件,含<strong>技术参数、商务要求、评分细则、合同草案</strong>。FDE 必须在公告前拿到标书草稿(合规前提下,通过客户主动征求意见)做"投标可行性预审",核心看三件事:<strong>是否有歧视性条款(指向单一供应商)、评分细则是否对自己有利、技术参数自己能否完全满足</strong>。看到对己不利的条款,这时还能反馈;公告一出就不能改了。</p>
+<h3 id="2-3-公告与投标-招标公告后-20-30-天">2.3 公告与投标(招标公告后 20–30 天)</h3>
+<p>《招标投标法实施条例》规定,依法必须招标的项目,自招标文件开始发出之日起至投标人提交投标文件截止之日止,<strong>最短不少于 20 日</strong>。这 20–30 天就是 FDE 真正写标书的窗口。一个千万级 AI 项目的技术标通常 80–150 页,FDE 是主笔,需要拉着算法、平台、交付、安全几个方向的人一起写,自己总稿。</p>
+<h3 id="2-4-开标与评标-投标截止当日或次日">2.4 开标与评标(投标截止当日或次日)</h3>
+<p>评标委员会由招标人代表和从专家库随机抽取的专家组成,<strong>5 人以上单数</strong>,技术经济专家不少于成员总数的 2/3。FDE 通常不进评标室,但要做两件事:<strong>一是写"澄清答复预案"</strong>(评委一定会问的 5–10 个问题及标准答案),<strong>二是准备现场答辩 PPT</strong>(很多项目有述标环节,15–30 分钟,常常是 FDE 上台)。评标方法下面单讲。</p>
+<h3 id="2-5-中标与签约-评标后-3-15-天">2.5 中标与签约(评标后 3–15 天)</h3>
+<p>中标候选人公示 3 天,无异议后发中标通知书,30 天内签合同。FDE 在这个阶段要做<strong>售前交付交接</strong>:把售前承诺的所有指标、架构、工期、风险,无遗漏地传给交付团队。这一步做不好,就是经典的"售前吹牛、交付背锅",后面专门讲。</p>
+<blockquote>
+<p>流程红线:FDE 不要碰三类合规雷区——<strong>串通投标</strong>(与客户/对手私下串标价、串方案)、<strong>商业贿赂</strong>(给评委/采购人员任何形式的好处)、<strong>资质造假</strong>(业绩、人员、证书造假)。这三条任一踩中,轻则废标+列入政采黑名单(1–3 年禁入),重则刑事追诉。FDE 是技术角色,不碰商务灰产,这是底线。</p>
+</blockquote>
+<h2 id="三-评标视角-综合评分法与最低评标价法">三、评标视角:综合评分法与最低评标价法</h2>
+<p>中国政府采购(《政府采购法》及财政部令第 87 号《政府采购货物和服务招标投标管理办法》)规定,评标方法只有两种:<strong>最低评标价法</strong>与<strong>综合评分法</strong>。AI 项目因为是技术复杂、定制化重的服务类项目,<strong>95% 以上用综合评分法</strong>;最低评标价法只适用于技术标准统一的通用货物(如标准服务器、办公电脑),AI 项目几乎用不上。</p>
+<h3 id="3-1-综合评分法的分值结构">3.1 综合评分法的分值结构</h3>
+<p>总分 <strong>100 分</strong>,典型拆分(以一个千万级政务大模型项目为例):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>分项</th>
+<th>权重</th>
+<th>评分点</th>
+<th>FDE 主战场</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>价格分</td>
+<td>10%–30%(服务项目不低于 10%)</td>
+<td>低价优先:基准价/投标价 × 价格分值</td>
+<td>FDE 不直接控价,但提供工作量依据</td>
+</tr>
+<tr>
+<td>技术分</td>
+<td>40%–60%</td>
+<td>技术方案、架构、技术路线、PoC 结果、创新性</td>
+<td><strong>FDE 的主战场,直接决定胜负</strong></td>
+</tr>
+<tr>
+<td>商务分</td>
+<td>15%–25%</td>
+<td>企业资质、同类业绩、团队、认证</td>
+<td>FDE 提供项目案例与团队简历</td>
+</tr>
+<tr>
+<td>服务分</td>
+<td>10%–20%</td>
+<td>售后方案、培训、SLA、本地化服务能力</td>
+<td>FDE 设计 SLA 与培训方案</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>关键事实:财政部令第 87 号第 55 条明确,<strong>货物项目价格分值占总分值比重不得低于 30%,服务项目不得低于 10%</strong>。AI 是服务类,价格分通常 10%–20%,这意味着技术分(40–60 分)是真正的胜负手。FDE 把技术分从 35 分提到 50 分,价格上让对手 10 分都赢。</p>
+</blockquote>
+<h3 id="3-2-价格分的计算-低价优先-不是越低越好">3.2 价格分的计算:低价优先,不是越低越好</h3>
+<p>价格分用统一公式计算,最常见的是"基准价法":<strong>所有有效投标报价的算术平均(或最低价)作为基准价,投标价等于基准价得满分,偏离基准价按比例扣分</strong>。这意味着报价太低不仅不加分,还会触发**"低于成本价"质疑**——评标委员会可要求投标人书面证明报价不低于成本,证明不了就废标。FDE 在这里的价值是给销售一个<strong>有依据的工作量分解</strong>,让报价既不偏离基准价太远,又能在被质疑时拿出成本佐证。</p>
+<h3 id="3-3-技术分的常见评分维度与-FDE-对策">3.3 技术分的常见评分维度与 FDE 对策</h3>
+<p>技术分通常拆成 4–6 个子项,FDE 要逐项吃透评分点,做到"每个评分点都有明确响应":</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>评分维度</th>
+<th>典型分值</th>
+<th>评委看什么</th>
+<th>FDE 怎么拿分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需求理解</td>
+<td>5–10 分</td>
+<td>是否准确抓到客户痛点,有无遗漏</td>
+<td>用客户原话回写需求,逐条对应,配业务流程图</td>
+</tr>
+<tr>
+<td>总体架构</td>
+<td>10–15 分</td>
+<td>架构是否合理、先进、可落地</td>
+<td>上架构图(业务/应用/数据/基础设施分层),标注技术选型理由</td>
+</tr>
+<tr>
+<td>技术路线</td>
+<td>10–15 分</td>
+<td>算法/模型选型是否适配,有无创新点</td>
+<td>对比 2–3 种路线,给出选型矩阵,讲清为何选这个</td>
+</tr>
+<tr>
+<td>实施方案</td>
+<td>8–12 分</td>
+<td>工期是否合理、方法论是否成熟</td>
+<td>给甘特图、里程碑、风险管理表、质量保障措施</td>
+</tr>
+<tr>
+<td>PoC/创新</td>
+<td>5–10 分</td>
+<td>有无实证、有无差异化亮点</td>
+<td>PoC 指标对比、客户场景的真实验证结果</td>
+</tr>
+<tr>
+<td>安全合规</td>
+<td>5–10 分</td>
+<td>等保、数据安全、信创适配</td>
+<td>等保 2.0 测评、数据分级分类方案、昇腾/信创适配证明</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>FDE 的得分秘诀不是"写得长",而是"对得上评分点"。评委在 2–3 天内评几十本标书,每本平均看 1–2 小时,<strong>评分点的每一句问询,必须在标书里有"评分点原话 → 响应内容 → 证据"的一一对应</strong>。响应漏一个点就丢一个点的分。</p>
+</blockquote>
+<h2 id="四-技术方案书的写法-八段式模板">四、技术方案书的写法:八段式模板</h2>
+<p>一个能赢标的技术方案书通常包含八个部分,FDE 按这个模板写,既覆盖评分点,又显得专业。下面是每个部分的写法要点和常见反模式。</p>
+<h3 id="4-1-需求理解-开篇-5-10-分">4.1 需求理解(开篇,5–10 分)</h3>
+<p>不要复述招标文件,要做"需求的二次解读"。结构:<strong>客户现状(2–3 个量化痛点)→ 业务目标(用客户战略语言表述)→ 技术目标(拆成可度量的指标)→ 本方案的核心价值主张(一句话)</strong>。每个痛点配一组数据(如"现有工单平均处理时长 4.5 小时,目标降至 1 小时内"),让评委一眼看到你懂业务。</p>
+<blockquote>
+<p>反模式:开篇就是"我公司具有 20 年经验……"。评委一秒翻过。需求理解段必须<strong>以客户为主语</strong>,不是以自己为主语。</p>
+</blockquote>
+<h3 id="4-2-总体架构-核心-10-15-分">4.2 总体架构(核心,10–15 分)</h3>
+<p>上分层架构图,标准做法是<strong>四层一张图</strong>:业务应用层(具体场景功能)→ AI 能力层(大模型/Agent/知识库/向量检索)→ 数据与平台层(数据治理、MLOps、模型仓库)→ 基础设施层(GPU 算力、存储、网络、信创适配)。每层标注关键技术选型、与现有系统的集成点、数据流向。配一张<strong>集成关系图</strong>说明与客户现有 OA/ERP/数据中台怎么对接。</p>
+<blockquote>
+<p>反模式:架构图照搬某个通用模板,与客户业务无关。评委会问"这个组件具体解决什么问题",答不上来直接扣分。</p>
+</blockquote>
+<h3 id="4-3-技术路线-决定技术分高低-10-15-分">4.3 技术路线(决定技术分高低,10–15 分)</h3>
+<p>这是 FDE 真正展现技术深度的部分。<strong>核心是"选型矩阵"</strong>:列出 2–3 种候选技术路线(如"通用大模型 + RAG" vs "领域微调大模型" vs "规则引擎 + 小模型"),从精度、成本、可维护性、合规、上线周期五个维度打分对比,给出选型理由。然后讲模型层(基座选型、微调策略)、数据层(数据治理、标注流程)、应用层(Agent 编排、工具调用)的具体做法。</p>
+<blockquote>
+<p>反模式:只写一条路线,没有对比。评委会认为你没思考过;或者写了对比但只说"我选的最好",理由空洞。</p>
+</blockquote>
+<h3 id="4-4-实施计划-8-12-分">4.4 实施计划(8–12 分)</h3>
+<p>上甘特图,拆成 5–7 个阶段:<strong>项目启动 → 需求调研 → 方案设计 → 开发与适配 → 测试与试运行 → 上线与培训 → 验收</strong>。每个阶段标注工期、交付物、责任人、关键里程碑。配一张<strong>风险管理表</strong>:列出技术风险、数据风险、合规风险、人员风险各 3–5 项,每项给出应对措施。AI 项目特别要写<strong>模型迭代计划</strong>(上线后每月/每季度的再训练、效果回归)。</p>
+<blockquote>
+<p>反模式:实施计划写得跟通用 IT 项目一样,没有 AI 特有的"数据准备""模型迭代""效果验收"环节。评委一眼看出不懂 AI。</p>
+</blockquote>
+<h3 id="4-5-团队配置-在商务或服务分里-5-10-分">4.5 团队配置(在商务或服务分里,5–10 分)</h3>
+<p>给出项目组组织架构图(项目经理、技术经理/FDE、算法工程师、数据工程师、平台工程师、测试、交付),每个核心角色配<strong>个人简历</strong>(姓名、学历、相关项目经验、认证)。AI 项目特别要突出<strong>算法和 FDE 角色</strong>的人数与资历,这是评委判断"能不能干出来"的关键。一个千万级项目至少配 1 个项目经理 + 1 个 FDE + 2–3 个算法 + 2 个平台 + 1 个数据。</p>
+<blockquote>
+<p>反模式:团队表只列岗位不列人,或者列的人资历明显不够(如算法工程师只写"本科应届")。评委会怀疑交付能力。</p>
+</blockquote>
+<h3 id="4-6-同类案例-商务分-5-10-分">4.6 同类案例(商务分,5–10 分)</h3>
+<p>列 3–5 个<strong>与本项目高度相似的案例</strong>:行业相同、规模相近、技术路线一致。每个案例给<strong>项目名称(脱敏)、客户行业、合同金额(可选)、建设内容、上线时间、效果数据</strong>。案例的相似度比数量重要——5 个无关案例不如 1 个一模一样的。</p>
+<blockquote>
+<p>反模式:把公司所有案例都堆上去,不管相不相关。评委会觉得你在凑数。</p>
+</blockquote>
+<h3 id="4-7-风险与质量保障-技术或服务分-5-10-分">4.7 风险与质量保障(技术或服务分,5–10 分)</h3>
+<p>技术风险(模型效果不达标、数据质量差、性能瓶颈)、项目风险(需求变更、人员流动、客户配合度)、合规风险(数据出境、个人信息保护)分三类,每类 3–5 项,每项写<strong>发生概率、影响程度、应对措施、责任人</strong>。配质量保障体系(代码评审、模型评测、UAT 测试、灰度上线)。</p>
+<blockquote>
+<p>反模式:只写"我们将加强风险管理",没有任何具体措施。这种回答等于没写。</p>
+</blockquote>
+<h3 id="4-8-售后服务与培训-服务分-10-20-分">4.8 售后服务与培训(服务分,10–20 分)</h3>
+<p>写 SLA(故障响应时间、解决时间、可用性指标)、服务期(通常免费 1–3 年)、培训计划(管理员培训、业务用户培训、技术交接培训,各几人几课时)、本地化服务能力(本地团队人数、驻场安排)。AI 项目特别要写<strong>模型效果保障服务</strong>(上线后效果回退如何处理、是否承诺重训)。</p>
+<blockquote>
+<p>反模式:售后写成"7×24 小时响应",但不写具体 SLA 等级和违约责任。客户最看重可追责的承诺。</p>
+</blockquote>
+<h2 id="五-可行性论证-让评委敢投你">五、可行性论证:让评委敢投你</h2>
+<p>很多 FDE 以为可行性论证是技术方案的一部分,其实它是<strong>独立的一份说服工具</strong>——在客户内部立项、在评标时打消疑虑、在售后验收时挡子弹。可行性论证分四个维度,每个维度都要有数据、有依据、有边界条件。</p>
+<h3 id="5-1-技术可行性">5.1 技术可行性</h3>
+<p>回答"这个 AI 项目能不能做出来"。论证方法:<strong>对标行业基准</strong>(如"当前行业 SOTA 在此任务的 F1 为 0.85,本项目目标 0.80 可达)、<strong>PoC 实证</strong>(拿出 PoC 的指标数据)、<strong>技术成熟度评估</strong>(TRL 等级,本项目关键技术处于 TRL 几)。<strong>避免使用绝对化表述</strong>("一定能达到 95% 准确率"),改用区间("基于 PoC 结果,预计准确率在 88%–92% 区间")。</p>
+<h3 id="5-2-数据可行性">5.2 数据可行性</h3>
+<p>回答"有没有足够、足够好的数据"。论证方法:<strong>数据资产盘点</strong>(客户现有多少数据、什么类型、什么质量)、<strong>数据缺口分析</strong>(需要补哪些数据、怎么补)、<strong>数据标注可行性</strong>(标注量、标注成本、标注工具)。AI 项目失败的 <strong>60%</strong> 是数据问题,这一段写不实,评委不敢投。</p>
+<h3 id="5-3-合规可行性">5.3 合规可行性</h3>
+<p>回答"过不过得了法务和监管"。论证方法:<strong>数据合规</strong>(《个人信息保护法》《数据安全法》要求的告知同意、数据分级分类、出境审查)、<strong>算法合规</strong>(生成式 AI 服务备案、深度合成算法备案)、<strong>行业准入</strong>(金融行业的算法可解释性要求、医疗行业的医疗器械软件 NMPA 认证)、<strong>信创合规</strong>(央国企要求的国产化适配:昇腾/海光芯片、麒麟/统信 OS、达梦/人大金仓数据库)。</p>
+<h3 id="5-4-ROI-可行性">5.4 ROI 可行性</h3>
+<p>回答"花这笔钱值不值"。论证方法:<strong>成本测算</strong>(建设成本 + 5 年运维成本)、<strong>收益测算</strong>(降本:替代多少人天、节省多少成本;增收:提升多少效率、带来多少业务增量)、<strong>回收期</strong>(典型 AI 项目 12–24 个月回本)、<strong>敏感性分析</strong>(收益的乐观/中性/保守三档)。ROI 测算要用客户自己的财务口径,不要用通用行业数据。</p>
+<blockquote>
+<p>四个可行性是一个矩阵,任何一个维度被判"不可行",整个项目就黄了。FDE 的价值是<strong>在售前就把"不可行"的风险挖出来</strong>,要么解决、要么提前说服客户调低预期,而不是等到交付阶段才发现根本做不出来。</p>
+</blockquote>
+<h2 id="六-PoC-设计-用最小成本赢标">六、PoC 设计:用最小成本赢标</h2>
+<p>PoC 是大单(500 万以上)的入场券。但 <strong>90% 的 FDE 把 PoC 做成了免费打白工</strong>——做了 Demo、客户说"不错",然后没有然后。正确的 PoC 是一个<strong>有明确成功标准、有签约承诺、有时限、有数据</strong>的小型项目,目标是"用最小成本证明价值,并锁定主合同"。</p>
+<h3 id="6-1-PoC-的四要素-缺一不可">6.1 PoC 的四要素(缺一不可)</h3>
+<ol>
+<li><strong>明确场景</strong>:只选一个最有代表性、客户最痛、FDE 最有把握的场景,不要贪多。场景定义要写成"输入是什么、输出是什么、评判标准是什么"。</li>
+<li><strong>明确指标</strong>:量化指标 + 业务指标。量化指标(准确率、召回率、响应时间)用技术口径;业务指标(工单处理时长降低、人工坐席替代率)用客户业务口径。两个都要。</li>
+<li><strong>明确成功标准</strong>:在 PoC 启动前就写死"如果指标 A 达到 X%,客户承诺签订 Y 万元主合同"。这是 PoC 的命脉——没有成功标准的 PoC 等于免费给客户做 R\&amp;D。</li>
+<li><strong>明确时限</strong>:PoC 周期 <strong>不超过 8 周</strong>。超过 8 周客户热情衰减,FDE 投入失控。</li>
+</ol>
+<h3 id="6-2-PoC-该不该收费">6.2 PoC 该不该收费</h3>
+<p><strong>应该收费</strong>,哪怕只收 20–50 万元。免费 PoC 的三大问题:客户不珍惜(投入度低)、客户内部决策不严肃(PoC 结果没人推动)、FDE 被白嫖(做完就散)。收费 PoC 反而提升中标率——付费的客户有内部承诺,会主动推进主合同。如果客户坚持免费,FDE 退而求其次:<strong>用最小数据集 + 最小算力 + 现成模型</strong>,把 PoC 成本压到 1–2 人周,并且写进 PoC 协议"PoC 结果知识产权归 FDE,客户不得转交第三方"。</p>
+<h3 id="6-3-PoC-的执行节奏-8-周模板">6.3 PoC 的执行节奏(8 周模板)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>周次</th>
+<th>动作</th>
+<th>产出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第 1 周</td>
+<td>场景定义、数据准备、客户对接</td>
+<td>PoC 方案文档 + 数据清单</td>
+</tr>
+<tr>
+<td>第 2–3 周</td>
+<td>模型选型、Prompt/微调、系统集成</td>
+<td>可运行的 Demo(内测)</td>
+</tr>
+<tr>
+<td>第 4–5 周</td>
+<td>客户业务人员试用、效果调优</td>
+<td>试用反馈 + 优化记录</td>
+</tr>
+<tr>
+<td>第 6 周</td>
+<td>指标测评、数据收集</td>
+<td>测评报告(技术指标 + 业务指标)</td>
+</tr>
+<tr>
+<td>第 7 周</td>
+<td>演示、答疑、客户内部汇报</td>
+<td>演示 PPT + 答疑纪要</td>
+</tr>
+<tr>
+<td>第 8 周</td>
+<td>谈主合同、转交付</td>
+<td>主合同条款 + 售前交付交接</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-4-PoC-的数据必须可审计">6.4 PoC 的数据必须可审计</h3>
+<p>所有指标对比都要进<strong>客户内审报告</strong>,作为后续主合同的归因依据。具体做法:PoC 启动前固化一组"基线数据"(现有方案的处理结果),PoC 结束时用同一批数据跑 FDE 方案,得出对比指标。基线和对比数据都由<strong>客户方人员参与采集</strong>(不是 FDE 自己测自己),并签字确认。这样客户内审、上级审批都有据可查,主合同推进才有依据。</p>
+<h2 id="七-售前与交付的衔接-别让售前吹的牛交付兜不住">七、售前与交付的衔接:别让售前吹的牛交付兜不住</h2>
+<p>这是中国 AI 行业最普遍的灾难:<strong>售前 FDE 为了拿单,把指标、工期、成本往好了承诺;交付 FDE 进场,发现根本达不到,要么扯皮要么烂尾</strong>。FDE 不是销售,不能靠"卖出去就算赢"的思路干活——拿了一单交付砸了,这家客户永远不会再给你机会,而且行业口碑会传开。</p>
+<h3 id="7-1-售前承诺的三条红线">7.1 售前承诺的三条红线</h3>
+<p>FDE 在售前阶段对客户做承诺时,必须守住三条线:</p>
+<ol>
+<li><strong>指标承诺有依据</strong>:任何指标承诺都要有 PoC 数据、行业基准或可复现的实验支撑,不口胡。承诺"准确率 95%"前,先想清楚用什么数据测、谁来测、测不到怎么办。</li>
+<li><strong>工期承诺有余量</strong>:售前承诺的工期按交付估算的 <strong>1.2–1.5 倍</strong> 报。AI 项目的不确定性(数据质量、模型迭代、客户配合)远高于传统 IT,留余量是给交付团队留活路。</li>
+<li><strong>范围承诺有边界</strong>:明确写清楚"做什么、不做什么、什么算验收通过"。最怕的是"我们要做一个智能客服"这种无边界的承诺,交付时永远验收不完。</li>
+</ol>
+<h3 id="7-2-售前交付交接的强制清单">7.2 售前交付交接的强制清单</h3>
+<p>售前 FDE 拿单后、交付 FDE 进场前,必须做一次正式的<strong>售前交付交接会</strong>,产出一份《项目交接文档》,至少包含:</p>
+<ul>
+<li>客户决策链图谱(谁拍板、谁反对、谁中立、各人关注点)</li>
+<li>售前承诺清单(每一项承诺、对应的技术依据、达成的难度评估)</li>
+<li>风险清单(售前阶段已识别但未暴露给客户的风险)</li>
+<li>技术方案完整版(标书技术分册 + 内部详细设计)</li>
+<li>PoC 数据与代码(数据集、模型、代码仓库、复现步骤)</li>
+<li>客户技术环境说明(网络、算力、账号、现有系统)</li>
+<li>关键联系人(客户方、内部、第三方)</li>
+</ul>
+<p>交接会要求售前 FDE、交付 FDE、项目经理、销售<strong>四方到场</strong>,逐项过交接文档,任何一方有疑问当场澄清。交接文档签字后,售前 FDE 才算正式脱手。</p>
+<h3 id="7-3-反模式-三类典型割裂">7.3 反模式:三类典型割裂</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>反模式</th>
+<th>表现</th>
+<th>后果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>指标割裂</td>
+<td>售前承诺准确率 95%,交付实测只有 75%</td>
+<td>验收扯皮,尾款收不回,客户关系破裂</td>
+</tr>
+<tr>
+<td>范围割裂</td>
+<td>售前说"做一个 Agent",交付发现客户要 10 个场景</td>
+<td>工期爆炸,人天超支,FDE 被加班拖垮</td>
+</tr>
+<tr>
+<td>团队割裂</td>
+<td>售前 FDE 拿单后调走,交付 FDE 完全新人</td>
+<td>客户感觉被骗,知识断层,项目踩坑重来</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>优秀的售前 FDE 不只是赢标,而是<strong>让这一单可交付、可验收、可回款、可复购</strong>。赢标不等于赢客户,交付成功才是真正的赢。</p>
+</blockquote>
+<h2 id="八-售前-FDE-的核心能力">八、售前 FDE 的核心能力</h2>
+<p>售前 FDE 不是技术最强的工程师,而是<strong>能快速理解客户、能设计方案、能讲明白方案</strong>的复合角色。这三项能力缺一不可。</p>
+<h3 id="8-1-快速理解客户-48-小时原则">8.1 快速理解客户(48 小时原则)</h3>
+<p>进客户现场 48 小时内,FDE 要能回答五个问题:<strong>客户是谁(行业、规模、战略)、痛点在哪(2–3 个量化痛点)、谁拍板(决策链)、对手是谁(在跟谁比)、客户为什么买(业务动机)</strong>。方法:<strong>会前功课</strong>(读客户年报、行业报告、招标历史)、<strong>现场访谈</strong>(业务、技术、决策者各聊一遍)、<strong>桌面研究</strong>(客户公开系统的现状评估)。48 小时之内给销售一份《客户简报》,这是售前工作的起点。</p>
+<h3 id="8-2-方案设计-架构-选型-取舍">8.2 方案设计(架构 + 选型 + 取舍)</h3>
+<p>FDE 要在 1–2 周内拿出一套<strong>可落地的方案</strong>:不是 PPT 上的框图,而是有架构、有选型、有数据流、有风险、有工期的完整设计。核心是<strong>取舍能力</strong>——在精度/成本/工期/可维护性之间做权衡,并讲清楚为什么这么取舍。一个不会做取舍的 FDE,要么过度设计(客户嫌贵)、要么设计不足(交付不出来)。</p>
+<h3 id="8-3-讲方案-述标与高层汇报">8.3 讲方案(述标与高层汇报)</h3>
+<p>述标是 FDE 上台的高光时刻,通常 15–30 分钟,加 10–15 分钟答疑。讲方案的三个原则:<strong>结论先行</strong>(一句话说清"我们做什么、带来什么价值)、<strong>讲故事而非堆功能</strong>(用一个客户场景串起整个方案)、<strong>留答疑钩子</strong>(故意留一两个有深度的点,引评委提问,展示 FDE 的深度)。讲方案前必须<strong>彩排 3 次以上</strong>,把每页的过渡、每句金句、每个可能的提问都过一遍。</p>
+<h2 id="九-真实招标案例拆解">九、真实招标案例拆解</h2>
+<h3 id="9-1-案例一-某省政务大模型项目-中标金额-2800-万-综合评分法">9.1 案例一:某省政务大模型项目(中标金额 2800 万,综合评分法)</h3>
+<ul>
+<li><strong>客户</strong>:某省大数据局,建省级政务大模型平台。</li>
+<li><strong>评分结构</strong>:价格 15 分、技术 50 分、商务 20 分、服务 15 分。</li>
+<li><strong>FDE 的关键动作</strong>:
+  1. 立项前 8 个月进场,通过免费行业分享,把"私有化部署 + 信创适配"写进客户需求参数(本厂优势项)。
+  2. 立项后做 6 周付费 PoC(80 万),指标对比:公文起草人工修改率从 60% 降至 25%,锁定客户内审报告。
+  3. 标书技术分册 120 页,八段式结构,每个评分点逐条对应,配 4 张架构图、3 张选型矩阵、1 张甘特图。
+  4. 述标 25 分钟,FDE 主讲,留"昇腾适配算子替换"作为答疑钩子,展示深度。</li>
+<li><strong>结果</strong>:技术分 47/50(最高),价格分第 3(略高于基准价),总分第 1 中标。</li>
+<li><strong>复盘</strong>:赢在<strong>售前早期介入 + PoC 锁单 + 技术分碾压</strong>,价格分让了 2 分也没影响。</li>
+</ul>
+<h3 id="9-2-案例二-某央企合同智能审查项目-废标-教训">9.2 案例二:某央企合同智能审查项目(废标,教训)</h3>
+<ul>
+<li><strong>客户</strong>:某央企法务部,合同条款风险审查。</li>
+<li><strong>评分结构</strong>:价格 20 分、技术 45 分、商务 25 分、服务 10 分。</li>
+<li><strong>FDE 的失误</strong>:
+  1. 立项后才开始介入,客户需求参数已被对手引导(对手的"多模型路由"参数写死,FDE 不满足)。
+  2. 没做 PoC,直接投标,技术方案空洞。
+  3. 述标时 FDE 临时换人(原售前 FDE 调走),答疑环节答非所问。</li>
+<li><strong>结果</strong>:技术分 28/45(倒数第二),总分第 4,未中标。</li>
+<li><strong>复盘</strong>:输在<strong>介入太晚 + 没 PoC + 述标掉链子</strong>。这三个错误任何一个都足以输掉。</li>
+</ul>
+<h3 id="9-3-案例三-售前交付割裂的灾难-某市-12345-工单分类项目">9.3 案例三:售前交付割裂的灾难(某市 12345 工单分类项目)</h3>
+<ul>
+<li><strong>背景</strong>:售前 FDE 承诺"工单自动分类准确率 90%",交付 FDE 进场发现客户实际数据噪声大、标签体系混乱,实测只能到 78%。</li>
+<li><strong>后果</strong>:验收阶段客户拒收,要求退尾款 30%;售前 FDE 已离职,交付 FDE 背锅,项目延期 4 个月,FDE 团队连续加班 3 个月重训模型才勉强达到 85%。</li>
+<li><strong>教训</strong>:售前承诺必须留区间(88%–92%)而非绝对值;售前交付必须做交接;数据可行性论证必须真实,不能为拿单粉饰数据。</li>
+</ul>
+<h2 id="本专题小结">本专题小结</h2>
+<p>AI 项目的招投标与售前,是 FDE 价值最被低估、又最决定成败的阶段。本专题的核心要点:</p>
+<ol>
+<li><strong>FDE 在售前占 30%–40% 工时</strong>,是技术方案的真值来源,不是陪标的工程师。</li>
+<li><strong>中国政企招投标是强流程游戏</strong>,五环节(立项、标书、投标、评标、中标)踩雷即废标,FDE 要全程参与。</li>
+<li><strong>AI 项目 95% 用综合评分法</strong>,技术分(40–60 分)是胜负手,FDE 的主战场。</li>
+<li><strong>技术方案书有八段式模板</strong>(需求理解/架构/技术路线/实施/团队/案例/风险/服务),按评分点逐条响应。</li>
+<li><strong>可行性论证四维度</strong>(技术/数据/合规/ROI),任一维度不可行项目就黄。</li>
+<li><strong>PoC 四要素</strong>(场景/指标/成功标准/时限),收费 PoC + 可审计数据,才是赢标工具。</li>
+<li><strong>售前承诺三条红线</strong>(指标有依据、工期有余量、范围有边界)+ 售前交付强制交接,避免"售前吹牛、交付背锅"。</li>
+<li><strong>售前 FDE 三能力</strong>(理解客户、方案设计、讲方案),48 小时原则 + 1–2 周方案 + 3 次彩排述标。</li>
+<li><strong>不碰三类合规雷区</strong>(串通投标、商业贿赂、资质造假),这是 FDE 的职业底线。</li>
+</ol>
+<p>一句话总结:<strong>售前 FDE 的使命不是赢标,而是让这一单可中标、可交付、可验收、可回款、可复购。</strong></p>
+<h2 id="本专题来源">本专题来源</h2>
+<ul>
+<li>《中华人民共和国招标投标法》及《招标投标法实施条例》(国务院令第 613 号,2012 年施行)</li>
+<li>《中华人民共和国政府采购法》及其实施条例(国务院令第 658 号)</li>
+<li>财政部令第 87 号《政府采购货物和服务招标投标管理办法》(2017 年施行)第 53、55 条(评标方法与价格分权重规定)</li>
+<li>财政部令第 94 号《政府采购质疑和投诉办法》</li>
+<li>《政府采购需求管理办法》(财库〔2021〕22 号)</li>
+<li>《生成式人工智能服务管理暂行办法》(国家网信办等七部门,2023 年)</li>
+<li>《互联网信息服务深度合成管理规定》(国家网信办,2023 年)</li>
+<li>《个人信息保护法》《数据安全法》《网络安全法》</li>
+<li>等级保护 2.0 系列标准(GB/T 22239-2019)</li>
+<li>Palantir、Databricks、Anthropic、阿里云、华为云等厂商 FDE/解决方案架构师公开方法论与招聘材料</li>
+<li>真实交付复盘:政务大模型、央国企合同审查、12345 工单分类等若干政企 AI 项目(项目名称已脱敏)</li>
+<li>本 corpus 内相关专题:深度<a href="topic31.html">专题三十一</a>(选型)、深度<a href="topic32.html">专题三十二</a>(反模式)、深度<a href="topic40.html">专题四十</a>(商业谈判与报价)、深度<a href="topic47.html">专题四十七</a>(ROI)、深度<a href="topic52.html">专题五十二</a>(中国市场特点)</li>
+</ul></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="topic44">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#一-FDE-在售前-招投标里的真实位置">一、FDE 在售前/招投标里的真实位置</a></li><li class="lv2"><a href="#二-中国政企招投标流程-FDE-必须背熟的五个环节">二、中国政企招投标流程:FDE 必须背熟的五个环节</a></li><li class="lv3"><a href="#2-1-需求立项-招标前-6-12-个月">2.1 需求立项(招标前 6–12 个月)</a></li><li class="lv3"><a href="#2-2-标书编制-招标前-1-2-个月">2.2 标书编制(招标前 1–2 个月)</a></li><li class="lv3"><a href="#2-3-公告与投标-招标公告后-20-30-天">2.3 公告与投标(招标公告后 20–30 天)</a></li><li class="lv3"><a href="#2-4-开标与评标-投标截止当日或次日">2.4 开标与评标(投标截止当日或次日)</a></li><li class="lv3"><a href="#2-5-中标与签约-评标后-3-15-天">2.5 中标与签约(评标后 3–15 天)</a></li><li class="lv2"><a href="#三-评标视角-综合评分法与最低评标价法">三、评标视角:综合评分法与最低评标价法</a></li><li class="lv3"><a href="#3-1-综合评分法的分值结构">3.1 综合评分法的分值结构</a></li><li class="lv3"><a href="#3-2-价格分的计算-低价优先-不是越低越好">3.2 价格分的计算:低价优先,不是越低越好</a></li><li class="lv3"><a href="#3-3-技术分的常见评分维度与-FDE-对策">3.3 技术分的常见评分维度与 FDE 对策</a></li><li class="lv2"><a href="#四-技术方案书的写法-八段式模板">四、技术方案书的写法:八段式模板</a></li><li class="lv3"><a href="#4-1-需求理解-开篇-5-10-分">4.1 需求理解(开篇,5–10 分)</a></li><li class="lv3"><a href="#4-2-总体架构-核心-10-15-分">4.2 总体架构(核心,10–15 分)</a></li><li class="lv3"><a href="#4-3-技术路线-决定技术分高低-10-15-分">4.3 技术路线(决定技术分高低,10–15 分)</a></li><li class="lv3"><a href="#4-4-实施计划-8-12-分">4.4 实施计划(8–12 分)</a></li><li class="lv3"><a href="#4-5-团队配置-在商务或服务分里-5-10-分">4.5 团队配置(在商务或服务分里,5–10 分)</a></li><li class="lv3"><a href="#4-6-同类案例-商务分-5-10-分">4.6 同类案例(商务分,5–10 分)</a></li><li class="lv3"><a href="#4-7-风险与质量保障-技术或服务分-5-10-分">4.7 风险与质量保障(技术或服务分,5–10 分)</a></li><li class="lv3"><a href="#4-8-售后服务与培训-服务分-10-20-分">4.8 售后服务与培训(服务分,10–20 分)</a></li><li class="lv2"><a href="#五-可行性论证-让评委敢投你">五、可行性论证:让评委敢投你</a></li><li class="lv3"><a href="#5-1-技术可行性">5.1 技术可行性</a></li><li class="lv3"><a href="#5-2-数据可行性">5.2 数据可行性</a></li><li class="lv3"><a href="#5-3-合规可行性">5.3 合规可行性</a></li><li class="lv3"><a href="#5-4-ROI-可行性">5.4 ROI 可行性</a></li><li class="lv2"><a href="#六-PoC-设计-用最小成本赢标">六、PoC 设计:用最小成本赢标</a></li><li class="lv3"><a href="#6-1-PoC-的四要素-缺一不可">6.1 PoC 的四要素(缺一不可)</a></li><li class="lv3"><a href="#6-2-PoC-该不该收费">6.2 PoC 该不该收费</a></li><li class="lv3"><a href="#6-3-PoC-的执行节奏-8-周模板">6.3 PoC 的执行节奏(8 周模板)</a></li><li class="lv3"><a href="#6-4-PoC-的数据必须可审计">6.4 PoC 的数据必须可审计</a></li><li class="lv2"><a href="#七-售前与交付的衔接-别让售前吹的牛交付兜不住">七、售前与交付的衔接:别让售前吹的牛交付兜不住</a></li><li class="lv3"><a href="#7-1-售前承诺的三条红线">7.1 售前承诺的三条红线</a></li><li class="lv3"><a href="#7-2-售前交付交接的强制清单">7.2 售前交付交接的强制清单</a></li><li class="lv3"><a href="#7-3-反模式-三类典型割裂">7.3 反模式:三类典型割裂</a></li><li class="lv2"><a href="#八-售前-FDE-的核心能力">八、售前 FDE 的核心能力</a></li><li class="lv3"><a href="#8-1-快速理解客户-48-小时原则">8.1 快速理解客户(48 小时原则)</a></li><li class="lv3"><a href="#8-2-方案设计-架构-选型-取舍">8.2 方案设计(架构 + 选型 + 取舍)</a></li><li class="lv3"><a href="#8-3-讲方案-述标与高层汇报">8.3 讲方案(述标与高层汇报)</a></li><li class="lv2"><a href="#九-真实招标案例拆解">九、真实招标案例拆解</a></li><li class="lv3"><a href="#9-1-案例一-某省政务大模型项目-中标金额-2800-万-综合评分法">9.1 案例一:某省政务大模型项目(中标金额 2800 万,综合评分法)</a></li><li class="lv3"><a href="#9-2-案例二-某央企合同智能审查项目-废标-教训">9.2 案例二:某央企合同智能审查项目(废标,教训)</a></li><li class="lv3"><a href="#9-3-案例三-售前交付割裂的灾难-某市-12345-工单分类项目">9.3 案例三:售前交付割裂的灾难(某市 12345 工单分类项目)</a></li><li class="lv2"><a href="#本专题小结">本专题小结</a></li><li class="lv2"><a href="#本专题来源">本专题来源</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

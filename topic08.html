@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>深度专题八 跨行业踩坑总集与防坑 Checklist · FDE 学习中心</title>
+<meta name="description" content="专题定位 :FDE 的成长,一半靠方法论,一半靠踩过的坑。本专题汇总金融、医疗、制造、政务、Agent、RAG、部署的典型踩坑,以及一份可照用的防坑 Checklist。">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#2563eb">FDE-Wiki</a></div>
+<article class="doc">
+  <h1 class="doc-title">深度专题八 跨行业踩坑总集与防坑 Checklist</h1>
+  <div class="doc-meta"><span style="color:#2563eb">FDE-Wiki</span><span class="sep">·</span><span>约 1,446 字</span><span class="sep">·</span><span>阅读约 4 分钟</span></div>
+  
+  <div class="prose" id="prose"><blockquote>
+<p><strong>专题定位</strong>:FDE 的成长,一半靠方法论,一半靠踩过的坑。本专题汇总金融、医疗、制造、政务、Agent、RAG、部署的典型踩坑,以及一份可照用的防坑 Checklist。</p>
+</blockquote>
+<h2 id="一-通用踩坑-FDE-必避">一、通用踩坑(FDE 必避)</h2>
+<p><strong>坑1:客户说什么就信什么</strong></p>
+<ul>
+<li>客户说的"痛点"往往不是真痛点;</li>
+<li>防:多层级访谈 + 数据验证 + 现场观察。</li>
+</ul>
+<p><strong>坑2:过度承诺</strong></p>
+<ul>
+<li>为了拿单拍胸脯,结果做不到;</li>
+<li>防:用结果定义卡 + 阶段门,管理预期。</li>
+</ul>
+<p><strong>坑3:忽视数据质量</strong></p>
+<ul>
+<li>假设数据干净,真实数据一塌糊涂;</li>
+<li>防:Context 阶段做数据体检。</li>
+</ul>
+<p><strong>坑4:demo 思维</strong></p>
+<ul>
+<li>用假数据跑 demo,上线就崩;</li>
+<li>防:MVD 用真实数据、处理关键异常。</li>
+</ul>
+<p><strong>坑5:不监控就上线</strong></p>
+<ul>
+<li>上线后两眼一抹黑,出问题不知道;</li>
+<li>防:可观测前置,日志/追踪/指标/告警。</li>
+</ul>
+<p><strong>坑6:一次性全量上线</strong></p>
+<ul>
+<li>直接全量,一次错误毁信任;</li>
+<li>防:灰度(影子→小流量→扩→全量)。</li>
+</ul>
+<p><strong>坑7:不转移能力</strong></p>
+<ul>
+<li>客户永远依赖你,项目收不了尾;</li>
+<li>防:知识转移(文档+培训+共建)。</li>
+</ul>
+<p><strong>坑8:卷入客户政治</strong></p>
+<ul>
+<li>站队、被卷入派系斗争;</li>
+<li>防:保持中立,聚焦业务结果。</li>
+</ul>
+<h2 id="二-金融踩坑">二、金融踩坑</h2>
+<p><strong>坑:模型不可解释被监管打回</strong></p>
+<ul>
+<li>金融模型必须可解释,黑盒被打回;</li>
+<li>防:SHAP + 决策留痕 + 模型卡。</li>
+</ul>
+<p><strong>坑:数据出境违规</strong></p>
+<ul>
+<li>用海外 API 处理金融数据,违规;</li>
+<li>防:私有化 + 国产模型。</li>
+</ul>
+<p><strong>坑:PSI/KS 不监控</strong></p>
+<ul>
+<li>模型漂移没监控,坏账上升才发现;</li>
+<li>防:PSI/KS/AUC 持续监控 + 阈值告警。</li>
+</ul>
+<p><strong>坑:HITL 缺失</strong></p>
+<ul>
+<li>自动审批直接放贷,出了坏账难追责;</li>
+<li>防:高风险人审 + 完整留痕。</li>
+</ul>
+<h2 id="三-医疗踩坑">三、医疗踩坑</h2>
+<p><strong>坑:病历数据未脱敏</strong></p>
+<ul>
+<li>PHI 泄露,违法;</li>
+<li>防:脱敏后才进 AI,数据不出院。</li>
+</ul>
+<p><strong>坑:AI 输出误导医生</strong></p>
+<ul>
+<li>幻觉导致误诊风险;</li>
+<li>防:强 HITL + 事实校验 + 引用溯源。</li>
+</ul>
+<p><strong>坑:没嵌进临床工作流</strong></p>
+<ul>
+<li>系统很好但医生不用(增加负担);</li>
+<li>防:嵌 HIS/EMR,无感融入工作流。</li>
+</ul>
+<p><strong>坑:DRG 编码不准</strong></p>
+<ul>
+<li>编码错误导致医院亏损或违规;</li>
+<li>防:真实 ICD/CHS-DRG 标准 + 编码员复核。</li>
+</ul>
+<h2 id="四-制造踩坑">四、制造踩坑</h2>
+<p><strong>坑:视觉质检漏检</strong></p>
+<ul>
+<li>模型在 demo 准,产线上漏检(光照/角度变化);</li>
+<li>防:产线真实数据训练 + 鲁棒性 + 边缘部署。</li>
+</ul>
+<p><strong>坑:产线节拍跟不上</strong></p>
+<ul>
+<li>推理太慢,漏检;</li>
+<li>防:TensorRT 加速 + 满足节拍测试。</li>
+</ul>
+<p><strong>坑:剔除机构误动作</strong></p>
+<ul>
+<li>把良品剔除,造成损失;</li>
+<li>防:剔除阈值保守 + 双重确认。</li>
+</ul>
+<p><strong>坑:OT/IT 割裂</strong></p>
+<ul>
+<li>AI 团队不懂 PLC,OT 团队不懂 AI;</li>
+<li>防:FDE 桥接 OT/IT,或配 OT 工程师。</li>
+</ul>
+<h2 id="五-政务踩坑">五、政务踩坑</h2>
+<p><strong>坑:信创适配不全</strong></p>
+<ul>
+<li>上线发现某个组件不兼容;</li>
+<li>防:全栈信创适配验证清单。</li>
+</ul>
+<p><strong>坑:等保不过</strong></p>
+<ul>
+<li>系统设计没考虑等保,测评不过;</li>
+<li>防:等保要求前置进设计。</li>
+</ul>
+<p><strong>坑:派单不准引发投诉</strong></p>
+<ul>
+<li>派单错误,群众投诉;</li>
+<li>防:派单准确率监控 + 回退人工。</li>
+</ul>
+<p><strong>坑:数据打通难</strong></p>
+<ul>
+<li>跨部门数据不给;</li>
+<li>防:高层背书 + 数据治理。</li>
+</ul>
+<h2 id="六-Agent-踩坑">六、Agent 踩坑</h2>
+<p><strong>坑:Agent 死循环烧 token</strong></p>
+<ul>
+<li>没限制,Agent 跑飞;</li>
+<li>防:步数上限 + token 上限 + 熔断。</li>
+</ul>
+<p><strong>坑:工具调用错误</strong></p>
+<ul>
+<li>Agent 调错工具/传错参;</li>
+<li>防:严格 schema + 工具白名单 + HITL。</li>
+</ul>
+<p><strong>坑:prompt injection 被劫持</strong></p>
+<ul>
+<li>Agent 被注入,调用危险工具;</li>
+<li>防:输入护栏 + 最小权限 + 沙箱。</li>
+</ul>
+<p><strong>坑:级联失败</strong></p>
+<ul>
+<li>一个 Agent 错连累全链;</li>
+<li>防:隔离 + 熔断 + 降级。</li>
+</ul>
+<p><strong>坑:Agent 输出不稳定</strong></p>
+<ul>
+<li>同样输入不同输出;</li>
+<li>防:temperature 调低 + 多次平均 + 评估。</li>
+</ul>
+<h2 id="七-RAG-踩坑">七、RAG 踩坑</h2>
+<p><strong>坑:分块太粗暴</strong></p>
+<ul>
+<li>固定长度切,切断语义;</li>
+<li>防:语义/结构化分块。</li>
+</ul>
+<p><strong>坑:只做向量检索</strong></p>
+<ul>
+<li>精确匹配(型号/人名)召回不到;</li>
+<li>防:混合检索(向量+BM25)。</li>
+</ul>
+<p><strong>坑:不重排</strong></p>
+<ul>
+<li>召回 top-k 噪声多;</li>
+<li>防:加 rerank。</li>
+</ul>
+<p><strong>坑:幻觉</strong></p>
+<ul>
+<li>模型编造检索外的内容;</li>
+<li>防:忠实度评估 + 引用溯源 + 输出护栏。</li>
+</ul>
+<p><strong>坑:评估集污染</strong></p>
+<ul>
+<li>评估集混进 RAG,虚高;</li>
+<li>防:评估集隔离。</li>
+</ul>
+<h2 id="八-部署踩坑">八、部署踩坑</h2>
+<p><strong>坑:显存不足</strong></p>
+<ul>
+<li>模型装不下;</li>
+<li>防:量化 + 张量并行。</li>
+</ul>
+<p><strong>坑:并发扛不住</strong></p>
+<ul>
+<li>大促崩;</li>
+<li>防:压测 + 弹性扩缩容 + 限流。</li>
+</ul>
+<p><strong>坑:离线环境缺依赖</strong></p>
+<ul>
+<li>客户内网无外网,依赖装不上;</li>
+<li>防:离线交付包(打包所有依赖)。</li>
+</ul>
+<p><strong>坑:版本不一致</strong></p>
+<ul>
+<li>开发/测试/生产环境不一致;</li>
+<li>防:Docker 镜像统一 + 配置管理。</li>
+</ul>
+<h2 id="九-踩坑的共性">九、踩坑的共性</h2>
+<p>把所有坑放一起,共性是:</p>
+<ul>
+<li><strong>忽视约束</strong>(合规/算力/数据质量);</li>
+<li><strong>跳过验证</strong>(不 PoC、不评估、不灰度);</li>
+<li><strong>单点依赖</strong>(无回退、无监控、无转移);</li>
+<li><strong>沟通失真</strong>(预期不对齐、需求误解)。</li>
+</ul>
+<p><strong>防坑的总原则</strong>:尊重约束、步步验证、设计冗余、对齐预期。</p>
+<h2 id="十-FDE-防坑-Checklist-可照用">十、FDE 防坑 Checklist(可照用)</h2>
+<p><strong>Context 阶段</strong></p>
+<ul>
+<li>[ ] 真痛点经多层级验证;</li>
+<li>[ ] 数据体检完成;</li>
+<li>[ ] 北极星对齐;</li>
+<li>[ ] 合规约束清单。</li>
+</ul>
+<p><strong>Design 阶段</strong></p>
+<ul>
+<li>[ ] ≥2 候选方案;</li>
+<li>[ ] 关键技术 PoC;</li>
+<li>[ ] 合规/安全设计;</li>
+<li>[ ] 风险与回退。</li>
+</ul>
+<p><strong>Engineer 阶段</strong></p>
+<ul>
+<li>[ ] MVD 真实数据;</li>
+<li>[ ] 可观测(日志/追踪/指标/告警);</li>
+<li>[ ] 护栏 + HITL;</li>
+<li>[ ] 压测 + 灰度。</li>
+</ul>
+<p><strong>Feedback 阶段</strong></p>
+<ul>
+<li>[ ] 评估闭环;</li>
+<li>[ ] PSI/漂移监控;</li>
+<li>[ ] 知识转移;</li>
+<li>[ ] bad case 回流。</li>
+</ul>
+<h2 id="本专题小结">本专题小结</h2>
+<ul>
+<li>通用坑:轻信客户/过度承诺/忽视数据/demo思维/不监控/全量上线/不转移/卷政治;</li>
+<li>金融坑:不可解释/数据出境/不监控漂移/HITL缺失;</li>
+<li>医疗坑:未脱敏/误导医生/没嵌工作流/DRG编码;</li>
+<li>制造坑:漏检/节拍/误剔/OT-IT割裂;</li>
+<li>政务坑:信创不全/等保/派单/数据打通;</li>
+<li>Agent坑:死循环/工具错/注入/级联/不稳定;</li>
+<li>RAG坑:分块/单向量/不重排/幻觉/污染;</li>
+<li>部署坑:显存/并发/离线依赖/版本;</li>
+<li>共性:忽视约束/跳过验证/单点依赖/沟通失真;</li>
+<li>Checklist 按 CDEF 四阶段逐项防坑。</li>
+</ul>
+<blockquote>
+<p><strong>本专题来源</strong>:用户库《fde-delivery 70-pitfalls-checklists》《FDE实战案例集》《FDE落地方案》四份踩坑章节、OWASP、本书第 10、22 章。</p>
+</blockquote></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="topic08">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#一-通用踩坑-FDE-必避">一、通用踩坑(FDE 必避)</a></li><li class="lv2"><a href="#二-金融踩坑">二、金融踩坑</a></li><li class="lv2"><a href="#三-医疗踩坑">三、医疗踩坑</a></li><li class="lv2"><a href="#四-制造踩坑">四、制造踩坑</a></li><li class="lv2"><a href="#五-政务踩坑">五、政务踩坑</a></li><li class="lv2"><a href="#六-Agent-踩坑">六、Agent 踩坑</a></li><li class="lv2"><a href="#七-RAG-踩坑">七、RAG 踩坑</a></li><li class="lv2"><a href="#八-部署踩坑">八、部署踩坑</a></li><li class="lv2"><a href="#九-踩坑的共性">九、踩坑的共性</a></li><li class="lv2"><a href="#十-FDE-防坑-Checklist-可照用">十、FDE 防坑 Checklist(可照用)</a></li><li class="lv2"><a href="#本专题小结">本专题小结</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

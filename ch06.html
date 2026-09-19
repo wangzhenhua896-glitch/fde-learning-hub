@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 6 章 前沿部署方法论内核:Discovery-first、倒推、防 capability atrophy、FDCE · FDE 学习中心</title>
+<meta name="description" content="本章一句话 :剥开 FDE 的各种花哨描述,它的方法论内核其实就四件事——先发现真问题(Discovery-first)、从结果倒推系统(Working Backwards)…">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup open"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a class="on" href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#2563eb">FDE-Wiki</a></div>
+<article class="doc">
+  <h1 class="doc-title">第 6 章 前沿部署方法论内核:Discovery-first、倒推、防 capability atrophy、FDCE</h1>
+  <div class="doc-meta"><span style="color:#2563eb">FDE-Wiki</span><span class="sep">·</span><span>约 2,777 字</span><span class="sep">·</span><span>阅读约 7 分钟</span></div>
+  
+  <div class="prose" id="prose"><blockquote>
+<p><strong>本章一句话</strong>:剥开 FDE 的各种花哨描述,它的方法论内核其实就四件事——先发现真问题(Discovery-first)、从结果倒推系统(Working Backwards)、防止系统上线即衰退(防 capability atrophy)、把"上下文工程"做成交付本身(FDCE)。</p>
+</blockquote>
+<h2 id="6-1-方法论的四个内核原则">6.1 方法论的四个内核原则</h2>
+<p>FDE 之所以有效,不是因为某个炫酷的技术,而是因为它坚持了四个反直觉的方法论原则。这四个原则,在传统软件交付里往往被忽视,却正是 AI 项目成败的分水岭:</p>
+<ol>
+<li><strong>Discovery-first(发现优先)</strong>:在动手做之前,把大部分精力花在"发现真问题"上,而不是"赶紧开发";</li>
+<li><strong>Working Backwards(倒推)</strong>:从客户想要的最终结果出发,倒推该建什么样的系统,而不是从"我们有什么技术"出发正推;</li>
+<li><strong>防 capability atrophy(防能力衰退)</strong>:不仅把系统搭起来,更要保证它持续产生价值,而不是上线即巅峰;</li>
+<li><strong>Forward-Deployed Context Engineering / FDCE(前沿部署上下文工程)</strong>:把"理解客户上下文"本身工程化,作为交付的核心。</li>
+</ol>
+<p>下面逐一拆解。</p>
+<h2 id="6-2-Discovery-first-先发现-再动手">6.2 Discovery-first:先发现,再动手</h2>
+<p><strong>Discovery-first 是 FDE 方法论的第一原则:在客户环境里,最大的风险不是"做不出来",而是"做错了东西"。</strong></p>
+<p>LinkedIn 上 Natarajan 的文章《When Forward-Deployed Engineering Works for Enterprise AI》给出了一个精准判断:<strong>"当问题是'发现(discovery)'而不是'铺开(rollout)'时,前沿部署才创造杠杆。"</strong> 这句话的意思是:FDE 的价值,在"问题还没被发现"的场景里最大;一旦问题已经被清楚定义、只需要执行,FDE 的杠杆反而下降(那种场景更适合传统工程团队)。</p>
+<p><strong>为什么 Discovery-first 反直觉?</strong>
+传统工程思维是"需求明确→赶紧开发→按时交付",追求的是执行效率。但 FDE 面对的现实是:<strong>客户嘴上说的需求,往往不是真正的需求</strong>。一个客户说"我要一个大模型客服",真问题可能是"我的客服离职率高、培训成本高";一个客户说"我要做 AI 质检",真问题可能是"我的良品率数据不准、根本不知道哪里出了问题"。如果 FDE 不做 discovery,直接照客户说的做,大概率做出来的东西客户不用。</p>
+<p><strong>Discovery-first 怎么做?</strong></p>
+<ul>
+<li><strong>浸泡</strong>:在客户现场待足够长(天/周级),观察真实业务流,而不是听汇报;</li>
+<li><strong>多层级访谈</strong>:从 CXO 到一线操作员都要聊,因为不同层级看到的问题不同;</li>
+<li><strong>看真实数据</strong>:翻客户的真实数据(不是 demo 数据),从数据里发现矛盾和机会;</li>
+<li><strong>快速验证假设</strong>:用最小原型(甚至 Excel、白板)验证"我以为的痛点是不是真痛点";</li>
+<li><strong>价值排序</strong>:把发现的痛点按"可解决性 × 价值"排序,选最高杠杆的先做。</li>
+</ul>
+<blockquote>
+<p><strong>Discovery-first 的产出</strong>:不是一份需求文档,而是一份"<strong>问题—价值映射表</strong>"——哪些是真问题、值多少钱、能不能用 AI 解、优先级如何。这份表,是后续所有工作的地基。</p>
+</blockquote>
+<p><strong>Discovery-first 的成本</strong>
+Discovery-first 看起来"慢"(花几周只调研不开发),但它省下了后面几个月"做错重做"的成本。这是典型的"<strong>慢即是快</strong>"——前期投入 discovery,避免后期返工。</p>
+<h2 id="6-3-Working-Backwards-从客户结果倒推系统">6.3 Working Backwards:从客户结果倒推系统</h2>
+<p><strong>Working Backwards(倒推)是 FDE 的第二个核心原则:先想清楚客户要的最终结果是什么,再倒推该建什么系统。</strong></p>
+<p>这个思想源于 Amazon 的 Working Backwards 方法(先写产品发布稿/FAQ,再开发),FDE 把它用在了客户交付上。</p>
+<p><strong>传统正推 vs FDE 倒推</strong></p>
+<ul>
+<li><strong>传统正推</strong>:我们有一个大模型/平台(技术)→ 看看能解决客户什么问题(找场景)→ 做个系统(开发)。这种思路容易做出"技术很炫但没用"的东西;</li>
+<li><strong>FDE 倒推</strong>:客户要的结果是"良品率提升 3 个点"(结果)→ 要达到这个结果,需要怎样的质检流程(流程)→ 这个流程需要怎样的 AI 能力(能力)→ 用什么模型/平台实现(技术)。这种思路确保每一步都对准最终价值。</li>
+</ul>
+<p><strong>倒推的落地工具:结果定义卡</strong>
+FDE 在项目启动时,会和客户共同填写一张"<strong>结果定义卡</strong>":</p>
+<ul>
+<li><strong>业务结果</strong>:具体到数字(如"派单准确率从 72% 提升到 90%");</li>
+<li><strong>衡量方式</strong>:怎么算"准确率",数据从哪来,谁说了算;</li>
+<li><strong>时间窗口</strong>:多久之内达到;</li>
+<li><strong>当前基线</strong>:现在是多少,差距多大;</li>
+<li><strong>价值换算</strong>:达到这个结果值多少钱(省成本/增收入/避风险)。</li>
+</ul>
+<p>这张卡一旦定下,整个项目就有了"<strong>北极星</strong>"——所有技术决策都要回答"这有助于达到结果卡吗?"。这避免了项目跑着跑着偏离价值。</p>
+<blockquote>
+<p><strong>倒推的威力</strong>:它把"AI 项目"从"技术项目"重新定义为"业务项目"。客户买的不是模型,是结果卡上那个数字。FDE 对这个数字负责,而不是对模型精度负责。</p>
+</blockquote>
+<h2 id="6-4-防-capability-atrophy-让系统持续产生价值">6.4 防 capability atrophy:让系统持续产生价值</h2>
+<p><strong>防 capability atrophy(防能力衰退)是 FDE 区别于"一锤子买卖"交付的关键原则。</strong></p>
+<p><strong>什么是 capability atrophy?</strong>
+Capability atrophy 指的是 AI/数据系统上线后,价值随时间逐渐衰退的现象。原因包括:</p>
+<ul>
+<li><strong>数据漂移</strong>:业务变了,数据分布变了,模型不准了;</li>
+<li><strong>管道断裂</strong>:上游系统升级,数据管道没人维护,断了;</li>
+<li><strong>业务变化</strong>:客户业务流程调整,系统不匹配了;</li>
+<li><strong>人员流失</strong>:懂系统的客户员工离职,没人会用/维护;</li>
+<li><strong>遗忘</strong>:系统跑着跑着,大家忘了它为什么这么设计,不敢动。</li>
+</ul>
+<p>结果是:系统上线时很惊艳,半年后变成"僵尸系统",无人使用、无人维护、价值归零。这是企业 AI 项目最隐蔽的失败模式——不是轰轰烈烈地失败,而是慢慢地死去。</p>
+<p><strong>FDE 怎么防 atrophy?</strong>
+FDE 的防衰退机制包括:</p>
+<ol>
+<li><strong>持续驻场/定期回访</strong>:不是交付完就走,而是持续关注系统运行;</li>
+<li><strong>监控与告警</strong>:建立数据质量、模型性能、业务指标的监控,异常早发现;</li>
+<li><strong>能力转移</strong>:把系统知识转移给客户团队(文档 + 培训 + 共建),避免单点依赖;</li>
+<li><strong>定期 review</strong>:和客户定期回顾"系统还在产生价值吗",及时调整;</li>
+<li><strong>可演进架构</strong>:系统设计时预留演进空间,业务变化时能快速适配。</li>
+</ol>
+<p>Palantir 的 JD(Acrisure 等)明确把"preventing capability atrophy"列为 FDE 的核心职责——<strong>对解决方案的产品化负责,防止部署后价值衰退</strong>。</p>
+<blockquote>
+<p><strong>防 atrophy 的商业意义</strong>:它把 FDE 从"项目制交付"推向"长期服务",为客户创造持续价值,也为 FDE 所在公司创造持续营收。这是 FDE 商业模式可持续的根基(见<a href="ch21.html">第 21 章</a>)。</p>
+</blockquote>
+<h2 id="6-5-FDCE-Forward-Deployed-Context-Engineering-2026-新提法">6.5 FDCE:Forward-Deployed Context Engineering(2026 新提法)</h2>
+<p><strong>FDCE 是 2026 年出现的一个新提法,代表 FDE 方法论在大模型时代的进化方向。</strong></p>
+<p>2026 年 4 月,Healthcare IT Today 在《From Pilots to Production》一文中提出 <strong>Forward-Deployed Context Engineering(FDCE)</strong> 的概念:它把"Service as a Software(服务即软件)"延伸为一种交付模式——<strong>工程师直接在客户的运营环境内构建 AI 系统,而不是在隔离的环境里开发</strong>。FDCE 的核心,是把"<strong>理解并工程化客户上下文</strong>"本身,当作交付的核心产物。</p>
+<p><strong>为什么"上下文"成了核心?</strong>
+在大模型时代,模型本身越来越通用、越来越强,真正决定 AI 系统好坏的,不再是"模型多聪明",而是"<strong>喂给模型的上下文多准确、多完整</strong>"。一个通用的 GPT,加上精准的客户业务上下文(数据、规则、历史、约束),就能变成专家级助手;反之,最强的模型加上错误的上下文,也会输出垃圾。</p>
+<p>这就是 Context Engineering(上下文工程)兴起的背景——它接棒 Prompt Engineering,成为 2026 年 LLM 应用的核心能力。而 FDCE 把它和"前沿部署"结合:<strong>FDE 的工作,很大一部分是把客户的海量、混沌的上下文,工程化成模型可用的形态</strong>。</p>
+<p><strong>FDCE 在医疗的典型应用</strong>
+以医疗为例(Healthcare IT Today 的场景):</p>
+<ul>
+<li>模型是通用的;</li>
+<li>上下文是:这家医院的具体病种分布、病历模板、质控规则、DRG 分组逻辑、医生的工作习惯、合规边界;</li>
+<li>FDE 的工作,是把这些上下文"工程化"进 AI 系统,让一个通用模型变成"这家医院的病历质控专家"。</li>
+</ul>
+<blockquote>
+<p><strong>FDCE 的本质</strong>:它把 FDE 的工作重心,从"写业务逻辑代码"转移到"构建高质量的上下文管道"。代码量可能更少,但对客户业务的理解要更深。这是 FDE 在大模型时代的"技能升级方向"。</p>
+</blockquote>
+<h2 id="6-6-方法论-vs-瀑布-vs-敏捷的差异">6.6 方法论 vs 瀑布 vs 敏捷的差异</h2>
+<p>FDE 方法论和传统软件开发方法论(瀑布、敏捷)是什么关系?用一个表说清:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>瀑布</th>
+<th>敏捷</th>
+<th>FDE 方法论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>起点</td>
+<td>完整需求</td>
+<td>待挖掘的产品需求</td>
+<td>待发现的客户真问题</td>
+</tr>
+<tr>
+<td>节奏</td>
+<td>阶段式(需求→设计→开发→测试)</td>
+<td>迭代式(冲刺)</td>
+<td><strong>发现-搭建-验证循环(在现场)</strong></td>
+</tr>
+<tr>
+<td>环境</td>
+<td>公司内部</td>
+<td>公司内部</td>
+<td><strong>客户现场</strong></td>
+</tr>
+<tr>
+<td>对谁负责</td>
+<td>规格说明书</td>
+<td>产品 backlog</td>
+<td><strong>客户业务结果</strong></td>
+</tr>
+<tr>
+<td>反馈来源</td>
+<td>测试用例</td>
+<td>内部用户/早期用户</td>
+<td><strong>客户真实业务</strong></td>
+</tr>
+<tr>
+<td>失败模式</td>
+<td>需求变更</td>
+<td>范围蔓延</td>
+<td>做错问题/value atrophy</td>
+</tr>
+</tbody>
+</table></div>
+<p>FDE 方法论不是推翻敏捷,而是<strong>把敏捷的"迭代"思想,搬到客户现场,用真实业务结果作为反馈</strong>。它本质上是"<strong>在现场、对结果、快速循环的敏捷</strong>"。值得注意的是,FDE 方法论和设计思维(Design Thinking)也有交集——都强调同理心、原型、迭代——但 FDE 更强调"<strong>工程化交付 + 对结果负责</strong>",而不只是"想清楚"。</p>
+<h2 id="6-7-方法论的落地工具">6.7 方法论的落地工具</h2>
+<p>这套方法论不是空洞的口号,它有一套落地工具支撑(详见第二篇后续章节和第三篇行业落地):</p>
+<ul>
+<li><strong>Discovery 工具</strong>:客户访谈模板、问题—价值映射表、北极星指标卡;</li>
+<li><strong>倒推工具</strong>:结果定义卡、ROI 测算模型、价值流图;</li>
+<li><strong>防 atrophy 工具</strong>:监控看板、数据质量告警、知识转移清单、定期 review 议程;</li>
+<li><strong>FDCE 工具</strong>:上下文管道(RAG、知识图谱、规则引擎)、上下文版本管理、上下文质量评估。</li>
+</ul>
+<p>本书<a href="ch07.html">第 7 章</a>(CDEF 四阶段)会把这套方法论,组织成一个可执行的四阶段流程(Context→Design→Engineer→Feedback),让 FDE 在真实项目里有章可循。</p>
+<h2 id="本章小结">本章小结</h2>
+<ul>
+<li>FDE 方法论有四个内核:Discovery-first、Working Backwards、防 capability atrophy、FDCE;</li>
+<li>Discovery-first:最大风险是做错东西,前期投入发现真问题,慢即是快;</li>
+<li>Working Backwards:从客户结果倒推系统,用"结果定义卡"对齐北极星;</li>
+<li>防 capability atrophy:系统上线即衰退是隐蔽失败,FDE 靠持续驻场、监控、能力转移、可演进架构防范;</li>
+<li>FDCE(2026 新提法):大模型时代,FDE 工作重心从写代码转向工程化客户上下文;</li>
+<li>FDE 方法论 = 在现场、对结果、快速循环的敏捷,介于设计思维与工程交付之间;</li>
+<li>方法论有配套工具(发现/倒推/防衰退/上下文工程),<a href="ch07.html">第 7 章</a> CDEF 将其流程化。</li>
+</ul>
+<blockquote>
+<p><strong>本章来源</strong>:LinkedIn《When Forward-Deployed Engineering Works for Enterprise AI》(Natarajan)、Healthcare IT Today《From Pilots to Production: Context-Driven AI》(2026.04, FDCE)、Amazon Working Backwards 方法论、Palantir/Acrisure JD(capability atrophy)、Resolve.ai《Why Enterprise AI Needs FDEs》、Stermedia《Forward Deployed Engineering》、本书第 5、7 章。</p>
+</blockquote></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="ch06">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#6-1-方法论的四个内核原则">6.1 方法论的四个内核原则</a></li><li class="lv2"><a href="#6-2-Discovery-first-先发现-再动手">6.2 Discovery-first:先发现,再动手</a></li><li class="lv2"><a href="#6-3-Working-Backwards-从客户结果倒推系统">6.3 Working Backwards:从客户结果倒推系统</a></li><li class="lv2"><a href="#6-4-防-capability-atrophy-让系统持续产生价值">6.4 防 capability atrophy:让系统持续产生价值</a></li><li class="lv2"><a href="#6-5-FDCE-Forward-Deployed-Context-Engineering-2026-新提法">6.5 FDCE:Forward-Deployed Context Engineering(2026 新提法)</a></li><li class="lv2"><a href="#6-6-方法论-vs-瀑布-vs-敏捷的差异">6.6 方法论 vs 瀑布 vs 敏捷的差异</a></li><li class="lv2"><a href="#6-7-方法论的落地工具">6.7 方法论的落地工具</a></li><li class="lv2"><a href="#本章小结">本章小结</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

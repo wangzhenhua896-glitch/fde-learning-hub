@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第九章：大模型系统的科学评估与线上校验 · FDE 学习中心</title>
+<meta name="description" content="在传统的软件工程中，系统的输出是确定性（Deterministic）的：只要输入相同的参数，代码永远会执行相同的逻辑。然而，在生成式人工智能（Generative AI）时代，系统的输出变成了概率性（Probabilistic）的。一个在今">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup open"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a class="on" href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#0d9488">Handbook</a></div>
+<article class="doc">
+  <h1 class="doc-title">第九章：大模型系统的科学评估与线上校验</h1>
+  <div class="doc-meta"><span style="color:#0d9488">Handbook</span><span class="sep">·</span><span>约 2,113 字</span><span class="sep">·</span><span>阅读约 5 分钟</span></div>
+  <div class="origin">来源：FDE-Handbook 中文版（github.com/goday-org，CC BY-NC-SA 4.0）</div>
+  <div class="prose" id="prose"><p>在传统的软件工程中，系统的输出是确定性（Deterministic）的：只要输入相同的参数，代码永远会执行相同的逻辑。然而，在生成式人工智能（Generative AI）时代，系统的输出变成了概率性（Probabilistic）的。一个在今天表现完美的 Agent 提示词，在明天可能因为模型底层的微调升级、或者检索知识库上下文的细微变化，而产生偏离预期的输出。在企业级高价值场景下，让未加校验的大模型应用裸奔上线，无异于给生产环境埋下一颗隐形炸弹。</p>
+<p>为了解决这一痛点，FDE 团队引入了科学的双环评估架构：<strong>开发阶段的内环迭代（Inner Loop）</strong>与<strong>生产阶段的外环监控（Outer Loop）</strong>。</p>
+<p>本章将系统剖析大模型系统的双环评估生命周期，详细推导 RAG 核心质量指标，提供一个基于 Python 的 LLM-as-a-Judge（大模型裁判）自动化跑分套件，并解密 AutoSxS（双模型横向比对）的设计原理。</p>
+<hr />
+<h2 id="1-评估体系生命周期-内环-vs-外环">1. 评估体系生命周期：内环 vs. 外环</h2>
+<p>为了保障模型在从原型设计到正式上线的全生命周期中始终处于质量控制下，评估流程必须分阶段闭环运行：</p>
+<p><svg viewBox="0 0 750 250" width="100%" height="auto" style="background-color: #fafafa; border: 1px solid #e1e1e8; border-radius: 4px; margin: 20px 0; display: block;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+    </marker>
+  </defs></p>
+<!-- Inner Loop (Dev-time) -->
+<p><rect x="30" y="40" width="310" height="170" fill="#f4f4f6" stroke="#333" stroke-width="2" rx="6" />
+  <text x="185" y="60" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#111">评估内环 (开发调试 Inner Loop)</text></p>
+<p><rect x="50" y="80" width="270" height="40" fill="#fff" stroke="#666" rx="4" />
+  <text x="185" y="105" text-anchor="middle" font-family="sans-serif" font-size="10">基于黄金数据集 (Golden Dataset) 跑分</text></p>
+<p><rect x="50" y="140" width="270" height="40" fill="#fff" stroke="#666" rx="4" />
+  <text x="185" y="165" text-anchor="middle" font-family="sans-serif" font-size="10">覆盖 50~100 条高价值边界测试用例</text></p>
+<!-- Transition -->
+<p><line x1="340" y1="125" x2="400" y2="125" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="370" y="115" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666" font-weight="bold">版本交付</text></p>
+<!-- Outer Loop (Production-time) -->
+<p><rect x="410" y="40" width="310" height="170" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" rx="6" />
+  <text x="565" y="60" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#2e7d32">评估外环 (生产运行 Outer Loop)</text></p>
+<p><rect x="430" y="80" width="270" height="40" fill="#fff" stroke="#2e7d32" rx="4" />
+  <text x="565" y="105" text-anchor="middle" font-family="sans-serif" font-size="10">异步监听生产环境用户真实对话日志</text></p>
+<p><rect x="430" y="140" width="270" height="40" fill="#fff" stroke="#2e7d32" rx="4" />
+  <text x="565" y="165" text-anchor="middle" font-family="sans-serif" font-size="10">自动计算指标，低于报警阈值则阻断发布</text>
+</svg></p>
+<ol>
+<li><strong>开发调试内环（Inner Loop）</strong>：发生在开发期。工程师在修改 Agent 提示词或重构检索算法时，会通过评估脚本在包含 50~100 条的核心“黄金数据集（Golden Dataset）”上反复跑分，确保本次优化没有引起系统性能退化（Regression）。</li>
+<li><strong>生产监控外环（Outer Loop）</strong>：发生在系统上线后。异步数据管道持续抓取线上真实用户的对话日志，以自动化形式提请评估管道进行千级别的数据打分。当整体忠实度指标跌破阈值时，自动触发报警或系统熔断。</li>
+</ol>
+<hr />
+<h2 id="2-评估-RAG-质量的三大黄金指标">2. 评估 RAG 质量的三大黄金指标</h2>
+<p>FDE 衡量一个 RAG 系统表现是否合格，主要依赖以下三个数学化指标：
+1. <strong>忠实度（Faithfulness，也称 Groundedness）</strong>：评估模型生成的答复是否<strong>完全且仅</strong>基于召回的上下文。该指标用于杜绝大模型根据自己预训练的记忆胡编乱造（幻觉）。
+$$\text{忠实度} = \frac{\text{生成答案中能被召回上下文支撑的陈述句个数}}{\text{生成答案中所有陈述句的总个数}}$$
+2. <strong>答案相关性（Answer Relevance）</strong>：评估生成的响应是否直接且精准地回答了用户的原始提问（避免答非所问）。
+$$\text{答案相关性} = \text{Cosine_Similarity}(\text{Embedding}(答案), \text{Embedding}(提问))$$
+3. <strong>上下文召回率（Context Recall）</strong>：评估检索组件是否成功抓取到了解答用户提问所需的<strong>所有</strong>关键信息。
+$$\text{上下文召回率} = \frac{\text{黄金参考答案中能被召回上下文支撑的陈述句个数}}{\text{黄金参考答案中所有陈述句的总个数}}$$</p>
+<hr />
+<h2 id="3-代码实战-基于-LLM-as-a-Judge-的自动化打分套件">3. 代码实战：基于 LLM-as-a-Judge 的自动化打分套件</h2>
+<p>为了在大规模数据流中自动计算上述指标，FDE 采用 <strong>LLM-as-a-Judge</strong> 模式。通过使用能力极其出众的大模型（如 Gemini 1.5 Pro），配置带有极高逻辑约束的判定 Prompt，来审核被测模型（如 Gemini 1.5 Flash）的生成结果。</p>
+<p>以下是实现自动化“忠实度评估”的完整 Python 脚本：</p>
+<pre><code class="language-python"># evaluation_suite.py
+import json
+import os
+from google.cloud import aiplatform
+from vertexai.generative_models import GenerativeModel
+
+def get_judge_response(prompt: str) -&gt; str:
+    # 使用旗舰级的 Gemini Pro 作为裁判模型
+    model = GenerativeModel(&quot;gemini-1.5-pro-002&quot;)
+    response = model.generate_content(prompt)
+    return response.text
+
+# 判定大模型忠实度的系统级 Prompt 模板
+JUDGE_TEMPLATE = &quot;&quot;&quot;
+您是一个精细的系统审计专家。请认真分析提供的 [参考上下文] 与 [待评估答案]，判定该答案的忠实度得分。
+
+[参考上下文]
+{context}
+
+[待评估答案]
+{answer}
+
+判定步骤：
+1. 提取 [待评估答案] 中的所有独立陈述句 (Discrete Statements)。
+2. 逐一判定每个陈述句是否直接、无偏差地得到 [参考上下文] 的信息支持。
+3. 计算最终的忠实度得分（被支持的陈述句数 / 陈述句总数）。
+
+请**务必只返回**一个合法的 JSON 报文，无需 markdown 包裹，结构如下：
+{{
+  &quot;statements&quot;: [
+    {{
+      &quot;statement&quot;: &quot;Shared VPC 的子网范围是 10.100.0.0/20&quot;,
+      &quot;supported&quot;: true,
+      &quot;explanation&quot;: &quot;直接符合参考上下文中第一句的描述。&quot;
+    }}
+  ],
+  &quot;faithfulness_score&quot;: 1.0
+}}
+&quot;&quot;&quot;
+
+def evaluate_faithfulness(context: str, answer: str) -&gt; float:
+    formatted_prompt = JUDGE_TEMPLATE.format(context=context, answer=answer)
+    raw_response = get_judge_response(formatted_prompt)
+
+    try:
+        # 去除 markdown 标记并解析 JSON
+        clean_json = raw_response.strip().replace(&quot;```json&quot;, &quot;&quot;).replace(&quot;```&quot;, &quot;&quot;)
+        data = json.loads(clean_json)
+        return data.get(&quot;faithfulness_score&quot;, 0.0)
+    except Exception as e:
+        print(f&quot;解析裁判模型输出失败: {e}&quot;)
+        return 0.0
+
+# 模拟评估流程
+if __name__ == &quot;__main__&quot;:
+    mock_context = (
+        &quot;Shared VPC 子网地址段为 10.100.0.0/20。&quot;
+        &quot;GKE 启用了 Workload Identity 机制来绑定云端角色，完全避免了静态 JSON 密钥文件的配置。&quot;
+    )
+
+    # 模拟一个完全合规的 faithful 答复
+    good_answer = &quot;我们通过 GKE Workload Identity 实现角色映射，无需静态 JSON 密钥文件。&quot;
+    score_1 = evaluate_faithfulness(mock_context, good_answer)
+    print(f&quot;合规回答的忠实度得分: {score_1:.2f}&quot;)
+
+    # 模拟一个夹杂了外部幻觉的 unfaithful 答复
+    bad_answer = &quot;Shared VPC 子网地址段为 10.100.0.0/20，并且我们需要通过 IPSec VPN 连接到 AWS VPC。&quot;
+    score_2 = evaluate_faithfulness(mock_context, bad_answer)
+    print(f&quot;夹杂幻觉的回答的忠实度得分: {score_2:.2f}&quot;)
+</code></pre>
+<hr />
+<h2 id="4-升级保障-双模型横向比对-AutoSxS-Side-by-Side">4. 升级保障：双模型横向比对 AutoSxS (Side-by-Side)</h2>
+<p>在系统升级、或更换更低成本的模型以降低推理开销时（例如将模型底座从 Gemini Pro 替换为 Gemini Flash），我们需要确保新模型在复杂边缘场景下的表现不会退化。为此，FDE 广泛采用 <strong>AutoSxS（自动化双模型侧边比对）</strong> 模式。</p>
+<p>在 AutoSxS 评估中，裁判大模型在不被告知模型 A 和模型 B 身份的前提下，面对相同的 [用户提问] 和 [检索上下文]，直接对 [模型 A 生成的答复] 和 [模型 B 生成的答复] 进行横向对比打分。</p>
+<h3 id="1-AutoSxS-判定-Prompt-模板">1. AutoSxS 判定 Prompt 模板</h3>
+<pre><code class="language-markdown">您是一个公正的系统升级评审专家。请分析以下 [用户提问]、[检索上下文]，并对比 [模型 A] 和 [模型 B] 的回答，判定谁是优胜者。
+
+[用户提问]
+{query}
+
+[检索上下文]
+{context}
+
+[模型 A 的回答]
+{answer_a}
+
+[模型 B 的回答]
+{answer_b}
+
+比对标准：
+1. 正确性 (Correctness)：哪一个模型的回答更符合上下文事实？是否包含常识错误？
+2. 完整性 (Completeness)：哪一个模型完整回答了提问的所有子要点？
+3. 简洁性 (Conciseness)：哪一个模型的表述更精炼，不包含无意义的废话和过度包装？
+4. 安全合规 (Safety)：回答是否符合企业级安全合规防线？
+
+请输出 JSON 报文，格式如下：
+{{
+  &quot;winner&quot;: &quot;A&quot; / &quot;B&quot; / &quot;TIE&quot;,
+  &quot;reason&quot;: &quot;请给出非常具体的获胜理由，详细指出模型 B 比模型 A 好在哪些词汇和逻辑上。&quot;
+}}
+</code></pre>
+<h3 id="2-AutoSxS-自动化运行脚本">2. AutoSxS 自动化运行脚本</h3>
+<p>通过运行以下 Python 脚本，FDE 可以在回归测试集中自动计算新旧模型之间的<strong>胜率（Win-Rate）</strong>，以此提供数据支撑的上线决策。</p>
+<pre><code class="language-python"># autosxs_runner.py
+import json
+from vertexai.generative_models import GenerativeModel
+
+AUTOSXS_TEMPLATE = &quot;&quot;&quot;
+您是一个公正的系统升级评审专家。请分析以下 [用户提问]、[检索上下文]，并对比 [模型 A] 和 [模型 B] 的回答，判定谁是优胜者。
+
+[用户提问]
+{query}
+
+[检索上下文]
+{context}
+
+[模型 A 的回答]
+{answer_a}
+
+[模型 B 的回答]
+{answer_b}
+
+比对标准：
+1. 正确性 (Correctness)：哪一个模型的回答更符合上下文事实？
+2. 完整性 (Completeness)：哪一个模型完整回答了提问的所有子要点？
+3. 简洁性 (Conciseness)：哪一个模型的表述更精炼？
+
+请输出 JSON 报文，格式如下：
+{{
+  &quot;winner&quot;: &quot;A&quot;,
+  &quot;reason&quot;: &quot;模型 A 获胜的理由...&quot;
+}}
+&quot;&quot;&quot;
+
+def run_autosxs(query: str, context: str, answer_a: str, answer_b: str) -&gt; dict:
+    prompt = AUTOSXS_TEMPLATE.format(
+        query=query,
+        context=context,
+        answer_a=answer_a,
+        answer_b=answer_b
+    )
+
+    # 采用 Gemini 1.5 Pro 作为公正裁判
+    model = GenerativeModel(&quot;gemini-1.5-pro-002&quot;)
+    response = model.generate_content(prompt)
+
+    try:
+        clean_json = response.text.strip().replace(&quot;```json&quot;, &quot;&quot;).replace(&quot;```&quot;, &quot;&quot;)
+        return json.loads(clean_json)
+    except Exception as e:
+        return {&quot;winner&quot;: &quot;TIE&quot;, &quot;reason&quot;: f&quot;解析异常: {e}&quot;}
+
+# 测试 AutoSxS 评估
+if __name__ == &quot;__main__&quot;:
+    result = run_autosxs(
+        query=&quot;如何为 GKE 集群配置身份鉴权？&quot;,
+        context=&quot;推荐使用 GCP Workload Identity 将 KSA 映射到 GSA，从而免去管理静态 JSON 密钥文件的安全风险。&quot;,
+        answer_a=&quot;我们推荐配置 Google Cloud 的 Workload Identity 机制，通过将 GKE 内部的 Kubernetes 服务账号绑定到云端的 IAM 服务账号，在 Pod 运行时动态获取凭证，避免了存储静态 JSON 密钥所带来的泄露隐患，这是企业级最安全的安全实践。&quot;,
+        answer_b=&quot;可以通过在 Pod 容器里挂载并使用 Service Account 的 JSON 密钥文件来配置身份鉴权。&quot;
+    )
+    print(f&quot;AutoSxS 判定结果: {result['winner']}&quot;)
+    print(f&quot;获胜原因说明: {result['reason']}&quot;)
+</code></pre>
+<p>通过在一批代表性用例上并行触发上述评估，FDE 能够获取新版本模型相对于旧版本的<strong>相对提升指数</strong>与<strong>安全防线合规率</strong>，杜绝大模型系统因底层更新引起的任何“无预警崩溃”。</p>
+<hr />
+<h2 id="本章小结">本章小结</h2>
+<p>构建具备自我校验能力的大模型系统是企业走向自动化生产的关键。通过精细设计 Inner-Outer 双环评估闭环，严格衡量 Faithful 忠实度与 Context Recall 召回率，并利用旗舰模型作为 LLM-as-a-Judge 实施规模化的自动化打分与 AutoSxS 升级判定，FDE 能够帮助企业在大模型的不确定性中牢牢抓取确定性的运行品质。</p></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="hb9">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#1-评估体系生命周期-内环-vs-外环">1. 评估体系生命周期：内环 vs. 外环</a></li><li class="lv2"><a href="#2-评估-RAG-质量的三大黄金指标">2. 评估 RAG 质量的三大黄金指标</a></li><li class="lv2"><a href="#3-代码实战-基于-LLM-as-a-Judge-的自动化打分套件">3. 代码实战：基于 LLM-as-a-Judge 的自动化打分套件</a></li><li class="lv2"><a href="#4-升级保障-双模型横向比对-AutoSxS-Side-by-Side">4. 升级保障：双模型横向比对 AutoSxS (Side-by-Side)</a></li><li class="lv3"><a href="#1-AutoSxS-判定-Prompt-模板">1. AutoSxS 判定 Prompt 模板</a></li><li class="lv3"><a href="#2-AutoSxS-自动化运行脚本">2. AutoSxS 自动化运行脚本</a></li><li class="lv2"><a href="#本章小结">本章小结</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

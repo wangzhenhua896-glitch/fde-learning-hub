@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>深度专题七 技术选型决策工程:七步法与决策树 · FDE 学习中心</title>
+<meta name="description" content="专题定位 :FDE 在 Design 阶段最频繁的决策就是&quot;选什么&quot;。本专题把技术选型从&quot;凭感觉&quot;变成&quot;七步法 + 决策树&quot;的工程化过程,覆盖模型、RAG、Agent、向量库…">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#2563eb">FDE-Wiki</a></div>
+<article class="doc">
+  <h1 class="doc-title">深度专题七 技术选型决策工程:七步法与决策树</h1>
+  <div class="doc-meta"><span style="color:#2563eb">FDE-Wiki</span><span class="sep">·</span><span>约 1,353 字</span><span class="sep">·</span><span>阅读约 3 分钟</span></div>
+  
+  <div class="prose" id="prose"><blockquote>
+<p><strong>专题定位</strong>:FDE 在 Design 阶段最频繁的决策就是"选什么"。本专题把技术选型从"凭感觉"变成"七步法 + 决策树"的工程化过程,覆盖模型、RAG、Agent、向量库、推理、部署的选型逻辑。</p>
+</blockquote>
+<h2 id="一-选型的本质-约束下的权衡">一、选型的本质:约束下的权衡</h2>
+<p><strong>技术选型没有"最优",只有"在客户真实约束下的最合适"。</strong></p>
+<p>FDE 选型时面对的约束:</p>
+<ul>
+<li><strong>合规</strong>:数据能否出境、信创要求;</li>
+<li><strong>算力</strong>:几张什么卡;</li>
+<li><strong>预算</strong>:许可费、运维成本;</li>
+<li><strong>延迟</strong>:实时还是准实时;</li>
+<li><strong>团队能力</strong>:客户/自己团队能维护什么;</li>
+<li><strong>生态</strong>:有没有社区、文档、招得到人;</li>
+<li><strong>演进</strong>:未来能不能扩展。</li>
+</ul>
+<blockquote>
+<p><strong>选型第一原则</strong>:不选"最强最新",选"足够好、能落地、可维护、有生态"。</p>
+</blockquote>
+<h2 id="二-七步选型法">二、七步选型法</h2>
+<p><strong>第一步:明确需求与约束</strong></p>
+<ul>
+<li>要解决什么业务问题(北极星);</li>
+<li>硬约束清单(合规/算力/预算/延迟)。</li>
+</ul>
+<p><strong>第二步:列出候选</strong></p>
+<ul>
+<li>至少 2—3 个候选方案;</li>
+<li>不要只看一个(避免先入为主)。</li>
+</ul>
+<p><strong>第三步:定义评估维度</strong></p>
+<ul>
+<li>功能满足度、性能、成本、合规、生态、可维护性、风险。</li>
+</ul>
+<p><strong>第四步:打分/加权</strong></p>
+<ul>
+<li>用决策矩阵,各维度打分加权;</li>
+<li>量化对比,而非拍脑袋。</li>
+</ul>
+<p><strong>第五步:PoC 验证</strong></p>
+<ul>
+<li>对 top 候选做小规模 PoC;</li>
+<li>用真实数据验证关键假设。</li>
+</ul>
+<p><strong>第六步:风险评估</strong></p>
+<ul>
+<li>每个候选的关键风险;</li>
+<li>准备回退方案。</li>
+</ul>
+<p><strong>第七步:决策与记录</strong></p>
+<ul>
+<li>选定方案;</li>
+<li>记录决策理由(ADR,Architecture Decision Record),未来可追溯。</li>
+</ul>
+<blockquote>
+<p><strong>可照抄(选型决策矩阵模板)</strong>:
+| 候选 | 功能 | 性能 | 成本 | 合规 | 生态 | 风险 | 加权总分 |
+|---|---|---|---|---|---|---|---|
+| 方案A | 9 | 8 | 7 | 10 | 9 | 低 | 8.5 |
+| 方案B | 8 | 9 | 9 | 8 | 7 | 中 | 8.2 |</p>
+</blockquote>
+<h2 id="三-模型选型决策树">三、模型选型决策树</h2>
+<pre><code>数据能否出境?
+├─ 否 → 国产/开源私有化
+│   ├─ 中文为主 → Qwen/DeepSeek/GLM
+│   └─ 算力足 → 72B;算力紧 → 7B/14B + 量化
+└─ 是 → 闭源 API(GPT/Claude/Gemini)或开源
+需要微调?
+├─ 是 → 选有完整微调工具链的(Qwen/Llama)
+└─ 否 → 直接用
+
+通用能力 vs 成本:
+├─ 顶尖能力 → 闭源大模型
+├─ 性价比 → 中等开源 + 量化
+└─ 边缘/低成本 → 小模型 + 量化
+</code></pre>
+<h2 id="四-RAG-选型决策树">四、RAG 选型决策树</h2>
+<pre><code>文档量级?
+├─ 小(&lt;10万) → pgvector(已有PG)/Qdrant
+├─ 中(10万—千万) → Milvus/Qdrant/Weaviate
+└─ 大(亿级) → Milvus 集群/专业方案
+
+关系复杂(多跳)?
+├─ 是 → GraphRAG(Neo4j)
+└─ 否 → 向量 RAG
+
+中文?
+├─ 是 → bge 嵌入 + 中文向量库(Milvus)
+└─ 否 → OpenAI embed + 通用库
+
+准确度要求高?
+├─ 是 → 混合检索 + 重排
+└─ 一般 → 纯向量
+</code></pre>
+<h2 id="五-Agent-框架选型决策树">五、Agent 框架选型决策树</h2>
+<pre><code>生产级 / 需要状态审计?
+├─ 是 → LangGraph
+└─ 否(原型) → CrewAI
+
+已绑定生态?
+├─ OpenAI → OpenAI Agents SDK
+├─ Google → Google ADK
+├─ 微软 → Microsoft Agent Framework
+└─ JS 栈 → Mastra
+
+重检索?
+└─ LlamaIndex Workflows
+
+需要连接企业系统?
+└─ 必须用 MCP
+</code></pre>
+<h2 id="六-向量库选型对比">六、向量库选型对比</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>向量库</th>
+<th>适用</th>
+<th>优势</th>
+<th>劣势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Milvus/Zilliz</td>
+<td>大规模、生产、信创</td>
+<td>国产、大规模、生态</td>
+<td>运维复杂</td>
+</tr>
+<tr>
+<td>Qdrant</td>
+<td>中小规模、易部署</td>
+<td>Rust 高性能、易用</td>
+<td>超大规模稍弱</td>
+</tr>
+<tr>
+<td>Weaviate</td>
+<td>多模态、功能全</td>
+<td>功能丰富</td>
+<td>资源占用</td>
+</tr>
+<tr>
+<td>pgvector</td>
+<td>已有 PG、小数据</td>
+<td>零额外组件</td>
+<td>规模有限</td>
+</tr>
+<tr>
+<td>ES/OpenSearch</td>
+<td>混合检索、已有 ES</td>
+<td>向量+关键词</td>
+<td>向量性能不如专用</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="七-推理框架选型">七、推理框架选型</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>框架</th>
+<th>适用</th>
+<th>优势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vLLM</td>
+<td>通用生产</td>
+<td>事实标准、生态、PagedAttention</td>
+</tr>
+<tr>
+<td>TGI</td>
+<td>HF 生态</td>
+<td>易用</td>
+</tr>
+<tr>
+<td>TensorRT-LLM</td>
+<td>极致性能、全 NV</td>
+<td>性能最强</td>
+</tr>
+<tr>
+<td>SGLang</td>
+<td>结构化生成</td>
+<td>缓存、结构化</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="八-部署形态选型">八、部署形态选型</h2>
+<pre><code>数据能上云 &amp; 流量波动大?
+├─ 是 → 公有云弹性
+└─ 否 → 私有化
+强合规(政企/金融)?
+├─ 是 → 私有化 + 信创
+└─ 否 → 标准
+边缘低延迟(工厂/门店)?
+├─ 是 → 边缘部署
+└─ 否 → 中心化
+</code></pre>
+<h2 id="九-工具链选型实战-Coze-vs-Dify-vs-Trae">九、工具链选型实战:Coze vs Dify vs Trae</h2>
+<p><strong>这是中国市场 FDE 常遇到的选型(低代码 AI 平台)。</strong></p>
+<p><strong>Coze(扣子,字节)</strong></p>
+<ul>
+<li>低代码 Agent/工作流搭建;</li>
+<li>适合:快速原型、非技术用户;</li>
+<li>优势:字节生态、中文友好;</li>
+<li>劣势:定制化、私有化受限。</li>
+</ul>
+<p><strong>Dify(开源)</strong></p>
+<ul>
+<li>开源 LLM 应用开发平台;</li>
+<li>适合:需要私有化、定制的企业;</li>
+<li>优势:开源、可私有化、灵活;</li>
+<li>劣势:需自运维。</li>
+</ul>
+<p><strong>Trae(字节,IDE 式)</strong></p>
+<ul>
+<li>AI 原生 IDE/开发;</li>
+<li>适合:开发者快速构建;</li>
+<li>优势:开发体验好;</li>
+<li>劣势:偏开发侧。</li>
+</ul>
+<blockquote>
+<p><strong>选型</strong>:非技术用户快速搭 → Coze;企业私有化 → Dify;开发者 → Trae。三者不互斥,可组合。</p>
+</blockquote>
+<h2 id="十-选型的反模式">十、选型的反模式</h2>
+<p><strong>反模式一:追新</strong></p>
+<ul>
+<li>选最新最酷的,不顾成熟度;</li>
+<li>解:优先成熟有生态的。</li>
+</ul>
+<p><strong>反模式二:单点依赖</strong></p>
+<ul>
+<li>选了一个没有替代的,被绑架;</li>
+<li>解:评估替代方案、抽象接口。</li>
+</ul>
+<p><strong>反模式三:过度设计</strong></p>
+<ul>
+<li>一开始就上最复杂方案;</li>
+<li>解:从 MVD 开始,演进。</li>
+</ul>
+<p><strong>反模式四:忽视团队能力</strong></p>
+<ul>
+<li>选了团队维护不了的;</li>
+<li>解:考虑可维护性。</li>
+</ul>
+<p><strong>反模式五:不记录决策</strong></p>
+<ul>
+<li>为什么这么选,没人记得;</li>
+<li>解:写 ADR。</li>
+</ul>
+<h2 id="十一-选型清单模板-给-FDE">十一、选型清单模板(给 FDE)</h2>
+<p>每次选型,FDE 填一张:</p>
+<ul>
+<li>业务需求与北极星;</li>
+<li>硬约束(合规/算力/预算/延迟);</li>
+<li>候选方案(≥2);</li>
+<li>评估维度与打分;</li>
+<li>PoC 结果;</li>
+<li>风险与回退;</li>
+<li>决策与 ADR。</li>
+</ul>
+<h2 id="本专题小结">本专题小结</h2>
+<ul>
+<li>选型本质=约束下权衡,不选最强选最合适;</li>
+<li>七步法:需求→候选→维度→打分→PoC→风险→决策记录;</li>
+<li>模型选型树:出境→国产/开源,中文→Qwen/DeepSeek/GLM,算力→规模+量化;</li>
+<li>RAG 选型树:量级→向量库,关系→GraphRAG,中文→bge,准确→混合+重排;</li>
+<li>Agent 框架树:生产→LangGraph,原型→CrewAI,生态→官方,企业系统→MCP;</li>
+<li>向量库:Milvus(大规模/信创)/Qdrant/pgvector/ES;</li>
+<li>推理:vLLM 通用,TensorRT-LLM 极致;</li>
+<li>部署:云/私有/边缘/信创;</li>
+<li>工具链:Coze(低代码)/Dify(开源私有化)/Trae(开发);</li>
+<li>反模式:追新/单点/过度/忽视维护/不记录。</li>
+</ul>
+<blockquote>
+<p><strong>本专题来源</strong>:O'Reilly《AI Agents Stack 2026》、Milvus/Qdrant/LangGraph 文档、用户库《FDE工具链评测》《fde-delivery 80-tech-selection》、本书<a href="ch09.html">第 9 章</a>。</p>
+</blockquote></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="topic07">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#一-选型的本质-约束下的权衡">一、选型的本质:约束下的权衡</a></li><li class="lv2"><a href="#二-七步选型法">二、七步选型法</a></li><li class="lv2"><a href="#三-模型选型决策树">三、模型选型决策树</a></li><li class="lv2"><a href="#四-RAG-选型决策树">四、RAG 选型决策树</a></li><li class="lv2"><a href="#五-Agent-框架选型决策树">五、Agent 框架选型决策树</a></li><li class="lv2"><a href="#六-向量库选型对比">六、向量库选型对比</a></li><li class="lv2"><a href="#七-推理框架选型">七、推理框架选型</a></li><li class="lv2"><a href="#八-部署形态选型">八、部署形态选型</a></li><li class="lv2"><a href="#九-工具链选型实战-Coze-vs-Dify-vs-Trae">九、工具链选型实战:Coze vs Dify vs Trae</a></li><li class="lv2"><a href="#十-选型的反模式">十、选型的反模式</a></li><li class="lv2"><a href="#十一-选型清单模板-给-FDE">十一、选型清单模板(给 FDE)</a></li><li class="lv2"><a href="#本专题小结">本专题小结</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

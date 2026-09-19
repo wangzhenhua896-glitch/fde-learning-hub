@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>深度专题五十 大模型应用的系统测试策略 · FDE 学习中心</title>
+<meta name="description" content="大模型(LLM)应用之所以难测,根本原因不在于&quot;测试技术不够&quot;,而在于被测对象本身的性质发生了变化。传统软件是确定性的:给定输入,期望输出可枚举、可断言;而 LLM 应用是概…">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#2563eb">FDE-Wiki</a></div>
+<article class="doc">
+  <h1 class="doc-title">深度专题五十 大模型应用的系统测试策略</h1>
+  <div class="doc-meta"><span style="color:#2563eb">FDE-Wiki</span><span class="sep">·</span><span>约 6,476 字</span><span class="sep">·</span><span>阅读约 16 分钟</span></div>
+  
+  <div class="prose" id="prose"><p>大模型(LLM)应用之所以难测,根本原因不在于"测试技术不够",而在于被测对象本身的性质发生了变化。传统软件是确定性的:给定输入,期望输出可枚举、可断言;而 LLM 应用是概率性、组合性、状态依赖的——同一条输入,在不同温度、不同上下文窗口、不同检索结果、不同工具返回下,输出可能完全不同。把传统软件的测试金字塔原样套用到 LLM 应用,几乎必然出现"单元测试全绿、线上事故频发"的尴尬。</p>
+<p>本专题从一线工程视角,拆解 LLM 应用系统测试的完整图谱:从测试金字塔的重构,到组件级测试、端到端场景测试、非功能测试、回归测试、在线测试,再到测试数据管理、CI 集成、覆盖率度量、工具选型与反模式。所有方法均给出可执行的评估指标、工具命令与数据集结构,避免停留在"要多测、要全测"的口号层面。</p>
+<h2 id="50-1-LLM-应用测试与传统软件测试的本质差异">50.1 LLM 应用测试与传统软件测试的本质差异</h2>
+<p>理解差异是设计策略的前提。LLM 应用的测试难度来自五个相互叠加的维度。</p>
+<p><strong>第一,非确定性输出。</strong> 同一 prompt 在 <code>temperature=0</code> 时,不同推理后端(vLLM、TGI、各云厂商)仍可能因浮点累加顺序、KV-cache 命中差异产生微小分歧;<code>temperature&gt;0</code> 时分歧显著放大。这意味着"断言相等"这类经典断言几乎不可用,必须改为语义断言、评分断言或分布断言。</p>
+<p><strong>第二,概率性失败。</strong> 传统软件的 bug 通常是确定可复现的;LLM 应用的失败往往是"100 次里错 3 次"的小概率事件。要可靠捕获 p=3% 的失败,单跑一次毫无意义,需要在同一用例上重复采样 N 次,用置信区间判断是否真正回归。统计上,要让观察失败率 0% 与真实失败率 3% 区分开,N 至少要达到 100 量级,这意味着 LLM 测试的样本成本天然比传统测试高一两个数量级。</p>
+<p><strong>第三,组合爆炸。</strong> 一个 RAG 应用涉及:检索(召回率、排序、重排)、prompt 模板(变量注入)、上下文窗口(截断策略)、模型(版本、量化)、工具调用(参数生成、错误处理)、护栏(输入过滤、输出过滤)。每一环都是独立变量,笛卡尔积的组合空间远超人工可枚举范围,必须用分层测试 + 抽样 + 自动化生成来覆盖。</p>
+<p><strong>第四,高单次成本。</strong> 每次推理都要消耗 GPU 时间或 API 配额。一个端到端用例若涉及多轮对话、检索、工具调用,单次执行成本可能从几分钱到几块钱不等。跑一个 1000 条的评估集,单次成本可能上千元,这让"每次 commit 跑全量"变得不现实,必须分层、分频次。</p>
+<p><strong>第五,漂移(Drift)。</strong> 模型供应商会静默升级版本(如 gpt-4-0613 → gpt-4-turbo → gpt-4o),同一个 API 名字背后可能是完全不同的权重;外部知识库内容会更新;用户的 prompt 习惯会演化。即便代码一行未改,应用行为也会随时间漂移,因此 LLM 应用需要"持续在线测试",而非"发布前测一次"。</p>
+<blockquote>
+<p>一句话原则:LLM 测试的对象不是"函数",而是"行为分布";断言的不是"相等",而是"可接受的边界"。</p>
+</blockquote>
+<h2 id="50-2-测试金字塔在-LLM-中的重构">50.2 测试金字塔在 LLM 中的重构</h2>
+<p>经典测试金字塔(底层单元测试最多、顶层端到端最少)在 LLM 应用中需要重构为五层,自底向上依次为:单元 → 组件 → 端到端 → 红队 → 在线。</p>
+<p><strong>单元测试层(最厚、最快、最便宜)。</strong> 测的是与模型无关的纯逻辑:prompt 模板的变量拼接是否正确、JSON 解析是否健壮、token 计数函数、截断算法、护栏规则的正则匹配、配置加载。这一层用 pytest / unittest 即可,毫秒级、零成本。常见反例是把"调用模型生成一句话"塞进单元测试,既慢又贵且不确定——这类应下沉到组件层用 mock 模型或本地小模型替代。</p>
+<p><strong>组件测试层(中等厚度、中等成本)。</strong> 把 RAG/Agent 拆成检索、prompt、工具、护栏四个子系统,各自独立测试。例如检索组件固定一份 query 集,断言 Top-K 命中率;prompt 组件固定输入,断言输出是否包含必备字段、是否触发格式约束。组件层允许调用真实模型,但应锁定 <code>temperature=0</code>、固定模型版本、固定检索索引快照,以保证可复现。</p>
+<p><strong>端到端测试层(较薄、较贵)。</strong> 用场景化用例集覆盖核心用户旅程(开户问答、订单查询、工单流转)。每个场景断言多维指标:任务完成率、关键事实正确性、语气合规、是否拒答。端到端用例数量通常控制在 50–300 条,每条跑 1–3 次,作为发布前的质量门。</p>
+<p><strong>红队测试层(专门一层、人工+自动化)。</strong> 针对越狱(jailbreak)、提示注入(prompt injection)、敏感内容诱导、数据泄露做对抗性测试。这一层不能用随机样本,必须用结构化攻击手册(如 AdvBench、PAIR、人工编写的行业特定攻击),并结合 LLM-as-attacker 自动生成变种。红队通过率不进入发布门,但作为独立风险报告。</p>
+<p><strong>在线测试层(金字塔之外、持续运行)。</strong> 包括影子流量(线上请求复制到新版本不返回用户)、A/B 测试、金丝雀发布、用户隐式反馈(点赞/点踩/重写率/会话放弃率)。在线测试是唯一能捕获"真实分布漂移"的层,也是最终的质量裁决者。</p>
+<p>重构后的金字塔不是简单的"底多顶少",而是"快慢分层 + 频次分级":单元层每次 commit 跑、组件层每次 PR 跑、端到端层每日跑、红队每周跑、在线层持续跑。</p>
+<h2 id="50-3-组件测试-prompt-检索-工具-护栏各自怎么测">50.3 组件测试:prompt、检索、工具、护栏各自怎么测</h2>
+<p>LLM 应用可分解为四个核心组件,每个组件的测试目标和指标都不同。</p>
+<h3 id="50-3-1-Prompt-组件测试">50.3.1 Prompt 组件测试</h3>
+<p>Prompt 是 LLM 应用最大的"代码债"。测试维度包括:(1)<strong>格式稳定性</strong>——用格式校验器(如 Instructor、Outlines、JSON Schema 约束解码)断言输出始终符合 schema;(2)<strong>指令遵从度</strong>——是否遵守"用中文回答""不超过 200 字""不要提到竞品"等约束,可用规则匹配 + LLM-as-judge 双重判定;(3)<strong>鲁棒性</strong>——注入空变量、超长变量、含特殊字符的变量,检查是否优雅降级而非崩溃。</p>
+<p>实操方法:为每个 prompt 维护一份"黄金输入集"(20–50 条人工精选),锁定 <code>temperature=0</code>,用 DeepEval 或 Promptfoo 跑批,断言用 <code>assert "格式字段" in output</code> 或语义相似度阈值(如 BERTScore ≥ 0.85)。</p>
+<h3 id="50-3-2-检索组件测试-RAG-评测">50.3.2 检索组件测试(RAG 评测)</h3>
+<p>检索质量直接决定 RAG 应用上限。指标分两层:<strong>检索层指标</strong>——召回率(Recall@K,关键:是否召回了能回答问题的文档)、精确率(Precision@K)、MRR、nDCG;<strong>生成层指标</strong>——答案的正确性、是否忠实于检索内容(忠实度 Faithfulness)、是否完整回答了问题(答案相关性 Answer Relevance)、是否引入了幻觉。</p>
+<p>工具链上,RAGAS 是事实标准:<code>ragas.evaluate(dataset, metrics=[faithfulness, answer_relevancy, context_precision, context_recall])</code>。数据集需要人工标注"问题—标准答案—相关文档块"三元组,通常 100–500 条覆盖核心场景。一个常见误区是只评检索层、不评生成层——召回率 95% 但模型仍然答错,问题往往出在 prompt 拼接或上下文截断。</p>
+<h3 id="50-3-3-工具调用-Tool-Function-Calling-测试">50.3.3 工具调用(Tool/Function Calling)测试</h3>
+<p>Agent 类应用的核心风险是工具调用参数错误。测试要点:(1)<strong>参数生成正确率</strong>——给定自然语言意图,模型生成的工具调用 JSON 是否字段齐全、类型正确、枚举值合法,可用 JSON Schema 校验;(2)<strong>错误处理</strong>——工具返回超时、4xx、5xx、脏数据时,模型是否能识别并重试或转人工;(3)<strong>调用顺序</strong>——多步任务中工具是否按依赖图正确排序;(4)<strong>参数边界</strong>——金额为负、日期为未来、ID 不存在等边界值。</p>
+<p>建议构造一份"工具调用回归集",每条用例包含:用户输入、期望调用的工具名、期望参数的断言(必填字段+关键值域)、期望的下一步动作。用 LangSmith 或自研 trace 校验器回放断言。</p>
+<h3 id="50-3-4-护栏-Guardrails-测试">50.3.4 护栏(Guardrails)测试</h3>
+<p>护栏分输入侧(敏感词、PII、越狱检测)和输出侧(涉政、暴力、隐私、版权)。测试方法:(1)<strong>正负样本集</strong>——每类护栏维护 200+ 正样本(应通过)和 200+ 负样本(应拦截),标注拦截与否;(2)<strong>指标</strong>——精确率、召回率、F1,以及关键的"误拦截率"(把正常请求判为违规),因为误拦截直接伤害用户体验;(3)<strong>绕过测试</strong>——用谐音、拆字、多语言、emoji 替换等绕过手段验证护栏韧性;(4)<strong>延迟</strong>——护栏通常在主链路上,延迟需控制在 100ms 以内,否则拖垮整体响应。</p>
+<p>护栏测试必须独立于模型版本演进,因为护栏规则与模型能力是两条独立的迭代线。</p>
+<h2 id="50-4-端到端测试-场景化用例集的设计">50.4 端到端测试:场景化用例集的设计</h2>
+<p>端到端测试不是"随便找几个问题跑一下",而是要构建有结构的场景化用例集,覆盖业务的"用户旅程全集"。</p>
+<p><strong>用例集结构。</strong> 推荐四维标注:<code>场景类型</code>(信息查询/事务办理/故障排查/闲聊/拒答)× <code>复杂度</code>(单轮/多轮/多工具)× <code>用户画像</code>(新手/老用户/恶意用户)× <code>预期行为</code>(成功/转人工/合规拒答)。以客服机器人为例,典型用例集规模 150–300 条,各维度比例按线上真实流量分布加权,避免"测试集全是简单查询、线上全是复杂工单"的错配。</p>
+<p><strong>断言策略。</strong> 单一断言不够,采用多维评分卡:(1)任务完成(是/否,人工或规则判定);(2)事实正确性(关键实体是否准确,可用 LLM-as-judge 对比标准答案);(3)格式合规(是否符合接口 schema);(4)语气与品牌一致性;(5)安全性(是否触发护栏)。每维 0–2 分,总分作为该用例的质量分,设定阈值(如 ≥7/10)为通过。</p>
+<p><strong>采样策略。</strong> 由于概率性失败,每条端到端用例至少跑 3 次取众数或最差值,关键用例(高价值场景)跑 5–10 次。统计上,3 次采样观察到 0 次失败时,真实失败率 95% 置信上限约 63%(粗糙上界),因此端到端用例的"通过"只能说明"无明显回归",不能作为质量保证的唯一依据。</p>
+<p><strong>人工评审闭环。</strong> 端到端失败用例必须进入人工评审,分类为"真 bug / 评测器误判 / 边缘 case 容忍",前两类进入修复队列,第三类记录到已知限制清单。没有这个闭环,自动评测分会被噪声淹没。</p>
+<h2 id="50-5-非功能测试-性能-安全-合规-可访问性-多语言">50.5 非功能测试:性能、安全、合规、可访问性、多语言</h2>
+<p>功能性测试之外,非功能属性往往是上线与否的真正裁决因素。</p>
+<p><strong>性能测试。</strong> 指标:首 token 延迟(TTFT)、token 生成速率(TPS)、端到端延迟 P50/P95/P99、并发吞吐、长上下文下的延迟退化。工具:Locus、k6、自研压测脚本,结合 vLLM 的 <code>--max-num-seqs</code> 调优。注意:LLM 的延迟分布是长尾,P99 可能是 P50 的 5–10 倍,SLA 必须按 P99 而非均值承诺。</p>
+<p><strong>安全测试。</strong> 重点三项:(1)越狱与提示注入,用 AdvBench、JailbreakBench、PAIR 等数据集红队;(2)数据泄露,测试模型是否会泄露 system prompt、检索到的其他用户数据、训练数据中的 PII;(3)供应链,检查模型权重来源、HuggingFace 仓库的可信度(签名、下载量、社区报告)、依赖库漏洞(CVE 扫描)。</p>
+<p><strong>合规测试。</strong> 国内场景需对接《生成式人工智能服务管理暂行办法》的备案与安全评估要求,测试用例需覆盖:社会主义核心价值观、民族宗教、暴恐、隐私、商业合规。建议建立"合规评估集"(通常 1000+ 条),由法务与安全团队共同维护,任何模型升级或 prompt 大改后必须全量回归。</p>
+<p><strong>可访问性测试。</strong> 语音输入识别对方言、口音、语速的覆盖度;屏幕阅读器对模型输出的可读性;低视力用户的字号与对比度。这部分常被忽视,但对公共服务类应用是硬要求。</p>
+<p><strong>多语言测试。</strong> 同一意图用中、英、日、粤、文言等变体输入,断言输出语义一致与语言正确。LLM 在低资源语言上幻觉率显著升高,需独立评估集。</p>
+<h2 id="50-6-回归测试-bad-case-回归集是核心资产">50.6 回归测试:bad case 回归集是核心资产</h2>
+<p>LLM 应用迭代中,最值钱的资产不是代码,而是<strong>bad case 回归集</strong>——历史上踩过的坑,固化成永不删除的测试用例。</p>
+<p><strong>回归集构成。</strong> 三类来源:(1)线上用户投诉/点踩的真实 case(脱敏后入库);(2)红队发现的攻击成功 case;(3)评测中发现的模型固有缺陷(如某类数学题总错、某类实体总幻觉)。每条 case 标注:输入、期望输出(或期望行为)、严重程度(P0/P1/P2)、来源、修复版本。</p>
+<p><strong>回归集治理。</strong> 反模式是"只增不减",最终堆积成几千条跑不动的死库。正确做法:按严重程度分级调度——P0 每次发布必跑、P1 每周跑、P2 每月采样跑;对连续 10 次发布都通过的用例降级;对新引入的同类 case 做聚类去重。回归集应纳入版本控制(git 仓库或专门的数据版本工具如 DVC),每次变更可 diff。</p>
+<p><strong>漂移监控。</strong> 回归集本身要定期"复审":半年前的 bad case 在当前模型上是否仍然成立?如果模型已天然修复,该用例可移出核心集。这避免回归集逐渐失去区分度。</p>
+<h2 id="50-7-在线测试-AB-影子流量-金丝雀">50.7 在线测试:AB、影子流量、金丝雀</h2>
+<p>离线评测再全,也无法完全模拟真实流量分布。上线阶段的在线测试是质量闭环的最后一公里。</p>
+<p><strong>影子流量(Shadow / Mirror)。</strong> 把线上真实请求复制一份到新版本,不返回给用户,只记录输出与线上版本的差异。优点:零用户风险、真实分布;缺点:成本翻倍。适合重大版本升级前的预热验证。</p>
+<p><strong>A/B 测试。</strong> 按用户 ID 哈希分流(如 95% 老版本、5% 新版本),监控核心业务指标(解决率、转人工率、会话时长、用户满意度)与技术指标(延迟、错误率)。统计显著性需达到 p&lt;0.05 且样本量充足(每臂数千次会话),否则容易因随机波动误判。注意 SRM(样本比例失调)检验——如果分桶后实际流量比与设计不符,说明存在分流 bug,所有结论作废。</p>
+<p><strong>金丝雀发布(Canary)。</strong> 先放量 1%→5%→25%→100%,每级观察 24–48 小时的告警面板与人工抽检,任一指标恶化立即回滚。金丝雀的关键不是"放多少",而是"观察多久、回滚阈值多严"——建议预设量化回滚条件(如转人工率上升 &gt;10% 或延迟 P95 上升 &gt;30%),由告警自动触发,而非靠人盯。</p>
+<p><strong>在线指标的反作弊。</strong> 用户点踩率受 UI 位置影响、会话时长被"卡死循环"污染、解决率可能被模型过度自信虚高。每个在线指标都要配套"健康度校验",避免单一指标优化导致系统退化(Goodhart 定律)。</p>
+<h2 id="50-8-测试数据管理-评估集隔离-脱敏-版本">50.8 测试数据管理:评估集隔离、脱敏、版本</h2>
+<p>LLM 测试的数据治理比代码治理更关键,因为模型质量直接由评估集定义。</p>
+<p><strong>评估集隔离。</strong> 严格区分三层:(1)<strong>开发集</strong>——日常调试用,可被工程师反复查看、模型可能间接"见过";(2)<strong>验证集</strong>——调参选模型用,工程师不直接看 case 内容,避免主观过拟合;(3)<strong>留出测试集(Hold-out)</strong>——仅在发布前运行一次,用于无偏估计真实质量。三层必须物理隔离,禁止交叉使用。常见事故是开发集污染了测试集,导致离线指标虚高、上线翻车。</p>
+<p><strong>脱敏。</strong> 任何来自真实用户的 case 必须脱敏:手机号、身份证、银行卡、姓名、地址、病历等 PII 用规则替换为占位符(如 <code>[PHONE_1]</code>),并保留映射表在受控环境内。脱敏要双向——既脱输入,也脱输出与检索上下文。脱敏流程需通过隐私团队评审,避免"看似脱了实际可还原"(如罕见病+罕见地名组合仍可定位个体)。</p>
+<p><strong>版本化。</strong> 评估集用 DVC 或 git-LFS 管理,每次评测记录:数据集版本、模型版本、prompt 版本、评测脚本版本、评测结果哈希。这样任何"指标变化"都可追溯到具体变量,而不是"不知道是数据变了还是模型变了"。结果数据本身也建议存为 parquet/jsonl 进版本库,便于历史趋势可视化。</p>
+<p><strong>数据版权与合规。</strong> 评估集若含第三方内容(如公开 benchmark 子集),需确认许可证允许内部评测使用;涉及个人信息的需符合《个人信息保护法》最小必要原则。</p>
+<h2 id="50-9-测试自动化与-CI-集成">50.9 测试自动化与 CI 集成</h2>
+<p>没有 CI 的 LLM 测试会迅速退化为"想起来跑一下、想不起来就算了"。自动化是质量纪律的载体。</p>
+<p><strong>分层 CI 流水线。</strong> 推荐四阶段:(1)<strong>pre-commit</strong>(本地 hook,秒级):跑单元测试 + prompt 格式 lint + 评估集 schema 校验;(2)<strong>PR 流水线</strong>(分钟级):跑组件测试 + 50 条核心端到端用例,作为合并门;(3)<strong>夜间流水线</strong>(小时级):跑全量端到端用例 + 红队子集 + 性能基准;(4)<strong>发布流水线</strong>:跑合规评估集全量 + 留出测试集 + 在线影子流量对比。</p>
+<p><strong>成本控制。</strong> LLM 测试贵,必须分层调度:PR 阶段只跑高价值子集(如 50 条黄金用例),用本地小模型或 mock 模型替代大模型跑组件测试;夜间用真实模型跑全量。建议维护"快速评估集"(50 条,2 分钟,5 元)和"全量评估集"(500 条,40 分钟,200 元)两套,按场景选择。</p>
+<p><strong>结果可视化。</strong> CI 必须输出可读报告:每条用例的通过/失败、各维度评分趋势曲线、与上次基线的 diff、失败用例的输入输出全文。推荐集成 LangSmith、Phoenix(Arize)、或自建 Grafana 面板。光有数字没有趋势,工程师无法判断"是噪声还是真回归"。</p>
+<p><strong>质量门(Quality Gate)。</strong> 定义硬性合并条件:(1)核心用例通过率 ≥ 95%;(2)无 P0 级失败;(3)关键指标(如答案正确率)相对基线下降不超过 2%;(4)延迟 P95 不超过基线 110%;(5)护栏误拦截率不超过基线。任一不满足,流水线红,PR 不可合并。</p>
+<h2 id="50-10-测试覆盖率与质量度量">50.10 测试覆盖率与质量度量</h2>
+<p>传统代码覆盖率(行/分支)对 LLM 应用几乎无意义——LLM 应用的"代码"常常只有几百行胶水逻辑,真正决定质量的是 prompt、检索、模型行为。需要一套新的覆盖率度量。</p>
+<p><strong>行为覆盖率。</strong> 评估集是否覆盖了业务场景全集。可用场景矩阵(场景类型 × 复杂度 × 用户画像)的填充率衡量,目标 ≥ 90% 单元有至少 3 条用例。低覆盖单元即为高风险盲区。</p>
+<p><strong>意图覆盖率。</strong> 从线上日志聚类出真实用户意图 Top-N(如用 sentence-BERT 聚类),检查评估集是否覆盖了流量占比累计 95% 以上的意图簇。未覆盖的意图簇即为"线上有、测试无"的缺口,应优先补齐。</p>
+<p><strong>风险覆盖率。</strong> 红队攻击手册的覆盖度,如越狱、注入、PII 泄露、不当内容各类是否都有 ≥ 100 条用例。</p>
+<p><strong>指标健康度。</strong> 评测器本身是否可信。可用"人工抽检一致性"衡量——随机抽 100 条评测结果,人工复核,计算与评测器判断的一致率,目标 ≥ 85%;低于此值说明 LLM-as-judge 不可靠,需更换评测模型或加规则约束。</p>
+<blockquote>
+<p>反直觉结论:LLM 应用的"覆盖率"不是代码行数,而是"线上真实分布被测试集代表了多少"。</p>
+</blockquote>
+<h2 id="50-11-工具选型-DeepEval-Promptfoo-RAGAS-与自研边界">50.11 工具选型:DeepEval、Promptfoo、RAGAS 与自研边界</h2>
+<p>工具不是越多越好,选型要服从于"是否能集成进 CI、是否能版本化、是否可解释"。</p>
+<p><strong>DeepEval。</strong> Python 原生,pytest 风格,内置 faithfulness、answer_relevancy、toxicity 等指标,支持 LLM-as-judge 与规则断言混合。适合需要把评测纳入 pytest 体系、与单元测试统一调度的团队。优点:上手快、与 CI 集成顺畅;缺点:对复杂 Agent 链路的支持较弱,自定义指标需写较多胶水。</p>
+<p><strong>Promptfoo。</strong> 强项在 prompt 对比与回归:同一输入集,并排跑多个 prompt/模型版本,生成可视化对比矩阵。支持 YAML 配置用例、本地缓存结果、CLI 一键重跑。适合 prompt 工程阶段的大规模版本对比(如 10 个 prompt 候选 × 200 条用例)。优点:对比体验极佳、成本低(缓存);缺点:指标偏轻量,深度评测仍需配合 RAGAS/DeepEval。</p>
+<p><strong>RAGAS。</strong> RAG 评测的事实标准,核心指标 faithfulness、context_precision、context_recall、answer_relevancy 均针对检索增强场景设计。优点:指标定义严谨、学术认可度高;缺点:对非 RAG 场景(纯生成、Agent)不适用,且 LLM-as-judge 部分对评测模型依赖大,需选强模型(如 GPT-4 级)做 judge 否则噪声大。</p>
+<p><strong>LangSmith / Langfuse / Phoenix。</strong> 这一类是观测+评测平台,核心价值是 trace 级调试与在线评测,能直接把线上 trace 转为评测用例。适合需要"从生产流量反哺评估集"的团队。</p>
+<p><strong>自研边界。</strong> 何时该自研:(1)行业特定指标(如医疗答案的临床正确性、法律答案的法条引用准确率),通用工具无法覆盖;(2)评测器需要对接内部知识库或业务系统;(3)需要特殊的采样与统计策略(如分层抽样、贝叶斯置信区间)。自研应基于开源框架扩展,而非从零造轮子。</p>
+<p><strong>选型决策矩阵。</strong> 团队 &lt; 5 人且场景标准:DeepEval + RAGAS;重视 prompt 迭代速度:Promptfoo + DeepEval;Agent 复杂链路:LangSmith + 自研 trace 断言;强行业属性:RAGAS + 自研领域指标。组合优于单一。</p>
+<h2 id="50-12-反模式-不测就上-只测-happy-path">50.12 反模式:不测就上、只测 happy path</h2>
+<p>最后列出一线上反复出现的反模式,作为团队自查清单。</p>
+<p><strong>反模式一:不测就上。</strong> "模型很强、demo 看着没问题、先上线再说"——这是最常见的翻车起点。LLM 的能力边界只有在评测中才会暴露,demo 的 5 个问题永远不能代表线上 5000 种问法。对策:任何上线必须跑核心评估集,无评估集不允许上线。</p>
+<p><strong>反模式二:只测 happy path。</strong> 评估集全是清晰、礼貌、信息完整的提问;线上却是模糊、口语化、带错别字、信息缺失的真实输入。对策:评估集必须按线上日志分布采样,刻意保留噪声与边缘 case。</p>
+<p><strong>反模式三:评测器不可信却不校验。</strong> 用一个弱模型做 LLM-as-judge,评分随机波动,团队逐渐不信任评测,退回到"靠感觉"。对策:定期人工抽检评测器一致率,不一致的用例进入评测器优化队列。</p>
+<p><strong>反模式四:评估集污染。</strong> 工程师把测试 case 拿来调试 prompt,无意中让 prompt"记住"了测试集,离线指标飞涨、上线拉胯。对策:三层评估集物理隔离,hold-out 测试集仅在发布流水线中运行,日常不可见。</p>
+<p><strong>反模式五:只评离线、不看在线。</strong> 离线指标全绿,上线后用户投诉激增——因为离线分布与线上分布错配。对策:建立影子流量对比,把线上真实请求每月采样进评估集,持续校准分布。</p>
+<p><strong>反模式六:护栏一刀切。</strong> 为了安全把护栏阈值调到极严,正常请求被大面积拦截,用户流失。对策:护栏指标同时看召回与误拦截,误拦截率纳入质量门。</p>
+<p><strong>反模式七:回归集只增不减。</strong> 几千条死用例,跑不动、没人维护、逐渐失效。对策:定期复审、分级调度、聚类去重。</p>
+<p><strong>反模式八:把在线指标当唯一真理。</strong> 点踩率上升就紧急回滚,实际是 UI 改版导致点踩按钮位置变化。对策:每个在线指标配套健康度校验与多维交叉验证。</p>
+<h2 id="本专题小结">本专题小结</h2>
+<p>大模型应用的系统测试,本质是把"测试对象从函数变为行为分布"的方法论迁移。核心要点:(1)接受非确定性,改相等断言为评分断言与分布断言;(2)重构测试金字塔为单元/组件/端到端/红队/在线五层,按频次而非数量分层调度;(3)组件测试按 prompt/检索/工具/护栏四个子系统分别建立指标体系,RAGAS、DeepEval、Promptfoo 各有适用边界;(4)端到端用多维评分卡 + 多次采样,单次结果不可信;(5)非功能测试(性能 P99、安全越狱、合规备案、可访问性、多语言)往往是真正上线门;(6)bad case 回归集与三层评估集隔离是 LLM 应用最值钱的两项资产;(7)CI 集成必须分层、设硬质量门、输出可视化趋势;(8)覆盖率度量从"代码行"转向"行为分布与意图覆盖";(9)反模式的共同根源是把 LLM 当传统软件测——只测 happy path、不校验评测器、不做在线对照,任何一条都会让"全绿"变成幻觉。一句话:LLM 应用的测试不是验证"它能跑",而是持续证明"它在真实分布下依然在可接受的边界内"。</p>
+<h2 id="本专题来源">本专题来源</h2>
+<ul>
+<li>一线 LLM 应用工程实践与事故复盘(客服机器人、企业知识库、Agent 类应用的测试经验)</li>
+<li>RAGAS、DeepEval、Promptfoo、LangSmith、Langfuse、Phoenix(Arize)等工具官方文档与基准评测</li>
+<li>AdvBench、JailbreakBench、PAIR、TruthfulQA、MT-Bench、HELM 等学术评测基准</li>
+<li>《生成式人工智能服务管理暂行办法》《个人信息保护法》《数据安全法》相关合规评估要求</li>
+<li>LangChain、LlamaIndex、Instructor、Outlines、vLLM 等框架的工程测试实践</li>
+<li>Google Testing Pyramid、Microsoft AI Red Team、OpenAI Evals 方法论的公开资料</li>
+</ul></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="topic50">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#50-1-LLM-应用测试与传统软件测试的本质差异">50.1 LLM 应用测试与传统软件测试的本质差异</a></li><li class="lv2"><a href="#50-2-测试金字塔在-LLM-中的重构">50.2 测试金字塔在 LLM 中的重构</a></li><li class="lv2"><a href="#50-3-组件测试-prompt-检索-工具-护栏各自怎么测">50.3 组件测试:prompt、检索、工具、护栏各自怎么测</a></li><li class="lv3"><a href="#50-3-1-Prompt-组件测试">50.3.1 Prompt 组件测试</a></li><li class="lv3"><a href="#50-3-2-检索组件测试-RAG-评测">50.3.2 检索组件测试(RAG 评测)</a></li><li class="lv3"><a href="#50-3-3-工具调用-Tool-Function-Calling-测试">50.3.3 工具调用(Tool/Function Calling)测试</a></li><li class="lv3"><a href="#50-3-4-护栏-Guardrails-测试">50.3.4 护栏(Guardrails)测试</a></li><li class="lv2"><a href="#50-4-端到端测试-场景化用例集的设计">50.4 端到端测试:场景化用例集的设计</a></li><li class="lv2"><a href="#50-5-非功能测试-性能-安全-合规-可访问性-多语言">50.5 非功能测试:性能、安全、合规、可访问性、多语言</a></li><li class="lv2"><a href="#50-6-回归测试-bad-case-回归集是核心资产">50.6 回归测试:bad case 回归集是核心资产</a></li><li class="lv2"><a href="#50-7-在线测试-AB-影子流量-金丝雀">50.7 在线测试:AB、影子流量、金丝雀</a></li><li class="lv2"><a href="#50-8-测试数据管理-评估集隔离-脱敏-版本">50.8 测试数据管理:评估集隔离、脱敏、版本</a></li><li class="lv2"><a href="#50-9-测试自动化与-CI-集成">50.9 测试自动化与 CI 集成</a></li><li class="lv2"><a href="#50-10-测试覆盖率与质量度量">50.10 测试覆盖率与质量度量</a></li><li class="lv2"><a href="#50-11-工具选型-DeepEval-Promptfoo-RAGAS-与自研边界">50.11 工具选型:DeepEval、Promptfoo、RAGAS 与自研边界</a></li><li class="lv2"><a href="#50-12-反模式-不测就上-只测-happy-path">50.12 反模式:不测就上、只测 happy path</a></li><li class="lv2"><a href="#本专题小结">本专题小结</a></li><li class="lv2"><a href="#本专题来源">本专题来源</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

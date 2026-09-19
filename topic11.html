@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>深度专题十一 FDE 项目管理与交付节奏实战 · FDE 学习中心</title>
+<meta name="description" content="专题定位 :FDE 不是&quot;写完代码就交差&quot;的研发岗,而是&quot;在客户现场把一个模糊业务问题变成可衡量业务结果&quot;的交付岗。这意味着 FDE 的项目管理不能套用标准互联网研发流程(S…">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#2563eb">FDE-Wiki</a></div>
+<article class="doc">
+  <h1 class="doc-title">深度专题十一 FDE 项目管理与交付节奏实战</h1>
+  <div class="doc-meta"><span style="color:#2563eb">FDE-Wiki</span><span class="sep">·</span><span>约 4,389 字</span><span class="sep">·</span><span>阅读约 11 分钟</span></div>
+  
+  <div class="prose" id="prose"><blockquote>
+<p><strong>专题定位</strong>:FDE 不是"写完代码就交差"的研发岗,而是"在客户现场把一个模糊业务问题变成可衡量业务结果"的交付岗。这意味着 FDE 的项目管理不能套用标准互联网研发流程(Scrum + Jira + 双周迭代),而要融合咨询项目的结果导向、阶段门的强管控、敏捷的快速反馈,以及驻场交付的节奏控制。本专题把项目管理落到可执行的模板上:周计划表、阶段门检查清单、风险登记册、RACI、变更控制流程,以及一支典型 12 周项目从进场到移交的完整节奏。</p>
+</blockquote>
+<h2 id="一-FDE-项目管理的特殊性">一、FDE 项目管理的特殊性</h2>
+<p>FDE 项目与普通软件研发项目有三处根本差异,任何 PM 方法论都必须先承认这三点,否则会"形似神不似"。</p>
+<p><strong>差异一:战场在客户现场,不在工位。</strong> 普通研发团队在自家机房迭代,FDE 团队天天泡在客户业务流里。这意味着沟通成本、数据访问审批、网络隔离、驻场工位、VPN/堡垒机等"非技术但致命"的因素会吃掉 30% 以上的项目时间。一个常见的失败模式是:技术方案做得漂亮,但客户 IT 的安全审批要走 4 周,直接把交付节奏拖垮。</p>
+<p><strong>差异二:需求是"挖"出来的,不是"接"过来的。</strong> 客户的 RFP/需求文档通常是错的或过时的——高层写的需求往往脱离一线实际,一线说的痛点又往往只是表象。FDE 的需求来源是 Context 阶段的深度勘探,而不是产品经理的 PRD。这决定了 FDE 项目的前 2-3 周必须留足勘探时间,不能一上来就排开发任务。</p>
+<p><strong>差异三:为业务结果负责,不为代码量负责。</strong> 普通研发的"完成"=代码合并、测试通过、上线;FDE 的"完成"=客户的某个业务指标(质检漏检率、工单平均处理时长、风控召回率)真实改善并被客户认可。一个上线了但客户没用起来的系统,在 FDE 视角里就是失败项目,哪怕代码质量再高。</p>
+<blockquote>
+<p><strong>一句话原则</strong>:FDE 的项目管理 = 咨询的结果导向 × 敏捷的快速反馈 × 阶段门的强管控 × 驻场的现场协调。</p>
+</blockquote>
+<h2 id="二-CDEF-四阶段的项目管理映射">二、CDEF 四阶段的项目管理映射</h2>
+<p>CDEF 不是线性瀑布,但项目管理需要清晰的阶段产出和门控。把 CDEF 映射成可管控的四个阶段,每个阶段都有明确的"目标—产出—门"。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>项目管理目标</th>
+<th>关键产出物</th>
+<th>阶段门(Gate)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C 勘探</strong></td>
+<td>把模糊业务问题变成可量化的问题定义</td>
+<td>业务结果定义卡、数据体检报告、干系人地图、可行性结论</td>
+<td>Gate-C:问题定义签字</td>
+</tr>
+<tr>
+<td><strong>D 设计</strong></td>
+<td>把问题定义转成可落地的方案蓝图</td>
+<td>方案架构图、技术选型、MVD 范围、评估指标</td>
+<td>Gate-D:方案与范围签字</td>
+</tr>
+<tr>
+<td><strong>E 工程</strong></td>
+<td>在现场把方案变成可灰度上线的系统</td>
+<td>MVD 交付物、可观测看板、灰度方案、操作手册</td>
+<td>Gate-E:灰度通过验收</td>
+</tr>
+<tr>
+<td><strong>F 反馈</strong></td>
+<td>用真实数据迭代、推动客户自运转</td>
+<td>效果对比报告、迭代清单、培训记录、交接文档</td>
+<td>Gate-F:客户验收与移交</td>
+</tr>
+</tbody>
+</table></div>
+<p>每个 Gate 都是一次"硬决策点":通过则进入下一阶段并锁定前一阶段产出;不通过则回退或终止。门的硬约束是 FDE 守住边界的核心武器——没有门的"敏捷"在客户现场会变成"无止境改需求"。</p>
+<p><strong>时间分配经验值(12 周项目)</strong>:C 阶段约 2-3 周、D 阶段约 2 周、E 阶段约 5-6 周、F 阶段约 2 周,缓冲 1 周。这个比例不是死的,但 C+F 加起来通常不少于 4 周——勘探和反馈是被压缩最容易、出事也最容易的两个阶段。</p>
+<h2 id="三-典型-12-周项目节奏详案">三、典型 12 周项目节奏详案</h2>
+<p>下面是一支"中等规模 FDE 项目"(1 个客户现场、1 个业务系统、3-5 人交付编队)的周维度计划表。可按项目实际体量等比缩放。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>周次</th>
+<th>阶段</th>
+<th>本周主任务</th>
+<th>关键产出</th>
+<th>阶段门/里程碑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>W1</td>
+<td>C</td>
+<td>进场、安全/网络/工位就位、客户高层 kickoff、干系人访谈(高层+中层)</td>
+<td>驻场就绪确认、干系人地图 v1、访谈纪要</td>
+<td>—</td>
+</tr>
+<tr>
+<td>W2</td>
+<td>C</td>
+<td>一线跟岗观察、数据体检(抽样+质量)、问题假设收敛</td>
+<td>数据体检报告、问题假设清单</td>
+<td>—</td>
+</tr>
+<tr>
+<td>W3</td>
+<td>C</td>
+<td>业务结果定义卡共创、可行性结论、技术预研</td>
+<td>结果定义卡、可行性报告</td>
+<td><strong>Gate-C:问题定义签字</strong></td>
+</tr>
+<tr>
+<td>W4</td>
+<td>D</td>
+<td>方案架构设计、技术选型、MVD 范围圈定</td>
+<td>方案蓝图 v1、MVD 范围表</td>
+<td>—</td>
+</tr>
+<tr>
+<td>W5</td>
+<td>D</td>
+<td>评估指标定义、数据接入方案、风险登记册建立</td>
+<td>评估指标表、风险登记册 v1</td>
+<td><strong>Gate-D:方案与范围签字</strong></td>
+</tr>
+<tr>
+<td>W6</td>
+<td>E</td>
+<td>数据管道搭建、模型/Prompt 初版、核心链路打通</td>
+<td>MVD 代码主干、开发环境</td>
+<td>—</td>
+</tr>
+<tr>
+<td>W7</td>
+<td>E</td>
+<td>真实数据联调、关键异常处理、可观测前置埋点</td>
+<td>MVD alpha、看板 v1</td>
+<td>—</td>
+</tr>
+<tr>
+<td>W8</td>
+<td>E</td>
+<td>内部 UAT、性能/安全压测、灰度方案制定</td>
+<td>UAT 报告、灰度方案</td>
+<td>—</td>
+</tr>
+<tr>
+<td>W9</td>
+<td>E</td>
+<td>灰度试点(1 个班组/科室/产线)部署、试点运行</td>
+<td>灰度部署完成、试点日志</td>
+<td>—</td>
+</tr>
+<tr>
+<td>W10</td>
+<td>E/F</td>
+<td>灰度数据采集、效果对比、问题修复</td>
+<td>效果对比报告 v1、迭代清单</td>
+<td><strong>Gate-E:灰度验收</strong></td>
+</tr>
+<tr>
+<td>W11</td>
+<td>F</td>
+<td>全量推广准备、操作手册/SOP、培训交付</td>
+<td>SOP、培训记录、看板移交</td>
+<td>—</td>
+</tr>
+<tr>
+<td>W12</td>
+<td>F</td>
+<td>客户验收、交接文档、复盘、退场计划</td>
+<td>验收报告、交接包、复盘纪要</td>
+<td><strong>Gate-F:客户验收签字</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>注意 W9 的灰度试点是整张表的"心脏":它把项目从"开发项目"切换成"业务项目",从这一周起,所有判断都以真实业务数据为准。这也是为什么 W10 同时跨 E/F——灰度数据往往会暴露需要返工的问题,这一周必须留弹性。</p>
+<h2 id="四-阶段门-Gate-检查清单">四、阶段门(Gate)检查清单</h2>
+<p>阶段门不是走过场,而是一组"必须全部勾选才能放行"的硬条件。下面给四个门的最小检查清单,可直接复制到项目文档里逐条勾。</p>
+<p><strong>Gate-C(问题定义门)检查清单</strong></p>
+<ul>
+<li>[ ] 业务结果定义卡已用客户自己的语言描述,且有可量化目标值与基线值</li>
+<li>[ ] 至少完成 高层/中层/一线 三级访谈,三方对问题理解一致</li>
+<li>[ ] 数据体检已完成,数据可用性、质量、合规边界已明确</li>
+<li>[ ] 可行性结论已给出:可做 / 部分可做 / 不可做,且附理由</li>
+<li>[ ] 客户业务方(非 IT 方)已在结果定义卡上签字或邮件确认</li>
+</ul>
+<p><strong>Gate-D(方案与范围门)检查清单</strong></p>
+<ul>
+<li>[ ] 方案架构图覆盖数据→模型→应用→反馈全链路</li>
+<li>[ ] MVD 范围已明确列出"做什么"和"不做什么",后者经客户确认</li>
+<li>[ ] 评估指标与业务结果定义卡一一对应,有采集方式</li>
+<li>[ ] 风险登记册已建立,Top 5 风险有应对策略</li>
+<li>[ ] 客户 IT/安全方对部署方案无原则性异议</li>
+</ul>
+<p><strong>Gate-E(灰度验收门)检查清单</strong></p>
+<ul>
+<li>[ ] 灰度试点已稳定运行至少 1 个完整业务周期(如 1 个班次/1 天/1 周)</li>
+<li>[ ] 核心评估指标达到预设门槛(如召回率 ≥ X、处理时长降幅 ≥ Y%)</li>
+<li>[ ] 未发生 P0/P1 级故障;若有,已闭环修复并复盘</li>
+<li>[ ] 可观测看板可实时查看指标,客户方人员可独立查看</li>
+<li>[ ] 灰度用户反馈已收集,正向/负向均有记录</li>
+</ul>
+<p><strong>Gate-F(客户验收与移交门)检查清单</strong></p>
+<ul>
+<li>[ ] 业务结果对比报告已交付,基线 vs 上线后数据齐全</li>
+<li>[ ] 全量推广已完成或推广计划已确认</li>
+<li>[ ] 操作手册/SOP、运维手册、FAQ 已交付且客户人员可独立操作</li>
+<li>[ ] 培训已完成,客户至少 2 人通过"独立操作考核"</li>
+<li>[ ] 交接包(代码/文档/账号/数据/模型)清单双方签字</li>
+</ul>
+<h2 id="五-风险管理-风险登记册与四种应对">五、风险管理:风险登记册与四种应对</h2>
+<p>FDE 项目风险密度高,且很多风险来自客户侧(审批、数据、人员变动)。必须从 W1 就建立风险登记册,每周更新。</p>
+<p><strong>风险登记册模板(每条一行)</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>风险描述</th>
+<th>类别</th>
+<th>概率</th>
+<th>影响</th>
+<th>风险值</th>
+<th>应对策略</th>
+<th>责任人</th>
+<th>状态</th>
+<th>复查日</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R01</td>
+<td>客户数据审批超 3 周,拖垮 E 阶段</td>
+<td>进度/客户</td>
+<td>高</td>
+<td>高</td>
+<td>极高</td>
+<td>转移+缓解:W1 即发起审批,同步准备脱敏样本</td>
+<td>张三</td>
+<td>开放</td>
+<td>W3</td>
+</tr>
+<tr>
+<td>R02</td>
+<td>一线用户抵触新系统,灰度数据失真</td>
+<td>采纳</td>
+<td>中</td>
+<td>高</td>
+<td>高</td>
+<td>缓解:试点选高意愿班组,先做培训再上线</td>
+<td>李四</td>
+<td>开放</td>
+<td>W8</td>
+</tr>
+<tr>
+<td>R03</td>
+<td>模型在真实分布上指标下滑</td>
+<td>技术</td>
+<td>中</td>
+<td>中</td>
+<td>中</td>
+<td>缓解:留 20% 真实数据做离线评估,不达标不上灰度</td>
+<td>王五</td>
+<td>开放</td>
+<td>W7</td>
+</tr>
+</tbody>
+</table></div>
+<p>四种应对策略的适用场景:</p>
+<ul>
+<li><strong>规避(Avoid)</strong>:改变计划彻底绕开风险。适用于高概率高影响且无缓解空间的风险,例如某数据源合规不可用,直接改方案不依赖该数据源。</li>
+<li><strong>转移(Transfer)</strong>:把风险交给更能承担的一方。最典型是把审批/合规风险转移给客户 IT 与法务,提前推动、明确责任边界;或把基础设施风险转移给云厂商 SLA。</li>
+<li><strong>缓解(Mitigate)</strong>:降低概率或影响。最常用,如准备脱敏样本缓解数据审批延迟、做培训缓解采纳风险、留离线评估集缓解技术风险。</li>
+<li><strong>接受(Accept)</strong>:概率低影响小,或缓解成本高于影响,主动接受并准备应急预案。例如某非核心指标偶尔波动,记录在案、设定阈值告警即可。</li>
+</ul>
+<blockquote>
+<p><strong>FDE 风险管理红线</strong>:任何"风险值=高"且来自客户侧的风险,必须有"升级路径"——一周内无法解决就升级到客户高层与己方项目总监,绝不让一线 FDE 单独扛。</p>
+</blockquote>
+<h2 id="六-干系人管理-四级沟通策略">六、干系人管理:四级沟通策略</h2>
+<p>FDE 项目的成败,技术只占一半,另一半是干系人。把客户干系人分四级,每级用不同的沟通策略。</p>
+<p><strong>客户高层(副总裁/总经理级)</strong>:关心业务结果、ROI、战略对齐。沟通方式=月度或双周 1 对 1 汇报,只讲结果定义卡、进度对结果的影响、风险与决策请求。<strong>绝不要给高层讲技术细节</strong>。高层是项目的"资源闸"和"挡箭牌",关键时刻要能找高层拍板。</p>
+<p><strong>客户中层(部门负责人/项目经理)</strong>:关心落地进度、资源协调、跨部门协同、自己的 KPI。沟通方式=周例会,讲进度、风险、需要协调的事项。中层是项目"真正的发动机",搞定中层等于搞定一半交付。</p>
+<p><strong>一线(业务操作员/班组长)</strong>:关心系统好不好用、会不会增加负担、出问题谁兜底。沟通方式=现场驻点、随问随答、培训、灰度期高强度陪跑。一线是"数据来源"和"采纳成败"的关键,被忽视的一线会让系统上线即死。</p>
+<p><strong>客户 IT/安全团队</strong>:关心合规、稳定性、可维护性、不背锅。沟通方式=技术评审会、部署方案联评、安全审批前置。IT 不是敌人而是"守门人",W1 就要主动建联,把审批周期纳入计划。</p>
+<blockquote>
+<p><strong>沟通频率铁律</strong>:对高层少而精、对中层勤而实、对一线近而暖、对 IT 早而细。</p>
+</blockquote>
+<h2 id="七-范围与变更管理-守住边界">七、范围与变更管理:守住边界</h2>
+<p>需求蔓延(scope creep)是 FDE 项目第一大杀手。客户在现场看到 demo 后,会自然产生"再加一个功能""再接一个数据源"的想法。没有变更管理,12 周项目会变成 24 周。</p>
+<p><strong>守住边界的三个动作</strong></p>
+<ol>
+<li><strong>把"不做什么"写进 Gate-D 的范围表并签字。</strong> 范围表必须有两列:"本期做"和"本期不做(明确放进 Phase 2)"。后者比前者更重要——它让客户在变更时有明确的"等价交换"预期。</li>
+<li><strong>任何超出范围的新需求走变更流程,不走口头。</strong> 变更流程:提出→影响分析(工期/成本/风险)→客户签字→重排计划。哪怕是"加一个字段"也要走轻量版流程,养成肌肉记忆。</li>
+<li><strong>用业务结果卡做"反向约束"。</strong> 当客户要加功能时,反问一句:"这个功能对结果定义卡的哪个指标有贡献?如果没有,我们建议放 Phase 2。" 这句话能挡掉 70% 的无效需求。</li>
+</ol>
+<p><strong>变更控制表模板</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>变更编号</th>
+<th>变更描述</th>
+<th>提出方</th>
+<th>提出日期</th>
+<th>影响(工期/成本/风险)</th>
+<th>是否采纳</th>
+<th>客户签字</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CR01</td>
+<td>接入第二个工单系统数据</td>
+<td>中层</td>
+<td>W6</td>
+<td>+5 工作日、+0 风险</td>
+<td>采纳(置换 W10 缓冲)</td>
+<td>已签</td>
+<td>进行中</td>
+</tr>
+<tr>
+<td>CR02</td>
+<td>增加移动端 App</td>
+<td>一线</td>
+<td>W7</td>
+<td>+15 工作日、+采纳风险</td>
+<td>不采纳,进 Phase 2</td>
+<td>已签</td>
+<td>关闭</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="八-进度透明-周报-看板-阶段评审">八、进度透明:周报、看板、阶段评审</h2>
+<p>客户现场最怕的是"黑箱"——FDE 团队闷头干两周,客户不知道在干嘛,到了验收才发现方向跑偏。进度透明是信任的基石。</p>
+<p><strong>周报(每周五下班前发出)</strong>:一页纸,固定四段——本周完成、下周计划、风险与求助、需客户决策事项。周报不是写给己方 PMO 看的,是写给客户中层和高层的"信任信号"。务必抄送所有干系人,避免信息差。</p>
+<p><strong>看板(物理白板 + 在线看板双轨)</strong>:驻场现场用物理白板(客户走过能看到进度、有参与感),远程协同用在线看板(如 Jira/飞书多维表)。看板列简化为:勘探池 / 本期范围 / 进行中 / 待验收 / 已上线。<strong>不要照搬研发的 Story/Epic/Todo 细分</strong>——客户看不懂、也用不上。</p>
+<p><strong>阶段评审(每个 Gate 召开)</strong>:正式会议,客户业务方 + IT + 己方项目负责人参加。评审产出"通过/有条件通过/不通过"结论,有条件通过要列出补齐事项与截止日。阶段评审是"项目节奏的呼吸点",不可省略。</p>
+<h2 id="九-团队协同-Echo-Delta-Dev-Agent-编队的-PM-协调">九、团队协同:Echo-Delta-Dev-Agent 编队的 PM 协调</h2>
+<p>一个完整 FDE 交付编队常呈"Echo-Delta-Dev-Agent"结构,Echo 负责问题挖掘与客户沟通,Delta 负责方案设计与现场部署,Dev 负责开发实现,Agent(愈来愈多项目)负责自动化执行与辅助。PM(通常由 Delta 或资深 Echo 兼任)的协调职责:</p>
+<ul>
+<li><strong>任务不重复不遗漏</strong>:用 RACI 矩阵明确每件关键事项的 Responsible / Accountable / Consulted / Informed。</li>
+<li><strong>信息单点汇聚</strong>:所有客户沟通、决策、变更都进同一份"项目日志",PM 是唯一对外窗口,避免多头沟通造成口径不一。</li>
+<li><strong>Agent 任务显式管理</strong>:Agent 执行的任务(数据清洗、文档草拟、监控告警)必须在看板上可见、可审计,不能让 Agent 静默执行影响交付可信度。</li>
+</ul>
+<p><strong>RACI 示例(节选)</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>事项</th>
+<th>Echo</th>
+<th>Delta</th>
+<th>Dev</th>
+<th>Agent</th>
+<th>客户中层</th>
+<th>客户 IT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>问题定义卡</td>
+<td>R</td>
+<td>A</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td>方案架构</td>
+<td>C</td>
+<td>R/A</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+</tr>
+<tr>
+<td>模型开发</td>
+<td>I</td>
+<td>C</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>灰度部署</td>
+<td>C</td>
+<td>R/A</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+</tr>
+<tr>
+<td>验收签字</td>
+<td>C</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+<td>A</td>
+<td>I</td>
+</tr>
+</tbody>
+</table></div>
+<p>(R=执行 A=负责 C=咨询 I=知会)</p>
+<h2 id="十-FDE-项目常见失败模式与管理防范">十、FDE 项目常见失败模式与管理防范</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>失败模式</th>
+<th>表现</th>
+<th>根因</th>
+<th>管理防范</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需求蔓延</td>
+<td>范围无限扩张,周期翻倍</td>
+<td>无变更流程、不敢对客户说不</td>
+<td>范围表签字 + 变更控制表 + 结果卡反向约束</td>
+</tr>
+<tr>
+<td>过度承诺</td>
+<td>拍胸脯保指标,做不到</td>
+<td>销售/FDE 急于拿单</td>
+<td>结果定义卡写"目标值+门槛值"两档,留余地</td>
+</tr>
+<tr>
+<td>数据审批卡死</td>
+<td>E 阶段等数据等到崩溃</td>
+<td>审批未前置</td>
+<td>W1 即发起审批,准备脱敏样本,转移风险</td>
+</tr>
+<tr>
+<td>demo 思维</td>
+<td>用假数据漂亮 demo,上线即崩</td>
+<td>未用真实数据联调</td>
+<td>Gate-D 强制要求真实数据样本,Gate-E 强制灰度</td>
+</tr>
+<tr>
+<td>采纳失败</td>
+<td>系统上线了没人用</td>
+<td>忽视一线、无培训无陪跑</td>
+<td>试点选高意愿班组,W9-W11 高强度陪跑+培训</td>
+</tr>
+<tr>
+<td>单点依赖</td>
+<td>一个 FDE 离职项目停摆</td>
+<td>知识不沉淀</td>
+<td>每个阶段产出可追溯文档,客户至少 2 人通过操作考核</td>
+</tr>
+<tr>
+<td>黑箱交付</td>
+<td>客户不知道进度,验收才发现跑偏</td>
+<td>无周报无看板无评审</td>
+<td>周报+看板+阶段评审三件套</td>
+</tr>
+<tr>
+<td>高层失联</td>
+<td>关键时刻找不到高层拍板</td>
+<td>平时不维护高层关系</td>
+<td>高层双周 1 对 1,主动同步风险与决策请求</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="本专题小结">本专题小结</h2>
+<p>FDE 的项目管理本质是用"结构和节奏"对抗"模糊与蔓延"。四把武器:一是 CDEF 四阶段配四道硬门,把模糊问题逐步收敛成可验收结果;二是周计划表 + 周报 + 看板 + 阶段评审,让进度对客户透明、对自己可控;三是风险登记册 + 变更控制表 + 范围表,把蔓延和意外管进表格里;四是干系人四级沟通 + Echo-Delta-Dev-Agent RACI,让人和任务各就各位。记住一条:FDE 的"完成"永远是客户业务方点头的那一天,不是代码合并的那一天。项目管理的一切动作,都该朝着这个终点收敛。</p>
+<h2 id="本专题来源">本专题来源</h2>
+<ul>
+<li>CDEF 方法论(本报告第三章及 <code>CDEF方法论/《CDEF方法论》全文.md</code>)的四阶段定义与阶段产出</li>
+<li>阶段门(Stage-Gate)项目管理方法论(Robert G. Cooper)在 FDE 驻场场景的裁剪</li>
+<li>Amazon "Working Backwards" 与 PR/FAQ 文档理念对结果导向的启发</li>
+<li>敏捷(Scrum/Kanban)在咨询式驻场交付中的混合实践</li>
+<li>PMI PMBOK 的风险登记册、RACI、变更控制流程标准模板</li>
+<li>本报告"跨行业踩坑总集与防坑 Checklist"(深度<a href="topic08.html">专题八</a>)中的交付失败模式</li>
+<li>FDE 驻场交付实战经验:12 周项目节奏、灰度试点、客户自运转移交等</li>
+</ul></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="topic11">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#一-FDE-项目管理的特殊性">一、FDE 项目管理的特殊性</a></li><li class="lv2"><a href="#二-CDEF-四阶段的项目管理映射">二、CDEF 四阶段的项目管理映射</a></li><li class="lv2"><a href="#三-典型-12-周项目节奏详案">三、典型 12 周项目节奏详案</a></li><li class="lv2"><a href="#四-阶段门-Gate-检查清单">四、阶段门(Gate)检查清单</a></li><li class="lv2"><a href="#五-风险管理-风险登记册与四种应对">五、风险管理:风险登记册与四种应对</a></li><li class="lv2"><a href="#六-干系人管理-四级沟通策略">六、干系人管理:四级沟通策略</a></li><li class="lv2"><a href="#七-范围与变更管理-守住边界">七、范围与变更管理:守住边界</a></li><li class="lv2"><a href="#八-进度透明-周报-看板-阶段评审">八、进度透明:周报、看板、阶段评审</a></li><li class="lv2"><a href="#九-团队协同-Echo-Delta-Dev-Agent-编队的-PM-协调">九、团队协同:Echo-Delta-Dev-Agent 编队的 PM 协调</a></li><li class="lv2"><a href="#十-FDE-项目常见失败模式与管理防范">十、FDE 项目常见失败模式与管理防范</a></li><li class="lv2"><a href="#本专题小结">本专题小结</a></li><li class="lv2"><a href="#本专题来源">本专题来源</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>

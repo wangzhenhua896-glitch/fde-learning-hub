@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>深度专题一 RAG 进阶与上下文工程实战 · FDE 学习中心</title>
+<meta name="description" content="专题定位 :RAG 是企业 AI 系统的&quot;知识地基&quot;,也是 FDCE(前沿部署上下文工程)的核心实现。本专题把 RAG 从&quot;能跑&quot;讲到&quot;跑得好、跑得稳&quot;,覆盖分块、嵌入、检索…">
+<link rel="stylesheet" href="assets/hub.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
+</head>
+<body><header class="topbar">
+  <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark">F</span>
+    <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
+  <div class="search" role="search">
+    <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <kbd>/</kbd>
+  </div>
+  <a class="top-link" href="index.html">首页</a>
+</header>
+<div id="search-panel" class="search-panel" hidden></div><div class="layout"><aside class="side" id="side"><nav class="snav" aria-label="导航">
+<section class="sgroup open"><div class="sgroup-b">
+<ul class="slist toplist">
+<li><a href="index.html">🏠 学习首页</a></li>
+<li><a href="graph.html">🕸 知识图谱</a></li>
+<li><a href="library.html">📚 内容总览</a></li>
+<li><a href="about.html">ℹ️ 来源与版权</a></li>
+</ul>
+<div class="ssub"><div class="ssub-t">🎯 学习路径（按目标）</div><ul class="slist">
+<li><a href="path-career.html" data-progress-key="path-career" data-total="16"><span class="mini-bar" data-kb="path-career"></span>🎯 转行求职 FDE</a></li>
+<li><a href="path-engineer.html" data-progress-key="path-engineer" data-total="15"><span class="mini-bar" data-kb="path-engineer"></span>🛠 在职工程师·AI 落地能力</a></li>
+<li><a href="path-manager.html" data-progress-key="path-manager" data-total="15"><span class="mini-bar" data-kb="path-manager"></span>🧭 技术管理者·组建 FDE 团队</a></li>
+<li><a href="path-presales.html" data-progress-key="path-presales" data-total="14"><span class="mini-bar" data-kb="path-presales"></span>🤝 售前 / 解决方案顾问</a></li>
+<li><a href="path-exec.html" data-progress-key="path-exec" data-total="13"><span class="mini-bar" data-kb="path-exec"></span>📈 业务决策者 / 创业者</a></li>
+</ul></div></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#2563eb"></span><span class="sgroup-t">FDE-Wiki 调研报告 · 27 篇</span><span class="sgroup-n">27</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="part1.html">第一篇 · 范式与市场全景</a></li>
+<li><a href="part2.html">第二篇 · 工作方法论与最新工作方式</a></li>
+<li><a href="part3.html">第三篇 · 全行业落地</a></li>
+<li><a href="part4.html">第四篇 · 能力、商业与未来</a></li>
+<li><a href="ch01.html">1. FDE 范式的起源与定义演进:从伊拉克战场到 2026…</a></li>
+<li><a href="ch02.html">2. 2026 全球 FDE 市场全景:增长、薪酬、供需与人才…</a></li>
+<li><a href="ch03.html">3. 头部公司 FDE 模式深度拆解</a></li>
+<li><a href="ch04.html">4. FDE 与相邻岗位辨析</a></li>
+<li><a href="ch05.html">5. Echo-Delta-Dev 三角编队:Palantir…</a></li>
+<li><a href="ch06.html">6. 前沿部署方法论内核:Discovery-first、倒推…</a></li>
+<li><a href="ch07.html">7. CDEF 四阶段方法论与 2026 演进(Context…</a></li>
+<li><a href="ch08.html">8. AI Agent 时代的 FDE:人机混合作战单元与 M…</a></li>
+<li><a href="ch09.html">9. 驻场工程化技术栈:LLM 选型 / RAG / Agen…</a></li>
+<li><a href="ch10.html">10. 交付节奏、灰度与现场生存:MVD / 灰度 / 信任建…</a></li>
+<li><a href="ch11.html">11. 金融业:智能风控、尽调自动化、反金融犯罪与投研</a></li>
+<li><a href="ch12.html">12. 医疗健康:病历质控、DRG、医学影像、临床文档与药企</a></li>
+<li><a href="ch13.html">13. 制造业:AI 视觉质检、预测性维护与工业大脑</a></li>
+<li><a href="ch14.html">14. 政务与公共服务:12345 热线、城市治理与政务大模型</a></li>
+<li><a href="ch15.html">15. 零售与电商:个性化、库存、智能客服与商品理解</a></li>
+<li><a href="ch16.html">16. 物流与供应链:调度、履约与 Agent 化运营</a></li>
+<li><a href="ch17.html">17. 能源与公用事业:电网、油气与新能源</a></li>
+<li><a href="ch18.html">18. 电信与媒体:网络优化、内容生产与精准营销</a></li>
+<li><a href="ch19.html">19. 法律、教育、农业及其他行业</a></li>
+<li><a href="ch20.html">20. FDE 能力模型与培养体系</a></li>
+<li><a href="ch21.html">21. 商业模式、ROI 衡量与定价机制</a></li>
+<li><a href="ch22.html">22. 合规、安全与数据治理(OWASP MCP Top 10…</a></li>
+<li><a href="ch23.html">23. 未来趋势与组织变革:3—5 年展望</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#7c3aed"></span><span class="sgroup-t">范冰《FDE 入门指南》 · 13 篇</span><span class="sgroup-n">13</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="book00.html">自序</a></li>
+<li><a href="book01.html">第 1 章 FDE 的崛起</a></li>
+<li><a href="book02.html">第 2 章 解决正确的问题</a></li>
+<li><a href="book03.html">第 3 章 赢得客户</a></li>
+<li><a href="book04.html">第 4 章 激活部署</a></li>
+<li><a href="book05.html">第 5 章 守住续约</a></li>
+<li><a href="book06.html">第 6 章 扩大收入</a></li>
+<li><a href="book07.html">第 7 章 规模化复制</a></li>
+<li><a href="book08.html">第 8 章 完整案例集</a></li>
+<li><a href="book09.html">后记 FDE 的职业道德</a></li>
+<li><a href="book10.html">附录 A FDE 应当关注的常用指标</a></li>
+<li><a href="book11.html">附录 B FDE 人物与团队名单</a></li>
+<li><a href="book12.html">附录 C 全书案例索引与资料出处</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0d9488"></span><span class="sgroup-t">FDE-Handbook 中文版 · 11 篇</span><span class="sgroup-n">11</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="hb1.html">第一章：前向部署工程师（FDE）的角色与使命</a></li>
+<li><a href="hb2.html">第二章：顾问式思维与干系人外交</a></li>
+<li><a href="hb3.html">第三章：企业级数据审计与表结构恢复</a></li>
+<li><a href="hb4.html">第四章：现代化数据架构实战</a></li>
+<li><a href="hb5.html">第五章：混合云架构与安全着陆区设计</a></li>
+<li><a href="hb6.html">第六章：高安全边界与企业合规落地 (VPC SC)</a></li>
+<li><a href="hb7.html">第七章：企业级 RAG (检索增强生成) 架构蓝图</a></li>
+<li><a href="hb8.html">第八章：多智能体协同与自定义工具链开发</a></li>
+<li><a href="hb9.html">第九章：大模型系统的科学评估与线上校验</a></li>
+<li><a href="hb10.html">第十章：行业实战案例：高安全 AI 投顾平台部署</a></li>
+<li><a href="hb11.html">第十一章：专业术语表与推荐阅读书单</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
+<li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
+</div></section>
+<div class="side-progress" id="side-progress"></div>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><a href="library.html" style="color:#2563eb">FDE-Wiki</a></div>
+<article class="doc">
+  <h1 class="doc-title">深度专题一 RAG 进阶与上下文工程实战</h1>
+  <div class="doc-meta"><span style="color:#2563eb">FDE-Wiki</span><span class="sep">·</span><span>约 2,300 字</span><span class="sep">·</span><span>阅读约 6 分钟</span></div>
+  
+  <div class="prose" id="prose"><blockquote>
+<p><strong>专题定位</strong>:RAG 是企业 AI 系统的"知识地基",也是 FDCE(前沿部署上下文工程)的核心实现。本专题把 RAG 从"能跑"讲到"跑得好、跑得稳",覆盖分块、嵌入、检索、重排、查询改写、GraphRAG、Agentic RAG、评估与工程化的全部实战细节。</p>
+</blockquote>
+<h2 id="一-为什么企业-RAG-比-ChatGPT-难得多">一、为什么企业 RAG 比 ChatGPT 难得多</h2>
+<p>很多人以为 RAG 就是"文档切块 → 嵌入 → 向量检索 → 拼进 prompt"。在企业现场,FDE 很快会发现这个"朴素 RAG"远远不够:</p>
+<ul>
+<li><strong>文档脏、杂、长</strong>:客户的文档是 PDF/Word/扫描件/Excel/网页混合,表格、公式、图片、跨页,切块就够头疼;</li>
+<li><strong>问题刁钻</strong>:用户问"去年三季度华东区那个退货率异常的产品",朴素检索根本召不回;</li>
+<li><strong>准确性是底线</strong>:企业 RAG 答错可能误导决策(法律、医疗、金融),不能像 ChatGPT 那样"差不多就行";</li>
+<li><strong>数据量大、要增量</strong>:百万级文档,不能每次全量重建,要增量更新;</li>
+<li><strong>权限与多租户</strong>:不同用户能看到不同文档,检索要带权限过滤;</li>
+<li><strong>要可观测、可评估</strong>:答错了要能定位是检索问题还是生成问题。</li>
+</ul>
+<blockquote>
+<p><strong>结论</strong>:企业 RAG 的难度,90% 在"检索质量 + 工程化",10% 才在"调模型"。FDE 在 RAG 上的价值,正是把这 90% 做扎实。</p>
+</blockquote>
+<h2 id="二-RAG-的四代演进">二、RAG 的四代演进</h2>
+<p>理解 RAG 进阶,先看它的四代演进:</p>
+<p><strong>第一代:朴素 RAG(Naive RAG)</strong></p>
+<ul>
+<li>固定长度切块 → 嵌入 → 向量检索 top-k → 拼 prompt;</li>
+<li>问题:切块粗暴、检索不准、长文档丢失上下文。</li>
+</ul>
+<p><strong>第二代:进阶 RAG(Advanced RAG)</strong></p>
+<ul>
+<li>语义/结构化切块 + 混合检索(向量 + BM25)+ 重排 + 查询改写;</li>
+<li>解决了大部分准确性问题,是当前企业主流。</li>
+</ul>
+<p><strong>第三代:GraphRAG / 模块化 RAG</strong></p>
+<ul>
+<li>引入知识图谱,捕捉实体关系;</li>
+<li>检索-生成模块化,可插拔;</li>
+<li>适合复杂关联推理。</li>
+</ul>
+<p><strong>第四代:Agentic RAG</strong></p>
+<ul>
+<li>Agent 自主决定"检索什么、检索几次、要不要换策略";</li>
+<li>适合复杂、多跳问题。</li>
+</ul>
+<h2 id="三-分块-Chunking-深度策略">三、分块(Chunking)深度策略</h2>
+<p><strong>分块是 RAG 准确性的第一道关。</strong> 切得不好,再强的模型也救不回来。</p>
+<p><strong>常见分块策略</strong></p>
+<ol>
+<li><strong>固定长度切分</strong>:每 N 个 token 一块,简单但易切断语义;</li>
+<li><strong>递归字符切分</strong>(LangChain RecursiveCharacterTextSplitter):按段落→句子→字符递归,尽量在自然边界切;</li>
+<li><strong>语义切分</strong>(SemanticChunking):用嵌入相似度判断语义边界,在语义跳跃处切;</li>
+<li><strong>结构化切分</strong>:按文档结构(标题/章节/段落)切,保留层级;</li>
+<li><strong>基于文档解析</strong>:用 Unstructured/Marker/Docling 等解析 PDF 结构,按逻辑块切。</li>
+</ol>
+<p><strong>分块的关键考量</strong></p>
+<ul>
+<li><strong>块大小</strong>:太小丢上下文,太大检索噪声多。典型 256—1024 token,需按场景调;</li>
+<li><strong>重叠(overlap)</strong>:相邻块重叠 10%—20%,避免边界信息丢失;</li>
+<li><strong>表格/图片</strong>:单独处理(表格转 markdown/描述),不要和正文混切;</li>
+<li><strong>元数据</strong>:每块带来源(文档名、页码、章节),用于引用溯源和权限过滤。</li>
+</ul>
+<blockquote>
+<p><strong>可照抄(递归切分 + 元数据,企业常用)</strong>:</p>
+<p>```python
+from langchain_text_splitters import RecursiveCharacterTextSplitter</p>
+<p>splitter = RecursiveCharacterTextSplitter(
+    chunk_size=512, chunk_overlap=64,
+    separators=["\n\n", "\n", "。", ",", " ", ""]
+)
+chunks = splitter.split_text(doc_text)</p>
+<h1 id="_1">每块附加元数据:来源、页码、章节、权限标签</h1>
+<p>for c in chunks:
+    c.metadata = {"source": doc_id, "page": page_no,
+                  "section": section, "acl": allowed_users}
+```</p>
+</blockquote>
+<h2 id="四-嵌入模型选择与微调">四、嵌入模型选择与微调</h2>
+<p><strong>嵌入模型决定"语义能不能对上"。</strong></p>
+<p><strong>选型考量</strong></p>
+<ul>
+<li><strong>语言</strong>:中文优先 bge-large-zh、通义/智谱 embed;英文 OpenAI/Cohere;</li>
+<li><strong>维度</strong>:高维(1024—1536)精度高但存储/检索成本高;</li>
+<li><strong>领域</strong>:通用嵌入在专业领域(医疗、法律)可能不准,需领域微调;</li>
+<li><strong>指令式嵌入</strong>:bge 等支持 instruction,查询和文档用不同指令提升精度。</li>
+</ul>
+<p><strong>嵌入微调(进阶)</strong>
+当通用嵌入在客户领域召回不准时,FDE 可用对比学习微调嵌入:</p>
+<ul>
+<li>构造(查询, 相关文档, 不相关文档)三元组;</li>
+<li>用 bge 的微调脚本训练;</li>
+<li>显著提升领域召回。</li>
+</ul>
+<h2 id="五-混合检索-向量-关键词-结构">五、混合检索:向量 + 关键词 + 结构</h2>
+<p><strong>单一向量检索不够,企业级用混合检索。</strong></p>
+<p><strong>为什么需要混合</strong></p>
+<ul>
+<li>向量检索:擅长语义匹配(同义、近义);</li>
+<li>关键词检索(BM25):擅长精确匹配(产品型号、人名、编号);</li>
+<li>结构检索:元数据过滤(时间、来源、权限)。</li>
+</ul>
+<p><strong>混合检索实现</strong></p>
+<ul>
+<li>向量库(Milvus/Qdrant)+ 关键词(ES/OpenSearch)并行检索;</li>
+<li>用 <strong>RRF(Reciprocal Rank Fusion)</strong> 融合两路结果;</li>
+<li>再用元数据过滤。</li>
+</ul>
+<blockquote>
+<p><strong>可照抄(混合检索 + RRF)</strong>:</p>
+<p><code>python
+vec_results = vec_db.search(query_vec, top_k=20)      # 向量路
+kw_results  = bm25_db.search(query_text, top_k=20)    # 关键词路
+fused = rrf_fuse([vec_results, kw_results], k=60)     # RRF 融合
+filtered = [r for r in fused if r.metadata["acl"] &amp; user_acl]  # 权限过滤</code></p>
+</blockquote>
+<h2 id="六-重排-Rerank-精排召回结果">六、重排(Rerank):精排召回结果</h2>
+<p><strong>重排是提升 RAG 准确性性价比最高的一步。</strong></p>
+<p><strong>为什么重排有效</strong></p>
+<ul>
+<li>嵌入模型为了速度,用双塔(查询和文档独立编码),精度有限;</li>
+<li>重排模型用交叉编码(cross-encoder),查询和文档联合编码,精度高但慢;</li>
+<li>策略:先用嵌入粗召回 top-50,再用重排精排 top-5。</li>
+</ul>
+<p><strong>重排模型</strong></p>
+<ul>
+<li>bge-reranker(开源,中文好);</li>
+<li>Cohere Rerank(商业,强);</li>
+<li>国产:通义/智谱 rerank。</li>
+</ul>
+<blockquote>
+<p><strong>ROI</strong>:加一个重排,准确率常提升 5—15 个百分点,成本增加很小。这是 FDE 最该先加的一步。</p>
+</blockquote>
+<h2 id="七-查询改写-扩展与分解">七、查询改写、扩展与分解</h2>
+<p><strong>用户的原始查询往往不是最好的检索 query。FDE 要做查询优化。</strong></p>
+<p><strong>查询改写(Query Rewriting)</strong></p>
+<ul>
+<li>用 LLM 把口语化查询改写成更适合检索的关键词;</li>
+<li>例:"那个退货多的产品" → "2024 Q3 华东区 退货率 异常 产品"。</li>
+</ul>
+<p><strong>查询扩展(Query Expansion)</strong></p>
+<ul>
+<li>用 LLM 生成多个相关查询,并行检索,合并结果;</li>
+<li>提升召回。</li>
+</ul>
+<p><strong>查询分解(Query Decomposition)</strong></p>
+<ul>
+<li>复杂问题拆成子问题,分别检索;</li>
+<li>例:"对比 A 和 B 两款产品的退货率" → 拆成"A 退货率""B 退货率"。</li>
+</ul>
+<p><strong>HyDE(Hypothetical Document Embeddings)</strong></p>
+<ul>
+<li>先让 LLM 生成一个"假设答案",用假设答案的嵌入去检索;</li>
+<li>适合"问题短但答案长"的场景。</li>
+</ul>
+<h2 id="八-GraphRAG-用知识图谱捕捉关系">八、GraphRAG:用知识图谱捕捉关系</h2>
+<p><strong>当问题涉及实体关系时,向量 RAG 力不从心,GraphRAG 上场。</strong></p>
+<p><strong>GraphRAG 原理</strong></p>
+<ul>
+<li>从文档抽取实体与关系,构建知识图谱;</li>
+<li>检索时,既查向量,也查图谱(关系跳转);</li>
+<li>适合"X 公司的供应商的竞争对手是谁"这类多跳关系问题。</li>
+</ul>
+<p><strong>实现</strong></p>
+<ul>
+<li>微软 GraphRAG(开源框架);</li>
+<li>Neo4j 图数据库;</li>
+<li>LLM 抽取实体关系。</li>
+</ul>
+<p><strong>适用场景</strong></p>
+<ul>
+<li>企业关系网络、供应链、人物关系、法律案例关联。</li>
+</ul>
+<h2 id="九-Agentic-RAG-让-Agent-自主检索">九、Agentic RAG:让 Agent 自主检索</h2>
+<p><strong>第四代 Agentic RAG,把检索交给 Agent 自主决策。</strong></p>
+<p><strong>Agentic RAG 流程</strong></p>
+<ul>
+<li>Agent 收到问题,判断"要不要检索、检索什么";</li>
+<li>检索后评估"够不够",不够再检索(迭代);</li>
+<li>可调用多个知识源、工具;</li>
+<li>综合多轮检索结果生成答案。</li>
+</ul>
+<p><strong>优势</strong>:处理复杂、多跳、需要推理的问题。
+<strong>代价</strong>:延迟高、成本高、调试难。</p>
+<p><strong>适用场景</strong></p>
+<ul>
+<li>研究型问题(投研、尽调);</li>
+<li>需要跨多源综合的复杂问答。</li>
+</ul>
+<h2 id="十-上下文工程-Context-Engineering-方法论">十、上下文工程(Context Engineering)方法论</h2>
+<p><strong>Context Engineering 是 2026 年接棒 Prompt Engineering 的核心能力,也是 FDCE 的实质。</strong></p>
+<p><strong>核心思想</strong>
+模型越来越通用,决定输出质量的是<strong>喂给模型的上下文质量</strong>。Context Engineering 就是"系统化地构建、管理、优化喂给模型的上下文"。</p>
+<p><strong>上下文的组成</strong></p>
+<ul>
+<li><strong>指令(system/任务说明)</strong>;</li>
+<li><strong>检索到的知识(RAG)</strong>;</li>
+<li><strong>历史对话/memory</strong>;</li>
+<li><strong>工具定义(MCP)</strong>;</li>
+<li><strong>结构化约束(输出格式、示例)</strong>。</li>
+</ul>
+<p><strong>上下文工程的实践</strong></p>
+<ul>
+<li><strong>上下文压缩</strong>:长上下文要压缩/筛选,避免噪声;</li>
+<li><strong>上下文排序</strong>:重要信息放前面/后面(模型对位置敏感);</li>
+<li><strong>上下文版本管理</strong>:上下文也要版本化、可回滚;</li>
+<li><strong>上下文质量评估</strong>:评估喂进去的上下文是否相关、准确、完整。</li>
+</ul>
+<blockquote>
+<p><strong>FDE 的角色转变</strong>:在 Context Engineering 范式下,FDE 的工作重心从"写业务代码"转向"构建高质量上下文管道"。代码可能更少,但对客户业务的理解要更深。</p>
+</blockquote>
+<h2 id="十一-RAG-评估-检索评估-生成评估">十一、RAG 评估:检索评估 + 生成评估</h2>
+<p><strong>没有评估的 RAG 是盲目的。FDE 必须建立评估体系。</strong></p>
+<p><strong>检索评估</strong></p>
+<ul>
+<li><strong>召回率(Recall)</strong>:相关文档有没有被召回;</li>
+<li><strong>精确率(Precision)</strong>:召回的相不相关;</li>
+<li><strong>MRR/NDCG</strong>:排序质量。</li>
+</ul>
+<p><strong>生成评估</strong></p>
+<ul>
+<li><strong>忠实度(Faithfulness)</strong>:答案有没有编造(对照检索内容);</li>
+<li><strong>相关性(Relevance)</strong>:答案有没有回答问题;</li>
+<li><strong>完整性</strong>:该说的说了没。</li>
+</ul>
+<p><strong>端到端评估</strong></p>
+<ul>
+<li>人工标注 golden set;</li>
+<li>LLM-as-judge(用强模型评);</li>
+<li>用户反馈(点赞/点踩)。</li>
+</ul>
+<p><strong>工具</strong>:RAGAS、TruLens、LangSmith eval。</p>
+<h2 id="十二-RAG-工程化-增量-多租户-权限-可观测">十二、RAG 工程化:增量、多租户、权限、可观测</h2>
+<p><strong>生产级 RAG 的工程化要点</strong>:</p>
+<p><strong>增量更新</strong></p>
+<ul>
+<li>文档变更时,增量更新向量(不是全量重建);</li>
+<li>用文档哈希判断变更;</li>
+<li>删除/修改/新增分别处理。</li>
+</ul>
+<p><strong>多租户与权限</strong></p>
+<ul>
+<li>文档带 ACL(访问控制列表);</li>
+<li>检索时按用户权限过滤;</li>
+<li>多租户数据隔离。</li>
+</ul>
+<p><strong>可观测</strong></p>
+<ul>
+<li>每次检索:查询、召回、得分、来源;</li>
+<li>每次生成:输入上下文、输出、引用;</li>
+<li>bad case 收集与归因。</li>
+</ul>
+<p><strong>性能</strong></p>
+<ul>
+<li>嵌入批量化;</li>
+<li>向量库索引优化(HNSW 参数);</li>
+<li>缓存(热门查询结果缓存)。</li>
+</ul>
+<h2 id="本专题小结">本专题小结</h2>
+<ul>
+<li>企业 RAG 难在检索质量 + 工程化,90% 工作在这;</li>
+<li>四代演进:朴素 → 进阶 → GraphRAG → Agentic;</li>
+<li>分块:递归/语义/结构化,带元数据与权限;</li>
+<li>嵌入:中文 bge/国产,领域不准可微调;</li>
+<li>混合检索:向量 + BM25 + 结构,RRF 融合;</li>
+<li>重排:性价比最高的一步,+5—15pp;</li>
+<li>查询优化:改写/扩展/分解/HyDE;</li>
+<li>GraphRAG:实体关系多跳;</li>
+<li>Agentic RAG:Agent 自主迭代检索;</li>
+<li>Context Engineering:系统化构建上下文,接棒 Prompt Engineering;</li>
+<li>评估:检索(召回/精确)+ 生成(忠实/相关)+ 端到端(RAGAS/TruLens);</li>
+<li>工程化:增量、多租户权限、可观测、性能。</li>
+</ul>
+<blockquote>
+<p><strong>本专题来源</strong>:O'Reilly《AI Agents Stack 2026》、LangChain/LlamaIndex 文档、RAGAS/TruLens、bge/Milvus/Qdrant 文档、微软 GraphRAG、用户库《FDE Prompt工程模板库》《FDE工程化工具链》《fde-delivery 80-tech-selection/90-agent-design》、本书<a href="ch09.html">第 9 章</a>。</p>
+</blockquote></div>
+</article>
+<div class="mark-bar"><button class="mark-btn" type="button" data-mark="topic01">✓ 标记为已读</button></div></main></div><div class="mask" id="mask"></div><div class="ptoc"><div class="ptoc-t">本页目录</div><ul><li class="lv2"><a href="#一-为什么企业-RAG-比-ChatGPT-难得多">一、为什么企业 RAG 比 ChatGPT 难得多</a></li><li class="lv2"><a href="#二-RAG-的四代演进">二、RAG 的四代演进</a></li><li class="lv2"><a href="#三-分块-Chunking-深度策略">三、分块(Chunking)深度策略</a></li><li class="lv2"><a href="#四-嵌入模型选择与微调">四、嵌入模型选择与微调</a></li><li class="lv2"><a href="#五-混合检索-向量-关键词-结构">五、混合检索:向量 + 关键词 + 结构</a></li><li class="lv2"><a href="#六-重排-Rerank-精排召回结果">六、重排(Rerank):精排召回结果</a></li><li class="lv2"><a href="#七-查询改写-扩展与分解">七、查询改写、扩展与分解</a></li><li class="lv2"><a href="#八-GraphRAG-用知识图谱捕捉关系">八、GraphRAG:用知识图谱捕捉关系</a></li><li class="lv2"><a href="#九-Agentic-RAG-让-Agent-自主检索">九、Agentic RAG:让 Agent 自主检索</a></li><li class="lv2"><a href="#十-上下文工程-Context-Engineering-方法论">十、上下文工程(Context Engineering)方法论</a></li><li class="lv2"><a href="#十一-RAG-评估-检索评估-生成评估">十一、RAG 评估:检索评估 + 生成评估</a></li><li class="lv2"><a href="#十二-RAG-工程化-增量-多租户-权限-可观测">十二、RAG 工程化:增量、多租户、权限、可观测</a></li><li class="lv2"><a href="#本专题小结">本专题小结</a></li></ul></div><div class="reading-bar" id="rbar"></div><button class="totop" id="totop" type="button" aria-label="回到顶部">↑</button><script src="assets/hub.js"></script>
+</body></html>
