@@ -409,3 +409,29 @@ h1,h2,h3,h4{line-height:1.35; font-weight:650}
   .graph-wrap{height:520px}
   .node-panel{width:min(300px,calc(100vw - 60px))}
 }
+
+/* 招聘雷达 */
+.skill-list{display:grid;gap:8px}
+.skill-row{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 14px}
+.skill-name{flex:0 0 132px;font-size:13px;font-weight:600}
+.skill-bar{flex:1;height:9px;background:#eef1f6;border-radius:9px;overflow:hidden}
+.skill-bar i{display:block;height:100%;background:linear-gradient(90deg,#2563eb,#7c3aed);border-radius:9px}
+.skill-n{flex:0 0 auto;font:600 12px var(--sans);color:var(--ink2);white-space:nowrap}
+.mk-note{display:block;font-size:11px;color:var(--ink3);font-weight:400}
+.table-wrap table{width:100%;border-collapse:collapse;background:#fff;font-size:13px}
+.table-wrap th{background:var(--bg-soft);text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);font-size:12.5px}
+.table-wrap td{padding:10px 14px;border-bottom:1px solid var(--line-soft)}
+.table-wrap tr:hover td{background:#fafbfe}
+
+/* 招聘雷达 */
+.skill-list{display:grid;gap:8px}
+.skill-row{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 14px}
+.skill-name{flex:0 0 132px;font-size:13px;font-weight:600}
+.skill-bar{flex:1;height:9px;background:#eef1f6;border-radius:9px;overflow:hidden}
+.skill-bar i{display:block;height:100%;background:linear-gradient(90deg,#2563eb,#7c3aed);border-radius:9px}
+.skill-n{flex:0 0 auto;font:600 12px var(--sans);color:var(--ink2);white-space:nowrap}
+.mk-note{display:block;font-size:11px;color:var(--ink3);font-weight:400}
+.table-wrap table{width:100%;border-collapse:collapse;background:#fff;font-size:13px}
+.table-wrap th{background:var(--bg-soft);text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);font-size:12.5px}
+.table-wrap td{padding:10px 14px;border-bottom:1px solid var(--line-soft)}
+.table-wrap tr:hover td{background:#fafbfe}
