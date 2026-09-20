@@ -141,15 +141,21 @@ AI 不是独立的,要触发物理动作(如剔除不良品、调节机器参数
 <li><strong>模型迭代</strong>:bad case 回流,持续训练。</li>
 </ul>
 <blockquote>
-<p><strong>可照抄命令(YOLOv8 训练 + TensorRT 部署,制造业常用)</strong>:</p>
-<p>```bash</p>
-<h1 id="1">1. 训练缺陷检测模型</h1>
-<p>yolo train model=yolov8s.pt data=defect.yaml epochs=100 imgsz=1280 batch=16</p>
-<h1 id="2-tensorrt">2. 导出 TensorRT 引擎(边缘部署加速)</h1>
-<p>yolo export model=runs/detect/train/weights/best.pt format=engine half=True device=0</p>
-<h1 id="3-plcmes">3. 推理 + 接 PLC(MES 写库 / 剔除)</h1>
-<p>yolo predict model=best.engine source=rtsp://产线相机流
-```</p>
+<p><strong>可照抄命令(YOLOv8 训练 + TensorRT 部署,制造业常用)</strong>:
+</p>
+</blockquote>
+<div class="bq-code">
+<pre><code class="language-bash"># 1. 训练缺陷检测模型
+yolo train model=yolov8s.pt data=defect.yaml epochs=100 imgsz=1280 batch=16
+
+# 2. 导出 TensorRT 引擎(边缘部署加速)
+yolo export model=runs/detect/train/weights/best.pt format=engine half=True device=0
+
+# 3. 推理 + 接 PLC(MES 写库 / 剔除)
+yolo predict model=best.engine source=rtsp://产线相机流
+</code></pre>
+</div>
+<blockquote>
 <p>与产线集成:用 <strong>python-snap7 / opcua</strong> 对接西门子 S7 PLC / OPC UA,实现"检测到缺陷→写 MES→触发剔除"闭环。</p>
 </blockquote>
 <p><strong>FDE 在视觉质检的真实挑战</strong></p>

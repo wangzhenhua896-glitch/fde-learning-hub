@@ -154,15 +154,17 @@
 <li><strong>bitsandbytes</strong>:易用的 INT8/INT4。</li>
 </ul>
 <blockquote>
-<p><strong>可照抄命令(Qwen2.5-7B AWQ 量化,常见于国产私有化部署)</strong>:</p>
-<p>```bash</p>
-<h1 id="vllm">用 vLLM 直接加载已量化模型(推荐,生产用)</h1>
-<p>vllm serve Qwen/Qwen2.5-7B-Instruct-AWQ \
+<p><strong>可照抄命令(Qwen2.5-7B AWQ 量化,常见于国产私有化部署)</strong>:
+</p>
+</blockquote>
+<div class="bq-code">
+<pre><code class="language-bash"># 用 vLLM 直接加载已量化模型(推荐,生产用)
+vllm serve Qwen/Qwen2.5-7B-Instruct-AWQ \
   --quantization awq \
   --dtype half \
   --max-model-len 8192
-```</p>
-</blockquote>
+</code></pre>
+</div>
 <h2 id="9-3-推理服务层-vLLM-为王">9.3 推理服务层:vLLM 为王</h2>
 <p>模型选好后,要把它变成"<strong>可调用的服务</strong>",这就是推理服务层。2026 年的生产级推理,基本绕不开几个选择:</p>
 <p><strong>vLLM:2026 事实标准</strong></p>
@@ -189,17 +191,21 @@
 <li>追求极致 + 全 NVIDIA → TensorRT-LLM。</li>
 </ul>
 <blockquote>
-<p><strong>可照抄命令(vLLM 起服务,生产级常用)</strong>:</p>
-<p>```bash</p>
-<h1 id="vllm-openai-api">启动 vLLM OpenAI 兼容 API 服务</h1>
-<p>vllm serve Qwen/Qwen2.5-14B-Instruct \
+<p><strong>可照抄命令(vLLM 起服务,生产级常用)</strong>:
+</p>
+</blockquote>
+<div class="bq-code">
+<pre><code class="language-bash"># 启动 vLLM OpenAI 兼容 API 服务
+vllm serve Qwen/Qwen2.5-14B-Instruct \
   --host 0.0.0.0 --port 8000 \
   --tensor-parallel-size 2 \
   --max-model-len 16384 \
   --gpu-memory-utilization 0.9 \
   --enable-auto-tool-choice \
   --tool-call-parser hermes
-```</p>
+</code></pre>
+</div>
+<blockquote>
 <p>起来后,用 OpenAI SDK 即可调用(<code>base_url=http://localhost:8000/v1</code>),业务代码零改动。</p>
 </blockquote>
 <h2 id="9-4-RAG-与检索层-让模型-懂-客户">9.4 RAG 与检索层:让模型"懂"客户</h2>
@@ -231,17 +237,21 @@
 <li><strong>分块策略</strong>:按语义/结构切分,而非固定长度。</li>
 </ul>
 <blockquote>
-<p><strong>可照抄命令(用 bge 嵌入 + Milvus,常见国产栈)</strong>:</p>
-<p>```python
-from FlagEmbedding import FlagModel
-from pymilvus import MilvusClient</p>
-<p>embedder = FlagModel('BAAI/bge-large-zh-v1.5', use_fp16=True)
-client = MilvusClient(uri="http://localhost:19530")</p>
-<p>docs = ["客户文档1", "客户文档2"]
-vectors = embedder.encode(docs)</p>
-<h1 id="top-k-prompt">入库后,查询时 top-k 检索,拼进 prompt</h1>
-<p>```</p>
+<p><strong>可照抄命令(用 bge 嵌入 + Milvus,常见国产栈)</strong>:
+</p>
 </blockquote>
+<div class="bq-code">
+<pre><code class="language-python">from FlagEmbedding import FlagModel
+from pymilvus import MilvusClient
+
+embedder = FlagModel('BAAI/bge-large-zh-v1.5', use_fp16=True)
+client = MilvusClient(uri=&quot;http://localhost:19530&quot;)
+
+docs = [&quot;客户文档1&quot;, &quot;客户文档2&quot;]
+vectors = embedder.encode(docs)
+# 入库后,查询时 top-k 检索,拼进 prompt
+</code></pre>
+</div>
 <h2 id="9-5-Agent-编排层">9.5 Agent 编排层</h2>
 <p><a href="ch08.html">第 8 章</a>已详述 Agent 编排,这里补充技术栈要点:</p>
 <ul>
@@ -252,19 +262,23 @@ vectors = embedder.encode(docs)</p>
 <li><strong>HITL</strong>:LangGraph 原生支持 interrupt/resume。</li>
 </ul>
 <blockquote>
-<p><strong>MCP server 最小示例(把一个内部 API 暴露给 Agent)</strong>:</p>
-<p>```python</p>
-<h1 id="anthropic-mcp-sdk">用 Anthropic <abbr class="term" title="Anthropic 提出的 Agent 工具接口标准">MCP</abbr> SDK 暴露工具</h1>
-<p>from mcp.server.fastmcp import Fast<abbr class="term" title="Anthropic 提出的 Agent 工具接口标准">MCP</abbr>
-mcp = FastMCP("customer-erp")</p>
-<p>@mcp.tool()
-def query_order(order_id: str) -&gt; dict:
-    """查询订单状态"""
-    return call_internal_erp(order_id)  # 对接客户真实系统</p>
-<p>if <strong>name</strong> == "<strong>main</strong>":
-    mcp.run()
-```</p>
+<p><strong>MCP server 最小示例(把一个内部 API 暴露给 Agent)</strong>:
+</p>
 </blockquote>
+<div class="bq-code">
+<pre><code class="language-python"># 用 Anthropic &lt;abbr class=&quot;term&quot; title=&quot;Anthropic 提出的 Agent 工具接口标准&quot;&gt;MCP&lt;/abbr&gt; SDK 暴露工具
+from mcp.server.fastmcp import Fast&lt;abbr class=&quot;term&quot; title=&quot;Anthropic 提出的 Agent 工具接口标准&quot;&gt;MCP&lt;/abbr&gt;
+mcp = FastMCP(&quot;customer-erp&quot;)
+
+@mcp.tool()
+def query_order(order_id: str) -&gt; dict:
+    &quot;&quot;&quot;查询订单状态&quot;&quot;&quot;
+    return call_internal_erp(order_id)  # 对接客户真实系统
+
+if __name__ == &quot;__main__&quot;:
+    mcp.run()
+</code></pre>
+</div>
 <h2 id="9-6-数据管道层-70-工作量在这">9.6 数据管道层:70% 工作量在这</h2>
 <p><strong>企业 AI 项目 70% 的工作量,在数据管道——这是 FDE 最容易低估、也最该重视的一层。</strong></p>
 <p><strong>数据管道的典型环节</strong></p>
@@ -337,10 +351,12 @@ def query_order(order_id: str) -&gt; dict:
 <li>FDE 要做全栈适配验证。</li>
 </ul>
 <blockquote>
-<p><strong>可照抄命令(docker-compose 一键起 RAG 栈,私有化常用)</strong>:</p>
-<p>```yaml</p>
-<h1 id="docker-composeyml-vllm-milvus">docker-compose.yml: vLLM + Milvus + 应用</h1>
-<p>services:
+<p><strong>可照抄命令(docker-compose 一键起 RAG 栈,私有化常用)</strong>:
+</p>
+</blockquote>
+<div class="bq-code">
+<pre><code class="language-yaml"># docker-compose.yml: vLLM + Milvus + 应用
+services:
   vllm:
     image: vllm/vllm-openai:latest
     command: --model Qwen/Qwen2.5-7B-Instruct --port 8000
@@ -353,8 +369,8 @@ def query_order(order_id: str) -&gt; dict:
   app:
     image: my-rag-app:latest
     depends_on: [vllm, milvus]
-```</p>
-</blockquote>
+</code></pre>
+</div>
 <h2 id="9-9-技术选型决策框架">9.9 技术选型决策框架</h2>
 <p>面对这么多技术,FDE 需要一个决策框架,避免"选择困难":</p>
 <p><strong>决策五问</strong></p>

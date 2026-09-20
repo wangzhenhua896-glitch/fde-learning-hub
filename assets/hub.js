@@ -213,6 +213,16 @@
   var KEY = 'fdehub-progress';
   var PROG = {};
   try { PROG = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { PROG = {}; }
+  /* 迁移旧版进度键：career-0-0 → path-career-0-0（2026-09-20 键格式统一） */
+  (function migrate() {
+    var moved = false;
+    for (var k in PROG) {
+      if (/^[a-z]+-\d+-\d+$/.test(k) && !PROG['path-' + k]) {
+        PROG['path-' + k] = PROG[k]; delete PROG[k]; moved = true;
+      }
+    }
+    if (moved) { try { localStorage.setItem(KEY, JSON.stringify(PROG)); } catch (e) {} }
+  })();
   function save() { try { localStorage.setItem(KEY, JSON.stringify(PROG)); } catch (e) {} }
   function pcount(pid) {
     var n = 0;
@@ -241,11 +251,13 @@
   /* 路径页：打卡 */
   var boxes = document.querySelectorAll('.ckb[data-iid]');
   if (boxes.length) {
-    var pid = boxes[0].getAttribute('data-iid').split('-')[0];
+    var firstIid = boxes[0].getAttribute('data-iid').split('-');
+    var pid = firstIid.slice(0, -2).join('-');           // path-career
     var stages = {};
     boxes.forEach(function (b) {
       var iid = b.getAttribute('data-iid');
-      var stage = iid.split('-')[1];
+      var parts = iid.split('-');
+      var stage = parts[parts.length - 2];               // 0..3
       (stages[stage] = stages[stage] || []).push(iid);
       var paint = function () {
         var on = !!PROG[iid];

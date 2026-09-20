@@ -162,14 +162,18 @@ Teamvoy 指出:医疗 AI 实施意味着"<strong>把 AI 嵌进处理 PHI 的活�
 <li><strong>盈亏分析</strong>:预测每个病例的 DRG 盈亏。</li>
 </ul>
 <blockquote>
-<p><strong>可照抄要点(DRG 校验核心逻辑)</strong>:</p>
-<p><code>输入:病历文本(主诊断、其他诊断、手术、并发症)
+<p><strong>可照抄要点(DRG 校验核心逻辑)</strong>:
+</p>
+</blockquote>
+<div class="bq-code">
+<pre><code>输入:病历文本(主诊断、其他诊断、手术、并发症)
 步骤1:NER 提取诊断与手术实体
 步骤2:映射到 ICD-10(诊断)/ ICD-9-CM-3(手术)编码
-步骤3:按 CHS-&lt;abbr class="term" title="疾病诊断相关分组(医保支付)"&gt;DRG&lt;/abbr&gt; 分组方案 → MDC → A&lt;abbr class="term" title="疾病诊断相关分组(医保支付)"&gt;DRG&lt;/abbr&gt; → &lt;abbr class="term" title="疾病诊断相关分组(医保支付)"&gt;DRG&lt;/abbr&gt;
-步骤4:校验"主诊断与手术是否匹配、并发症是否影响分组"
-步骤5:输出分组结果 + 盈亏预测 + 编码修正建议</code></p>
-</blockquote>
+步骤3:按 CHS-&lt;abbr class=&quot;term&quot; title=&quot;疾病诊断相关分组(医保支付)&quot;&gt;DRG&lt;/abbr&gt; 分组方案 → MDC → A&lt;abbr class=&quot;term&quot; title=&quot;疾病诊断相关分组(医保支付)&quot;&gt;DRG&lt;/abbr&gt; → &lt;abbr class=&quot;term&quot; title=&quot;疾病诊断相关分组(医保支付)&quot;&gt;DRG&lt;/abbr&gt;
+步骤4:校验&quot;主诊断与手术是否匹配、并发症是否影响分组&quot;
+步骤5:输出分组结果 + 盈亏预测 + 编码修正建议
+</code></pre>
+</div>
 <p><strong>合规要点</strong></p>
 <ul>
 <li>用真实标准(ICD-10、ICD-9-CM-3、CHS-DRG),不用杜撰;</li>

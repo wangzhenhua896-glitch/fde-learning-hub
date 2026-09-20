@@ -144,11 +144,15 @@
 <li><strong>通话脱敏</strong>:身份证、电话等敏感信息脱敏。</li>
 </ul>
 <blockquote>
-<p><strong>可照抄要点(12345 智能分派链路)</strong>:</p>
-<p><code>通话 → ASR 转写 → (脱敏)→ 大模型意图识别+实体抽取
-     → 派单路由(规则+模型)→ 派到责任部门
-     → &lt;abbr class="term" title="检索增强生成"&gt;RAG&lt;/abbr&gt; 坐席辅助(政策库检索)→ 热点聚类 → 周报</code></p>
+<p><strong>可照抄要点(12345 智能分派链路)</strong>:
+</p>
 </blockquote>
+<div class="bq-code">
+<pre><code>通话 → ASR 转写 → (脱敏)→ 大模型意图识别+实体抽取
+     → 派单路由(规则+模型)→ 派到责任部门
+     → &lt;abbr class=&quot;term&quot; title=&quot;检索增强生成&quot;&gt;RAG&lt;/abbr&gt; 坐席辅助(政策库检索)→ 热点聚类 → 周报
+</code></pre>
+</div>
 <p><strong>合规要点</strong></p>
 <ul>
 <li>信创:鲲鹏/飞腾 + 麒麟 + 国产模型;</li>

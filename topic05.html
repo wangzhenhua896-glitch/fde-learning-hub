@@ -142,9 +142,13 @@
 <li>抽取压力(不能把源系统拖垮)。</li>
 </ul>
 <blockquote>
-<p><strong>可照抄(CDC 增量同步,企业常用)</strong>:</p>
-<p><code>源数据库 → Debezium(捕获 binlog 变更)→ Kafka → Flink(清洗转换)→ 目标库/特征平台</code></p>
+<p><strong>可照抄(CDC 增量同步,企业常用)</strong>:
+</p>
 </blockquote>
+<div class="bq-code">
+<pre><code>源数据库 → Debezium(捕获 binlog 变更)→ Kafka → Flink(清洗转换)→ 目标库/特征平台
+</code></pre>
+</div>
 <h2 id="三-数据清洗-脏数据处理实战">三、数据清洗:脏数据处理实战</h2>
 <p><strong>常见脏数据与处理</strong></p>
 <ul>
@@ -211,14 +215,16 @@
 <li>质量看板(可视化数据健康度)。</li>
 </ul>
 <blockquote>
-<p><strong>可照抄(Great Expectations 质量检查)</strong>:</p>
-<p>```python
-import great_expectations as gx
-df = ...  # 客户数据</p>
-<h1 id="95-0100">期望:某字段非空率 &gt; 95%,值在 [0,100]</h1>
-<h1 id="_1">不达标 → 告警/阻断下游</h1>
-<p>```</p>
+<p><strong>可照抄(Great Expectations 质量检查)</strong>:
+</p>
 </blockquote>
+<div class="bq-code">
+<pre><code class="language-python">import great_expectations as gx
+df = ...  # 客户数据
+# 期望:某字段非空率 &gt; 95%,值在 [0,100]
+# 不达标 → 告警/阻断下游
+</code></pre>
+</div>
 <h2 id="六-增量同步-百万级数据不能全量重建">六、增量同步:百万级数据不能全量重建</h2>
 <p><strong>全量重建对百万级数据不可行,必须增量。</strong></p>
 <p><strong>增量策略</strong></p>

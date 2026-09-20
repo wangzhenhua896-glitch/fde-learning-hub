@@ -159,20 +159,22 @@
 <li><strong>大模型层</strong>:LLM 用于非结构化数据理解(企业财报、舆情、尽调材料)、复杂关联推理。</li>
 </ol>
 <blockquote>
-<p><strong>可照抄要点(LightGBM 风控子模型,城商行常见)</strong>:</p>
-<p>```python
-import lightgbm as lgb</p>
-<h1 id="_1">特征:申请人多头借贷、征信查询次数、收入负债比、历史逾期...</h1>
-<p>model = lgb.LGBMClassifier(
+<p><strong>可照抄要点(LightGBM 风控子模型,城商行常见)</strong>:
+</p>
+</blockquote>
+<div class="bq-code">
+<pre><code class="language-python">import lightgbm as lgb
+# 特征:申请人多头借贷、征信查询次数、收入负债比、历史逾期...
+model = lgb.LGBMClassifier(
     n_estimators=500, max_depth=6, learning_rate=0.05,
     num_leaves=31, min_child_samples=50,
     objective='binary', metric='auc'
 )
 model.fit(X_train, y_train, eval_set=[(X_val, y_val)],
-          callbacks=[lgb.early_stopping(50)])</p>
-<h1 id="psiks">上线必备:PSI/KS 监控特征与模型稳定性(监管要求)</h1>
-<p>```</p>
-</blockquote>
+          callbacks=[lgb.early_stopping(50)])
+# 上线必备:PSI/KS 监控特征与模型稳定性(监管要求)
+</code></pre>
+</div>
 <p><strong>模型监控(合规要求)</strong></p>
 <ul>
 <li><strong>PSI(群体稳定性指数)</strong>:特征/分数分布漂移监控,&gt;0.25 预警;</li>

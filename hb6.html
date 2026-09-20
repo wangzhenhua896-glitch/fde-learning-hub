@@ -106,7 +106,7 @@
   <div class="doc-meta"><span style="color:#0d9488">Handbook</span><span class="sep">·</span><span>约 1,298 字</span><span class="sep">·</span><span>阅读约 3 分钟</span></div>
   <div class="origin">来源：FDE-Handbook 中文版（github.com/goday-org，CC BY-NC-SA 4.0）</div>
   <div class="prose" id="prose"><p>在企业级安全架构中，仅仅依靠身份和访问控制管理（IAM）通常被认为是不够的。如果静态凭证意外泄露，或者 IAM 策略配置不当，即便攻击者仅持有一个只读权限账号，也可能将企业内部的敏感数据搬运至公网上他自己控制的云存储中（即数据外泄 Data Exfiltration）。在诸如金融、银行或医疗等强合规环境中，企业要求实施物理及网络层面的双重隔离边界。</p>
-<p>在 Google Cloud 中，这一边界是通过 <strong>VPC 服务边界（VPC Service Controls，简称 VPC SC）</strong> 实现的。VPC SC 通过在敏感 API（如 Cloud Storage、BigQuery、Vertex AI）外侧拉起一道虚拟的物理沙箱边界，确保即便账号权限被破解，数据也绝对无法跨越网络边界进行传输。</p>
+<p>在 Google Cloud 中，这一边界是通过 <strong>VPC 服务边界（VPC Service Controls，简称 VPC SC）</strong> 实现的。VPC SC 通过在敏感 API（如 Cloud Storage、BigQuery、Vertex AI）外侧拉起一道虚拟的物理沙箱边界，确保即便账号权限被破解，数据也绝对无法跨越网络边界进行传输。<span class="ed-note">编者注（本站）：原文此处表述过强——VPC-SC 能大幅降低数据外泄风险，但任何边界控制都不能等同于绝对防护，仍需配合最小权限、审计与密钥管理。</span></p>
 <p>本章将详细剖析 VPC SC 的防护机理，给出使用 Terraform 配置服务边界的完整清单，并提供遭遇边界拦截时的排查日志分析 playbook。</p>
 <hr />
 <h2 id="1-VPC-Service-Controls-服务边界防火墙原理">1. VPC Service Controls 服务边界防火墙原理</h2>

@@ -162,20 +162,23 @@
 <li><strong>元数据</strong>:每块带来源(文档名、页码、章节),用于引用溯源和权限过滤。</li>
 </ul>
 <blockquote>
-<p><strong>可照抄(递归切分 + 元数据,企业常用)</strong>:</p>
-<p>```python
-from langchain_text_splitters import RecursiveCharacterTextSplitter</p>
-<p>splitter = RecursiveCharacterTextSplitter(
-    chunk_size=512, chunk_overlap=64,
-    separators=["\n\n", "\n", "。", ",", " ", ""]
-)
-chunks = splitter.split_text(doc_text)</p>
-<h1 id="_1">每块附加元数据:来源、页码、章节、权限标签</h1>
-<p>for c in chunks:
-    c.metadata = {"source": doc_id, "page": page_no,
-                  "section": section, "acl": allowed_users}
-```</p>
+<p><strong>可照抄(递归切分 + 元数据,企业常用)</strong>:
+</p>
 </blockquote>
+<div class="bq-code">
+<pre><code class="language-python">from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=512, chunk_overlap=64,
+    separators=[&quot;\n\n&quot;, &quot;\n&quot;, &quot;。&quot;, &quot;,&quot;, &quot; &quot;, &quot;&quot;]
+)
+chunks = splitter.split_text(doc_text)
+# 每块附加元数据:来源、页码、章节、权限标签
+for c in chunks:
+    c.metadata = {&quot;source&quot;: doc_id, &quot;page&quot;: page_no,
+                  &quot;section&quot;: section, &quot;acl&quot;: allowed_users}
+</code></pre>
+</div>
 <h2 id="四-嵌入模型选择与微调">四、嵌入模型选择与微调</h2>
 <p><strong>嵌入模型决定"语义能不能对上"。</strong></p>
 <p><strong>选型考量</strong></p>
@@ -207,13 +210,16 @@ chunks = splitter.split_text(doc_text)</p>
 <li>再用元数据过滤。</li>
 </ul>
 <blockquote>
-<p><strong>可照抄(混合检索 + RRF)</strong>:</p>
-<p><code>python
-vec_results = vec_db.search(query_vec, top_k=20)      # 向量路
+<p><strong>可照抄(混合检索 + RRF)</strong>:
+</p>
+</blockquote>
+<div class="bq-code">
+<pre><code class="language-python">vec_results = vec_db.search(query_vec, top_k=20)      # 向量路
 kw_results  = bm25_db.search(query_text, top_k=20)    # 关键词路
 fused = rrf_fuse([vec_results, kw_results], k=60)     # RRF 融合
-filtered = [r for r in fused if r.metadata["acl"] &amp; user_acl]  # 权限过滤</code></p>
-</blockquote>
+filtered = [r for r in fused if r.metadata[&quot;acl&quot;] &amp; user_acl]  # 权限过滤
+</code></pre>
+</div>
 <h2 id="六-重排-Rerank-精排召回结果">六、重排(Rerank):精排召回结果</h2>
 <p><strong>重排是提升 RAG 准确性性价比最高的一步。</strong></p>
 <p><strong>为什么重排有效</strong></p>

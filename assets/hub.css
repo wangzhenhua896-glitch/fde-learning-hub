@@ -435,3 +435,7 @@ h1,h2,h3,h4{line-height:1.35; font-weight:650}
 .table-wrap th{background:var(--bg-soft);text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);font-size:12.5px}
 .table-wrap td{padding:10px 14px;border-bottom:1px solid var(--line-soft)}
 .table-wrap tr:hover td{background:#fafbfe}
+.ed-note{display:block;margin:8px 0 4px;padding:9px 13px;font-size:12.5px;line-height:1.7;color:#8a5a00;background:#fff8e6;border:1px solid #f2dfa8;border-left:3px solid #e0b64c;border-radius:8px}
+.bq-code{margin:14px 0}
+.ed-note{display:block;margin:8px 0 4px;padding:9px 13px;font-size:12.5px;line-height:1.7;color:#8a5a00;background:#fff8e6;border:1px solid #f2dfa8;border-left:3px solid #e0b64c;border-radius:8px}
+.bq-code{margin:14px 0}

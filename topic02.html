@@ -185,20 +185,24 @@
 <li>支持 checkpointing(状态持久化、可恢复)。</li>
 </ul>
 <blockquote>
-<p><strong>可照抄(LangGraph 状态定义)</strong>:</p>
-<p>```python
-from typing import TypedDict, Annotated
+<p><strong>可照抄(LangGraph 状态定义)</strong>:
+</p>
+</blockquote>
+<div class="bq-code">
+<pre><code class="language-python">from typing import TypedDict, Annotated
 from langgraph.graph import StateGraph
-import operator</p>
-<p>class <abbr class="term" title="能自主多步调用工具完成任务的 AI">Agent</abbr>State(TypedDict):
+import operator
+
+class &lt;abbr class=&quot;term&quot; title=&quot;能自主多步调用工具完成任务的 AI&quot;&gt;Agent&lt;/abbr&gt;State(TypedDict):
     query: str
     retrieved_docs: Annotated[list, operator.add]  # 多节点追加
     answer: str
-    needs_human: bool</p>
-<p>graph = StateGraph(AgentState)</p>
-<h1 id="state">节点接收/返回 state,框架管理传递</h1>
-<p>```</p>
-</blockquote>
+    needs_human: bool
+
+graph = StateGraph(AgentState)
+# 节点接收/返回 state,框架管理传递
+</code></pre>
+</div>
 <h2 id="四-HITL-设计-把人嵌进-Agent-链路">四、HITL 设计:把人嵌进 Agent 链路</h2>
 <p><strong>HITL 不是"Agent 不行才叫人",而是架构设计的一等公民。</strong></p>
 <p><strong>HITL 的设计维度</strong></p>
@@ -216,18 +220,21 @@ import operator</p>
 <li>支持超时、升级。</li>
 </ul>
 <blockquote>
-<p><strong>可照抄(LangGraph HITL)</strong>:</p>
-<p>```python
-def review_node(state):
-    # 暂停等待人工审核
-    return interrupt({"draft": state["answer"], "action": "approve?"})</p>
-<h1 id="checkpointer">编译时配置 checkpointer(持久化状态)</h1>
-<p>app = graph.compile(
-    checkpointer=MemorySaver(),
-    interrupt_before=["review_node"]
-)
-```</p>
+<p><strong>可照抄(LangGraph HITL)</strong>:
+</p>
 </blockquote>
+<div class="bq-code">
+<pre><code class="language-python">def review_node(state):
+    # 暂停等待人工审核
+    return interrupt({&quot;draft&quot;: state[&quot;answer&quot;], &quot;action&quot;: &quot;approve?&quot;})
+
+# 编译时配置 checkpointer(持久化状态)
+app = graph.compile(
+    checkpointer=MemorySaver(),
+    interrupt_before=[&quot;review_node&quot;]
+)
+</code></pre>
+</div>
 <h2 id="五-工具与-MCP-让-Agent-能-动手">五、工具与 MCP:让 Agent 能"动手"</h2>
 <p><strong>Agent 的能力边界 = 它能调用的工具。</strong> MCP 让工具接入标准化。</p>
 <p><strong>工具设计原则</strong></p>
