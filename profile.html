@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>页面不存在 · FDE 开放联盟</title>
-<meta name="description" content="">
+<title>能力档案 · FDE 开放联盟</title>
+<meta name="description" content="FDE 实训平台能力档案：跨项目六维证据聚合，支持导出 JSON/PNG 分享">
 <link rel="stylesheet" href="assets/hub.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232563eb'/><text x='16' y='22' font-size='15' font-family='monospace' fill='white' text-anchor='middle'>F</text></svg>">
 </head>
-<body><header class="topbar">
+<body><link rel="stylesheet" href="assets/workbench.css"><link rel="stylesheet" href="assets/profile.css"><header class="topbar">
   <button class="icon-btn menu-btn" type="button" aria-label="目录">☰</button>
   <a class="brand" href="index.html"><span class="brand-mark">F</span>
     <span class="brand-txt"><b>FDE 开放联盟</b><i>开放实训平台 · 6 源底座</i></span></a>
@@ -24,7 +24,7 @@
 <ul class="slist toplist">
 <li><a href="index.html">🏠 学习首页</a></li>
 <li><a href="workbench.html">🛠 实战工作台</a></li>
-<li><a href="profile.html">📊 能力档案</a></li>
+<li><a class="on" href="profile.html">📊 能力档案</a></li>
 <li><a href="graph.html">🕸 知识图谱</a></li>
 <li><a href="library.html">📚 内容总览</a></li>
 <li><a href="tools.html">🗺 工具地图</a></li>
@@ -115,5 +115,11 @@
 <section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
 </div></section>
 <div class="side-progress" id="side-progress"></div>
-</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a></div><section class="path-hero slim"><div><h1>页面不存在</h1><p class="pdesc">请从左侧目录重新选择。</p></div></section></main></div><div class="mask" id="mask"></div><script src="assets/hub.js"></script>
+</nav></aside><main class="main"><div class="crumb"><a href="index.html">首页</a><span>/</span><span>能力档案</span></div>
+<section class="path-hero slim"><div><h1>📊 能力档案</h1>
+<p class="pdesc">跨项目聚合你在实训平台通过验收的全部证据：六维雷达 + 逐项证据清单（带出处），支持导出 JSON 备份或 PNG 图片分享。档案是<b>自评证据链</b>（非第三方认证），全部数据只存在你自己的浏览器里。</p></div></section>
+<div id="pf-view"></div>
+<p class="foot-note">证据产生于 <a href="workbench.html">实战工作台</a> 的阶段验收（量表逐项证据 + 变式追问）；「在帮助下完成」的阶段不计入独立能力证明。导出 PNG 由本机 Canvas 绘制，不经任何服务器。</p></main></div><div class="mask" id="mask"></div><script>window.PF_DATA={"projects":[{"id":"kb-assistant","title":"企业知识助手（虚构数据版）","tier":"入门","tag":"RAG · 权限过滤 · 引用 · 拒答","stages":[{"id":"s1","title":"业务发现","dim":"business"},{"id":"s2","title":"数据审计","dim":"data"},{"id":"s3","title":"检索基线","dim":"data"},{"id":"s4","title":"回答与拒答","dim":"ai"},{"id":"s5","title":"质量评估","dim":"evals"},{"id":"s6","title":"交付运维","dim":"ops"},{"id":"s7","title":"客户验收","dim":"comm"}]},{"id":"ticket-router","title":"客服工单分流 Agent（虚构数据版）","tier":"进阶","tag":"分类 · 工具编排 · 人机协同","stages":[{"id":"s1","title":"业务发现","dim":"business"},{"id":"s2","title":"工单数据审计","dim":"data"},{"id":"s3","title":"规则分流基线","dim":"data"},{"id":"s4","title":"意图识别与升级","dim":"ai"},{"id":"s5","title":"质量评估","dim":"evals"},{"id":"s6","title":"交付运维","dim":"ops"},{"id":"s7","title":"客户验收","dim":"comm"}]},{"id":"bi-agent","title":"数据分析 Agent：经营指标问答（虚构数据版）","tier":"进阶","tag":"NL2SQL · 指标口径 · 数据安全","stages":[{"id":"s1","title":"业务发现","dim":"business"},{"id":"s2","title":"数仓与口径审计","dim":"data"},{"id":"s3","title":"受控取数基线","dim":"data"},{"id":"s4","title":"带口径的回答","dim":"ai"},{"id":"s5","title":"质量评估","dim":"evals"},{"id":"s6","title":"交付运维","dim":"ops"},{"id":"s7","title":"客户验收","dim":"comm"}]},{"id":"sales-qualifier","title":"B2B 销售线索资格 Agent（虚构数据版）","tier":"行业向","tag":"评分模型 · 可解释 · 合规","stages":[{"id":"s1","title":"业务发现","dim":"business"},{"id":"s2","title":"CRM 数据审计","dim":"data"},{"id":"s3","title":"规则评分基线","dim":"data"},{"id":"s4","title":"智能资格评估","dim":"ai"},{"id":"s5","title":"质量评估","dim":"evals"},{"id":"s6","title":"交付运维","dim":"ops"},{"id":"s7","title":"客户验收","dim":"comm"}]},{"id":"compliance-agent","title":"央国企制度合规问答 Agent（虚构数据版）","tier":"行业向","tag":"内网部署 · 密级管控 · 审计留痕","stages":[{"id":"s1","title":"业务发现","dim":"business"},{"id":"s2","title":"制度文件审计","dim":"data"},{"id":"s3","title":"条款检索基线","dim":"data"},{"id":"s4","title":"有据问答与红线","dim":"ai"},{"id":"s5","title":"质量评估","dim":"evals"},{"id":"s6","title":"交付运维","dim":"ops"},{"id":"s7","title":"客户验收","dim":"comm"}]}],"dims":[{"id":"business","name":"业务发现","desc":"识别真实业务问题、定义范围与非目标"},{"id":"data","name":"数据与集成","desc":"数据审计、权限建模、检索与集成"},{"id":"ai","name":"AI 工程","desc":"RAG / 引用 / 拒答等核心链路实现"},{"id":"evals","name":"评估安全","desc":"开发集/验收集、越权与拒答评测"},{"id":"ops","name":"交付运维","desc":"可复现启动、监控、回滚"},{"id":"comm","name":"客户沟通","desc":"演示、限制说明、变式追问"}],"dimMap":{"business":"业务发现","data":"数据与集成","ai":"AI 工程","evals":"评估安全","ops":"交付运维","comm":"客户沟通"}};</script>
+<script src="assets/profile.js"></script>
+<script src="assets/hub.js"></script>
 </body></html>
