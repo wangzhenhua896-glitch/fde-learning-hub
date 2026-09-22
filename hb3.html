@@ -14,7 +14,7 @@
     <span class="brand-txt"><b>FDE 学习中心</b><i>自适应知识库 · 5 源整合</i></span></a>
   <div class="search" role="search">
     <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    <input id="q" type="search" placeholder="搜索 120 篇内容…" autocomplete="off" aria-label="全站搜索">
+    <input id="q" type="search" placeholder="搜索 119 篇内容…" autocomplete="off" aria-label="全站搜索">
     <kbd>/</kbd>
   </div>
   <a class="top-link" href="index.html">首页</a>
@@ -98,6 +98,12 @@
 <section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#d97706"></span><span class="sgroup-t">路线图与资源清单</span><span class="sgroup-n">2</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
 <li><a href="roadmap.html">Awesome-FDE-Roadmap（英）</a></li>
 <li><a href="awesome-fde.html">Awesome-FDE（英）</a></li>
+</ul></div></section>
+<section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="true"><span class="dot" style="background:#0891b2"></span><span class="sgroup-t">报告附属页 · 4 篇</span><span class="sgroup-n">4</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b"><ul class="slist">
+<li><a href="appendix.html">附录（报告结语）</a></li>
+<li><a href="tags.html">按标签浏览</a></li>
+<li><a href="companies.html">公司与案例索引</a></li>
+<li><a href="guestbook.html">留言板</a></li>
 </ul></div></section>
 <section class="sgroup"><button class="sgroup-h" type="button" aria-expanded="false"><span class="dot" style="background:#db2777"></span><span class="sgroup-t">深度专题 · 62 篇</span><span class="sgroup-n">62</span><svg class="chev" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="sgroup-b">
 </div></section>
@@ -187,7 +193,7 @@ ORDER BY
 <p>这段 SQL 不仅能抽取出树状结构的层级（<code>depth</code>）与层级路径（<code>path</code>），还能检测出由于脏数据录入导致的员工循环汇报问题（<code>is_cycle</code>），避免后续下游报表系统陷入无限递归崩溃。</p>
 <h3 id="2-窗口函数在历史记录排重中的应用">2. 窗口函数在历史记录排重中的应用</h3>
 <p>在企业的数据入库历史中，由于重试机制设计不当常会产生大量重复记录。传统的 <code>DISTINCT</code> 会简单粗暴地丢弃所有重复列，无法保留最新版本的业务变更。FDE 常利用分析窗口函数，对数据进行逻辑分组并锁定最新的生效状态。</p>
-<p><svg viewBox="0 0 700 230" width="100%" height="auto" style="background-color: #fafafa; border: 1px solid #e1e1e8; border-radius: 4px; margin: 20px 0; display: block;">
+<p><svg viewBox="0 0 700 230" width="100%" style="background-color: #fafafa; border: 1px solid #e1e1e8; border-radius: 4px; margin: 20px 0; display: block;">
   <!-- Partition 1 --></p>
 <p><rect x="50" y="40" width="280" height="150" fill="#f4f4f6" stroke="#333" stroke-width="1.5" rx="5" />
   <text x="190" y="30" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12" fill="#111">逻辑分区: 客户 A</text></p>
