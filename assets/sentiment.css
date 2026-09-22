@@ -2,7 +2,7 @@
 .yq-src{max-width:860px;margin:0 auto 18px;font-size:12.5px;line-height:1.75;color:var(--ink3)}
 .yq-src b{color:var(--ink2)}
 
-/* 编者注（本站核验发现的问题） */
+/* 修正说明（原报告问题已修正，记录改动与核验依据） */
 .yq-nb{max-width:860px;margin:0 auto 26px;padding:16px 18px;background:#fffdf5;border:1px solid #f0e2b8;border-radius:var(--radius)}
 .yq-nb>h3{margin:0 0 4px;font-size:14px;color:#8a5a00;display:flex;align-items:center;gap:7px}
 .yq-nb>p.hint{margin:0 0 12px;font-size:12.5px;color:#a07a2a;line-height:1.7}
@@ -59,6 +59,8 @@
 .yq-badge.neg{background:#fdecec;color:#b91c1c;border:1px solid #f4c4c4}
 .yq-badge.flag{background:#fff4e0;color:#a16207;border:1px solid #f0d9a8}
 .yq-badge.gray{background:var(--bg-mute);color:var(--ink3);border:1px solid var(--line)}
+.yq-badge.add{background:#e9f2ff;color:#1d4ed8;border:1px solid #c3d8fb}
+.yq-badge.fix{background:#f3e9ff;color:#6d28d9;border:1px solid #dcc9f8}
 .yq-entry .tag{font-size:10.5px;color:var(--ink3)}
 
 /* 边界与来源 */
