@@ -71,35 +71,55 @@ window.confirm = () => true;
 
 check('首次进入确认目标，展示多个项目入口', () => {
   assert.ok($('#wb-goal'));
-  $('#wb-goal').value = '转型 FDE 测试目标';
+  $('#wb-goal').value = 'job';
+  $('#wb-bg').value = 'backend';
+  $('#wb-pilot').value = 'P99';
   $('#wb-go').click();
-  assert.equal(saved('wb_profile').goal, '转型 FDE 测试目标');
+  const prof = saved('wb_profile');
+  assert.equal(prof.goal, 'job');
+  assert.equal(prof.background, 'backend');
+  assert.equal(prof.pilot, 'P99');
+  assert.equal(prof.v, 2);
+  assert.ok(content().includes(window.WB_DATA.routing.default.note));
   for (const project of [p1, p2]) {
     assert.ok(content().includes(project.title));
     assert.ok($(`a[href="#p/${project.id}"]`));
   }
 });
 
-check('进入项目，诊断必须完成所有题，结果仅为能力线索', () => {
+check('进入项目，自适应诊断逐级出题，结果仅为能力线索', () => {
   visit(p1Route(''));
   assert.ok(content().includes(s1.title));
   visit(p1Route('/diag'));
-  assert.equal($$('.wb-q').length, p1.quiz.length);
-  $('#wb-submit-diag').click();
-  assert.match(alerts.pop(), /未作答/);
-  assert.equal(saved(`wb_diag_${p1.id}`), null);
-  p1.quiz.forEach(q => {
+  const qmap = Object.fromEntries(p1.quiz.map(q => [q.id, q]));
+  let guard = 0;
+  while (!$('.wb-self')) {
+    const qEl = $('.wb-q');
+    assert.ok(qEl, '自适应流程应一题一屏');
+    const q = qmap[qEl.getAttribute('data-qid')];
+    assert.ok(q, '当前题目应来自题库');
     $(`input[name="${q.id}"][value="${q.ans}"]`).checked = true;
-  });
+    $('#wb-next-q').click();
+    assert.ok(++guard < 40, '自适应流程应在有限步内结束');
+  }
   $('.wb-self input').checked = true;
   $('#wb-submit-diag').click();
   const diagnosis = saved(`wb_diag_${p1.id}`);
   assert.equal(diagnosis.done, true);
-  assert.equal(Object.keys(diagnosis.answers).length, p1.quiz.length);
+  assert.equal(diagnosis.v, 2);
+  for (const d of window.WB_DATA.dims) {
+    assert.equal(diagnosis.levels[d.id], 2, `全答对时 ${d.id} 应定级为 2`);
+  }
+  assert.ok(diagnosis.result && diagnosis.result.business, 'result 结构保持兼容');
   assert.ok(content().includes('上次诊断结果'));
-  assert.ok(content().includes('有诊断线索'));
+  assert.ok(content().includes('误区'), '结果页应出现误区提示区');
   assert.equal($('.ds3'), null, '诊断不能直接生成阶段自评记录');
   assert.equal(saved(`wb_diag_${p2.id}`), null, '诊断按项目隔离');
+  assert.equal(diagnosis.lowConf, true, 'jsdom 中极速全对应标记为低可信');
+  assert.equal(saved('wb_overrides'), null, '未点关闭前不应产生 overrides 记录');
+  visit(p1Route(''));
+  assert.ok(!content().includes('路径建议（基于诊断线索）'), '低可信诊断不应出路径建议卡');
+  assert.ok(content().includes('低可信'), '低可信诊断应改为提示文案');
 });
 
 check('提交任务，格式提示和待自评状态落库', () => {
@@ -194,7 +214,7 @@ await check('导出的 JSON 含全部项目的诊断、版本、量表及帮助�
   });
   const dump = JSON.parse(json);
   assert.equal(Object.keys(dump.projects).length, window.WB_DATA.projects.length);
-  assert.equal(dump.profile.goal, '转型 FDE 测试目标');
+  assert.equal(dump.profile.goal, 'job');
   assert.equal(dump.projects[p1.id].diag.done, true);
   assert.equal(dump.projects[p1.id].stages[s1.id].versions[0].evidN, s1.rubric.length);
   assert.equal(dump.projects[p2.id].stages[s2.id].versions[0].helped, true);

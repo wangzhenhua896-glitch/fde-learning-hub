@@ -16,6 +16,10 @@
 
   function stages(pid) { try { var v = localStorage.getItem('wb_stages_' + pid); return v ? JSON.parse(v) : {}; } catch (e) { return {}; } }
   function profile() { try { var v = localStorage.getItem('wb_profile'); return v ? JSON.parse(v) : null; } catch (e) { return null; } }
+  function goalName(pr) {  // v2 画像 goal 是选项 id；旧版自由文本在 goalText
+    if (!pr) return '';
+    return (D.goals && D.goals[pr.goal]) || pr.goalText || pr.goal || '';
+  }
 
   // 聚合：每项目通过阶段；每维度通过数（跨项目）
   function aggregate() {
@@ -84,7 +88,7 @@
       return;
     }
     var html = '<div class="wb-note pf-disclaimer">本页汇总的是本人提交和勾选的自评记录。平台不运行代码、不核实附件，也没有第三方评审；记录不能作为能力认证。</div>' +
-      '<div class="pf-summary wb-card"><h3>学习记录总览' + (pr ? '<span class="pf-goal">目标：' + esc(pr.goal) + '</span>' : '') + '</h3>' +
+      '<div class="pf-summary wb-card"><h3>学习记录总览' + (pr ? '<span class="pf-goal">目标：' + esc(goalName(pr)) + '</span>' : '') + '</h3>' +
       '<div class="pf-stats">' +
       '<div><b>' + agg.totalPassed + '</b><span>阶段自评完成记录</span></div>' +
       '<div><b>' + agg.rows.length + '</b><span>已启动项目 / ' + D.projects.length + '</span></div>' +
@@ -138,7 +142,7 @@
     ctx.fillStyle = '#888780'; ctx.font = '400 16px -apple-system, "PingFang SC", sans-serif';
     ctx.fillText('生成于 ' + fmt(Date.now()) + ' · 自评证据链（非第三方认证）· fde-learning-hub.app.workbuddy.host', 48, 94);
     var pr = profile();
-    if (pr) { ctx.fillText('目标：' + pr.goal, 48, 120); }
+    if (pr) { ctx.fillText('目标：' + goalName(pr), 48, 120); }
     // 雷达
     var cx = 220, cy = 400, R = 150, N = D.dims.length, maxLv = D.projects.length;
     function pt(i, r) { var a = -Math.PI / 2 + i * 2 * Math.PI / N; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; }

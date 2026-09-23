@@ -43,7 +43,33 @@
     return ({ '待评审': '待自评', '需修改': '需补充', '通过': '自评完成' })[label] || label;
   }
 
-  function profile() { return LS.get(K_PROFILE, null); }
+  function profile() {
+    var p = LS.get(K_PROFILE, null);
+    if (p && !p.v) {                                                  // v1 → v2：自由文本目标存入 goalText
+      p = { v: 2, goal: 'job', goalText: p.goal || '', background: 'other', hours: p.hours || '3-5h', pilot: '', createdAt: p.createdAt || Date.now() };
+      LS.set(K_PROFILE, p);
+    }
+    return p;
+  }
+  function routingFor(p) {                                            // 第一条 when 全匹配的规则生效
+    var R = D.routing || { default: { order: D.projects.map(function (x) { return x.id; }), note: '' }, rules: [] };
+    for (var i = 0; i < (R.rules || []).length; i++) {
+      var w = R.rules[i].when || {}, ok = true;
+      for (var k in w) if (w.hasOwnProperty(k) && p[k] !== w[k]) { ok = false; break; }
+      if (ok) return { note: R.rules[i].note, order: R.rules[i].order || R.default.order };
+    }
+    return R.default;
+  }
+  function dismissed(pid) {
+    return LS.get('wb_overrides', []).some(function (o) { return o && o.pid === pid && o.type === 'dismiss_routing'; });
+  }
+  function isAdaptive(p) { return p.quiz.every(function (q) { return !!q.level; }); }
+  function median(arr) {
+    if (!arr.length) return 0;
+    var s = arr.slice().sort(function (a, b) { return a - b; });
+    var m = Math.floor(s.length / 2);
+    return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+  }
   function diag(pid) { return LS.get(diagKey(pid), null); }
   function stages(pid) { return LS.get(stagesKey(pid), {}); }
   function stage(pid, sid) { return stages(pid)[sid] || null; }
@@ -120,33 +146,51 @@
   }
 
   // ---------------- 实训库首页 ----------------
+  var homeEdit = false;                                               // 「修改目标」：有画像也强制显示表单
   function renderHome() {
     var p = profile();
-    var mainProject = D.projects[0];
-    var html = head('实训库', '建议先完成入门主项目「' + esc(mainProject.title) + '」。其余项目用于完成主项目后的场景迁移练习。平台只做文本格式提示，阶段状态是个人自评记录。');
-    if (!p) {
-      html += '<div class="wb-card focus"><h3>开始前：确认你的目标</h3>' +
-        '<label class="wb-label">目标岗位 / 一句话目标</label>' +
-        '<input id="wb-goal" class="wb-input" placeholder="如：3 个月内转岗 FDE（工程师路径）" value="工程师转型 FDE">' +
+    var html = head('实训库', '建议先完成入门主项目。其余项目用于完成主项目后的场景迁移练习。平台只做文本格式提示，阶段状态是个人自评记录。');
+    if (!p || homeEdit) {
+      html += '<div class="wb-card focus"><h3>' + (p ? '修改你的目标' : '开始前：确认你的目标') + '</h3>' +
+        '<label class="wb-label">学习目的</label>' +
+        '<select id="wb-goal" class="wb-input">' + D.goals.map(function (g) { return '<option value="' + g.id + '">' + esc(g.name) + '</option>'; }).join('') + '</select>' +
+        '<label class="wb-label">你的背景</label>' +
+        '<select id="wb-bg" class="wb-input">' + D.backgrounds.map(function (b) { return '<option value="' + b.id + '">' + esc(b.name) + '</option>'; }).join('') + '</select>' +
         '<label class="wb-label">每周可投入时间</label>' +
         '<select id="wb-hours" class="wb-input"><option value="3-5h">3-5 小时</option><option value="5-10h">5-10 小时</option><option value="10h+">10 小时以上</option></select>' +
+        '<label class="wb-label">试点编号</label>' +
+        '<input id="wb-pilot" class="wb-input" placeholder="试点学员填写，如 P03；其他访客留空">' +
         '<button id="wb-go" class="wb-btn pri">确认目标，进入实训库</button></div>';
       view.innerHTML = html;
+      if (p) {                                                        // 预填现值（旧文本目标在 goalText，不回显）
+        $('#wb-goal').value = p.goal;
+        $('#wb-bg').value = p.background || 'other';
+        $('#wb-hours').value = p.hours || '3-5h';
+        $('#wb-pilot').value = p.pilot || '';
+      }
       $('#wb-go').onclick = function () {
-        LS.set(K_PROFILE, { goal: $('#wb-goal').value || '工程师转型 FDE', hours: $('#wb-hours').value, createdAt: Date.now() });
+        var prev = profile();
+        LS.set(K_PROFILE, { v: 2, goal: $('#wb-goal').value, background: $('#wb-bg').value, hours: $('#wb-hours').value, pilot: $('#wb-pilot').value.trim(), createdAt: prev && prev.createdAt || Date.now() });
+        homeEdit = false;
         renderHome();
       };
       return;
     }
+    var route = routingFor(p);
+    var ordered = route.order.map(function (pid) { return proj(pid); }).filter(Boolean);
+    if (!ordered.length) ordered = D.projects.slice();
+    var mainProject = ordered[0];
+    html += '<div class="wb-card"><p class="wb-note">路径建议基于你填写的目的与背景，可随时在下方修改</p>' +
+      '<p>' + esc(route.note) + '</p>' +
+      '<button id="wb-edit-goal" class="wb-btn sm">修改目标</button></div>';
     var done = doneCount(mainProject), ns = nextStage(mainProject);
     html += '<div class="wb-card focus wb-main-project"><div class="wb-card-tag">入门主项目 · 推荐从这里开始</div>' +
       '<h3>' + esc(mainProject.title) + '</h3><p>' + esc(mainProject.one_liner) + '</p>' +
       '<div class="wb-progress"><div class="wb-progress-bar"><i style="width:' + (done / mainProject.stages.length * 100) + '%"></i></div><span>主项目自评进度 ' + done + ' / ' + mainProject.stages.length + ' 阶段</span></div>' +
       '<a class="wb-btn pri" href="#p/' + mainProject.id + '">' + (done ? '继续主项目：' + esc(ns ? ns.title : '复习') + ' →' : '开始主项目 →') + '</a></div>';
-    html += '<details class="wb-migration"><summary>完成主项目后，再选一个场景迁移练习（4 个项目）</summary><p class="wb-note">这些项目复用相近的交付阶段，重点是比较不同业务约束如何改变方案。无需把五个项目都做完。</p><div class="wb-grid2">';
-    D.projects.slice(1).forEach(function (pr) {
+    html += '<details class="wb-migration"><summary>完成主项目后，再选一个场景迁移练习（' + ordered.slice(1).length + ' 个项目）</summary><p class="wb-note">这些项目复用相近的交付阶段，重点是比较不同业务约束如何改变方案。无需把五个项目都做完。</p><div class="wb-grid2">';
+    ordered.slice(1).forEach(function (pr) {
       var done = doneCount(pr), ns = nextStage(pr);
-      var st = ns ? stage(pr.id, ns.id) : null;
       html += '<div class="wb-card"><div class="wb-card-tag">场景迁移 · ' + esc(pr.tag) + '</div>' +
         '<h3>' + esc(pr.title) + '</h3><p>' + esc(pr.one_liner) + '</p>' +
         '<div class="wb-progress" style="margin:8px 0 4px"><div class="wb-progress-bar"><i style="width:' + (done / pr.stages.length * 100) + '%"></i></div><span>' + done + ' / ' + pr.stages.length + ' 阶段</span></div>' +
@@ -157,6 +201,7 @@
     html += '</div></details>';
     html += '<p class="wb-note">进度、自填依据与提交文本只保存在你自己的浏览器（localStorage）。跨项目自评记录汇总见 <a href="profile.html">能力档案 →</a>；数据备份见各项目的「数据」页。</p>';
     view.innerHTML = html;
+    $('#wb-edit-goal').onclick = function () { homeEdit = true; renderHome(); };
   }
 
   // ---------------- 项目内：今日 ----------------
@@ -180,32 +225,89 @@
     } else {
       html += '<div class="wb-card focus"><h3>🎉 本项目 ' + p.stages.length + ' 个阶段已完成自评</h3><p>你已保存本项目的自评记录。请按阶段提示整理并自行核对作品；平台没有运行代码或独立验证交付物。可到「数据」页备份记录，或到 <a href="profile.html">能力档案</a> 查看汇总。</p></div>';
     }
+    if (dg && dg.done && dg.levels) {                                 // 路径建议卡（仅 v2 自适应诊断）
+      if (dg.lowConf) {
+        html += '<p class="wb-note">诊断结果被标记为低可信，路径建议未启用；可重做诊断。</p>';
+      } else if (!dismissed(p.id)) {
+        html += '<div class="wb-card wb-routing"><h3>路径建议（基于诊断线索）</h3>' +
+          p.stages.map(function (s) {
+            var lv = dg.levels[s.dim];
+            var tip = lv === 2 ? '可快速过：直接看自检清单后尝试自评' : lv === 1 ? '建议正常做' : '建议先读参考资料再动手';
+            return '<div class="wb-route-row"><b>' + esc(s.title) + '</b><span>' + tip + '</span></div>';
+          }).join('') +
+          '<p class="wb-note">建议仅来自知识题线索，随时可以按自己的节奏来。</p>' +
+          '<button id="wb-dismiss-routing" class="wb-btn sm">我自己安排，不再显示</button></div>';
+      }
+    }
     html += '<div class="wb-grid2">' +
-      '<div class="wb-card"><h3>基础诊断</h3><p>' + (dg && dg.done ? '已完成（' + fmt(dg.ts) + '）。诊断结果只是线索，能力状态以阶段证据为准。' : p.quiz.length + ' 道知识题（6 维度 × 2 题）+ 1 个自评线索。约 10 分钟。') + '</p><a class="wb-btn" href="#p/' + p.id + '/diag">' + (dg && dg.done ? '查看/重做诊断' : '开始诊断') + '</a></div>' +
+      '<div class="wb-card"><h3>基础诊断</h3><p>' + (dg && dg.done ? '已完成（' + fmt(dg.ts) + '）。诊断结果只是线索，能力状态以阶段证据为准。' : isAdaptive(p) ? '自适应诊断：6 个维度逐级出题（约 12-18 题）+ 1 个自评线索。约 10 分钟。' : p.quiz.length + ' 道知识题（6 维度 × 2 题）+ 1 个自评线索。约 10 分钟。') + '</p><a class="wb-btn" href="#p/' + p.id + '/diag">' + (dg && dg.done ? '查看/重做诊断' : '开始诊断') + '</a></div>' +
       '<div class="wb-card"><h3>学习自评记录</h3><p>查看诊断线索、阶段自评记录和建议补做的任务。</p><a class="wb-btn" href="#p/' + p.id + '/skills">查看学习记录</a></div></div>';
     html += '<p class="wb-note">状态保存在本浏览器（localStorage），可到「数据」页导出备份。关键词格式检查只查提交文本是否含指定词；清单与迁移回答由你自行勾选和填写，均为自评记录，不代表第三方评审或平台验证。</p>';
     view.innerHTML = html;
+    var dr = $('#wb-dismiss-routing');
+    if (dr) dr.onclick = function () {
+      var ov = LS.get('wb_overrides', []);
+      ov.push({ ts: Date.now(), pid: p.id, type: 'dismiss_routing' });
+      LS.set('wb_overrides', ov);
+      renderToday(p);
+    };
   }
 
   // ---------------- 诊断 ----------------
   var diagDraft = {};
+  function selfRateHtml() {
+    var html = '<div class="wb-card"><h3>自评线索（不计入能力状态）</h3><p class="wb-note">以下仅用于校准辅导深度；无证据的自评不会提升能力状态。</p>';
+    D.dims.forEach(function (d) {
+      html += '<label class="wb-self"><input type="checkbox" data-dim="' + d.id + '"> ' + esc(D.selfRate[d.id]) + '</label>';
+    });
+    return html + '</div>';
+  }
   function renderDiag(p) {
     var dg = diag(p.id);
+    var adaptive = isAdaptive(p);
     var html = '<div class="crumb"><a href="#p/' + p.id + '">' + esc(p.title) + '</a><span>/</span><span>基础诊断</span></div>';
-    html += head('基础诊断 · ' + esc(p.title), p.quiz.length + ' 道知识题 × 6 个维度。结果只作学习线索，不测实作能力；答错不会给你打低分。');
+    html += head('基础诊断 · ' + esc(p.title), adaptive ?
+      '自适应诊断：6 个维度逐级出题，按作答情况动态深入。结果只作学习线索，不测实作能力；答错不会给你打低分。' :
+      p.quiz.length + ' 道知识题 × 6 个维度。结果只作学习线索，不测实作能力；答错不会给你打低分。');
     if (dg && dg.done && !diagDraft._editing) {
       html += '<div class="wb-card"><h3>上次诊断结果（' + fmt(dg.ts) + '）</h3>';
       html += '<div class="wb-dimgrid">' + D.dims.map(function (d) {
-        var r = dg.result[d.id] || { ok: 0, n: 2 };
         var st = dimState(p, d.id);
-        return '<div class="wb-dim"><b>' + esc(d.name) + '</b><span>题目 ' + r.ok + '/' + r.n + '</span><span class="' + DIM_CLS[st.s] + '">' + DIM_ST[st.s] + '</span></div>';
+        var cell = '<div class="wb-dim"><b>' + esc(d.name) + '</b>';
+        if (dg.levels) {
+          var lv = dg.levels[d.id];
+          cell += '<span>层级线索：' + (lv === 2 ? '应用层' : lv === 1 ? '概念层' : '未接触') + '</span>';
+        } else {
+          var r = dg.result[d.id] || { ok: 0, n: 2 };
+          cell += '<span>题目 ' + r.ok + '/' + r.n + '</span>';
+        }
+        if (dg.probe && dg.probe[d.id] !== undefined) cell += '<span class="wb-note">权衡探针：' + (dg.probe[d.id] ? '答对' : '未答对') + '（不计入层级）</span>';
+        return cell + '<span class="' + DIM_CLS[st.s] + '">' + DIM_ST[st.s] + '</span></div>';
       }).join('') + '</div>';
+      if (dg.misHits) {
+        html += '<div class="wb-mis"><h4>误区提示</h4>';
+        var anyMis = false;
+        D.dims.forEach(function (d) {
+          (dg.misHits[d.id] || []).forEach(function (mid) {
+            var m = D.misconceptions[mid];
+            if (!m) return;
+            anyMis = true;
+            html += '<div class="wb-mis-item"><b>' + esc(m.name) + '</b><span class="wb-q-dim">' + esc(d.name) + '</span><p>' + esc(m.def) + '</p>' +
+              '<p class="wb-note">建议资料：' + m.resources.map(function (r) { return '<a href="' + esc(r.u) + '.html">' + esc(r.t) + '</a>'; }).join('、') + '</p></div>';
+          });
+        });
+        if (!anyMis) html += '<p class="wb-note">本次作答没有命中已命名的典型误区。</p>';
+        html += '</div>';
+      }
+      if (dg.lowConf) html += '<div class="wb-feedback big"><b>低可信标记：</b>本次作答速度异常快，结果标记为低可信线索，不用于路径建议。</div>';
       html += '<p class="wb-note">维度与阶段对应：' + D.dims.map(function (d) { return esc(d.name) + '→' + esc(stageTitle(p, dimStage(p, d.id))); }).join(' · ') + '</p>';
+      html += '<p class="wb-note">这是知识题线索，不是能力测评。能力状态以各阶段自评证据为准。</p>';
       html += '<button id="wb-redo" class="wb-btn">重做诊断</button> <a class="wb-btn pri" href="#p/' + p.id + '">回到今日任务</a></div>';
       view.innerHTML = html;
       $('#wb-redo').onclick = function () { diagDraft._editing = true; renderDiag(p); };
       return;
     }
+    if (adaptive) { startAdpt(p); return; }
     html += '<div class="wb-quiz">';
     p.quiz.forEach(function (q, i) {
       html += '<div class="wb-q" data-qid="' + q.id + '"><div class="wb-q-t">' + (i + 1) + '. ' + esc(q.q) + '<span class="wb-q-dim">' + esc(D.dimMap[q.dim]) + '</span></div>';
@@ -215,11 +317,7 @@
       html += '</div>';
     });
     html += '</div>';
-    html += '<div class="wb-card"><h3>自评线索（不计入能力状态）</h3><p class="wb-note">以下仅用于校准辅导深度；无证据的自评不会提升能力状态。</p>';
-    D.dims.forEach(function (d) {
-      html += '<label class="wb-self"><input type="checkbox" data-dim="' + d.id + '"> ' + esc(D.selfRate[d.id]) + '</label>';
-    });
-    html += '</div>';
+    html += selfRateHtml();
     html += '<button id="wb-submit-diag" class="wb-btn pri">提交诊断</button>';
     view.innerHTML = html;
     $('#wb-submit-diag').onclick = function () {
@@ -241,6 +339,124 @@
       diagDraft._editing = false;
       renderDiag(p);
     };
+  }
+
+  // ---------------- 自适应诊断引擎（仅全量带 level 的题库；draft 不持久化，离开即重来） ----------------
+  var adpt = null;
+  function adptPlan(p) {                                              // 每维度：L1×2 / L2×2 / L3 探针×1（按数组顺序）
+    var plan = {};
+    p.quiz.forEach(function (q) {
+      if (!plan[q.dim]) plan[q.dim] = { l1: [], l2: [], probe: null };
+      if (q.level === 1) plan[q.dim].l1.push(q);
+      else if (q.level === 2) plan[q.dim].l2.push(q);
+      else if (q.probe) plan[q.dim].probe = q;
+    });
+    return plan;
+  }
+  function startAdpt(p) {
+    adpt = { plan: adptPlan(p), di: -1, qnum: 0, records: [], answers: {}, timing: {}, levels: {}, probe: {}, done: false };
+    adptNextDim(p);
+  }
+  function adptNextDim(p) {
+    adpt.di++;
+    if (adpt.di >= D.dims.length) { adpt.done = true; renderAdptSelf(p); return; }
+    var g = adpt.plan[D.dims[adpt.di].id];
+    adpt.step = 'l2a';                                                // 定级阶梯：L2 起步
+    adpt.q = g.l2[0];
+    renderAdptQ(p);
+  }
+  function adptAdvance(p, correct) {
+    var dim = D.dims[adpt.di].id, g = adpt.plan[dim];
+    if (adpt.step === 'l2a') {
+      if (correct) { adpt.step = 'l2b'; adpt.q = g.l2[1]; }
+      else { adpt.step = 'l1a'; adpt.q = g.l1[0]; }
+    } else if (adpt.step === 'l2b') {
+      if (correct) {
+        adpt.levels[dim] = 2;
+        if (g.probe) { adpt.step = 'probe'; adpt.q = g.probe; } else return adptNextDim(p);
+      } else { adpt.levels[dim] = 1; return adptNextDim(p); }
+    } else if (adpt.step === 'l1a') {
+      if (correct) { adpt.step = 'l1b'; adpt.q = g.l1[1]; }
+      else { adpt.levels[dim] = 0; return adptNextDim(p); }
+    } else if (adpt.step === 'l1b') {
+      adpt.levels[dim] = correct ? 1 : 0;
+      return adptNextDim(p);
+    } else if (adpt.step === 'probe') {                               // 探针单独记录，不影响定级
+      adpt.probe[dim] = correct;
+      return adptNextDim(p);
+    }
+    renderAdptQ(p);
+  }
+  function adptIsLast() {                                             // 末题（最后一个维度的收尾题）换按钮文案
+    if (adpt.di !== D.dims.length - 1) return false;
+    var g = adpt.plan[D.dims[adpt.di].id];
+    return adpt.step === 'l1b' || (adpt.step === 'probe') || (adpt.step === 'l2b' && !g.probe);
+  }
+  function renderAdptQ(p) {
+    var q = adpt.q;
+    adpt.qnum++;
+    adpt.presentedAt = Date.now();
+    adpt.changes = 0;
+    var html = '<div class="crumb"><a href="#p/' + p.id + '">' + esc(p.title) + '</a><span>/</span><span>基础诊断</span></div>';
+    html += head('基础诊断 · ' + esc(p.title), '一题一屏，作答前不显示对错；答错不会给你打低分。');
+    html += '<div class="wb-quiz"><div class="wb-q" data-qid="' + q.id + '"><div class="wb-q-t"><span class="wb-q-dim">' + esc(D.dimMap[q.dim]) + ' · 第 ' + adpt.qnum + ' 题</span>' + esc(q.q) + '</div>';
+    q.opts.forEach(function (o, j) {
+      html += '<label class="wb-opt"><input type="radio" name="' + q.id + '" value="' + j + '"> ' + esc(o) + '</label>';
+    });
+    html += '</div></div>';
+    html += '<button id="wb-next-q" class="wb-btn pri">' + (adptIsLast() ? '查看诊断结果' : '下一题') + '</button>';
+    view.innerHTML = html;
+    $('.wb-q').addEventListener('change', function () { adpt.changes++; });
+    $('#wb-next-q').onclick = function () {
+      var sel = document.querySelector('input[name="' + q.id + '"]:checked');
+      if (!sel) { alert('请先选择一个选项'); return; }
+      var choice = parseInt(sel.value, 10);
+      var rec = { qid: q.id, choice: choice, correct: choice === q.ans, ms: Date.now() - adpt.presentedAt, changes: adpt.changes };
+      adpt.records.push(rec);
+      adpt.answers[q.id] = choice;
+      adpt.timing[q.id] = { ms: rec.ms, changes: rec.changes };
+      adptAdvance(p, rec.correct);
+    };
+  }
+  function renderAdptSelf(p) {
+    var html = '<div class="crumb"><a href="#p/' + p.id + '">' + esc(p.title) + '</a><span>/</span><span>基础诊断</span></div>';
+    html += head('基础诊断 · ' + esc(p.title), '知识题已完成，最后补充自评线索。');
+    html += selfRateHtml();
+    html += '<button id="wb-submit-diag" class="wb-btn pri">提交诊断</button>';
+    view.innerHTML = html;
+    $('#wb-submit-diag').onclick = function () { finalizeAdpt(p); };
+  }
+  function finalizeAdpt(p) {
+    var self = {};
+    document.querySelectorAll('.wb-self input:checked').forEach(function (el) { self[el.getAttribute('data-dim')] = true; });
+    var qmap = {};
+    p.quiz.forEach(function (q) { qmap[q.id] = q; });
+    var result = {};
+    D.dims.forEach(function (d) { result[d.id] = { ok: 0, n: 0 }; });
+    var misHits = {};
+    adpt.records.forEach(function (r) {
+      var q = qmap[r.qid];
+      if (!q.probe) {                                                 // 探针题不计入 ok/n
+        result[q.dim].n++;
+        if (r.correct) result[q.dim].ok++;
+      }
+      if (!r.correct) {
+        var mid = q.mis && q.mis[r.choice];
+        if (mid) {
+          if (!misHits[q.dim]) misHits[q.dim] = [];
+          if (misHits[q.dim].indexOf(mid) === -1) misHits[q.dim].push(mid);
+        }
+      }
+    });
+    var lowConf = adpt.records.every(function (r) { return r.correct; }) &&
+      median(adpt.records.map(function (r) { return r.ms; })) < 2500;
+    LS.set(diagKey(p.id), {
+      v: 2, answers: adpt.answers, timing: adpt.timing, self: self, result: result,
+      levels: adpt.levels, probe: adpt.probe, misHits: misHits, lowConf: lowConf, done: true, ts: Date.now()
+    });
+    adpt = null;
+    diagDraft._editing = false;
+    renderDiag(p);
   }
 
   // ---------------- 任务详情 ----------------
@@ -418,7 +634,7 @@
       '<pre id="wb-io" class="wb-pre"></pre></div>';
     view.innerHTML = html;
     $('#wb-export').onclick = function () {
-      var dump = { exportedAt: new Date().toISOString(), profile: profile(), projects: {} };
+      var dump = { exportedAt: new Date().toISOString(), profile: profile(), overrides: LS.get('wb_overrides', []), projects: {} };
       D.projects.forEach(function (pr) { dump.projects[pr.id] = { diag: diag(pr.id), stages: stages(pr.id) }; });
       var blob = new Blob([JSON.stringify(dump, null, 2)], { type: 'application/json' });
       var a = document.createElement('a');

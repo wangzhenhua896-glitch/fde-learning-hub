@@ -10,7 +10,7 @@ from urllib.parse import unquote, urlsplit
 
 DEFAULT_SITE = Path(__file__).resolve().parent / "fde-hub-site"
 KEY_PAGES = (
-    "index.html", "orientation.html", "paths.html", "workbench.html", "profile.html", "library.html",
+    "index.html", "learn.html", "orientation.html", "paths.html", "workbench.html", "profile.html", "library.html",
     "about.html", "path-career.html", "path-engineer.html",
     "path-manager.html", "path-presales.html", "path-exec.html",
 )
@@ -133,12 +133,46 @@ def main():
             problems.append("实战工作台缺少可解析的项目数据")
         else:
             try:
-                projects = json.loads(match.group(1))["projects"]
+                wb_data = json.loads(match.group(1))
+                projects = wb_data["projects"]
                 if len(projects) != 5 or len({p["id"] for p in projects}) != 5:
                     problems.append(f"实训项目应为 5 个且 ID 唯一，当前为 {len(projects)} 个")
                 for project in projects:
                     if not project.get("stages") or not project.get("quiz"):
                         problems.append(f"实训项目缺少任务或诊断：{project.get('id', '?')}")
+
+                # ---- G8 规则-内容一致性校验（个性化一期）----
+                mis_map = wb_data.get("misconceptions", {})
+                routing = wb_data.get("routing", {})
+                p1 = projects[0]
+                page_ids = {p.stem for p in pages}
+
+                # 1) P1 分层题库：误区 id 必须存在、dim 匹配、不得挂在正确项上；src 须命中产物页
+                for q in p1.get("quiz", []):
+                    if "level" not in q:
+                        problems.append(f"P1 诊断题缺少 level 字段：{q.get('id', '?')}")
+                        continue
+                    if q.get("src") and q["src"] not in page_ids:
+                        problems.append(f"P1 诊断题 {q['id']} 的资料出处无对应页面：{q['src']}")
+                    for idx, mid in q.get("mis", {}).items():
+                        if int(idx) == q["ans"]:
+                            problems.append(f"P1 诊断题 {q['id']} 把误区挂在了正确项上")
+                        if mid not in mis_map:
+                            problems.append(f"P1 诊断题 {q['id']} 引用不存在的误区：{mid}")
+                        elif mis_map[mid].get("dim") != q["dim"]:
+                            problems.append(f"P1 诊断题 {q['id']} 的误区 {mid} 维度不匹配")
+
+                # 2) 误区定向资料 slug 必须命中产物页
+                for mid, m in mis_map.items():
+                    for res in m.get("resources", []):
+                        if res.get("u") not in page_ids:
+                            problems.append(f"误区 {mid} 的资料链接无对应页面：{res.get('u')}")
+
+                # 3) 路由规则引用的项目 id 必须存在
+                proj_ids = {p["id"] for p in projects}
+                for pid in routing.get("default", {}).get("order", []):
+                    if pid not in proj_ids:
+                        problems.append(f"ROUTING 默认顺序引用不存在的项目：{pid}")
             except (ValueError, KeyError, TypeError) as error:
                 problems.append(f"实训项目数据解析失败：{error}")
 

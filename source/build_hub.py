@@ -487,6 +487,9 @@ shutil.copy(ROOT / 'assets' / 'workbench.js', OUT / 'assets' / 'workbench.js')
 shutil.copy(ROOT / 'assets' / 'profile.css', OUT / 'assets' / 'profile.css')
 shutil.copy(ROOT / 'assets' / 'profile.js', OUT / 'assets' / 'profile.js')
 shutil.copy(ROOT / 'assets' / 'sentiment.css', OUT / 'assets' / 'sentiment.css')
+for name in ('learning-core.mjs', 'learning-app.mjs', 'learning.css'):
+    shutil.copy(ROOT / 'assets' / name, OUT / 'assets' / name)
+shutil.copy(ROOT / 'data' / 'learning.json', OUT / 'assets' / 'learning.json')
 
 # P0 打包离线练习（构建时从 labs/ 生成，放到 downloads/ 下）
 LAB_SRC = ROOT / 'labs' / 'kb-assistant'
@@ -772,8 +775,8 @@ lib_out = page_head(f'知识库 · {SITE_NAME}', '') + topbar() + \
 about_core = f'''<div class="crumb"><a href="index.html">首页</a><span>/</span><span>来源与版权</span></div>
 <section class="path-hero slim"><div><h1>内容来源与版权说明</h1><p class="pdesc">本站是学习用途的聚合与重组，全部正文版权归原作方所有。</p></div></section>
 <div class="about-list">
-<div class="about-card"><h3>本站定位：免费FDE实训平台</h3>
-<p>FDE 开放联盟是一个<b>开放的 FDE 学习与模拟实训平台</b>：以「交付实训」为核心（{len(WB.PROJECTS)} 个虚构企业项目 × 7 阶段任务包，含诊断、带出处辅导、作品提交与逐项证据自评），并支持通过 <a href="profile.html">能力档案</a>导出本机学习记录。项目用于模拟交付练习，不是客户案例或第三方认证。下方 6 个内容来源构成可搜索知识底座。平台不设账号、不上传任何数据，进度与档案仅存于读者本机浏览器。网站当前免费、无需注册。</p></div>
+<div class="about-card"><h3>本站定位：免费自学实训平台</h3>
+<p>FDE 开放联盟是一个<b>开放的 FDE 学习与模拟实训平台</b>：以「交付实训」为核心（{len(WB.PROJECTS)} 个虚构企业项目 × 7 阶段任务包，含诊断、带出处辅导、作品提交与逐项证据自评），并支持通过 <a href="profile.html">能力档案</a>导出本机学习记录。项目用于模拟交付练习，不是客户案例或第三方认证。下方 6 个内容来源构成可搜索知识底座。平台不设账号、不上传任何数据，进度与档案仅存于读者本机浏览器。网站当前免费。</p></div>
 <div class="about-card"><h3>授权说明</h3><p>原创代码的公开许可将在源码仓库标明；转载的第三方文章以原作者声明为准（下方逐项说明）。其中范冰《入门指南》为非商业转载，FDE-Handbook 以 CC BY-NC-SA 4.0 引用；OpenFDE 本站此前标注 CC BY-SA 4.0，本地材料尚未核实，待确认。建议使用前核对各原仓库的最新授权。</p></div>
 <div class="about-card"><h3><a href="https://github.com/zhyese/fde-wiki" target="_blank" rel="noopener">FDE-Wiki 调研报告</a></h3>
 <p>2026-06-21 由 zhyese（adewdew）发布，AI 辅助深度调研生成（与 Claude 共同署名），约 35 万中文字（原报告自述，本站实测正文 35 万+ 字相符）。93 篇 = 4 篇章导语 + 23 章 + 62 专题 + 4 篇附属页（附录、标签、公司索引、留言板）。</p></div>
@@ -1073,6 +1076,10 @@ WB_DATA_JS = json.dumps({
     'dims': WB_DIMS,
     'dimMap': {k: v['name'] for k, v in WB.DIMS.items()},
     'selfRate': WB.SELF_RATE,
+    'misconceptions': WB.MISCONCEPTIONS,
+    'goals': WB.GOALS,
+    'backgrounds': WB.BACKGROUNDS,
+    'routing': WB.ROUTING,
 }, ensure_ascii=False, separators=(',', ':'))
 
 wb_core = f'''<div class="crumb"><a href="index.html">首页</a><span>/</span><span>实战工作台</span></div>
@@ -1104,31 +1111,29 @@ profile_core = '''<div class="crumb"><a href="index.html">首页</a><span>/</spa
 profile_out = page_head(f'能力档案 · {SITE_NAME}', 'FDE 实训平台能力档案：跨项目六维证据聚合，支持导出 JSON/PNG 分享') + \
     f'<link rel="stylesheet" href="assets/workbench.css"><link rel="stylesheet" href="assets/profile.css">' + topbar() + \
     f'<div class="layout"><aside class="side" id="side">{sidebar("profile")}</aside><main class="main">{profile_core}</main></div><div class="mask" id="mask"></div>' + \
-    f'<script>window.PF_DATA={json.dumps({"projects": [{"id": p["id"], "title": p["title"], "tier": p["tier"], "tag": p["tag"], "stages": [{"id": s["id"], "title": s["title"], "dim": s["dim"]} for s in p["stages"]]} for p in WB.PROJECTS], "dims": WB_DIMS, "dimMap": {k: v["name"] for k, v in WB.DIMS.items()}}, ensure_ascii=False, separators=(",", ":"))};</script>\n<script src="assets/profile.js"></script>\n<script src="assets/hub.js"></script>\n</body></html>'
+    f'<script>window.PF_DATA={json.dumps({"projects": [{"id": p["id"], "title": p["title"], "tier": p["tier"], "tag": p["tag"], "stages": [{"id": s["id"], "title": s["title"], "dim": s["dim"]} for s in p["stages"]]} for p in WB.PROJECTS], "dims": WB_DIMS, "dimMap": {k: v["name"] for k, v in WB.DIMS.items()}, "goals": {g["id"]: g["name"] for g in WB.GOALS}}, ensure_ascii=False, separators=(",", ":"))};</script>\n<script src="assets/profile.js"></script>\n<script src="assets/hub.js"></script>\n</body></html>'
 (OUT / 'profile.html').write_text(profile_out, encoding='utf-8')
 print('✓ 能力档案页')
 
-hub_home = page_head(f'{SITE_NAME} · 免费FDE实训平台', '免费FDE实训平台：以实战工作台为核心，6 个内容来源构成知识底座') + topbar() + \
+hub_home = page_head(f'{SITE_NAME} · 自适应学习', '根据目标和练习结果推荐下一步，浏览器中直接开始实训') + '<link rel="stylesheet" href="assets/learning.css">' + topbar() + \
     f'''<div class="layout"><aside class="side" id="side">{sidebar("index")}</aside><main class="main">
-<section class="hero">
-  <div class="hero-badge">开放学习 · 虚构数据实训 · {len(set(d['src'] for d in ALL.values()))} 个内容来源</div>
-  <h1>FDE 开放联盟<span>· 免费FDE实训平台</span></h1>
-  <p class="hero-sub">面向国内 FDE 学习者，建议按一条路径完成第一次练习：<b>认识岗位 → 做企业知识助手入门项目 → 自评检查并导出作品记录。</b>实训使用虚构企业和虚构数据，练习真实交付流程，不代表真实客户项目或第三方认证。</p>
-  <div class="hero-stats"><div><b>{len(ALL)}</b><span>篇可搜索内容</span></div><div><b>{len(WB.PROJECTS[0]['stages'])}</b><span>入门项目阶段</span></div><div><b>{len(WB.DIMS)}</b><span>自评能力维度</span></div></div>
-</section>
-<h2 class="sec-h">建议学习顺序</h2>
-<div class="home-steps">
-  <a class="home-step" href="orientation.html"><span>01</span><div><b>先认识 FDE 岗位</b><p>几分钟了解工作内容、国内交付约束，以及它和驻场、售前的区别。</p></div><em>读岗位导读 →</em></a>
-  <a class="home-step" href="workbench.html"><span>02</span><div><b>完成企业知识助手入门项目</b><p>以虚构企业数据走过业务发现、数据审计、检索、评估、交付和验收。</p></div><em>开始入门实训 →</em></a>
-  <a class="home-step" href="profile.html"><span>03</span><div><b>自评检查并导出作品</b><p>查看六维证据记录，导出 JSON 或 PNG；这是学习记录，不是第三方认证。</p></div><em>查看能力档案 →</em></a>
-</div>
-<p class="foot-note">想换一条学习顺序？查看 <a href="paths.html">其他学习路线</a>。需要查资料时使用 <a href="library.html">知识库</a> 搜索。</p>
-<p class="foot-note">内容聚合自 FDE-Wiki / 范冰《FDE 入门指南》/ FDE-Handbook / Awesome-FDE-Roadmap / Awesome-FDE / OpenFDE，版权归原作者所有，详见 <a href="about.html">来源与版权</a>。</p>
+<div id="learning-app" data-view="home"></div>
+<details class="learn-explore"><summary>按需探索更多内容</summary>
+<p><a href="orientation.html">岗位导读</a> · <a href="paths.html">其他学习路线</a> · <a href="workbench.html">原有交付工作台</a> · <a href="library.html">知识库</a> · <a href="about.html">来源与版权</a></p>
+</details>
 </main></div><div class="mask" id="mask"></div>
 <script>window.HUB_PATHS={PATHS_JS};</script>
+<script type="module" src="assets/learning-app.mjs"></script>
 <script src="assets/hub.js"></script>
 </body></html>'''
 (OUT / 'index.html').write_text(hub_home, encoding='utf-8')
+
+learn_core = '''<div class="crumb"><a href="index.html">首页</a><span>/</span><span>继续学习</span></div>
+<div id="learning-app" data-view="learn"></div>'''
+learn_page = page_head(f'继续学习 · {SITE_NAME}', '自适应学习与浏览器实训') + '<link rel="stylesheet" href="assets/learning.css">' + topbar() + \
+    f'<div class="layout"><aside class="side" id="side">{sidebar("index")}</aside><main class="main">{learn_core}</main></div><div class="mask" id="mask"></div>' + \
+    '<script type="module" src="assets/learning-app.mjs"></script><script src="assets/hub.js"></script></body></html>'
+(OUT / 'learn.html').write_text(learn_page, encoding='utf-8')
 
 # 新手岗位导读：优先给首次访问者一个可在几分钟内读完的起点。
 orientation_core = f'''<div class="crumb"><a href="index.html">首页</a><span>/</span><span>认识 FDE</span></div>

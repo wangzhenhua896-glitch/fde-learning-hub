@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node test_workbench.mjs && python3 test_site.py"
+    "test": "node test_workbench.mjs && node test_learning.mjs && python3 test_lab_server.py && python3 test_site.py",
+    "lint": "node --check assets/learning-core.mjs && node --check assets/learning-app.mjs && python3 -m py_compile build_hub.py lab_server.py test_lab_server.py",
+    "build": ".venv-site/bin/python build_hub.py"
   },
   "devDependencies": {
     "jsdom": "^27.3.0"
