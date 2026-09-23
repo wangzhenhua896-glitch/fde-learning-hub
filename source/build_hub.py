@@ -772,7 +772,7 @@ lib_out = page_head(f'知识库 · {SITE_NAME}', '') + topbar() + \
 about_core = f'''<div class="crumb"><a href="index.html">首页</a><span>/</span><span>来源与版权</span></div>
 <section class="path-hero slim"><div><h1>内容来源与版权说明</h1><p class="pdesc">本站是学习用途的聚合与重组，全部正文版权归原作方所有。</p></div></section>
 <div class="about-list">
-<div class="about-card"><h3>本站定位：开放的 FDE 实训平台</h3>
+<div class="about-card"><h3>本站定位：免费FDE实训平台</h3>
 <p>FDE 开放联盟是一个<b>开放的 FDE 学习与模拟实训平台</b>：以「交付实训」为核心（{len(WB.PROJECTS)} 个虚构企业项目 × 7 阶段任务包，含诊断、带出处辅导、作品提交与逐项证据自评），并支持通过 <a href="profile.html">能力档案</a>导出本机学习记录。项目用于模拟交付练习，不是客户案例或第三方认证。下方 6 个内容来源构成可搜索知识底座。平台不设账号、不上传任何数据，进度与档案仅存于读者本机浏览器。网站当前免费、无需注册。</p></div>
 <div class="about-card"><h3>授权说明</h3><p>原创代码的公开许可将在源码仓库标明；转载的第三方文章以原作者声明为准（下方逐项说明）。其中范冰《入门指南》为非商业转载，FDE-Handbook 以 CC BY-NC-SA 4.0 引用；OpenFDE 本站此前标注 CC BY-SA 4.0，本地材料尚未核实，待确认。建议使用前核对各原仓库的最新授权。</p></div>
 <div class="about-card"><h3><a href="https://github.com/zhyese/fde-wiki" target="_blank" rel="noopener">FDE-Wiki 调研报告</a></h3>
@@ -1108,11 +1108,11 @@ profile_out = page_head(f'能力档案 · {SITE_NAME}', 'FDE 实训平台能力�
 (OUT / 'profile.html').write_text(profile_out, encoding='utf-8')
 print('✓ 能力档案页')
 
-hub_home = page_head(f'{SITE_NAME} · 开放的 FDE 实训平台', '开放的 FDE 实训平台：以实战工作台为核心，6 个内容来源构成知识底座') + topbar() + \
+hub_home = page_head(f'{SITE_NAME} · 免费FDE实训平台', '免费FDE实训平台：以实战工作台为核心，6 个内容来源构成知识底座') + topbar() + \
     f'''<div class="layout"><aside class="side" id="side">{sidebar("index")}</aside><main class="main">
 <section class="hero">
   <div class="hero-badge">开放学习 · 虚构数据实训 · {len(set(d['src'] for d in ALL.values()))} 个内容来源</div>
-  <h1>FDE 开放联盟<span>· 开放的 FDE 实训平台</span></h1>
+  <h1>FDE 开放联盟<span>· 免费FDE实训平台</span></h1>
   <p class="hero-sub">面向国内 FDE 学习者，建议按一条路径完成第一次练习：<b>认识岗位 → 做企业知识助手入门项目 → 自评检查并导出作品记录。</b>实训使用虚构企业和虚构数据，练习真实交付流程，不代表真实客户项目或第三方认证。</p>
   <div class="hero-stats"><div><b>{len(ALL)}</b><span>篇可搜索内容</span></div><div><b>{len(WB.PROJECTS[0]['stages'])}</b><span>入门项目阶段</span></div><div><b>{len(WB.DIMS)}</b><span>自评能力维度</span></div></div>
 </section>
