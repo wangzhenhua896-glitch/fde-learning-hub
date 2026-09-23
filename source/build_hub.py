@@ -539,7 +539,7 @@ def topbar():
 </header>
 <div id="search-panel" class="search-panel" hidden></div>'''
 
-NAV_HUB = [('index.html', '🏠 开始学习'), ('paths.html', '🧭 学习路线'), ('workbench.html', '🛠 交付实训'), ('library.html', '📚 知识库')]
+NAV_HUB = [('index.html', '开始学习'), ('paths.html', '学习路线'), ('workbench.html', '交付实训'), ('library.html', '知识库')]
 
 def sidebar(active):
     parts = ['<nav class="snav" aria-label="导航">']
@@ -1076,15 +1076,15 @@ WB_DATA_JS = json.dumps({
 }, ensure_ascii=False, separators=(',', ':'))
 
 wb_core = f'''<div class="crumb"><a href="index.html">首页</a><span>/</span><span>实战工作台</span></div>
-<section class="path-hero slim"><div><h1>🛠 FDE 实训平台</h1>
+<section class="path-hero slim"><div><h1>FDE 实训平台</h1>
 <p class="pdesc">建议先做企业知识助手入门项目；客服、零售、销售和央国企合规场景可作为后续迁移练习。实训提供 7 个阶段的任务说明、参考资料、关键词格式提示与本人自评，不运行代码或独立验证作品。学习记录保存在你的浏览器里。</p>
-<p class="dl-lab"><a href="downloads/kb-assistant-lab.zip">⬇ 下载离线练习</a> — 虚构企业数据 + Python 脚本，需本机运行；网站不执行代码。</p></div></section>
+<p class="dl-lab"><a href="downloads/kb-assistant-lab.zip">下载离线练习</a> — 虚构企业数据 + Python 脚本，需本机运行；网站不执行代码。</p></div></section>
 <nav class="wb-tabs">
-  <a class="wb-tab" href="#home">📚 实训库</a>
-  <a class="wb-tab" href="#today">📅 今日</a>
-  <a class="wb-tab" href="#diag">📋 诊断</a>
-  <a class="wb-tab" href="#skills">🗺 学习记录</a>
-  <a class="wb-tab" href="#data">💾 数据</a>
+  <a class="wb-tab" href="#home">实训库</a>
+  <a class="wb-tab" href="#today">今日</a>
+  <a class="wb-tab" href="#diag">诊断</a>
+  <a class="wb-tab" href="#skills">学习记录</a>
+  <a class="wb-tab" href="#data">数据</a>
 </nav>
 <div id="wb-view"></div>
 <p class="foot-note">建议先完成企业知识助手入门项目，其余四项可作为行业迁移练习。页面提供关键词格式提示与本人自评，不运行代码，也不独立验证作品；请自行检查提交内容和运行结果。</p>'''

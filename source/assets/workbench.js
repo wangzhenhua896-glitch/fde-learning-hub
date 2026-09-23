@@ -88,7 +88,7 @@
   // ---------------- 路由 ----------------
   var view = $('#wb-view');
   var TABS = [
-    ['home', '📚 实训库'], ['today', '📅 今日'], ['diag', '📋 诊断'], ['skills', '🗺 学习记录'], ['data', '💾 数据']
+    ['home', '实训库'], ['today', '今日'], ['diag', '诊断'], ['skills', '学习记录'], ['data', '数据']
   ];
   function syncTabs(cur) {
     var pid = LS.get(K_LAST, null) || D.projects[0].id;
@@ -181,8 +181,8 @@
       html += '<div class="wb-card focus"><h3>🎉 本项目 ' + p.stages.length + ' 个阶段已完成自评</h3><p>你已保存本项目的自评记录。请按阶段提示整理并自行核对作品；平台没有运行代码或独立验证交付物。可到「数据」页备份记录，或到 <a href="profile.html">能力档案</a> 查看汇总。</p></div>';
     }
     html += '<div class="wb-grid2">' +
-      '<div class="wb-card"><h3>📋 基础诊断</h3><p>' + (dg && dg.done ? '已完成（' + fmt(dg.ts) + '）。诊断结果只是线索，能力状态以阶段证据为准。' : p.quiz.length + ' 道知识题（6 维度 × 2 题）+ 1 个自评线索。约 10 分钟。') + '</p><a class="wb-btn" href="#p/' + p.id + '/diag">' + (dg && dg.done ? '查看/重做诊断' : '开始诊断') + '</a></div>' +
-      '<div class="wb-card"><h3>🗺 学习自评记录</h3><p>查看诊断线索、阶段自评记录和建议补做的任务。</p><a class="wb-btn" href="#p/' + p.id + '/skills">查看学习记录</a></div></div>';
+      '<div class="wb-card"><h3>基础诊断</h3><p>' + (dg && dg.done ? '已完成（' + fmt(dg.ts) + '）。诊断结果只是线索，能力状态以阶段证据为准。' : p.quiz.length + ' 道知识题（6 维度 × 2 题）+ 1 个自评线索。约 10 分钟。') + '</p><a class="wb-btn" href="#p/' + p.id + '/diag">' + (dg && dg.done ? '查看/重做诊断' : '开始诊断') + '</a></div>' +
+      '<div class="wb-card"><h3>学习自评记录</h3><p>查看诊断线索、阶段自评记录和建议补做的任务。</p><a class="wb-btn" href="#p/' + p.id + '/skills">查看学习记录</a></div></div>';
     html += '<p class="wb-note">状态保存在本浏览器（localStorage），可到「数据」页导出备份。关键词格式检查只查提交文本是否含指定词；清单与迁移回答由你自行勾选和填写，均为自评记录，不代表第三方评审或平台验证。</p>';
     view.innerHTML = html;
   }

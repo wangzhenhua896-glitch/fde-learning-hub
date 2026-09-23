@@ -29,7 +29,7 @@ h1,h2,h3,h4{line-height:1.35; font-weight:650}
 .brand{display:flex; align-items:center; gap:9px; color:var(--ink); flex:0 0 auto}
 .brand:hover{text-decoration:none}
 .brand-mark{
-  width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg,#2563eb,#7c3aed);
+  width:28px; height:28px; border-radius:8px; background:var(--brand);
   color:#fff; font:700 11px/28px var(--mono); text-align:center; letter-spacing:.5px;
 }
 .brand-txt{display:flex; flex-direction:column; line-height:1.15}
@@ -198,7 +198,7 @@ h1,h2,h3,h4{line-height:1.35; font-weight:650}
 .ptoc li a:hover{color:var(--ink); text-decoration:none}
 .ptoc li.lv3 a{padding-left:23px; font-size:12px}
 .ptoc li a.on{color:var(--brand); border-left-color:var(--brand); font-weight:600}
-.reading-bar{position:fixed; top:0; left:0; height:2.5px; width:0; background:linear-gradient(90deg,#2563eb,#7c3aed); z-index:80; transition:width .08s linear}
+.reading-bar{position:fixed; top:0; left:0; height:2.5px; width:0; background:var(--brand); z-index:80; transition:width .08s linear}
 .totop{
   position:fixed; right:26px; bottom:26px; width:38px; height:38px; border-radius:50%;
   border:1px solid var(--line); background:#fff; color:var(--ink2); cursor:pointer; font-size:15px;
@@ -214,7 +214,7 @@ h1,h2,h3,h4{line-height:1.35; font-weight:650}
   border:1px solid #dbe6ff; border-radius:20px; padding:5px 12px; margin-bottom:18px;
 }
 .hero h1{font-size:42px; margin:0 0 16px; letter-spacing:-1px; line-height:1.18}
-.hero h1 span{background:linear-gradient(100deg,#2563eb,#7c3aed 55%,#db2777); -webkit-background-clip:text; background-clip:text; color:transparent}
+.hero h1 span{color:var(--brand)}
 .hero-sub{font-size:16px; color:var(--ink2); margin:0 0 26px; max-width:640px}
 .hero-stats{display:flex; gap:34px; flex-wrap:wrap; padding:20px 0 6px; border-top:1px solid var(--line-soft)}
 .hero-stats div{display:flex; flex-direction:column}
@@ -316,7 +316,7 @@ h1,h2,h3,h4{line-height:1.35; font-weight:650}
 
 /* 路径页 */
 .path-hero{max-width:860px;margin:6px auto 30px;display:flex;gap:20px;align-items:center;
-  border:1px solid var(--line);border-radius:16px;padding:22px 24px;background:linear-gradient(135deg,#f7f9ff,#fff 60%)}
+  border:1px solid var(--line);border-radius:16px;padding:22px 24px;background:#fff}
 .path-hero.slim{padding:18px 22px}
 .path-icon{font-size:34px;flex:0 0 auto}
 .path-hero h1{font-size:26px;margin:0 0 8px;letter-spacing:-.4px}
@@ -329,13 +329,13 @@ h1,h2,h3,h4{line-height:1.35; font-weight:650}
 .path-hero.slim{align-items:center}
 .stage{max-width:860px;margin:0 auto 22px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
 .stage-head{display:flex;gap:14px;align-items:center;padding:15px 18px;background:var(--bg-soft);border-bottom:1px solid var(--line)}
-.stage-no{flex:0 0 auto;font:700 12px/1 var(--sans);color:#fff;background:linear-gradient(135deg,#2563eb,#7c3aed);
+.stage-no{flex:0 0 auto;font:700 12px/1 var(--sans);color:#fff;background:var(--brand);
   border-radius:8px;padding:8px 10px;letter-spacing:.5px}
 .stage-head h3{margin:0;font-size:15.5px}
 .stage-head p{margin:2px 0 0;font-size:12.5px;color:var(--ink3)}
 .stage-prog{margin-left:auto;display:flex;align-items:center;gap:9px}
 .sp-bar{width:110px;height:7px;background:#e8ecf3;border-radius:7px;overflow:hidden}
-.sp-bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#2563eb,#7c3aed);border-radius:7px;transition:width .3s}
+.sp-bar span{display:block;height:100%;width:0;background:var(--brand);border-radius:7px;transition:width .3s}
 .stage-prog em{font:600 12px var(--sans);color:var(--ink2);font-style:normal;min-width:34px}
 .item-row{display:flex;align-items:center;gap:11px;padding:11px 18px;border-bottom:1px solid var(--line-soft)}
 .item-row:last-child{border-bottom:0}
@@ -359,7 +359,7 @@ h1,h2,h3,h4{line-height:1.35; font-weight:650}
   background:var(--bg-soft);border-radius:10px}
 
 /* 行动卡（本阶段练什么） */
-.action-card{margin:0 auto;padding:12px 18px 14px;background:linear-gradient(135deg,#f0f6ff,#fff);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.action-card{margin:0 auto;padding:12px 18px 14px;background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .action-card:last-child{border-bottom:0}
 .action-g{font-size:13px;color:#1e293b;font-weight:600;line-height:1.6;margin-bottom:10px}
 .action-b{display:flex;gap:8px;flex-wrap:wrap}
@@ -413,7 +413,7 @@ h1,h2,h3,h4{line-height:1.35; font-weight:650}
 .orientation-body .about-card h2{font-size:15px;margin:0 0 7px}
 .orientation-body .about-card p{font-size:13px;line-height:1.8;color:var(--ink2)}
 .orientation-reading{font-size:12.5px;color:var(--ink2);line-height:1.8;margin:3px 2px}
-.path-next{max-width:860px;margin:26px auto 0;padding:18px 20px;border:1px solid #c9d8fb;border-radius:13px;background:linear-gradient(120deg,#f2f6ff,#fff)}
+.path-next{max-width:860px;margin:26px auto 0;padding:18px 20px;border:1px solid #dbe6ff;border-radius:13px;background:var(--brand-soft)}
 .path-next>b{font-size:14px}.path-next p{margin:6px 0 12px;font-size:12.5px;color:var(--ink2);line-height:1.7}
 .primary-btn{display:inline-flex;align-items:center;justify-content:center;padding:9px 14px;border-radius:8px;background:var(--brand);color:#fff;font-size:12.5px;font-weight:650}
 .primary-btn:hover{background:#1d4ed8;color:#fff;text-decoration:none}
@@ -451,7 +451,7 @@ h1,h2,h3,h4{line-height:1.35; font-weight:650}
 .skill-row{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 14px}
 .skill-name{flex:0 0 132px;font-size:13px;font-weight:600}
 .skill-bar{flex:1;height:9px;background:#eef1f6;border-radius:9px;overflow:hidden}
-.skill-bar i{display:block;height:100%;background:linear-gradient(90deg,#2563eb,#7c3aed);border-radius:9px}
+.skill-bar i{display:block;height:100%;background:var(--brand);border-radius:9px}
 .skill-n{flex:0 0 auto;font:600 12px var(--sans);color:var(--ink2);white-space:nowrap}
 .mk-note{display:block;font-size:11px;color:var(--ink3);font-weight:400}
 .table-wrap table{width:100%;border-collapse:collapse;background:#fff;font-size:13px}
@@ -464,7 +464,7 @@ h1,h2,h3,h4{line-height:1.35; font-weight:650}
 .skill-row{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 14px}
 .skill-name{flex:0 0 132px;font-size:13px;font-weight:600}
 .skill-bar{flex:1;height:9px;background:#eef1f6;border-radius:9px;overflow:hidden}
-.skill-bar i{display:block;height:100%;background:linear-gradient(90deg,#2563eb,#7c3aed);border-radius:9px}
+.skill-bar i{display:block;height:100%;background:var(--brand);border-radius:9px}
 .skill-n{flex:0 0 auto;font:600 12px var(--sans);color:var(--ink2);white-space:nowrap}
 .mk-note{display:block;font-size:11px;color:var(--ink3);font-weight:400}
 .table-wrap table{width:100%;border-collapse:collapse;background:#fff;font-size:13px}

@@ -13,13 +13,13 @@
 /* 进度条 */
 .wb-progress{display:flex;align-items:center;gap:12px;margin:6px 0 18px;font-size:12.5px;color:var(--ink2)}
 .wb-progress-bar{flex:0 0 220px;height:8px;border-radius:99px;background:var(--bg-mute);overflow:hidden}
-.wb-progress-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#2563eb,#7c3aed);transition:width .4s}
+.wb-progress-bar i{display:block;height:100%;border-radius:99px;background:var(--brand);transition:width .4s}
 
 /* 卡片 */
 .wb-card{background:var(--bg-soft);border:1px solid var(--line-soft);border-radius:var(--radius);padding:20px 22px;margin:0 0 16px}
 .wb-card h3{margin:0 0 8px;font-size:16.5px}
 .wb-card p{margin:0 0 10px;color:var(--ink2);font-size:13.5px}
-.wb-card.focus{border-color:#bfd3ff;background:linear-gradient(180deg,#f5f8ff,#fff);box-shadow:0 1px 0 #eef3ff}
+.wb-card.focus{border-color:#bfd3ff;background:#fff;box-shadow:0 1px 0 #eef3ff}
 .wb-card.focus h3{font-size:19px}
 .wb-main-project{margin:0 0 16px;padding:24px}
 .wb-migration{border:1px solid var(--line-soft);border-radius:var(--radius);padding:14px 18px;background:#fff}
