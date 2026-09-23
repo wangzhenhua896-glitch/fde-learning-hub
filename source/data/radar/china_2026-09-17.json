@@ -1,0 +1,5119 @@
+{
+  "schemaVersion": "1.0",
+  "period": "2026-09-17",
+  "collectedAt": "2026-09-17T00:49:38.073Z",
+  "method": "Direct collection from official Chinese AI-company career systems (Feishu/ATSX job-board APIs, Tencent careers API, Moka boards via headless-browser DOM extraction); title-based Core and Extended taxonomy; keyword-family pre-filter for boards larger than 10,000 roles; no search-result estimates.",
+  "marketCounting": "National counts are unique jobs. City counts are job-location appearances: one multi-city job is counted once in every named city, so city totals may exceed national totals.",
+  "coverage": {
+    "boardsAttempted": 8,
+    "boardsMeasured": 8,
+    "familyRoles": 241,
+    "coreRoles": 22,
+    "historyWeeks": 1
+  },
+  "markets": {
+    "national": {
+      "coreJobs": 22,
+      "extendedJobs": 241,
+      "coreCompanies": 4,
+      "extendedCompanies": 5,
+      "managementRoles": 5
+    },
+    "overseas": {
+      "coreJobs": 4,
+      "extendedJobs": 20,
+      "coreCompanies": 1,
+      "extendedCompanies": 2,
+      "managementRoles": 2
+    },
+    "hongkong": {
+      "coreJobs": 3,
+      "extendedJobs": 7,
+      "coreCompanies": 2,
+      "extendedCompanies": 3,
+      "managementRoles": 2
+    },
+    "chengdu": {
+      "coreJobs": 1,
+      "extendedJobs": 7,
+      "coreCompanies": 1,
+      "extendedCompanies": 2,
+      "managementRoles": 0
+    },
+    "wuhan": {
+      "coreJobs": 2,
+      "extendedJobs": 4,
+      "coreCompanies": 2,
+      "extendedCompanies": 2,
+      "managementRoles": 0
+    },
+    "shanghai": {
+      "coreJobs": 3,
+      "extendedJobs": 63,
+      "coreCompanies": 2,
+      "extendedCompanies": 4,
+      "managementRoles": 0
+    },
+    "shenzhen": {
+      "coreJobs": 3,
+      "extendedJobs": 47,
+      "coreCompanies": 3,
+      "extendedCompanies": 4,
+      "managementRoles": 0
+    },
+    "beijing": {
+      "coreJobs": 8,
+      "extendedJobs": 102,
+      "coreCompanies": 3,
+      "extendedCompanies": 5,
+      "managementRoles": 1
+    },
+    "guangzhou": {
+      "coreJobs": 1,
+      "extendedJobs": 5,
+      "coreCompanies": 1,
+      "extendedCompanies": 1,
+      "managementRoles": 0
+    },
+    "hangzhou": {
+      "coreJobs": 1,
+      "extendedJobs": 20,
+      "coreCompanies": 1,
+      "extendedCompanies": 2,
+      "managementRoles": 0
+    },
+    "xian": {
+      "coreJobs": 0,
+      "extendedJobs": 1,
+      "coreCompanies": 0,
+      "extendedCompanies": 1,
+      "managementRoles": 0
+    }
+  },
+  "marketOrder": [
+    "national",
+    "beijing",
+    "shanghai",
+    "shenzhen",
+    "overseas",
+    "hangzhou",
+    "hongkong",
+    "chengdu",
+    "guangzhou",
+    "wuhan",
+    "xian"
+  ],
+  "skills": [
+    {
+      "name": "Agent/智能体",
+      "count": 109,
+      "rate": 45,
+      "sample": 241
+    },
+    {
+      "name": "大模型/LLM",
+      "count": 124,
+      "rate": 51,
+      "sample": 241
+    },
+    {
+      "name": "企业集成/API 对接",
+      "count": 64,
+      "rate": 27,
+      "sample": 241
+    },
+    {
+      "name": "客户面向",
+      "count": 175,
+      "rate": 73,
+      "sample": 241
+    },
+    {
+      "name": "RAG/检索增强",
+      "count": 70,
+      "rate": 29,
+      "sample": 241
+    },
+    {
+      "name": "评测/Evals",
+      "count": 46,
+      "rate": 19,
+      "sample": 241
+    },
+    {
+      "name": "Python",
+      "count": 44,
+      "rate": 18,
+      "sample": 241
+    },
+    {
+      "name": "TypeScript",
+      "count": 4,
+      "rate": 2,
+      "sample": 241
+    },
+    {
+      "name": "云/私有化部署",
+      "count": 44,
+      "rate": 18,
+      "sample": 241
+    },
+    {
+      "name": "MCP",
+      "count": 11,
+      "rate": 5,
+      "sample": 241
+    }
+  ],
+  "aggregators": {
+    "principle": "Aggregator signals are sampled discovery data, displayed separately from official-board counts and never merged.",
+    "sources": [
+      {
+        "platform": "智联招聘",
+        "method": "unlogged SSR search pages",
+        "status": "measured",
+        "keywordsSearched": 10,
+        "pagesAccessed": 44,
+        "recallJobs": 824,
+        "note": "未登录状态，每个关键词最多约 3 页"
+      },
+      {
+        "platform": "猎聘",
+        "method": "headless-browser DOM extraction",
+        "status": "blocked",
+        "keywordsSearched": 10,
+        "pagesAccessed": 1,
+        "recallJobs": 0,
+        "note": "anti-automation: 猎聘对 CDP 控制的浏览器返回空白页（无头/有头均拦截），仅真人浏览器可访问"
+      }
+    ],
+    "recallTotal": 824,
+    "familyJobs": [
+      {
+        "platform": "智联招聘",
+        "company": "北京福贝特科技有限公司",
+        "title": "FDE工程师（前线部署工程师）",
+        "city": "沈阳",
+        "salary": "1.2-2.4万",
+        "url": "http://www.zhaopin.com/jobdetail/CC191185020J40877085201.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "郑州鼓点软件科技有限公司",
+        "title": "FDE工程师（前线部署）｜双休·13薪｜客户现场的全栈交付专家",
+        "city": "郑州",
+        "salary": "8000-16000元",
+        "url": "http://www.zhaopin.com/jobdetail/CC598826580J40882497110.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "北京三快在线科技有限公司",
+        "title": "CatPaw FDE 工程师（Forward Deployed Engineer）",
+        "city": "上海",
+        "salary": "面议",
+        "url": "http://www.zhaopin.com/jobdetail/CC383625320J40880566009.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "如钦巴(深圳)科技集团有限公司",
+        "title": "ai前线部署工程师（Forward Deployed Engineer，FDE）",
+        "city": "深圳",
+        "salary": "1.2-2.4万",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1413779140J40907931303.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "深圳市深鹏达电网科技有限公司",
+        "title": "FDE工程师（Forward Deployed Engineer前沿部署工程师）",
+        "city": "深圳",
+        "salary": "2-3.5万",
+        "url": "http://www.zhaopin.com/jobdetail/CC656513120J40858616201.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "北京三快在线科技有限公司",
+        "title": "CatPaw FDE 工程师（Forward Deployed Engineer）",
+        "city": "北京",
+        "salary": "面议",
+        "url": "http://www.zhaopin.com/jobdetail/CC383625320J40880565909.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "深圳市深鹏达电网科技有限公司",
+        "title": "FDE工程师-AI应用开发方向（Forward Deployed Engineer前沿部署工程师）",
+        "city": "深圳",
+        "salary": "2-3.5万",
+        "url": "http://www.zhaopin.com/jobdetail/CC656513120J40856714401.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "华为技术有限公司",
+        "title": "AI应用工程师（27校招开发及测试等）",
+        "city": "深圳",
+        "salary": "面议",
+        "url": "http://www.zhaopin.com/jobdetail/CC000542940J40888865514.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "彩讯科技股份有限公司",
+        "title": "FDE前沿部署工程师",
+        "city": "广州",
+        "salary": "1.8-2.5万·13薪",
+        "url": "http://www.zhaopin.com/jobdetail/CC189085310J40911054413.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "彩讯科技股份有限公司",
+        "title": "FDE前沿部署工程师",
+        "city": "广州",
+        "salary": "1.8-2.5万·13薪",
+        "url": "http://www.zhaopin.com/jobdetail/CC189085310J40911054313.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "汕头寰宇星链科技有限公司",
+        "title": "AI 前沿部署工程师（FDE）",
+        "city": "汕头",
+        "salary": "1-1.5万",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1481195700J40875640911.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "上海绘资科技有限公司",
+        "title": "FDE制造业工程师一线前沿部署",
+        "city": "上海",
+        "salary": "2-2.1万",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1452994420J41029596202.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "上海珑京信息科技有限公司",
+        "title": "FDE（前沿部署工程师）",
+        "city": "上海",
+        "salary": "8000-9000元",
+        "url": "http://www.zhaopin.com/jobdetail/CC441051710J40874738711.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "联想教育科技(北京)有限公司",
+        "title": "AI算法验证&amp;POC部署工程师",
+        "city": "北京",
+        "salary": "2-2.2万",
+        "url": "http://www.zhaopin.com/jobdetail/CC840683300J40875171611.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "深圳市中创迈讯科技有限公司",
+        "title": "FDE 前沿部署工程师",
+        "city": "深圳",
+        "salary": "1.5-2.5万",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1279424400J40844401016.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "北京奇书飞翔软件技术有限公司",
+        "title": "FDE前沿科技部署工程师",
+        "city": "北京",
+        "salary": "1-2万",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1453670780J40801462706.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "大禹节水",
+        "title": "FDE实习生（前线/前沿部署实习）(10364)",
+        "city": "天津",
+        "salary": "3000-4000元",
+        "url": "http://www.zhaopin.com/jobdetail/CC339959980J40877209707.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "航天物联网技术有限公司",
+        "title": "智能硬件前沿部署工程师",
+        "city": "北京",
+        "salary": "2-3万·14薪",
+        "url": "http://www.zhaopin.com/jobdetail/CC575719230J40877200607.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "哈尔滨思和信息技术股份有限公司",
+        "title": "前线部署工程师（FDE）",
+        "city": "哈尔滨",
+        "salary": "8000-15000元",
+        "url": "http://www.zhaopin.com/jobdetail/CC506930520J41030201902.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "合肥恒宝天择智能科技有限公司",
+        "title": "高级人工智能应用交付工程师 / FDE（合肥）",
+        "city": "合肥",
+        "salary": "1.6-2万",
+        "url": "http://www.zhaopin.com/jobdetail/CC875588240J41034486004.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "恢弘集团有限公司",
+        "title": "集团 AI 应用专家（FDE・智能体方向）",
+        "city": "上海",
+        "salary": "3-5.5万·13薪",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1446829450J40909323713.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "扬子江药业集团",
+        "title": "FDE 前线部署工程师（驻场 AI 落地工程师）(J25183)",
+        "city": "泰州",
+        "salary": "1-2万",
+        "url": "http://www.zhaopin.com/jobdetail/CC131937030J40877873501.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "山东恒远智能科技有限公司",
+        "title": "Agent/数据实施顾问",
+        "city": "西安",
+        "salary": "1.5-2.5万",
+        "url": "http://www.zhaopin.com/jobdetail/CC466107580J40874407311.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "山东聚商传媒有限公司",
+        "title": "豆包&amp;飞书fde前线部署工程师",
+        "city": "青岛",
+        "salary": "6000-8000元·13薪",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1238448250J40843478516.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "合肥恒宝天择智能科技有限公司",
+        "title": "中级人工智能应用交付工程师 / FDE（合肥）",
+        "city": "合肥",
+        "salary": "1.2-1.6万",
+        "url": "http://www.zhaopin.com/jobdetail/CC875588240J41034475304.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "纵横六合",
+        "title": "FDE（前线部署工程师）",
+        "city": "成都",
+        "salary": "1.2-2.4万",
+        "url": "http://www.zhaopin.com/jobdetail/CC389819330J40873146811.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "恢弘集团有限公司",
+        "title": "集团 AI 应用专家（FDE・智能体方向）",
+        "city": "北京",
+        "salary": "3-5.5万·13薪",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1446829450J40909323613.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "金诃藏药股份有限公司",
+        "title": "FDE（前线部署工程师）&amp; AI 产品经理",
+        "city": "上海",
+        "salary": "8000-16000元",
+        "url": "http://www.zhaopin.com/jobdetail/CC000552040J40958291008.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "江苏正方交通科技有限公司",
+        "title": "FDE前线部署工程师",
+        "city": "南京",
+        "salary": "9000-16000元",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1338947700J40917171403.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "甘肃方正税务师事务有限责任公司",
+        "title": "FDE 前线部署工程师(AI方向)",
+        "city": "兰州",
+        "salary": "8000-11000元",
+        "url": "http://www.zhaopin.com/jobdetail/CC174842720J40882677010.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "北京神州光大科技股份有限公司",
+        "title": "FDE-前线部署工程师",
+        "city": "北京",
+        "salary": "1.5-2.5万",
+        "url": "http://www.zhaopin.com/jobdetail/CC274286030J40881230414.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "新疆金雪驰科技股份有限公司",
+        "title": "AI前线部署工程师",
+        "city": "乌鲁木齐",
+        "salary": "9000-12000元",
+        "url": "http://www.zhaopin.com/jobdetail/CC459081030J40880726309.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "河北国科万霖集团有限公司",
+        "title": "前线部署工程师（FDE）",
+        "city": "邯郸",
+        "salary": "9000-10000元",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1469302990J40794775506.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "北京尚质合规科技有限公司",
+        "title": "医药行业AI前线部署工程师",
+        "city": "北京",
+        "salary": "1.8-3.5万·13薪",
+        "url": "http://www.zhaopin.com/jobdetail/CC383263520J40960192915.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "上海迦楠适居室内环境系统集成有限公司",
+        "title": "前线部署工程师（AI / 智能体方向）",
+        "city": "上海",
+        "salary": "2-4万·15薪",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1344633180J40878948109.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "辽宁安加信科技有限公司",
+        "title": "前线部署工程师FDE",
+        "city": "沈阳",
+        "salary": "1.5-2万",
+        "url": "http://www.zhaopin.com/jobdetail/CC344125330J40893727813.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "河南中智华誉企业管理咨询有限公司郑州分公司",
+        "title": "人工智能 FD1 前线部署工程师",
+        "city": "郑州",
+        "salary": "8000-16000元",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1492365290J40891514313.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "湃方科技(北京)有限责任公司",
+        "title": "FDE前线部署工程师（工业设备运维智能体方向）",
+        "city": "北京",
+        "salary": "1.5-2.5万",
+        "url": "http://www.zhaopin.com/jobdetail/CC846299020J40853308211.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "红旗(大连)智能科技有限公司",
+        "title": "前线部署工程师（Forward Deployment Engineer）",
+        "city": "大连",
+        "salary": "1.5-2万",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1411296790J40759564016.htm",
+        "scope": "core",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "山东恒远智能科技有限公司",
+        "title": "Agent/数据实施顾问",
+        "city": "成都",
+        "salary": "1.5-2.5万",
+        "url": "http://www.zhaopin.com/jobdetail/CC466107580J40872039711.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "可利邦",
+        "title": "AI应用解决方案工程师",
+        "city": "上海",
+        "salary": "2.5-3.5万",
+        "url": "http://www.zhaopin.com/jobdetail/CC378282510J40889972910.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "亚信科技(中国)有限公司",
+        "title": "AI应用解决方案架构师",
+        "city": "广州",
+        "salary": "1.5-2万",
+        "url": "http://www.zhaopin.com/jobdetail/CC139131340J40875849411.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "山子高科技股份有限公司",
+        "title": "AI解决方案工程师",
+        "city": "杭州",
+        "salary": "1.2-1.5万",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1461146090J40889067610.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "北京致品优创科技有限公司",
+        "title": "ai售前解决方案经理",
+        "city": "北京",
+        "salary": "2-2.5万",
+        "url": "http://www.zhaopin.com/jobdetail/CC610426080J40888933810.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "开波特(武汉)人工智能有限公司",
+        "title": "流程工业AI售前工程师",
+        "city": "上海",
+        "salary": "1-1.5万",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1256897760J40878830801.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "软通动力信息技术(集团)股份有限公司",
+        "title": "售前工程师（工业AI）",
+        "city": "南宁",
+        "salary": "7000-8000元",
+        "url": "http://www.zhaopin.com/jobdetail/CC000544460J40843816516.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "天津数字经济产业集团有限公司",
+        "title": "售前工程师（政务-系统集成-软件-人工智能领域优先）",
+        "city": "天津",
+        "salary": "9000-13000元",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1493227600J40873137311.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "合力亿捷",
+        "title": "AI客户交付工程师（实习生）",
+        "city": "武汉",
+        "salary": "160-180元/天",
+        "url": "http://www.zhaopin.com/jobdetail/CC000602700J40890176710.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "彩讯科技股份有限公司",
+        "title": "FDE（AI应用交付工程师-To C/C端）",
+        "city": "广州",
+        "salary": "1.8-2.5万",
+        "url": "http://www.zhaopin.com/jobdetail/CC189085310J40911091613.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "广州博依特智能信息科技有限公司",
+        "title": "AI交付工程师",
+        "city": "广州",
+        "salary": "8000-10000元",
+        "url": "http://www.zhaopin.com/jobdetail/CC213627230J40875309911.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "亿诚(天津)数字经济产业集团有限公司",
+        "title": "AI部署工程师",
+        "city": "天津",
+        "salary": "7-10万",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1516348560J40938187312.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "西安华为技术有限公司",
+        "title": "AI应用工程师（面向2027届毕业生）",
+        "city": "西安",
+        "salary": "1.8-2.4万·14薪",
+        "url": "http://www.zhaopin.com/jobdetail/CC450463880J40969184015.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "内蒙古诚友网络科技有限公司",
+        "title": "AI部署工程师",
+        "city": "呼和浩特",
+        "salary": "5000-10000元",
+        "url": "http://www.zhaopin.com/jobdetail/CC843135460J40968884915.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "安阳市政创信息技术有限公司",
+        "title": "工业AI视觉算法应用工程师助理",
+        "city": "深圳",
+        "salary": "1.1-1.3万",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1511545390J40889170809.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "深圳市极客物联技术有限公司",
+        "title": "FDE（现场部署工程师）",
+        "city": "佛山",
+        "salary": "5000-10000元",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1319267220J40922143203.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "深圳惠特科学技术有限公司",
+        "title": "初级大模型应用工程师 （Prompt/知识库）",
+        "city": "深圳",
+        "salary": "8000-16000元·14薪",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1504292280J41035788704.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "安徽第壹科技有限公司",
+        "title": "Agent开发工程师 / 大模型应用工程师",
+        "city": "合肥",
+        "salary": "1-2万",
+        "url": "http://www.zhaopin.com/jobdetail/CCL1527451620J40876201211.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      },
+      {
+        "platform": "智联招聘",
+        "company": "山西劲驰体育用品有限公司",
+        "title": "ai应用工程师",
+        "city": "太原",
+        "salary": "7000-9000元",
+        "url": "http://www.zhaopin.com/jobdetail/CC263208910J40963406408.htm",
+        "scope": "extended",
+        "isNewEmployer": true
+      }
+    ],
+    "coreJobs": 31,
+    "companyHidden": 0,
+    "newEmployers": [
+      {
+        "company": "彩讯科技股份有限公司",
+        "roles": 3,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "北京三快在线科技有限公司",
+        "roles": 2,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "深圳市深鹏达电网科技有限公司",
+        "roles": 2,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "合肥恒宝天择智能科技有限公司",
+        "roles": 2,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "恢弘集团有限公司",
+        "roles": 2,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "山东恒远智能科技有限公司",
+        "roles": 2,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "北京福贝特科技有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "郑州鼓点软件科技有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "如钦巴(深圳)科技集团有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "华为技术有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "汕头寰宇星链科技有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "上海绘资科技有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "上海珑京信息科技有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "联想教育科技(北京)有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "深圳市中创迈讯科技有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "北京奇书飞翔软件技术有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "大禹节水",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "航天物联网技术有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "哈尔滨思和信息技术股份有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "扬子江药业集团",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "山东聚商传媒有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "纵横六合",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "金诃藏药股份有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "江苏正方交通科技有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "甘肃方正税务师事务有限责任公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "北京神州光大科技股份有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "新疆金雪驰科技股份有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "河北国科万霖集团有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "北京尚质合规科技有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "上海迦楠适居室内环境系统集成有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "辽宁安加信科技有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "河南中智华誉企业管理咨询有限公司郑州分公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "湃方科技(北京)有限责任公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "红旗(大连)智能科技有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "可利邦",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "亚信科技(中国)有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "山子高科技股份有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "北京致品优创科技有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "开波特(武汉)人工智能有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "软通动力信息技术(集团)股份有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "天津数字经济产业集团有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "合力亿捷",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "广州博依特智能信息科技有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "亿诚(天津)数字经济产业集团有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "西安华为技术有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "内蒙古诚友网络科技有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "安阳市政创信息技术有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "深圳市极客物联技术有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "深圳惠特科学技术有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "安徽第壹科技有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      },
+      {
+        "company": "山西劲驰体育用品有限公司",
+        "roles": 1,
+        "platforms": [
+          "智联招聘"
+        ]
+      }
+    ],
+    "salary": {
+      "sample": 55,
+      "median": 17500,
+      "p25": 11500,
+      "p75": 21000,
+      "unit": "元/月（区间中值）"
+    }
+  },
+  "sources": [
+    {
+      "company": "字节跳动",
+      "system": "字节跳动招聘官网（ATSX）",
+      "url": "https://jobs.bytedance.com/api/v1/search/job/posts",
+      "careerPage": "https://jobs.bytedance.com/experienced/position",
+      "status": "measured",
+      "totalRoles": 10000
+    },
+    {
+      "company": "智谱AI",
+      "system": "飞书招聘官网（ATSX）",
+      "url": "https://zhipu-ai.jobs.feishu.cn/api/v1/search/job/posts",
+      "careerPage": "https://zhipu-ai.jobs.feishu.cn/index/",
+      "status": "measured",
+      "totalRoles": 237
+    },
+    {
+      "company": "零一万物",
+      "system": "飞书招聘官网（ATSX）",
+      "url": "https://01ai.jobs.feishu.cn/api/v1/search/job/posts",
+      "careerPage": "https://01ai.jobs.feishu.cn/index/",
+      "status": "measured",
+      "totalRoles": 49
+    },
+    {
+      "company": "MiniMax",
+      "system": "飞书招聘官网（ATSX）",
+      "url": "https://vrfi1sk8a0.jobs.feishu.cn/api/v1/search/job/posts",
+      "careerPage": "https://www.minimax.cn/careers",
+      "status": "measured",
+      "totalRoles": 182
+    },
+    {
+      "company": "百川智能",
+      "system": "飞书招聘官网（ATSX）",
+      "url": "https://cq6qe6bvfr6.jobs.feishu.cn/api/v1/search/job/posts",
+      "careerPage": "https://careers.baichuan-inc.com/",
+      "status": "measured",
+      "totalRoles": 15
+    },
+    {
+      "company": "腾讯",
+      "system": "腾讯招聘官网 API",
+      "url": "https://careers.tencent.com/tencentcareer/api/post/Query",
+      "careerPage": "https://careers.tencent.com/",
+      "status": "measured",
+      "totalRoles": 2324
+    },
+    {
+      "company": "月之暗面",
+      "system": "Moka 招聘官网",
+      "url": "https://app.mokahr.com/apply/moonshot/148506#/",
+      "careerPage": "https://careers.kimi.com/",
+      "status": "measured",
+      "totalRoles": 30
+    },
+    {
+      "company": "阶跃星辰",
+      "system": "Moka 招聘官网",
+      "url": "https://app.mokahr.com/social-recruitment/step/94904#/",
+      "careerPage": "https://www.stepfun.com/",
+      "status": "measured",
+      "totalRoles": 30
+    }
+  ],
+  "plannedSources": [
+    {
+      "company": "深度求索 DeepSeek",
+      "system": "无公开职位板（仅表单投递）"
+    },
+    {
+      "company": "面壁智能",
+      "system": "官网未发现公开招聘板入口"
+    },
+    {
+      "company": "科大讯飞",
+      "system": "北森智业系统，接口待适配"
+    },
+    {
+      "company": "昆仑万维",
+      "system": "jobs.kunlun.com，系统待适配"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "7644115999391451397",
+      "company": "字节跳动",
+      "title": "Manager, Forward Deployed Engineering - BytePlus",
+      "location": "新加坡",
+      "url": "https://jobs.bytedance.com/experienced/position/7644115999391451397/detail",
+      "publishedAt": "2026-05-26T08:35:13.471Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "core",
+      "management": true,
+      "hasDescription": true
+    },
+    {
+      "id": "7644114924105140533",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer - BytePlus (Hong Kong)",
+      "location": "中国香港",
+      "url": "https://jobs.bytedance.com/experienced/position/7644114924105140533/detail",
+      "publishedAt": "2026-05-26T08:32:50.616Z",
+      "recruitType": "正式",
+      "markets": [
+        "hongkong"
+      ],
+      "market": "hongkong",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7652289717715896629",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer - BytePlus",
+      "location": "中国香港",
+      "url": "https://jobs.bytedance.com/experienced/position/7652289717715896629/detail",
+      "publishedAt": "2026-06-17T09:15:02.035Z",
+      "recruitType": "正式",
+      "markets": [
+        "hongkong"
+      ],
+      "market": "hongkong",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7652283061795391797",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer - BytePlus",
+      "location": "新加坡",
+      "url": "https://jobs.bytedance.com/experienced/position/7652283061795391797/detail",
+      "publishedAt": "2026-06-17T08:46:54.628Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7666005612636096773",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer - BytePlus",
+      "location": "伦敦",
+      "url": "https://jobs.bytedance.com/experienced/position/7666005612636096773/detail",
+      "publishedAt": "2026-07-24T08:18:43.085Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7592868401652615477",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer, BytePlus - Singapore",
+      "location": "新加坡",
+      "url": "https://jobs.bytedance.com/experienced/position/7592868401652615477/detail",
+      "publishedAt": "2026-01-08T06:08:24.512Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7640010084660250933",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer-火山引擎FDE（AI全系产品）",
+      "location": "成都",
+      "url": "https://jobs.bytedance.com/experienced/position/7640010084660250933/detail",
+      "publishedAt": "2026-05-15T07:02:53.500Z",
+      "recruitType": "正式",
+      "markets": [
+        "chengdu"
+      ],
+      "market": "chengdu",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7640010081246857477",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer-火山引擎FDE（AI全系产品）",
+      "location": "武汉",
+      "url": "https://jobs.bytedance.com/experienced/position/7640010081246857477/detail",
+      "publishedAt": "2026-05-15T07:02:45.143Z",
+      "recruitType": "正式",
+      "markets": [
+        "wuhan"
+      ],
+      "market": "wuhan",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7639992568974199045",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer-火山引擎FDE（AI全系产品）",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7639992568974199045/detail",
+      "publishedAt": "2026-05-15T05:55:23.058Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7639993723574634757",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer-火山引擎FDE（AI全系产品）",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7639993723574634757/detail",
+      "publishedAt": "2026-05-15T05:57:56.812Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7639991169157449989",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer-火山引擎FDE（AI全系产品）",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7639991169157449989/detail",
+      "publishedAt": "2026-05-15T05:49:03.719Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7640010012058126597",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer-火山引擎FDE（AI全系产品）",
+      "location": "广州",
+      "url": "https://jobs.bytedance.com/experienced/position/7640010012058126597/detail",
+      "publishedAt": "2026-05-15T07:02:34.867Z",
+      "recruitType": "正式",
+      "markets": [
+        "guangzhou"
+      ],
+      "market": "guangzhou",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7640009791840569605",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer-火山引擎FDE（AI全系产品）",
+      "location": "杭州",
+      "url": "https://jobs.bytedance.com/experienced/position/7640009791840569605/detail",
+      "publishedAt": "2026-05-15T07:02:13.734Z",
+      "recruitType": "正式",
+      "markets": [
+        "hangzhou"
+      ],
+      "market": "hangzhou",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7670430731151198517",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer-火山引擎FDE（AI全系产品·算法方向）",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7670430731151198517/detail",
+      "publishedAt": "2026-08-05T06:29:35.286Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7659364431323400501",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer-火山引擎FDE（AI全系产品·财务/HR系统方向）",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7659364431323400501/detail",
+      "publishedAt": "2026-07-06T10:49:34.284Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7659365309293955333",
+      "company": "字节跳动",
+      "title": "Forward Deployed Engineer-火山引擎FDE（AI全系产品·零售/电商行业）",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7659365309293955333/detail",
+      "publishedAt": "2026-07-06T10:50:16.941Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7643812491278223669",
+      "company": "字节跳动",
+      "title": "Manager,Forward Deployed Engineering现场部署工程师负责人（AI产品方向）-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7643812491278223669/detail",
+      "publishedAt": "2026-05-25T12:59:25.152Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "core",
+      "management": true,
+      "hasDescription": true
+    },
+    {
+      "id": "7612489167357184309",
+      "company": "字节跳动",
+      "title": "Solutions Architect - BytePlus - Singapore",
+      "location": "新加坡",
+      "url": "https://jobs.bytedance.com/experienced/position/7612489167357184309/detail",
+      "publishedAt": "2026-03-02T03:06:30.553Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7626356905853585717",
+      "company": "字节跳动",
+      "title": "Solutions Architect - BytePlus - Taguig",
+      "location": "塔吉格",
+      "url": "https://jobs.bytedance.com/experienced/position/7626356905853585717/detail",
+      "publishedAt": "2026-04-08T12:00:25.698Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7658200572629305653",
+      "company": "字节跳动",
+      "title": "Solutions Architect - BytePlus - South Korea",
+      "location": "首尔",
+      "url": "https://jobs.bytedance.com/experienced/position/7658200572629305653/detail",
+      "publishedAt": "2026-07-03T07:29:59.958Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7638756389834459397",
+      "company": "字节跳动",
+      "title": "Solutions Architect",
+      "location": "圣保罗",
+      "url": "https://jobs.bytedance.com/experienced/position/7638756389834459397/detail",
+      "publishedAt": "2026-05-11T21:56:14.616Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7658202948652402997",
+      "company": "字节跳动",
+      "title": "Solutions Architect (AI) - BytePlus",
+      "location": "中国香港",
+      "url": "https://jobs.bytedance.com/experienced/position/7658202948652402997/detail",
+      "publishedAt": "2026-07-03T07:39:21.847Z",
+      "recruitType": "正式",
+      "markets": [
+        "hongkong"
+      ],
+      "market": "hongkong",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7639090772851706165",
+      "company": "字节跳动",
+      "title": "Solutions Architect",
+      "location": "墨西哥城",
+      "url": "https://jobs.bytedance.com/experienced/position/7639090772851706165/detail",
+      "publishedAt": "2026-05-12T19:39:24.116Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7658205024690276613",
+      "company": "字节跳动",
+      "title": "Solutions Architect Leader - BytePlus - Japan & Korea",
+      "location": "中国香港",
+      "url": "https://jobs.bytedance.com/experienced/position/7658205024690276613/detail",
+      "publishedAt": "2026-07-03T07:48:28.622Z",
+      "recruitType": "正式",
+      "markets": [
+        "hongkong"
+      ],
+      "market": "hongkong",
+      "scope": "extended",
+      "management": true,
+      "hasDescription": true
+    },
+    {
+      "id": "7535298809501583634",
+      "company": "字节跳动",
+      "title": "端侧AI部署工程师-PICO",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7535298809501583634/detail",
+      "publishedAt": "2025-08-06T02:50:53.422Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7534552187121502471",
+      "company": "字节跳动",
+      "title": "端侧AI部署工程师-PICO",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7534552187121502471/detail",
+      "publishedAt": "2025-08-04T02:31:49.769Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7592503207398525237",
+      "company": "字节跳动",
+      "title": "AI应用架构师-移动OS",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7592503207398525237/detail",
+      "publishedAt": "2026-01-07T06:31:12.537Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7632237380817209653",
+      "company": "字节跳动",
+      "title": "经营平台AI应用工程师/专家-火山引擎",
+      "location": "杭州",
+      "url": "https://jobs.bytedance.com/experienced/position/7632237380817209653/detail",
+      "publishedAt": "2026-04-24T08:19:55.510Z",
+      "recruitType": "正式",
+      "markets": [
+        "hangzhou"
+      ],
+      "market": "hangzhou",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7632237380964780293",
+      "company": "字节跳动",
+      "title": "经营平台AI应用工程师/专家-火山引擎",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7632237380964780293/detail",
+      "publishedAt": "2026-04-24T08:19:18.562Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7632209223920650549",
+      "company": "字节跳动",
+      "title": "经营平台AI应用工程师/专家-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7632209223920650549/detail",
+      "publishedAt": "2026-04-24T06:29:53.668Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7660424258760034565",
+      "company": "字节跳动",
+      "title": "大模型应用专家（内容生态方向-评论）-模型运维",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7660424258760034565/detail",
+      "publishedAt": "2026-07-09T07:21:26.183Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7477587514468206855",
+      "company": "字节跳动",
+      "title": "大模型应用专家（内容生态方向）-大模型安全&模型运维",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7477587514468206855/detail",
+      "publishedAt": "2025-03-03T14:31:00.336Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7552834666001615122",
+      "company": "字节跳动",
+      "title": "大模型应用工程师（代码智能方向）-TRAE",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7552834666001615122/detail",
+      "publishedAt": "2025-09-22T09:01:23.212Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7533077604225255688",
+      "company": "字节跳动",
+      "title": "AI应用交付架构师-TRAE",
+      "location": "杭州",
+      "url": "https://jobs.bytedance.com/experienced/position/7533077604225255688/detail",
+      "publishedAt": "2025-07-31T03:12:05.150Z",
+      "recruitType": "正式",
+      "markets": [
+        "hangzhou"
+      ],
+      "market": "hangzhou",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7532775223143041298",
+      "company": "字节跳动",
+      "title": "AI应用交付架构师-TRAE",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7532775223143041298/detail",
+      "publishedAt": "2025-07-30T07:41:16.978Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7533078585528862983",
+      "company": "字节跳动",
+      "title": "AI应用交付架构师-TRAE",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7533078585528862983/detail",
+      "publishedAt": "2025-07-31T03:12:53.459Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7645271257584781621",
+      "company": "字节跳动",
+      "title": "FDE现场部署工程师（金融投资方向）-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7645271257584781621/detail",
+      "publishedAt": "2026-05-29T11:19:36.781Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7534690650279168274",
+      "company": "字节跳动",
+      "title": "大模型产品解决方案架构师-火山引擎",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7534690650279168274/detail",
+      "publishedAt": "2025-08-04T11:36:06.007Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7589598172307491077",
+      "company": "字节跳动",
+      "title": "云解决方案架构师（出海）-火山引擎",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7589598172307491077/detail",
+      "publishedAt": "2025-12-30T10:40:54.958Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7083681478052710663",
+      "company": "字节跳动",
+      "title": "效能解决方案架构师-Dev Infra",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7083681478052710663/detail",
+      "publishedAt": "2022-04-07T02:25:10.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7083681410024950046",
+      "company": "字节跳动",
+      "title": "效能解决方案架构师-Dev Infra",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7083681410024950046/detail",
+      "publishedAt": "2022-04-07T02:24:59.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7516429335843981586",
+      "company": "字节跳动",
+      "title": "火山引擎产品解决方案架构师（高质量数据集方向）-Data",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7516429335843981586/detail",
+      "publishedAt": "2025-06-16T06:28:37.985Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "6908202120156760334",
+      "company": "字节跳动",
+      "title": "泛互行业解决方案架构师-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/6908202120156760334/detail",
+      "publishedAt": "2020-12-20T05:13:14.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7597005535779637557",
+      "company": "字节跳动",
+      "title": "解决方案架构师（通用方向） - 火山引擎",
+      "location": "北京、青岛",
+      "url": "https://jobs.bytedance.com/experienced/position/7597005535779637557/detail",
+      "publishedAt": "2026-01-19T09:43:45.959Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7459302284485953810",
+      "company": "字节跳动",
+      "title": "泛互行业解决方案架构师 - 火山引擎",
+      "location": "广州",
+      "url": "https://jobs.bytedance.com/experienced/position/7459302284485953810/detail",
+      "publishedAt": "2025-01-13T07:46:21.655Z",
+      "recruitType": "正式",
+      "markets": [
+        "guangzhou"
+      ],
+      "market": "guangzhou",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7587750499863185669",
+      "company": "字节跳动",
+      "title": "产品解决方案架构师Trae（北京/上海/杭州/深圳） - 火山引擎",
+      "location": "上海、北京、杭州、深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7587750499863185669/detail",
+      "publishedAt": "2025-12-25T11:08:53.107Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing",
+        "shanghai",
+        "shenzhen",
+        "hangzhou"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7002421724924053791",
+      "company": "字节跳动",
+      "title": "解决方案架构师（厂商方向）-火山引擎",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7002421724924053791/detail",
+      "publishedAt": "2021-08-31T02:52:49.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "6883824520602487053",
+      "company": "字节跳动",
+      "title": "零售行业解决方案架构师 - 火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/6883824520602487053/detail",
+      "publishedAt": "2020-10-15T12:34:55.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7458103375306524946",
+      "company": "字节跳动",
+      "title": "飞连产品解决方案专家 - 飞连",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7458103375306524946/detail",
+      "publishedAt": "2025-01-10T02:21:51.352Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7072583786046802184",
+      "company": "字节跳动",
+      "title": "解决方案架构师（金融行业） - 火山引擎",
+      "location": "深圳、北京、上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7072583786046802184/detail",
+      "publishedAt": "2022-03-08T04:43:58.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing",
+        "shanghai",
+        "shenzhen"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7072584703002151204",
+      "company": "字节跳动",
+      "title": "解决方案架构师（金融行业）-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7072584703002151204/detail",
+      "publishedAt": "2022-03-08T04:41:15.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7345463685362796826",
+      "company": "字节跳动",
+      "title": "解决方案架构师（通用行业）-火山引擎",
+      "location": "成都",
+      "url": "https://jobs.bytedance.com/experienced/position/7345463685362796826/detail",
+      "publishedAt": "2024-03-12T13:10:46.929Z",
+      "recruitType": "正式",
+      "markets": [
+        "chengdu"
+      ],
+      "market": "chengdu",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "6906408473845287176",
+      "company": "字节跳动",
+      "title": "泛互行业解决方案架构师 - 火山引擎",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/6906408473845287176/detail",
+      "publishedAt": "2020-12-15T09:13:12.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "6904145813682817293",
+      "company": "字节跳动",
+      "title": "泛互行业解决方案架构师 - 火山引擎",
+      "location": "上海、杭州",
+      "url": "https://jobs.bytedance.com/experienced/position/6904145813682817293/detail",
+      "publishedAt": "2020-12-09T06:54:36.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai",
+        "hangzhou"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7293081135059028274",
+      "company": "字节跳动",
+      "title": "解决方案架构师（通用行业）-火山引擎",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7293081135059028274/detail",
+      "publishedAt": "2023-10-23T09:20:13.387Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "6911254160987146510",
+      "company": "字节跳动",
+      "title": "零售行业解决方案架构师 - 火山引擎",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/6911254160987146510/detail",
+      "publishedAt": "2020-12-28T10:35:58.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7491219757154158856",
+      "company": "字节跳动",
+      "title": "豆包AI大模型产品解决方案架构师-火山方舟MaaS",
+      "location": "杭州",
+      "url": "https://jobs.bytedance.com/experienced/position/7491219757154158856/detail",
+      "publishedAt": "2025-04-09T08:11:20.010Z",
+      "recruitType": "正式",
+      "markets": [
+        "hangzhou"
+      ],
+      "market": "hangzhou",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7552799903945378055",
+      "company": "字节跳动",
+      "title": "云计算解决方案架构师-基础设施",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7552799903945378055/detail",
+      "publishedAt": "2025-09-22T06:42:00.803Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7323090749905570099",
+      "company": "字节跳动",
+      "title": "豆包AI大模型产品解决方案架构师-火山方舟MaaS",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7323090749905570099/detail",
+      "publishedAt": "2024-01-12T06:12:47.750Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7323089843444599091",
+      "company": "字节跳动",
+      "title": "豆包AI大模型产品解决方案架构师-火山方舟MaaS",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7323089843444599091/detail",
+      "publishedAt": "2024-01-12T06:12:04.877Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7477460546452736274",
+      "company": "字节跳动",
+      "title": "云计算IaaS解决方案架构师-基础设施",
+      "location": "杭州",
+      "url": "https://jobs.bytedance.com/experienced/position/7477460546452736274/detail",
+      "publishedAt": "2025-03-03T06:09:47.353Z",
+      "recruitType": "正式",
+      "markets": [
+        "hangzhou"
+      ],
+      "market": "hangzhou",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7323089857126320410",
+      "company": "字节跳动",
+      "title": "豆包AI大模型产品解决方案架构师-火山方舟MaaS",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7323089857126320410/detail",
+      "publishedAt": "2024-01-12T06:11:24.131Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7589495956620216581",
+      "company": "字节跳动",
+      "title": "大模型安全方向解决方案专家-安全与风控",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7589495956620216581/detail",
+      "publishedAt": "2025-12-30T04:01:54.050Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7478900423303317778",
+      "company": "字节跳动",
+      "title": "AI生态解决方案架构师-火山引擎",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7478900423303317778/detail",
+      "publishedAt": "2025-03-07T03:14:08.077Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7475236955531430162",
+      "company": "字节跳动",
+      "title": "校企合作解决方案架构师-火山引擎",
+      "location": "成都",
+      "url": "https://jobs.bytedance.com/experienced/position/7475236955531430162/detail",
+      "publishedAt": "2025-02-25T06:19:20.490Z",
+      "recruitType": "正式",
+      "markets": [
+        "chengdu"
+      ],
+      "market": "chengdu",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7598452845298206981",
+      "company": "字节跳动",
+      "title": "校企合作解决方案架构师-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7598452845298206981/detail",
+      "publishedAt": "2026-01-23T07:19:11.041Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7661913386829367605",
+      "company": "字节跳动",
+      "title": "客户成长解决方案架构师 - 火山引擎",
+      "location": "北京、上海、杭州、青岛",
+      "url": "https://jobs.bytedance.com/experienced/position/7661913386829367605/detail",
+      "publishedAt": "2026-07-13T07:38:52.911Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing",
+        "shanghai",
+        "hangzhou"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7345464188875655434",
+      "company": "字节跳动",
+      "title": "解决方案架构师（通用行业）-火山引擎",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7345464188875655434/detail",
+      "publishedAt": "2024-03-12T13:12:40.214Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7497102903484991751",
+      "company": "字节跳动",
+      "title": "大数据产品解决方案架构师-数据平台",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7497102903484991751/detail",
+      "publishedAt": "2025-04-25T04:40:22.339Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7483074865621321991",
+      "company": "字节跳动",
+      "title": "豆包AI大模型产品解决方案架构师（MaaS） - 火山方舟",
+      "location": "成都",
+      "url": "https://jobs.bytedance.com/experienced/position/7483074865621321991/detail",
+      "publishedAt": "2025-03-18T09:18:19.920Z",
+      "recruitType": "正式",
+      "markets": [
+        "chengdu"
+      ],
+      "market": "chengdu",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7573917063545243909",
+      "company": "字节跳动",
+      "title": "产品解决方案架构师（大模型方向） - 火山引擎",
+      "location": "北京、上海、深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7573917063545243909/detail",
+      "publishedAt": "2025-11-18T04:28:19.821Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing",
+        "shanghai",
+        "shenzhen"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7443721945097668872",
+      "company": "字节跳动",
+      "title": "安全解决方案售前-安全与风控",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7443721945097668872/detail",
+      "publishedAt": "2024-12-02T08:16:31.286Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7470367945337374984",
+      "company": "字节跳动",
+      "title": "大数据产品解决方案架构师（公有云AI方向）-Data",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7470367945337374984/detail",
+      "publishedAt": "2025-02-12T03:26:37.791Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7660042602383591685",
+      "company": "字节跳动",
+      "title": "行业解决方案架构师-零售方向火山引擎",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7660042602383591685/detail",
+      "publishedAt": "2026-07-08T06:40:44.184Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7575178228774570245",
+      "company": "字节跳动",
+      "title": "校企合作解决方案架构师-火山引擎",
+      "location": "武汉",
+      "url": "https://jobs.bytedance.com/experienced/position/7575178228774570245/detail",
+      "publishedAt": "2025-11-21T14:09:29.320Z",
+      "recruitType": "正式",
+      "markets": [
+        "wuhan"
+      ],
+      "market": "wuhan",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7646274347449698565",
+      "company": "字节跳动",
+      "title": "泛互行业解决方案架构师 - 火山引擎",
+      "location": "北京、上海、杭州、深圳、广州",
+      "url": "https://jobs.bytedance.com/experienced/position/7646274347449698565/detail",
+      "publishedAt": "2026-06-01T04:13:44.515Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing",
+        "shanghai",
+        "shenzhen",
+        "hangzhou",
+        "guangzhou"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7566552884700268853",
+      "company": "字节跳动",
+      "title": "医疗行业解决方案架构师-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7566552884700268853/detail",
+      "publishedAt": "2025-10-29T08:13:34.990Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7516429823989647634",
+      "company": "字节跳动",
+      "title": "产品解决方案架构师（数据营销方向）-Data",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7516429823989647634/detail",
+      "publishedAt": "2025-06-16T06:33:30.097Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7678628262102321413",
+      "company": "字节跳动",
+      "title": "产品解决方案架构师（金融）（北/上/杭/深） - 火山引擎",
+      "location": "北京、上海、杭州、深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7678628262102321413/detail",
+      "publishedAt": "2026-08-27T08:42:41.914Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing",
+        "shanghai",
+        "shenzhen",
+        "hangzhou"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7637445833797929269",
+      "company": "字节跳动",
+      "title": "医疗行业解决方案架构师-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7637445833797929269/detail",
+      "publishedAt": "2026-05-08T09:10:58.223Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7643731814336579845",
+      "company": "字节跳动",
+      "title": "解决方案架构师（战略重点商家）-TikTok Shop",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7643731814336579845/detail",
+      "publishedAt": "2026-05-25T07:48:03.754Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7639250400956418309",
+      "company": "字节跳动",
+      "title": "AI解决方案专家（飞书项目） - 飞书",
+      "location": "上海、深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7639250400956418309/detail",
+      "publishedAt": "2026-05-13T05:54:47.309Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai",
+        "shenzhen"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7341300328828029235",
+      "company": "字节跳动",
+      "title": "汽车行业云解决方案架构师-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7341300328828029235/detail",
+      "publishedAt": "2024-03-01T07:54:44.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7632172560738568501",
+      "company": "字节跳动",
+      "title": "华中区解决方案专家-飞书",
+      "location": "武汉",
+      "url": "https://jobs.bytedance.com/experienced/position/7632172560738568501/detail",
+      "publishedAt": "2026-04-24T04:07:34.619Z",
+      "recruitType": "正式",
+      "markets": [
+        "wuhan"
+      ],
+      "market": "wuhan",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7632178097311582517",
+      "company": "字节跳动",
+      "title": "华东区解决方案专家-飞书",
+      "location": "杭州",
+      "url": "https://jobs.bytedance.com/experienced/position/7632178097311582517/detail",
+      "publishedAt": "2026-04-24T04:30:01.541Z",
+      "recruitType": "正式",
+      "markets": [
+        "hangzhou"
+      ],
+      "market": "hangzhou",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7493793061526587656",
+      "company": "字节跳动",
+      "title": "华东区解决方案专家-飞书",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7493793061526587656/detail",
+      "publishedAt": "2025-04-16T06:25:39.645Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7210585134713751868",
+      "company": "字节跳动",
+      "title": "消费综合行业售前解决方案专家-飞书",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7210585134713751868/detail",
+      "publishedAt": "2023-03-15T01:58:09.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "6964639935258134820",
+      "company": "字节跳动",
+      "title": "汽车行业云解决方案架构师-火山引擎",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/6964639935258134820/detail",
+      "publishedAt": "2021-05-21T07:22:09.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7652016053652490501",
+      "company": "字节跳动",
+      "title": "解决方案工程师 - AI for Science",
+      "location": "北京、深圳、上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7652016053652490501/detail",
+      "publishedAt": "2026-06-16T15:34:35.817Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing",
+        "shanghai",
+        "shenzhen"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7199648271521335612",
+      "company": "字节跳动",
+      "title": "消费综合行业售前解决方案专家-飞书",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7199648271521335612/detail",
+      "publishedAt": "2023-02-13T14:37:05.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7199649630497638715",
+      "company": "字节跳动",
+      "title": "消费综合行业售前解决方案专家-飞书",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7199649630497638715/detail",
+      "publishedAt": "2023-02-13T14:37:52.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7330562286090586377",
+      "company": "字节跳动",
+      "title": "制造行业解决方案专家-飞书",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7330562286090586377/detail",
+      "publishedAt": "2024-02-01T09:28:03.426Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7493796900845684999",
+      "company": "字节跳动",
+      "title": "制造行业解决方案专家-飞书",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7493796900845684999/detail",
+      "publishedAt": "2025-04-16T06:41:32.859Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7650097662650566917",
+      "company": "字节跳动",
+      "title": "AI产品解决方案专家-AI工具运营",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7650097662650566917/detail",
+      "publishedAt": "2026-06-11T11:31:37.193Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "6945689943071508773",
+      "company": "字节跳动",
+      "title": "汽车行业云解决方案架构师-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/6945689943071508773/detail",
+      "publishedAt": "2021-03-31T05:45:38.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7332011842904066313",
+      "company": "字节跳动",
+      "title": "制造行业解决方案专家-飞书",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7332011842904066313/detail",
+      "publishedAt": "2024-02-05T07:10:37.432Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7410005752121051442",
+      "company": "字节跳动",
+      "title": "汽车营销与企业数字化解决方案架构师-Enterprise Partnership and Solution",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7410005752121051442/detail",
+      "publishedAt": "2024-09-02T11:27:48.138Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7631165267408619781",
+      "company": "字节跳动",
+      "title": "产品解决方案架构师（国际化方向/Data） - 数据平台",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7631165267408619781/detail",
+      "publishedAt": "2026-04-21T10:59:35.299Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7631426332815362357",
+      "company": "字节跳动",
+      "title": "产品解决方案架构师（国际化方向/Data） - 数据平台",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7631426332815362357/detail",
+      "publishedAt": "2026-04-22T03:51:51.763Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7343593226950019355",
+      "company": "字节跳动",
+      "title": "解决方案专家（NaaS） - IT",
+      "location": "上海、深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7343593226950019355/detail",
+      "publishedAt": "2024-03-07T12:12:34.491Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai",
+        "shenzhen"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7672440976861858101",
+      "company": "字节跳动",
+      "title": "生态AI解决方案架构师 - 飞书商业化",
+      "location": "上海、杭州、深圳、北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7672440976861858101/detail",
+      "publishedAt": "2026-08-10T16:29:39.293Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing",
+        "shanghai",
+        "shenzhen",
+        "hangzhou"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7537161496978688263",
+      "company": "字节跳动",
+      "title": "解决方案工程师-TRAE",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7537161496978688263/detail",
+      "publishedAt": "2025-08-11T03:19:25.615Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7426221162918660390",
+      "company": "字节跳动",
+      "title": "智能内容产品解决方案架构师",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7426221162918660390/detail",
+      "publishedAt": "2024-10-16T04:14:01.589Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7633054229742487813",
+      "company": "字节跳动",
+      "title": "华南区解决方案专家-飞书",
+      "location": "广州",
+      "url": "https://jobs.bytedance.com/experienced/position/7633054229742487813/detail",
+      "publishedAt": "2026-04-26T13:09:03.914Z",
+      "recruitType": "正式",
+      "markets": [
+        "guangzhou"
+      ],
+      "market": "guangzhou",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7627841600798935349",
+      "company": "字节跳动",
+      "title": "AI解决方案专家（企业智能体方向）-飞书",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7627841600798935349/detail",
+      "publishedAt": "2026-04-12T12:02:37.194Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "6926844516952000775",
+      "company": "字节跳动",
+      "title": "高级产品解决方案架构师-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/6926844516952000775/detail",
+      "publishedAt": "2021-02-08T10:55:20.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7493792175421376775",
+      "company": "字节跳动",
+      "title": "华北区解决方案专家-飞书",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7493792175421376775/detail",
+      "publishedAt": "2025-04-16T06:24:29.685Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7594778902393407797",
+      "company": "字节跳动",
+      "title": "汽车行业智能体解决方案专家-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7594778902393407797/detail",
+      "publishedAt": "2026-01-13T09:42:56.786Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7537287644095465736",
+      "company": "字节跳动",
+      "title": "解决方案工程师-TRAE",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7537287644095465736/detail",
+      "publishedAt": "2025-08-11T11:34:21.664Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7680412761310103861",
+      "company": "字节跳动",
+      "title": "视频云产品解决方案架构师（PDSA） - 音视频技术",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7680412761310103861/detail",
+      "publishedAt": "2026-09-01T04:05:26.831Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7508675301649369351",
+      "company": "字节跳动",
+      "title": "大客户解决方案专家-飞书项目",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7508675301649369351/detail",
+      "publishedAt": "2025-05-26T08:59:05.220Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7627765563298285829",
+      "company": "字节跳动",
+      "title": "华北区解决方案专家 - 飞书商业化",
+      "location": "青岛、西安",
+      "url": "https://jobs.bytedance.com/experienced/position/7627765563298285829/detail",
+      "publishedAt": "2026-04-12T07:15:42.416Z",
+      "recruitType": "正式",
+      "markets": [
+        "xian"
+      ],
+      "market": "xian",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7591482371830155525",
+      "company": "字节跳动",
+      "title": "安全技术解决方案专家-中国交易与广告",
+      "location": "杭州",
+      "url": "https://jobs.bytedance.com/experienced/position/7591482371830155525/detail",
+      "publishedAt": "2026-01-04T12:28:53.074Z",
+      "recruitType": "正式",
+      "markets": [
+        "hangzhou"
+      ],
+      "market": "hangzhou",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7665251625594456325",
+      "company": "字节跳动",
+      "title": "系统解决方案专家-人力运营",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7665251625594456325/detail",
+      "publishedAt": "2026-07-22T07:31:09.006Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7566552692404848901",
+      "company": "字节跳动",
+      "title": "产品解决方案架构师（大模型外呼方向）-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7566552692404848901/detail",
+      "publishedAt": "2025-10-29T08:22:41.595Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7369476584871594249",
+      "company": "字节跳动",
+      "title": "AI座舱解决方案架构师-火山引擎",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7369476584871594249/detail",
+      "publishedAt": "2024-05-16T06:13:18.931Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7629599605290649909",
+      "company": "字节跳动",
+      "title": "AI座舱产品解决方案架构师-火山引擎",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7629599605290649909/detail",
+      "publishedAt": "2026-04-17T05:45:56.349Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7676000009523824949",
+      "company": "字节跳动",
+      "title": "在线服务解决方案专家 - IT",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7676000009523824949/detail",
+      "publishedAt": "2026-08-20T06:41:00.054Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7350900348654438665",
+      "company": "字节跳动",
+      "title": "产品解决方案架构师（北京/上海/杭州/深圳） - 火山引擎",
+      "location": "北京、上海、深圳、杭州",
+      "url": "https://jobs.bytedance.com/experienced/position/7350900348654438665/detail",
+      "publishedAt": "2024-03-27T04:47:49.892Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing",
+        "shanghai",
+        "shenzhen",
+        "hangzhou"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7599594715088357685",
+      "company": "字节跳动",
+      "title": "制造行业解决方案专家（能源化工方向）-飞书",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7599594715088357685/detail",
+      "publishedAt": "2026-01-26T09:08:54.272Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7564300890201737477",
+      "company": "字节跳动",
+      "title": "行业解决方案专家（能源行业）-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7564300890201737477/detail",
+      "publishedAt": "2025-10-23T06:35:21.977Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7591389244083407109",
+      "company": "字节跳动",
+      "title": "产品解决方案专家（HRIS）-集团信息系统",
+      "location": "上海、北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7591389244083407109/detail",
+      "publishedAt": "2026-01-04T06:27:54.966Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing",
+        "shanghai"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7566553966600702261",
+      "company": "字节跳动",
+      "title": "产品解决方案架构师（大模型外呼方向）-火山引擎",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7566553966600702261/detail",
+      "publishedAt": "2025-10-29T08:23:40.410Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7642178305767000325",
+      "company": "字节跳动",
+      "title": "AI售前解决方案专家（深圳/上海/武汉/KA方向） - 飞书",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7642178305767000325/detail",
+      "publishedAt": "2026-05-21T03:16:36.282Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7564299332640688437",
+      "company": "字节跳动",
+      "title": "行业解决方案专家（教育科研&生物信息医药方向）-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7564299332640688437/detail",
+      "publishedAt": "2025-10-23T06:30:44.790Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7274814561079904570",
+      "company": "字节跳动",
+      "title": "安全技术解决方案专家-中国交易与广告",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7274814561079904570/detail",
+      "publishedAt": "2023-09-04T03:57:33.266Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7664517783670360373",
+      "company": "字节跳动",
+      "title": "产品解决方案专家（HRIS）-集团信息系统",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7664517783670360373/detail",
+      "publishedAt": "2026-07-20T08:05:33.363Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7680111771345373493",
+      "company": "字节跳动",
+      "title": "AI解决方案专家（采购方向）-PSAI",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7680111771345373493/detail",
+      "publishedAt": "2026-08-31T08:38:19.039Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7613246162082547973",
+      "company": "字节跳动",
+      "title": "Cloud Infrastructure Solutions Architect - BytePlus",
+      "location": "新加坡",
+      "url": "https://jobs.bytedance.com/experienced/position/7613246162082547973/detail",
+      "publishedAt": "2026-03-04T04:03:58.112Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7587989079852943621",
+      "company": "字节跳动",
+      "title": "Product Solution Architect - ModelArk (Singapore)",
+      "location": "新加坡",
+      "url": "https://jobs.bytedance.com/experienced/position/7587989079852943621/detail",
+      "publishedAt": "2025-12-26T02:35:27.956Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7592227945567963397",
+      "company": "字节跳动",
+      "title": "Product Solution Architect - ModelArk",
+      "location": "伦敦",
+      "url": "https://jobs.bytedance.com/experienced/position/7592227945567963397/detail",
+      "publishedAt": "2026-01-06T12:46:42.437Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7587988078768507141",
+      "company": "字节跳动",
+      "title": "Product Solution Architect - ModelArk (Tokyo, Japan)",
+      "location": "东京",
+      "url": "https://jobs.bytedance.com/experienced/position/7587988078768507141/detail",
+      "publishedAt": "2025-12-26T02:34:06.910Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7359032209847126282",
+      "company": "字节跳动",
+      "title": "Product Solution Architect - Video & Edge Cloud",
+      "location": "新加坡",
+      "url": "https://jobs.bytedance.com/experienced/position/7359032209847126282/detail",
+      "publishedAt": "2024-04-18T02:43:55.221Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7683202126965491973",
+      "company": "字节跳动",
+      "title": "AI Product Solution Architect, BytePlus - London",
+      "location": "伦敦",
+      "url": "https://jobs.bytedance.com/experienced/position/7683202126965491973/detail",
+      "publishedAt": "2026-09-08T16:35:46.301Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7573536281534302469",
+      "company": "字节跳动",
+      "title": "AI Product Solution Architect, BytePlus - Singapore",
+      "location": "新加坡",
+      "url": "https://jobs.bytedance.com/experienced/position/7573536281534302469/detail",
+      "publishedAt": "2025-11-17T03:48:50.026Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7668586855966689541",
+      "company": "字节跳动",
+      "title": "AI Solution Architect - Creativity Service Platform, Automotive",
+      "location": "新加坡",
+      "url": "https://jobs.bytedance.com/experienced/position/7668586855966689541/detail",
+      "publishedAt": "2026-07-31T07:13:49.088Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7055327651695626510",
+      "company": "字节跳动",
+      "title": "AI and Cloud Solution Architect - BytePlus - Japan",
+      "location": "东京",
+      "url": "https://jobs.bytedance.com/experienced/position/7055327651695626510/detail",
+      "publishedAt": "2022-01-20T16:52:18.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7124582866075797797",
+      "company": "字节跳动",
+      "title": "产品交付专家（云和安全）-火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7124582866075797797/detail",
+      "publishedAt": "2022-07-26T07:40:41.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7530184621969033480",
+      "company": "字节跳动",
+      "title": "商业化策略方案专家-飞书商业化",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7530184621969033480/detail",
+      "publishedAt": "2025-07-23T08:08:31.852Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7637426366267033861",
+      "company": "字节跳动",
+      "title": "人事产品应用实施顾问-飞书",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7637426366267033861/detail",
+      "publishedAt": "2026-05-08T07:55:36.998Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7495740227756607752",
+      "company": "字节跳动",
+      "title": "人力数据AI应用专家-集团信息系统",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7495740227756607752/detail",
+      "publishedAt": "2025-04-21T12:31:48.049Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7637426541338036533",
+      "company": "字节跳动",
+      "title": "人事产品应用实施顾问 - 飞书商业化",
+      "location": "广州、上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7637426541338036533/detail",
+      "publishedAt": "2026-05-08T07:57:31.642Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai",
+        "guangzhou"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7662378957375932725",
+      "company": "字节跳动",
+      "title": "AI产品方案专家（Echo） - 飞书商业化",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7662378957375932725/detail",
+      "publishedAt": "2026-07-14T13:44:26.025Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7571766872627005749",
+      "company": "字节跳动",
+      "title": "体验提升方案专家（到店服务方向）-抖音生活服务",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7571766872627005749/detail",
+      "publishedAt": "2025-11-12T09:23:08.308Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7594742412935121205",
+      "company": "字节跳动",
+      "title": "AI-Agent设计与交付专家（ToB/客服/外呼/呼入/营销方向） - AI数据与安全",
+      "location": "北京、上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7594742412935121205/detail",
+      "publishedAt": "2026-01-13T07:20:31.498Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing",
+        "shanghai"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7633322954918988037",
+      "company": "字节跳动",
+      "title": "高级售前咨询顾问（人力方向）-飞书",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7633322954918988037/detail",
+      "publishedAt": "2026-04-27T06:31:44.668Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7681731189329889589",
+      "company": "字节跳动",
+      "title": "售前服务方案运营专家（AI智能化方向） - 抖音电商",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7681731189329889589/detail",
+      "publishedAt": "2026-09-04T17:20:29.874Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7644825514368993589",
+      "company": "字节跳动",
+      "title": "Agent产品方案工程师（FDE）-飞书",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7644825514368993589/detail",
+      "publishedAt": "2026-05-28T06:27:30.297Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7623417080976967989",
+      "company": "字节跳动",
+      "title": "视觉大模型推理部署工程师-智能创作（北京/上海/杭州/深圳）",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7623417080976967989/detail",
+      "publishedAt": "2026-03-31T13:54:10.710Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7657565189994662197",
+      "company": "字节跳动",
+      "title": "Customer Success Manager - BytePlus - London, UK",
+      "location": "伦敦",
+      "url": "https://jobs.bytedance.com/experienced/position/7657565189994662197/detail",
+      "publishedAt": "2026-07-01T14:32:14.972Z",
+      "recruitType": "正式",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": true,
+      "hasDescription": true
+    },
+    {
+      "id": "7611448540587936005",
+      "company": "字节跳动",
+      "title": "Customer Success Manager - BytePlus - Hong Kong",
+      "location": "中国香港",
+      "url": "https://jobs.bytedance.com/experienced/position/7611448540587936005/detail",
+      "publishedAt": "2026-02-27T07:47:48.425Z",
+      "recruitType": "正式",
+      "markets": [
+        "hongkong"
+      ],
+      "market": "hongkong",
+      "scope": "extended",
+      "management": true,
+      "hasDescription": true
+    },
+    {
+      "id": "7459606415242971399",
+      "company": "字节跳动",
+      "title": "解决方案专家-火山引擎",
+      "location": "成都",
+      "url": "https://jobs.bytedance.com/experienced/position/7459606415242971399/detail",
+      "publishedAt": "2025-01-14T03:24:26.428Z",
+      "recruitType": "正式",
+      "markets": [
+        "chengdu"
+      ],
+      "market": "chengdu",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7641213382200707333",
+      "company": "字节跳动",
+      "title": "大模型应用专家-CQC",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7641213382200707333/detail",
+      "publishedAt": "2026-05-18T12:52:15.870Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7615515849081145653",
+      "company": "字节跳动",
+      "title": "大模型应用架构师-Dev Infra",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7615515849081145653/detail",
+      "publishedAt": "2026-03-10T06:51:48.145Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7478627859923290376",
+      "company": "字节跳动",
+      "title": "大模型应用架构师 - 开发者服务",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7478627859923290376/detail",
+      "publishedAt": "2025-03-06T09:37:11.236Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7673471807855085829",
+      "company": "字节跳动",
+      "title": "大模型应用专家（汽车垂类方向）-CQC",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7673471807855085829/detail",
+      "publishedAt": "2026-08-13T11:15:45.066Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7633446676003506485",
+      "company": "字节跳动",
+      "title": "大模型应用架构师（代码质量/质量风控）-产品研发和工程架构",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7633446676003506485/detail",
+      "publishedAt": "2026-04-27T14:35:54.624Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7633445976611850549",
+      "company": "字节跳动",
+      "title": "大模型应用架构师（代码质量/质量风控）-产品研发和工程架构",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7633445976611850549/detail",
+      "publishedAt": "2026-04-27T14:34:52.958Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7578710762006137141",
+      "company": "字节跳动",
+      "title": "大模型应用架构师-TikTok搜索",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7578710762006137141/detail",
+      "publishedAt": "2025-12-01T02:31:48.232Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7599563704902371589",
+      "company": "字节跳动",
+      "title": "内容安全大模型应用专家-大模型安全&模型运维",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7599563704902371589/detail",
+      "publishedAt": "2026-01-26T07:11:00.094Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7634737710783908149",
+      "company": "字节跳动",
+      "title": "内容治理大模型应用专家-TikTok旗下图文独立端",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7634737710783908149/detail",
+      "publishedAt": "2026-05-01T02:11:36.449Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7651488366323763509",
+      "company": "字节跳动",
+      "title": "大模型应用专家（商业化内容安全-业务）-模型运维",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7651488366323763509/detail",
+      "publishedAt": "2026-06-15T05:25:04.369Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7674924274723686661",
+      "company": "字节跳动",
+      "title": "大模型应用专家（小程序方向）-CQC",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7674924274723686661/detail",
+      "publishedAt": "2026-08-17T09:07:13.222Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7262287795531254072",
+      "company": "字节跳动",
+      "title": "智能运维与大模型应用工程师-基础设施",
+      "location": "杭州",
+      "url": "https://jobs.bytedance.com/experienced/position/7262287795531254072/detail",
+      "publishedAt": "2023-08-01T09:49:33.995Z",
+      "recruitType": "正式",
+      "markets": [
+        "hangzhou"
+      ],
+      "market": "hangzhou",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7584408292154738949",
+      "company": "字节跳动",
+      "title": "大模型应用专家（商业化内容安全-基模）-模型运维",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7584408292154738949/detail",
+      "publishedAt": "2025-12-16T11:00:11.538Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7577003344169568517",
+      "company": "字节跳动",
+      "title": "AI大模型应用工程师-飞书多维表格",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7577003344169568517/detail",
+      "publishedAt": "2025-11-26T12:02:53.091Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "6714633553675553038",
+      "company": "字节跳动",
+      "title": "大模型应用工程师 - 抖音研发",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/6714633553675553038/detail",
+      "publishedAt": "2019-07-17T14:07:32.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7262287728477751589",
+      "company": "字节跳动",
+      "title": "智能运维与大模型应用工程师-基础设施",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7262287728477751589/detail",
+      "publishedAt": "2023-08-01T09:47:11.914Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7670175223748987141",
+      "company": "字节跳动",
+      "title": "大模型应用专家（游戏治理方向）-CQC（北京/成都）",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7670175223748987141/detail",
+      "publishedAt": "2026-08-04T13:59:30.253Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7613273119528077573",
+      "company": "字节跳动",
+      "title": "数据AI开发及应用工程师（财务方向）-集团信息系统",
+      "location": "杭州",
+      "url": "https://jobs.bytedance.com/experienced/position/7613273119528077573/detail",
+      "publishedAt": "2026-03-04T05:48:29.670Z",
+      "recruitType": "正式",
+      "markets": [
+        "hangzhou"
+      ],
+      "market": "hangzhou",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7613380576292194565",
+      "company": "字节跳动",
+      "title": "AI数据运营与交付专家（智能内容治理方向）-CQC",
+      "location": "成都",
+      "url": "https://jobs.bytedance.com/experienced/position/7613380576292194565/detail",
+      "publishedAt": "2026-03-04T12:45:49.680Z",
+      "recruitType": "正式",
+      "markets": [
+        "chengdu"
+      ],
+      "market": "chengdu",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7676039029939947781",
+      "company": "字节跳动",
+      "title": "医疗大模型数据交付专家 - AI数据与安全",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7676039029939947781/detail",
+      "publishedAt": "2026-08-20T09:12:35.746Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7625846479102101813",
+      "company": "字节跳动",
+      "title": "流媒体AI应用工程师-Data",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7625846479102101813/detail",
+      "publishedAt": "2026-04-07T02:59:19.776Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7583917474945665285",
+      "company": "字节跳动",
+      "title": "产品交付专家（云和安全）-火山引擎",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7583917474945665285/detail",
+      "publishedAt": "2025-12-15T03:15:31.817Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7572459657674344709",
+      "company": "字节跳动",
+      "title": "产品交付专家（云和安全）-火山引擎",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7572459657674344709/detail",
+      "publishedAt": "2025-11-14T06:13:21.675Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7642256109194021173",
+      "company": "字节跳动",
+      "title": "流媒体AI应用工程师-Data",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7642256109194021173/detail",
+      "publishedAt": "2026-05-21T08:18:43.359Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7594782287397439749",
+      "company": "字节跳动",
+      "title": "交付架构师（AI应用方向）-火山引擎",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7594782287397439749/detail",
+      "publishedAt": "2026-01-13T09:55:04.019Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7642256781703612725",
+      "company": "字节跳动",
+      "title": "流媒体AI应用工程师-Data",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7642256781703612725/detail",
+      "publishedAt": "2026-05-21T08:19:30.375Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7539852792517888263",
+      "company": "字节跳动",
+      "title": "联网大模型数据科学交付专家 - AI数据与安全",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7539852792517888263/detail",
+      "publishedAt": "2025-08-18T09:23:52.466Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7659763187501517061",
+      "company": "字节跳动",
+      "title": "AI应用工程师-计算",
+      "location": "杭州",
+      "url": "https://jobs.bytedance.com/experienced/position/7659763187501517061/detail",
+      "publishedAt": "2026-07-07T12:39:55.389Z",
+      "recruitType": "正式",
+      "markets": [
+        "hangzhou"
+      ],
+      "market": "hangzhou",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7659764101711841589",
+      "company": "字节跳动",
+      "title": "AI应用工程师-计算",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7659764101711841589/detail",
+      "publishedAt": "2026-07-07T12:39:02.699Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7659746126975650053",
+      "company": "字节跳动",
+      "title": "AI应用工程师-计算",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7659746126975650053/detail",
+      "publishedAt": "2026-07-07T11:28:25.157Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7597330156443617541",
+      "company": "字节跳动",
+      "title": "数据AI开发及应用工程师（人力方向）-集团信息系统",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7597330156443617541/detail",
+      "publishedAt": "2026-01-20T06:41:39.236Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7676397834843179269",
+      "company": "字节跳动",
+      "title": "AI Agent产品交付专家 - 火山引擎",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7676397834843179269/detail",
+      "publishedAt": "2026-08-21T08:25:54.023Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7685978642254268725",
+      "company": "字节跳动",
+      "title": "AI Agent应用架构师 - TikTok研发",
+      "location": "上海、北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7685978642254268725/detail",
+      "publishedAt": "2026-09-16T04:04:59.849Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing",
+        "shanghai"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7153981327984232712",
+      "company": "字节跳动",
+      "title": "GPU/异构计算硬件选型与应用工程师-Data（北京）",
+      "location": "北京",
+      "url": "https://jobs.bytedance.com/experienced/position/7153981327984232712/detail",
+      "publishedAt": "2022-10-13T13:04:52.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7426275414614149426",
+      "company": "字节跳动",
+      "title": "GPU/异构计算硬件选型与应用工程师",
+      "location": "上海",
+      "url": "https://jobs.bytedance.com/experienced/position/7426275414614149426/detail",
+      "publishedAt": "2024-10-16T07:42:25.168Z",
+      "recruitType": "正式",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7153981327984707848",
+      "company": "字节跳动",
+      "title": "GPU/异构计算硬件选型与应用工程师-Data（深圳）",
+      "location": "深圳",
+      "url": "https://jobs.bytedance.com/experienced/position/7153981327984707848/detail",
+      "publishedAt": "2022-10-13T13:05:15.000Z",
+      "recruitType": "正式",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7624476433381869860",
+      "company": "智谱AI",
+      "title": "解决方案架构师-北京",
+      "location": "北京",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7624476433381869860/detail",
+      "publishedAt": "2026-04-03T10:28:58.373Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7596984432939780393",
+      "company": "智谱AI",
+      "title": "Solutions Architect-Southeast Asia",
+      "location": "北京",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7596984432939780393/detail",
+      "publishedAt": "2026-01-19T08:22:47.019Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7595476471029057833",
+      "company": "智谱AI",
+      "title": "解决方案架构师-深圳",
+      "location": "深圳",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7595476471029057833/detail",
+      "publishedAt": "2026-01-15T06:51:50.764Z",
+      "recruitType": "全职",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7594356397426231602",
+      "company": "智谱AI",
+      "title": "Solutions Architect - Singapore",
+      "location": "北京",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7594356397426231602/detail",
+      "publishedAt": "2026-01-12T06:22:12.764Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7592516457205532974",
+      "company": "智谱AI",
+      "title": "大模型解决方案架构师-杭州",
+      "location": "杭州",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7592516457205532974/detail",
+      "publishedAt": "2026-01-07T07:24:45.469Z",
+      "recruitType": "全职",
+      "markets": [
+        "hangzhou"
+      ],
+      "market": "hangzhou",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7592490935373252900",
+      "company": "智谱AI",
+      "title": "高级应用交付架构师",
+      "location": "北京",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7592490935373252900/detail",
+      "publishedAt": "2026-01-07T05:47:11.853Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7588004858600081690",
+      "company": "智谱AI",
+      "title": "AI应用架构师",
+      "location": "北京",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7588004858600081690/detail",
+      "publishedAt": "2025-12-26T03:39:00.552Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7582440715411982601",
+      "company": "智谱AI",
+      "title": "大模型产品解决方案架构师-深圳",
+      "location": "深圳",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7582440715411982601/detail",
+      "publishedAt": "2025-12-11T03:46:10.260Z",
+      "recruitType": "全职",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7582438271189764379",
+      "company": "智谱AI",
+      "title": "大模型产品解决方案架构师-北京",
+      "location": "北京",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7582438271189764379/detail",
+      "publishedAt": "2025-12-11T03:38:16.674Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7559573674866297115",
+      "company": "智谱AI",
+      "title": "大模型解决方案架构师",
+      "location": "成都",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7559573674866297115/detail",
+      "publishedAt": "2025-10-10T12:50:15.615Z",
+      "recruitType": "全职",
+      "markets": [
+        "chengdu"
+      ],
+      "market": "chengdu",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7555807478870968614",
+      "company": "智谱AI",
+      "title": "Maas解决方案架构师-杭州",
+      "location": "杭州",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7555807478870968614/detail",
+      "publishedAt": "2025-09-30T09:16:14.758Z",
+      "recruitType": "全职",
+      "markets": [
+        "hangzhou"
+      ],
+      "market": "hangzhou",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7548717903324743999",
+      "company": "智谱AI",
+      "title": "解决方案架构师-杭州",
+      "location": "杭州",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7548717903324743999/detail",
+      "publishedAt": "2025-09-11T06:44:06.870Z",
+      "recruitType": "全职",
+      "markets": [
+        "hangzhou"
+      ],
+      "market": "hangzhou",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7536503992727243062",
+      "company": "智谱AI",
+      "title": "解决方案架构师 -马来西亚",
+      "location": "吉隆坡",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7536503992727243062/detail",
+      "publishedAt": "2025-08-09T08:46:36.921Z",
+      "recruitType": "全职",
+      "markets": [
+        "overseas"
+      ],
+      "market": "overseas",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7536500601271601449",
+      "company": "智谱AI",
+      "title": "Solutions Architect -Middle East",
+      "location": "北京",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7536500601271601449/detail",
+      "publishedAt": "2025-08-09T08:37:27.027Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7533196855788210483",
+      "company": "智谱AI",
+      "title": "高级应用交付解决方案架构师",
+      "location": "北京",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7533196855788210483/detail",
+      "publishedAt": "2025-07-31T10:57:55.556Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7503755205448616202",
+      "company": "智谱AI",
+      "title": "大模型解决方案架构师",
+      "location": "深圳",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7503755205448616202/detail",
+      "publishedAt": "2025-05-13T02:43:03.544Z",
+      "recruitType": "全职",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7493434862192658739",
+      "company": "智谱AI",
+      "title": "大模型解决方案架构师-运营商行业",
+      "location": "北京",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7493434862192658739/detail",
+      "publishedAt": "2025-04-15T07:15:35.839Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7457523531019241754",
+      "company": "智谱AI",
+      "title": "Solutions Architect -Malaysia",
+      "location": "北京",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7457523531019241754/detail",
+      "publishedAt": "2025-01-08T12:44:44.021Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7450107537896474919",
+      "company": "智谱AI",
+      "title": "大模型交付架构师",
+      "location": "上海",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7450107537896474919/detail",
+      "publishedAt": "2024-12-19T13:03:02.076Z",
+      "recruitType": "全职",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7450106295744596250",
+      "company": "智谱AI",
+      "title": "大模型交付工程师",
+      "location": "上海",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7450106295744596250/detail",
+      "publishedAt": "2024-12-19T13:01:33.271Z",
+      "recruitType": "全职",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7417705040335292683",
+      "company": "智谱AI",
+      "title": "MaaS-产品解决方案架构师（PDSA）",
+      "location": "北京",
+      "url": "https://zhipu-ai.jobs.feishu.cn/index/position/7417705040335292683/detail",
+      "publishedAt": "2024-09-23T05:28:22.813Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7527178796232706313",
+      "company": "零一万物",
+      "title": "解决方案架构师 - 海外项目",
+      "location": "北京",
+      "url": "https://01ai.jobs.feishu.cn/index/position/7527178796232706313/detail",
+      "publishedAt": "2025-07-15T05:39:37.183Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7523168732886812978",
+      "company": "零一万物",
+      "title": "Forward Deployed AI Engineer",
+      "location": "北京",
+      "url": "https://01ai.jobs.feishu.cn/index/position/7523168732886812978/detail",
+      "publishedAt": "2025-07-04T10:20:22.952Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7641891406751287603",
+      "company": "MiniMax",
+      "title": "前沿部署工程师FDE（AI行业落地）",
+      "location": "北京、上海",
+      "url": "https://vrfi1sk8a0.jobs.feishu.cn/379481/position/7641891406751287603/detail",
+      "publishedAt": "2026-05-20T08:43:38.350Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing",
+        "shanghai"
+      ],
+      "market": "beijing",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "7598036042735110446",
+      "company": "MiniMax",
+      "title": "Forward Deployed Engineer（前沿部署工程师）",
+      "location": "深圳、上海、北京、中国香港、旧金山",
+      "url": "https://vrfi1sk8a0.jobs.feishu.cn/379481/position/7598036042735110446/detail",
+      "publishedAt": "2026-01-22T04:34:09.225Z",
+      "recruitType": "全职",
+      "markets": [
+        "beijing",
+        "shanghai",
+        "shenzhen",
+        "hongkong"
+      ],
+      "market": "beijing",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2041772169679241216",
+      "company": "腾讯",
+      "title": "AI前线部署工程师FDE",
+      "location": "武汉",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2041772169679241216",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "wuhan"
+      ],
+      "market": "wuhan",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2066401747009712128",
+      "company": "腾讯",
+      "title": "腾讯云-AI前线部署工程师-(北京/上海)",
+      "location": "深圳",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2066401747009712128",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "core",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2090625315457122304",
+      "company": "腾讯",
+      "title": "解决方案架构师",
+      "location": "深圳",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2090625315457122304",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2092163142850363392",
+      "company": "腾讯",
+      "title": "AI产品海外解决方案架构师",
+      "location": "上海",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2092163142850363392",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2083514731594956800",
+      "company": "腾讯",
+      "title": "AI产品解决方案架构师-海外",
+      "location": "深圳",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2083514731594956800",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2079810209739616256",
+      "company": "腾讯",
+      "title": "腾讯专有云（TCE）解决方案架构师",
+      "location": "北京",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2079810209739616256",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2089174572824965120",
+      "company": "腾讯",
+      "title": "腾讯云-能源行业解决方案架构师",
+      "location": "北京",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2089174572824965120",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2039557263089369088",
+      "company": "腾讯",
+      "title": "腾讯云-腾讯云AI解决方案架构师-AI",
+      "location": "中国香港",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2039557263089369088",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "hongkong"
+      ],
+      "market": "hongkong",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2065072068197793792",
+      "company": "腾讯",
+      "title": "腾讯云-大模型产品解决方案架构师",
+      "location": "深圳",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2065072068197793792",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2072248701686034432",
+      "company": "腾讯",
+      "title": "AI软件解决方案专家(FDE)（深圳/北京/上海）",
+      "location": "深圳",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2072248701686034432",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2037000087435112448",
+      "company": "腾讯",
+      "title": "数据中心架构设计及解决方案工程师",
+      "location": "深圳",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2037000087435112448",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "1983366206685601792",
+      "company": "腾讯",
+      "title": "腾讯乐享-SaaS产品售前解决方案架构师",
+      "location": "深圳",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=1983366206685601792",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2094358880229437440",
+      "company": "腾讯",
+      "title": "零信任产品解决方案架构师（北京/上海）",
+      "location": "深圳",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2094358880229437440",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2049337886914031616",
+      "company": "腾讯",
+      "title": "营销与交易产品部-产品售前解决方案",
+      "location": "深圳",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2049337886914031616",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2066401749501132800",
+      "company": "腾讯",
+      "title": "腾讯云AI解决方案架构师-(成都/上海/深圳)",
+      "location": "北京",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2066401749501132800",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2043883721538568192",
+      "company": "腾讯",
+      "title": "腾讯健康-医药行业售前解决方案架构师",
+      "location": "上海",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2043883721538568192",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2097144993851555840",
+      "company": "腾讯",
+      "title": "腾讯云-私有化解决方案架构师（AI Buddy方向）",
+      "location": "深圳",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2097144993851555840",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2043620146253299712",
+      "company": "腾讯",
+      "title": "智慧行业四部—解决方案架构师(AI方向）上海",
+      "location": "北京",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2043620146253299712",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2076834540076318720",
+      "company": "腾讯",
+      "title": "腾讯云-泰国印尼AI原生云解决方案架构师",
+      "location": "深圳",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2076834540076318720",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2099353690635939840",
+      "company": "腾讯",
+      "title": "腾讯云-AgentRuntime高级产品解决方案架构师(国际化方向)",
+      "location": "深圳",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2099353690635939840",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2086467461347192832",
+      "company": "腾讯",
+      "title": "腾讯云-国际行业解决方案架构师-AI业务应用LLM/Agent方向",
+      "location": "深圳",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2086467461347192832",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2086467463696003072",
+      "company": "腾讯",
+      "title": "腾讯云-国际行业解决方案架构师-AI业务应用LLM/Agent 方向",
+      "location": "上海",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2086467463696003072",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2064963962931425280",
+      "company": "腾讯",
+      "title": "腾讯云-智慧零售-行业售前解决方案专家（AI+零售餐饮方向-FDE Consultant）深圳",
+      "location": "上海",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2064963962931425280",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2079387590921990144",
+      "company": "腾讯",
+      "title": "腾讯云-智慧零售-行业解决方案架构师(云和人工智能方向-FDE Consultant) 深圳-食品饮料/餐饮/茶饮酒咖/日化家清等赛道",
+      "location": "上海",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2079387590921990144",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2039597307762212864",
+      "company": "腾讯",
+      "title": "训推平台售前技术架构师",
+      "location": "北京",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2039597307762212864",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "1977581361661366272",
+      "company": "腾讯",
+      "title": "腾讯云汽车行业-AI交付方案工程师（FDE方向）",
+      "location": "北京",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=1977581361661366272",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "beijing"
+      ],
+      "market": "beijing",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2075404886018801664",
+      "company": "腾讯",
+      "title": "腾讯云汽车行业-AI交付方案工程师（FDE方向）",
+      "location": "深圳",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2075404886018801664",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shenzhen"
+      ],
+      "market": "shenzhen",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    },
+    {
+      "id": "2070086049866104832",
+      "company": "腾讯",
+      "title": "腾讯云汽车行业-AI交付方案工程师（FDE方向）",
+      "location": "上海",
+      "url": "http://careers.tencent.com/jobdesc.html?postId=2070086049866104832",
+      "publishedAt": null,
+      "recruitType": "",
+      "markets": [
+        "shanghai"
+      ],
+      "market": "shanghai",
+      "scope": "extended",
+      "management": false,
+      "hasDescription": true
+    }
+  ]
+}

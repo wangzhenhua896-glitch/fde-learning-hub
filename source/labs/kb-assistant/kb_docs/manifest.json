@@ -1,0 +1,27 @@
+{
+  "company": "云帆科技（虚构企业，仅供练习）",
+  "roles": {
+    "intern":     {"name": "实习生",     "desc": "暑期/日常实习生，仅可见公开制度类文档"},
+    "all_staff":  {"name": "正式员工",   "desc": "全体正式员工，可见公开 + 内部文档"},
+    "hr_admin":   {"name": "HR 管理员",  "desc": "HR 团队，可见公开 + 内部 + 机密文档"}
+  },
+  "sensitivity_levels": {
+    "public":       "公开：全员可见（含实习生）",
+    "internal":     "内部：仅正式员工及以上",
+    "confidential": "机密：仅 HR 管理员"
+  },
+  "docs": [
+    {"id": "D001", "file": "D001_attendance_leave.md",        "title": "考勤与假期制度",           "category": "人事制度", "source": "HR 系统",   "owner": "王芳", "sensitivity": "public",       "updated": "2026-03-01"},
+    {"id": "D002", "file": "D002_expense_reimbursement.md",   "title": "差旅与报销流程",           "category": "财务制度", "source": "OA 系统",   "owner": "李强", "sensitivity": "public",       "updated": "2026-01-15"},
+    {"id": "D003", "file": "D003_onboarding_guide.md",        "title": "新员工入职指南",           "category": "人事制度", "source": "HR 系统",   "owner": "王芳", "sensitivity": "public",       "updated": "2026-02-10"},
+    {"id": "D004", "file": "D004_remote_work_policy.md",      "title": "远程办公管理规定",         "category": "行政制度", "source": "OA 系统",   "owner": "赵敏", "sensitivity": "public",       "updated": "2026-04-01"},
+    {"id": "D005", "file": "D005_infosec_redlines.md",        "title": "信息安全红线",             "category": "安全合规", "source": "安全平台",  "owner": "陈磊", "sensitivity": "public",       "updated": "2026-05-20"},
+    {"id": "D006", "file": "D006_product_roadmap_q3.md",      "title": "产品路线图 2026 Q3",       "category": "产品",     "source": "知识库",    "owner": "周涛", "sensitivity": "internal",     "updated": "2026-06-30"},
+    {"id": "D007", "file": "D007_sales_commission.md",        "title": "销售佣金政策",             "category": "销售",     "source": "CRM 系统",  "owner": "吴倩", "sensitivity": "internal",     "updated": "2026-03-18"},
+    {"id": "D008", "file": "D008_customer_complaint_sop.md",  "title": "客户投诉处理 SOP",         "category": "客服",     "source": "知识库",    "owner": "郑爽", "sensitivity": "internal",     "updated": "2026-04-22"},
+    {"id": "D009", "file": "D009_code_review_guide.md",       "title": "研发代码评审规范",         "category": "研发",     "source": "Git 平台",  "owner": "陈磊", "sensitivity": "internal",     "updated": "2026-05-05"},
+    {"id": "D010", "file": "D010_salary_bands.md",            "title": "薪酬带宽表 2026",          "category": "薪酬",     "source": "HR 系统",   "owner": "王芳", "sensitivity": "confidential", "updated": "2026-01-05"},
+    {"id": "D011", "file": "D011_annual_bonus_rules.md",      "title": "年终奖分配细则",          "category": "薪酬",     "source": "HR 系统",   "owner": "王芳", "sensitivity": "confidential", "updated": "2026-01-05"},
+    {"id": "D012", "file": "D012_supplier_contract_xingqiao.md", "title": "供应商合同：星桥数据", "category": "采购",     "source": "合同系统",  "owner": "李强", "sensitivity": "confidential", "updated": "2026-02-28"}
+  ]
+}

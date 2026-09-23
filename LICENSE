@@ -1,24 +1,16 @@
-This is free and unencumbered software released into the public domain.
+FDE 开放联盟 · 授权说明（索引）
 
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any
-means.
+本文件不是软件许可证，而是本仓库各部分内容的授权索引：
 
-In jurisdictions that recognize copyright laws, the author or authors
-of this software dedicate any and all copyright interest in the
-software to the public domain. We make this dedication for the benefit
-of the public at large and to the detriment of our heirs and
-successors. We intend this dedication to be an overt act of
-relinquishment in perpetuity of all present and future rights to this
-software under copyright law.
+1. 本项目原创代码（构建脚本、前端代码、练习内容等第一方材料）以 MIT 许可证
+   发布，许可证全文见 source/LICENSE-CODE（该目录稍后同步进本仓库）。
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+2. 站点中的第三方全文、摘录及素材（各来源文章、书籍章节、清单与文档等）
+   不包含在上述 MIT 范围内，其权利归原作者或权利人所有，使用条件以以下
+   材料为准：
+   - source/THIRD_PARTY_NOTICES.md（第三方素材授权清单，稍后同步进本仓库）
+   - 站内 about.html（来源与版权页）
+   - 各原作者的许可声明
 
-For more information, please refer to <https://unlicense.org>
+3. 本仓库此前使用的 Unlicense 文本已移除。该文本不应被解释为授予任何第三方
+   内容的权利；第三方内容并未因此进入公共领域。

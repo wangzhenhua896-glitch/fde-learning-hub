@@ -1,0 +1,11 @@
+{
+  "name": "fde-hub-smoke-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node test_workbench.mjs && python3 test_site.py"
+  },
+  "devDependencies": {
+    "jsdom": "^27.3.0"
+  }
+}
