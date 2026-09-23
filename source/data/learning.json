@@ -1,0 +1,863 @@
+{
+  "schemaVersion": 1,
+  "market": {
+    "source": "中国官方招聘板快照",
+    "asOf": "2026-09-17",
+    "sample": 241,
+    "note": "历史样本，仅用于演示岗位技能映射，非实时招聘信号",
+    "weights": {
+      "discovery": 73,
+      "llm": 51,
+      "agent": 45,
+      "rag": 29,
+      "integration": 27,
+      "eval": 19,
+      "python": 18,
+      "deployment": 18
+    }
+  },
+  "skills": [
+    {
+      "id": "discovery",
+      "name": "需求澄清",
+      "prerequisites": []
+    },
+    {
+      "id": "llm",
+      "name": "大模型基础",
+      "prerequisites": []
+    },
+    {
+      "id": "python",
+      "name": "Python 与数据处理",
+      "prerequisites": []
+    },
+    {
+      "id": "integration",
+      "name": "企业系统集成",
+      "prerequisites": [
+        "discovery"
+      ]
+    },
+    {
+      "id": "rag",
+      "name": "RAG 与检索",
+      "prerequisites": [
+        "llm"
+      ]
+    },
+    {
+      "id": "eval",
+      "name": "质量评测",
+      "prerequisites": [
+        "rag"
+      ]
+    },
+    {
+      "id": "agent",
+      "name": "Agent 工作流",
+      "prerequisites": [
+        "llm",
+        "integration"
+      ]
+    },
+    {
+      "id": "deployment",
+      "name": "部署与监控",
+      "prerequisites": [
+        "eval",
+        "integration"
+      ]
+    }
+  ],
+  "roleTargets": {
+    "fde": {
+      "discovery": 75,
+      "llm": 60,
+      "integration": 65,
+      "rag": 60,
+      "eval": 65,
+      "agent": 50,
+      "deployment": 45,
+      "python": 40
+    },
+    "applied-ai": {
+      "discovery": 50,
+      "llm": 75,
+      "integration": 50,
+      "rag": 75,
+      "eval": 80,
+      "agent": 65,
+      "deployment": 45,
+      "python": 70
+    },
+    "solutions": {
+      "discovery": 80,
+      "llm": 55,
+      "integration": 70,
+      "rag": 45,
+      "eval": 45,
+      "agent": 45,
+      "deployment": 40,
+      "python": 25
+    },
+    "ai-engineer": {
+      "discovery": 45,
+      "llm": 70,
+      "integration": 60,
+      "rag": 75,
+      "eval": 75,
+      "agent": 70,
+      "deployment": 65,
+      "python": 75
+    }
+  },
+  "units": [
+    {
+      "id": "discover-brief",
+      "title": "把模糊需求写成验收问题",
+      "format": "micro_lesson",
+      "skills": [
+        "discovery"
+      ],
+      "prerequisites": [],
+      "difficulty": 1,
+      "estimated_time": 8,
+      "evidence_of_mastery": "回答场景判断题",
+      "next_candidates": [
+        "discover-case",
+        "integrate-map"
+      ],
+      "review_policy": {
+        "after_days": [
+          1,
+          3,
+          7
+        ]
+      },
+      "body": "客户说‘做个知识助手’时，先问谁使用、要解决什么、什么答案可接受、哪些资料不可见。把成功标准写成可观察的行为，再谈技术方案。",
+      "question": {
+        "prompt": "客户提出‘让 AI 回答员工问题’，你首先应该做什么？",
+        "options": [
+          "直接挑模型",
+          "确认用户、边界与验收标准",
+          "先部署数据库"
+        ],
+        "answer": 1
+      },
+      "diagnostic_question": {
+        "prompt": "客户说“做个知识助手”，你会先确认哪项？",
+        "options": [
+          "最贵的模型",
+          "谁使用、哪些问题和怎样验收",
+          "服务器品牌"
+        ],
+        "answer": 1
+      },
+      "resources": [
+        {
+          "title": "FDE 岗位导读",
+          "url": "orientation.html"
+        }
+      ]
+    },
+    {
+      "id": "discover-case",
+      "title": "案例：澄清客户的真实问题",
+      "format": "real_world_fde_case",
+      "skills": [
+        "discovery"
+      ],
+      "prerequisites": [
+        "discover-brief"
+      ],
+      "difficulty": 2,
+      "estimated_time": 12,
+      "evidence_of_mastery": "写出可验证的验收口径",
+      "next_candidates": [
+        "integrate-map"
+      ],
+      "review_policy": {
+        "after_days": [
+          3,
+          7
+        ]
+      },
+      "body": "虚构客户的支持团队希望减少重复问答。先列出高频问题、当前处理时长、权限边界和错误回答的代价。真实项目还要访谈使用者。",
+      "question": {
+        "prompt": "哪一个更适合作为第一轮验收指标？",
+        "options": [
+          "模型参数量",
+          "员工喜欢新技术",
+          "固定问题集的正确引用率与拒答率"
+        ],
+        "answer": 2
+      },
+      "resources": [
+        {
+          "title": "FDE 岗位导读",
+          "url": "orientation.html"
+        }
+      ]
+    },
+    {
+      "id": "llm-basics",
+      "title": "大模型能做什么，不能保证什么",
+      "format": "micro_lesson",
+      "skills": [
+        "llm"
+      ],
+      "prerequisites": [],
+      "difficulty": 1,
+      "estimated_time": 9,
+      "evidence_of_mastery": "辨认无依据回答风险",
+      "next_candidates": [
+        "rag-example"
+      ],
+      "review_policy": {
+        "after_days": [
+          1,
+          3,
+          7
+        ]
+      },
+      "body": "模型可以组织语言，但不能仅凭流畅回答保证事实正确。企业任务需要来源、权限、测试集和可追溯的失败处理。",
+      "question": {
+        "prompt": "回答看起来流畅但没有证据时，最稳妥的做法是？",
+        "options": [
+          "直接交付",
+          "补充来源并允许拒答",
+          "增加提示词长度"
+        ],
+        "answer": 1
+      },
+      "diagnostic_question": {
+        "prompt": "模型给出看似可信但无法核对的事实，该怎样处理？",
+        "options": [
+          "当作正确",
+          "标记不确定并寻找可信来源",
+          "只调整字体"
+        ],
+        "answer": 1
+      },
+      "resources": [
+        {
+          "title": "LLM 与 RAG 技术栈",
+          "url": "ch09.html"
+        }
+      ]
+    },
+    {
+      "id": "python-data",
+      "title": "读懂一份企业数据样本",
+      "format": "worked_example",
+      "skills": [
+        "python"
+      ],
+      "prerequisites": [],
+      "difficulty": 1,
+      "estimated_time": 10,
+      "evidence_of_mastery": "识别数据字段与缺失值",
+      "next_candidates": [
+        "integrate-map"
+      ],
+      "review_policy": {
+        "after_days": [
+          2,
+          7
+        ]
+      },
+      "body": "一条企业知识记录至少需要正文、来源、更新时间和权限标签。浏览器练习先理解字段；本地环境与代码安装不是起点。",
+      "question": {
+        "prompt": "哪组字段最有助于安全检索？",
+        "options": [
+          "正文、来源、权限、更新时间",
+          "仅正文",
+          "文件名与颜色"
+        ],
+        "answer": 0
+      },
+      "resources": [
+        {
+          "title": "交付实战蓝皮书",
+          "url": "playbook.html"
+        }
+      ]
+    },
+    {
+      "id": "integrate-map",
+      "title": "企业数据接入先画边界",
+      "format": "deep_dive",
+      "skills": [
+        "integration"
+      ],
+      "prerequisites": [
+        "discover-brief"
+      ],
+      "difficulty": 2,
+      "estimated_time": 14,
+      "evidence_of_mastery": "识别权限与同步风险",
+      "next_candidates": [
+        "rag-example",
+        "lab-access"
+      ],
+      "review_policy": {
+        "after_days": [
+          2,
+          7
+        ]
+      },
+      "body": "接入前记录系统所有者、更新频率、权限规则、失败重试与审计需要。先用虚构数据做最小流程，再逐步加入真实系统复杂度。",
+      "question": {
+        "prompt": "知识库有不同部门的权限，检索时应在哪里控制？",
+        "options": [
+          "展示答案后再隐藏",
+          "检索前按身份过滤可访问数据",
+          "只在提示词写不要泄露"
+        ],
+        "answer": 1
+      },
+      "resources": [
+        {
+          "title": "企业数据与安全边界",
+          "url": "ch22.html"
+        }
+      ]
+    },
+    {
+      "id": "rag-example",
+      "title": "用一个例子理解 RAG",
+      "format": "worked_example",
+      "skills": [
+        "rag"
+      ],
+      "prerequisites": [
+        "llm-basics"
+      ],
+      "difficulty": 2,
+      "estimated_time": 12,
+      "evidence_of_mastery": "区分检索与生成错误",
+      "next_candidates": [
+        "lab-citation",
+        "eval-basics"
+      ],
+      "review_policy": {
+        "after_days": [
+          1,
+          3,
+          7
+        ]
+      },
+      "body": "RAG 先从已授权文档找证据，再据此回答。如果证据没找全，应检查切分与检索；如果证据正确而回答错误，应检查生成与提示。",
+      "question": {
+        "prompt": "相关文档没有进入候选结果，应先检查什么？",
+        "options": [
+          "检索与切分",
+          "页面颜色",
+          "部署域名"
+        ],
+        "answer": 0
+      },
+      "diagnostic_question": {
+        "prompt": "回答引用了错误部门的文档，首要排查哪里？",
+        "options": [
+          "检索权限与候选文档",
+          "动画效果",
+          "模型名称"
+        ],
+        "answer": 0
+      },
+      "resources": [
+        {
+          "title": "RAG 技术栈",
+          "url": "ch09.html"
+        }
+      ]
+    },
+    {
+      "id": "eval-basics",
+      "title": "12 分钟补齐 RAG 评测",
+      "format": "micro_lesson",
+      "skills": [
+        "eval"
+      ],
+      "prerequisites": [
+        "rag-example"
+      ],
+      "difficulty": 2,
+      "estimated_time": 12,
+      "evidence_of_mastery": "区分开发集与验收集",
+      "next_candidates": [
+        "eval-review",
+        "lab-eval"
+      ],
+      "review_policy": {
+        "after_days": [
+          1,
+          3,
+          7
+        ]
+      },
+      "body": "保留独立验收集，覆盖检索、引用、拒答、越权、成本和延迟。错例必须归因，不能只在开发集上反复调优。",
+      "question": {
+        "prompt": "开发集 90%，验收集 62%，下一步是？",
+        "options": [
+          "只展示 90%",
+          "分析验收错例并检查数据泄漏",
+          "删除验收集"
+        ],
+        "answer": 1
+      },
+      "diagnostic_question": {
+        "prompt": "想知道系统能否在新问题上可靠工作，应保留什么？",
+        "options": [
+          "只看训练样本",
+          "未参与调优的验收集",
+          "只看一次演示"
+        ],
+        "answer": 1
+      },
+      "resources": [
+        {
+          "title": "评估驱动开发",
+          "url": "topic03.html"
+        }
+      ]
+    },
+    {
+      "id": "agent-flow",
+      "title": "给 Agent 设定可控步骤",
+      "format": "interactive_quiz",
+      "skills": [
+        "agent"
+      ],
+      "prerequisites": [
+        "llm-basics",
+        "integrate-map"
+      ],
+      "difficulty": 2,
+      "estimated_time": 12,
+      "evidence_of_mastery": "给工具调用设置边界",
+      "next_candidates": [
+        "capstone-brief"
+      ],
+      "review_policy": {
+        "after_days": [
+          2,
+          7
+        ]
+      },
+      "body": "Agent 应明确能用哪些工具、何时需要人工确认、如何记录动作和停止条件。",
+      "question": {
+        "prompt": "Agent 要修改客户记录时，优先增加什么？",
+        "options": [
+          "更长的系统提示词",
+          "权限检查、审计和确认步骤",
+          "更多并发任务"
+        ],
+        "answer": 1
+      },
+      "resources": [
+        {
+          "title": "FDE 技术栈",
+          "url": "ch09.html"
+        }
+      ]
+    },
+    {
+      "id": "lab-access",
+      "title": "浏览器实训：权限边界",
+      "format": "guided_lab",
+      "skills": [
+        "integration"
+      ],
+      "prerequisites": [
+        "integrate-map"
+      ],
+      "difficulty": 2,
+      "estimated_time": 12,
+      "evidence_of_mastery": "自动测试含隐藏权限用例",
+      "next_candidates": [
+        "lab-citation"
+      ],
+      "review_policy": {
+        "after_days": [
+          2,
+          7
+        ]
+      },
+      "lab_template": "access-v1",
+      "resources": [
+        {
+          "title": "企业数据与安全边界",
+          "url": "ch22.html"
+        }
+      ]
+    },
+    {
+      "id": "lab-citation",
+      "title": "浏览器实训：引用与拒答",
+      "format": "guided_lab",
+      "skills": [
+        "rag"
+      ],
+      "prerequisites": [
+        "rag-example"
+      ],
+      "difficulty": 2,
+      "estimated_time": 15,
+      "evidence_of_mastery": "自动测试含隐藏无证据用例",
+      "next_candidates": [
+        "lab-config",
+        "lab-eval"
+      ],
+      "review_policy": {
+        "after_days": [
+          2,
+          7
+        ]
+      },
+      "lab_template": "citation-v1",
+      "resources": [
+        {
+          "title": "RAG 技术栈",
+          "url": "ch09.html"
+        }
+      ]
+    },
+    {
+      "id": "lab-config",
+      "title": "浏览器实训：看懂配置",
+      "format": "guided_lab",
+      "skills": [
+        "rag",
+        "integration"
+      ],
+      "prerequisites": [
+        "lab-citation",
+        "lab-access"
+      ],
+      "difficulty": 3,
+      "estimated_time": 15,
+      "evidence_of_mastery": "自动测试配置边界",
+      "next_candidates": [
+        "lab-eval"
+      ],
+      "review_policy": {
+        "after_days": [
+          3,
+          7
+        ]
+      },
+      "lab_template": "config-v1",
+      "resources": [
+        {
+          "title": "RAG 技术栈",
+          "url": "ch09.html"
+        }
+      ]
+    },
+    {
+      "id": "eval-review",
+      "title": "4 分钟复习：区分开发集与验收集",
+      "format": "flash_review",
+      "skills": [
+        "eval"
+      ],
+      "prerequisites": [
+        "eval-basics"
+      ],
+      "difficulty": 1,
+      "estimated_time": 4,
+      "evidence_of_mastery": "短复习答题",
+      "next_candidates": [
+        "lab-eval"
+      ],
+      "review_policy": {
+        "after_days": [
+          1,
+          3,
+          7,
+          14
+        ]
+      },
+      "body": "开发集帮助迭代，独立验收集用于估计新问题表现。不要把验收题反复用来调参。",
+      "question": {
+        "prompt": "哪一组应在调参期间保持独立？",
+        "options": [
+          "开发集",
+          "验收集",
+          "所有示例都随时改"
+        ],
+        "answer": 1
+      },
+      "resources": [
+        {
+          "title": "评估驱动开发",
+          "url": "topic03.html"
+        }
+      ]
+    },
+    {
+      "id": "lab-eval",
+      "title": "浏览器实训：评估错例",
+      "format": "challenge_lab",
+      "skills": [
+        "eval"
+      ],
+      "prerequisites": [
+        "eval-basics"
+      ],
+      "difficulty": 3,
+      "estimated_time": 18,
+      "evidence_of_mastery": "自动测试含隐藏泄漏用例",
+      "next_candidates": [
+        "capstone-brief"
+      ],
+      "review_policy": {
+        "after_days": [
+          3,
+          7
+        ]
+      },
+      "lab_template": "eval-v1",
+      "resources": [
+        {
+          "title": "评估驱动开发",
+          "url": "topic03.html"
+        }
+      ]
+    },
+    {
+      "id": "capstone-brief",
+      "title": "项目：企业知识助手交付",
+      "format": "capstone",
+      "skills": [
+        "discovery",
+        "integration",
+        "rag",
+        "eval",
+        "agent"
+      ],
+      "prerequisites": [
+        "discover-case",
+        "lab-access",
+        "lab-citation",
+        "lab-eval",
+        "agent-flow"
+      ],
+      "difficulty": 3,
+      "estimated_time": 30,
+      "evidence_of_mastery": "需求、数据、RAG、评测与反馈证据",
+      "next_candidates": [
+        "deploy-readiness"
+      ],
+      "review_policy": {
+        "after_days": [
+          7,
+          21
+        ]
+      },
+      "body": "完成需求澄清、权限数据接入、检索回答、独立评测、客户反馈五张交付卡。高级阶段再接部署与监控。",
+      "question": {
+        "prompt": "交付前最需要同时展示什么？",
+        "options": [
+          "演示视频",
+          "验收集结果、错例、权限与反馈计划",
+          "模型排行榜"
+        ],
+        "answer": 1
+      },
+      "resources": [
+        {
+          "title": "FDE 岗位导读",
+          "url": "orientation.html"
+        }
+      ]
+    },
+    {
+      "id": "deploy-readiness",
+      "title": "进阶：部署、Secrets 与监控",
+      "format": "jd_skill_drill",
+      "skills": [
+        "deployment"
+      ],
+      "prerequisites": [
+        "capstone-brief"
+      ],
+      "difficulty": 3,
+      "estimated_time": 20,
+      "evidence_of_mastery": "识别部署和密钥风险",
+      "next_candidates": [
+        "lab-deploy"
+      ],
+      "review_policy": {
+        "after_days": [
+          7,
+          21
+        ]
+      },
+      "body": "到这一阶段才引入容器、密钥、CI/CD、云资源配额与监控。先解释每项为何影响真实客户交付。",
+      "question": {
+        "prompt": "生产密钥应该放在哪里？",
+        "options": [
+          "提交到仓库",
+          "受控密钥管理服务或环境注入",
+          "发到群聊"
+        ],
+        "answer": 1
+      },
+      "resources": [
+        {
+          "title": "交付实战蓝皮书",
+          "url": "playbook.html"
+        }
+      ]
+    },
+    {
+      "id": "lab-deploy",
+      "title": "进阶实训：部署决策模拟",
+      "format": "challenge_lab",
+      "skills": [
+        "deployment"
+      ],
+      "prerequisites": [
+        "deploy-readiness"
+      ],
+      "difficulty": 3,
+      "estimated_time": 20,
+      "evidence_of_mastery": "自动测试密钥与部署边界",
+      "next_candidates": [],
+      "review_policy": {
+        "after_days": [
+          7,
+          21
+        ]
+      },
+      "lab_template": "deploy-v1",
+      "resources": [
+        {
+          "title": "交付实战蓝皮书",
+          "url": "playbook.html"
+        }
+      ]
+    }
+  ],
+  "labTemplates": {
+    "access-v1": {
+      "level": 1,
+      "prompt": "虚构客户的财务资料只允许财务组查看。选择最安全的检索方案。",
+      "choices": [
+        "按用户身份在检索前过滤",
+        "检索所有资料后隐藏答案",
+        "请模型自行判断权限"
+      ],
+      "answer": 0,
+      "hints": [
+        "想想数据什么时候离开检索层。",
+        "重点检查候选文档形成之前的权限判断。",
+        "先判断身份，再只检索允许访问的文档。",
+        "完整解释：权限过滤必须在检索前完成，生成后隐藏不能撤回泄露。"
+      ]
+    },
+    "citation-v1": {
+      "level": 1,
+      "prompt": "虚构知识库没有找到客户退款政策。你会如何回答？",
+      "choices": [
+        "编一个合理政策",
+        "说明没有找到依据并请求确认资料",
+        "引用一份无关文档"
+      ],
+      "answer": 1,
+      "hints": [
+        "先判断有没有足够证据。",
+        "定位在回答生成之前的证据检查。",
+        "证据不足就拒答并请求可信资料。",
+        "完整解释：没有找到政策时不应猜测，也不能伪造引用。"
+      ]
+    },
+    "eval-v1": {
+      "level": 1,
+      "prompt": "开发集表现很好，独立验收集明显下降。选择下一步。",
+      "choices": [
+        "只报告开发集",
+        "分析错例并排查数据泄漏",
+        "把验收题加入开发集继续刷分"
+      ],
+      "answer": 1,
+      "hints": [
+        "两组结果差距意味着什么？",
+        "检查分布差异与数据污染。",
+        "保留独立验收集，分类分析失败案例。",
+        "完整解释：不能把验收集变成调参集，需用错例归因排查。"
+      ]
+    },
+    "config-v1": {
+      "level": 2,
+      "prompt": "浏览器工作区显示一段检索配置。虚构客户有部门权限要求。哪种配置更合理？",
+      "config": "retrieval.scope = ?   |   citations.required = true   |   secrets = managed",
+      "choices": [
+        "所有部门共享索引，不检查身份",
+        "按身份限制检索范围，并保留引用",
+        "把权限名单写进提示词"
+      ],
+      "answer": 1,
+      "hints": [
+        "先看检索范围。",
+        "检查 scope 与用户身份的关系。",
+        "让 scope 随用户授权变化。",
+        "完整解释：按身份过滤检索范围，引用仍要保留；提示词不替代权限控制。"
+      ]
+    },
+    "deploy-v1": {
+      "level": 3,
+      "prompt": "准备上线虚构客户的助手。选择最安全的交付方案。",
+      "config": "Docker image → CI/CD → Secret manager → Monitoring (simulation only)",
+      "choices": [
+        "把密钥写入镜像并直接推生产",
+        "通过受控密钥注入，设置回滚与监控",
+        "关闭日志和评测以降低成本"
+      ],
+      "answer": 1,
+      "hints": [
+        "考虑密钥和回滚。",
+        "定位到镜像、CI/CD 和监控三个环节。",
+        "密钥外置注入，发布可回滚，保留监控。",
+        "完整解释：密钥不能入镜像；上线流程要有受控发布、监控与回滚。"
+      ]
+    }
+  },
+  "demoPersonas": [
+    {
+      "id": "novice",
+      "label": "演示：完全新手转 FDE",
+      "role": "fde",
+      "background": "novice",
+      "mastery": {}
+    },
+    {
+      "id": "backend",
+      "label": "演示：后端转 Applied AI",
+      "role": "applied-ai",
+      "background": "backend",
+      "mastery": {
+        "python": 72,
+        "integration": 62,
+        "discovery": 35,
+        "llm": 45
+      }
+    },
+    {
+      "id": "solutions",
+      "label": "演示：Solutions 转 FDE",
+      "role": "fde",
+      "background": "solutions",
+      "mastery": {
+        "discovery": 74,
+        "integration": 64,
+        "llm": 40,
+        "rag": 25
+      }
+    }
+  ]
+}
